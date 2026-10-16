@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life1008 - 개인 이력서</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- header : F-01 소개 / F-02 연락 채널 -->
+    <header class="site-header">
+
+        <!-- 스크롤을 내리면 상단에 고정되어 나타나는 남색 바 -->
+        <div class="scroll-bar">
+            <div class="container scroll-bar-inner">
+                <div class="scroll-bar-profile">
+                    <p class="scroll-bar-name"><span class="live-dot"></span>Life1008 <span class="year-badge">2학년</span></p>
+                    <p class="scroll-bar-sub">상명대학교 소프트웨어학과 2학년</p>
+                    <p class="scroll-bar-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
+                </div>
+                <nav class="scroll-bar-nav" aria-label="빠른 이동">
+                    <ul>
+                        <li><a href="#achievements">실적 목록</a></li>
+                        <li><a href="#courses">수강 과목</a></li>
+                        <li><a href="#weekly">실습 현황</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="topbar">
+                <p class="eyebrow">웹프로그래밍 과제 / 2026</p>
+                <nav aria-label="이력서 영역">
+                    <ul class="nav-list">
+                        <li><a href="#achievements">01 / 실적 목록</a></li>
+                        <li><a href="#courses">02 / 수강 과목</a></li>
+                        <li><a href="#weekly">03 / 실습 현황</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="hero">
+                <div class="hero-text">
+                    <p class="hero-tagline">배우고, 만들고, 매년 성장합니다.</p>
+                    <h1 class="hero-name">Life1008<span class="hero-dot">.</span></h1>
+                    <p class="hero-affiliation">상명대학교 소프트웨어학과 2학년</p>
+                    <p class="hero-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
+                    <div class="hero-tags">
+                        <span class="tags-label">관심 분야</span>
+                        <ul class="tag-list">
+                            <li>게임 개발</li>
+                            <li>프로그래밍</li>
+                            <li>AI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- F-02: GitHub 프로필 링크 (페이지 전체에서 1개)
+                     스크롤하면 같은 링크가 남색 바 오른쪽의 GitHub 버튼으로 바뀜 -->
+                <div class="hero-card-slot">
+                    <a class="hero-card" href="https://github.com/LifeBreeze" target="_blank" rel="noopener noreferrer">
+                        <svg class="hero-card-img" viewBox="0 0 24 24" role="img" aria-labelledby="github-logo-title">
+                            <title id="github-logo-title">GitHub 로고 - Life1008의 GitHub 프로필로 이동</title>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                        </svg>
+                        <span class="hero-card-caption">GITHUB PROFILE &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main">
+
+        <!-- section : F-03 실적 목록 -->
+        <section id="achievements" class="panel">
+            <div class="panel-head">
+                <div>
+                    <p class="section-no">01 / ACHIEVEMENTS</p>
+                    <h2 class="section-title">실적 목록</h2>
+                </div>
+                <ul class="count-list">
+                    <li class="count count-all">전체 <strong>9</strong>건</li>
+                    <li class="count count-award">수상 <strong>2</strong>건</li>
+                    <li class="count count-project">프로젝트 <strong>6</strong>건</li>
+                    <li class="count count-activity">활동 <strong>1</strong>건</li>
+                </ul>
+            </div>
+
+            <div class="table-wrap">
+                <table class="record-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-date">시기</th>
+                            <th scope="col" class="col-type">분류</th>
+                            <th scope="col">내용</th>
+                            <th scope="col">본인 역할</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-date">2026.10</td>
+                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                            <td class="record-title">개인 이력서 웹사이트 제작 및 배포</td>
+                            <td>기획, HTML/CSS 디자인, 배포 환경 구축</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2026.06</td>
+                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                            <td>만화방 제작 프로젝트</td>
+                            <td>Python 프로그래밍 개발 및 UI 구현</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2026.06</td>
+                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                            <td>피라미드 탈출 게임 제작 프로젝트</td>
+                            <td>C# / 게임 구상, 소켓 프로그래밍 개발 및 UI 구현</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2026.05</td>
+                            <td class="col-type"><span class="badge badge-award">수상</span></td>
+                            <td>2026학년도 제1학기 해커톤 대회 대상 수상</td>
+                            <td>Python 기반 기초 문제 해결 알고리즘 설계 및 PPT 디자인</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2023.12</td>
+                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                            <td>팩맨 게임 제작 프로젝트</td>
+                            <td>C / 게임 로직 및 UI 구현</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2023.10</td>
+                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                            <td>무인도 탈출 게임 제작 프로젝트</td>
+                            <td>엔트리 / 게임 구상, 로직 및 UI 구현</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2023.06</td>
+                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                            <td>슈팅 게임 제작 프로젝트</td>
+                            <td>Python / 게임 로직 및 UI 구현</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2020.04</td>
+                            <td class="col-type"><span class="badge badge-activity">활동</span></td>
+                            <td>고등학교 화학 동아리 회장 및 실험 기획</td>
+                            <td>동아리 활동 기획 및 운영</td>
+                        </tr>
+                        <tr>
+                            <td class="col-date">2019.07</td>
+                            <td class="col-type"><span class="badge badge-award">수상</span></td>
+                            <td>고등학교 모범학생 표창장</td>
+                            <td>모범학생 선정</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- section : F-04 수강 과목 -->
+        <section id="courses" class="panel">
+            <div class="panel-head">
+                <div>
+                    <p class="section-no">02 / COURSES</p>
+                    <h2 class="section-title">2026-2 수강 과목</h2>
+                </div>
+            </div>
+
+            <ul class="course-list">
+                <li>
+                    <a class="course course-link" href="#weekly">
+                        <span class="badge badge-major">전공</span>
+                        <span class="course-name">웹프로그래밍 및 AI에이전트 활용</span>
+                        <span class="course-more">주차별 실습 링크 바로가기 &rarr;</span>
+                    </a>
+                </li>
+                <li class="course">
+                    <span class="badge badge-major">전공</span>
+                    <span class="course-name">이산수학</span>
+                </li>
+                <li class="course">
+                    <span class="badge badge-major">전공</span>
+                    <span class="course-name">컴퓨터프로그래밍Ⅱ</span>
+                </li>
+                <li class="course">
+                    <span class="badge badge-major">전공</span>
+                    <span class="course-name">컴퓨터프로그래밍Ⅱ실습</span>
+                </li>
+                <li class="course">
+                    <span class="badge badge-liberal">교양</span>
+                    <span class="course-name">AI시대의컬처리터러시</span>
+                </li>
+                <li class="course">
+                    <span class="badge badge-liberal">교양</span>
+                    <span class="course-name">사진과사회학</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- section : F-05 본 과목 주차별 링크 -->
+        <section id="weekly" class="panel">
+            <div class="panel-head">
+                <div>
+                    <p class="section-no">03 / WEB PROGRAMMING</p>
+                    <h2 class="section-title">웹프로그래밍 및 AI에이전트 활용 - 주차별 링크</h2>
+                </div>
+            </div>
+            <p class="panel-note">진행한 주차를 클릭하면 해당 주차의 실습 페이지로 이동합니다.</p>
+
+            <ul class="week-list">
+                <li class="week week-off"><span class="week-no">1주차</span><span class="week-state">OT</span></li>
+                <li><a class="week week-done" href="doc01.html"><span class="week-no">2주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="doc2.html"><span class="week-no">3주차</span><span class="week-state">실습 진행</span></a></li>
+                <li class="week week-off"><span class="week-no">4주차</span><span class="week-state">추석 휴강</span></li>
+                <li><a class="week week-done" href="index.html"><span class="week-no">5주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="doc04.html"><span class="week-no">6주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="doc07.html"><span class="week-no">7주차</span><span class="week-state">실습 진행</span></a></li>
+                <li class="week week-planned"><span class="week-no">8주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">9주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">10주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">11주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">12주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">13주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">14주차</span><span class="week-state">예정</span></li>
+                <li class="week week-planned"><span class="week-no">15주차</span><span class="week-state">예정</span></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- footer : F-06 최종 수정일 -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Life1008. All rights reserved.</p>
+            <p class="last-modified">최종 수정일: 2026-10-17</p>
+        </div>
+    </footer>
+
+    <!-- 맨 위로 버튼 -->
+    <button type="button" class="to-top" aria-label="맨 위로 이동">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7"></path>
+        </svg>
+    </button>
+
+    <script>
+        // 소개 영역을 지나 스크롤하면 header에 is-scrolled 클래스를 붙여 남색 바를 보여 준다
+        (function () {
+            var header = document.querySelector('.site-header');
+            var hero = document.querySelector('.hero');
+            var toTop = document.querySelector('.to-top');
+
+            function update() {
+                var limit = hero.offsetTop + hero.offsetHeight - 40;
+                header.classList.toggle('is-scrolled', window.scrollY > limit);
+                toTop.classList.toggle('is-visible', window.scrollY > limit);
+            }
+
+            toTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+    </script>
+
+</body>
+</html>
