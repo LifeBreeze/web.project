@@ -803,6 +803,55 @@ a {
     }
 }
 
+/* ===== 맨 위로 버튼 (오른쪽 아래) ===== */
+.to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background-color: var(--navy);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(0, 51, 102, 0.35);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background-color 0.2s ease;
+}
+
+.to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.to-top:hover,
+.to-top:focus {
+    background-color: var(--blue);
+}
+
+.to-top svg {
+    width: 22px;
+    height: 22px;
+}
+
+@media (max-width: 560px) {
+    .to-top {
+        right: 16px;
+        bottom: 16px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -816,7 +865,7 @@ a {
                 <div class="scroll-bar-profile">
                     <p class="scroll-bar-name"><span class="live-dot"></span>Life1008 <span class="year-badge">2학년</span></p>
                     <p class="scroll-bar-sub">상명대학교 소프트웨어학과 2학년</p>
-                    <p class="scroll-bar-intro">게임과 웹 개발에 관심을 두고 매년 성장하는 대기만성형 학생입니다.</p>
+                    <p class="scroll-bar-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
                 </div>
                 <nav class="scroll-bar-nav" aria-label="빠른 이동">
                     <ul>
@@ -830,7 +879,7 @@ a {
 
         <div class="container">
             <div class="topbar">
-                <p class="eyebrow">PERSONAL RESUME / 2026</p>
+                <p class="eyebrow">웹프로그래밍 과제 / 2026</p>
                 <nav aria-label="이력서 영역">
                     <ul class="nav-list">
                         <li><a href="#achievements">01 / 실적 목록</a></li>
@@ -845,7 +894,7 @@ a {
                     <p class="hero-tagline">배우고, 만들고, 매년 성장합니다.</p>
                     <h1 class="hero-name">Life1008<span class="hero-dot">.</span></h1>
                     <p class="hero-affiliation">상명대학교 소프트웨어학과 2학년</p>
-                    <p class="hero-intro">게임과 웹 개발에 관심을 두고 매년 성장하는 대기만성형 학생입니다.</p>
+                    <p class="hero-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
                     <div class="hero-tags">
                         <span class="tags-label">관심 분야</span>
                         <ul class="tag-list">
@@ -1010,12 +1059,12 @@ a {
 
             <ul class="week-list">
                 <li><a class="week week-done" ><span class="week-no">1주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc1.html"><span class="week-no">2주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="doc01.html"><span class="week-no">2주차</span><span class="week-state">실습 진행</span></a></li>
                 <li><a class="week week-done" href="doc2.html"><span class="week-no">3주차</span><span class="week-state">실습 진행</span></a></li>
                 <li><a class="week week-done" ><span class="week-no">4주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="week5.html"><span class="week-no">5주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="week6.html"><span class="week-no">6주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="week7.html"><span class="week-no">7주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="index.html"><span class="week-no">5주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="doc04.html"><span class="week-no">6주차</span><span class="week-state">실습 진행</span></a></li>
+                <li><a class="week week-done" href="doc07.html"><span class="week-no">7주차</span><span class="week-state">실습 진행</span></a></li>
                 <li class="week week-planned"><span class="week-no">8주차</span><span class="week-state">예정</span></li>
                 <li class="week week-planned"><span class="week-no">9주차</span><span class="week-state">예정</span></li>
                 <li class="week week-planned"><span class="week-no">10주차</span><span class="week-state">예정</span></li>
@@ -1037,16 +1086,29 @@ a {
         </div>
     </footer>
 
+    <!-- 맨 위로 버튼 -->
+    <button type="button" class="to-top" aria-label="맨 위로 이동">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7"></path>
+        </svg>
+    </button>
+
     <script>
         // 소개 영역을 지나 스크롤하면 header에 is-scrolled 클래스를 붙여 남색 바를 보여 준다
         (function () {
             var header = document.querySelector('.site-header');
             var hero = document.querySelector('.hero');
+            var toTop = document.querySelector('.to-top');
 
             function update() {
                 var limit = hero.offsetTop + hero.offsetHeight - 40;
                 header.classList.toggle('is-scrolled', window.scrollY > limit);
+                toTop.classList.toggle('is-visible', window.scrollY > limit);
             }
+
+            toTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
             window.addEventListener('scroll', update, { passive: true });
             window.addEventListener('resize', update);
