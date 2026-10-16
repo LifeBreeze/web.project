@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            ol li {list-style-type: lower-alpha;} 
+            ol {list-style-position: inside}
+            ul {list-style-position: outside}
+            li.kor {list-style-type: square;}
+            li.usa {list-style-image: circle;}
+            #book {width:90%; min-width:150px; border-spacing: 8px;}
+
+
+            p {background-color: skyblue;}
+            p:hover {background-color: yellow; transition: background;}
+            ul {background-color: rgba(147, 220, 175, 0.995);}
+            li {background-color: darkgoldenrod;}
+            td {background-color: rgb(255, 213, 0);}
+        </style>
+    </head>
+    <body>
+        <p>순서가 없는 목록</p>
+        <ul>
+            <li class="usa">첫 번째 </li>
+            <li class="kor">두 번째 </li>
+            <li class="usa">세 번째 </li>
+        </ul>
+        <p>순서가 있는 목록</p>
+        <ol>
+            <li>첫 번째 </li>
+            <li>두 번째 </li>
+            <li>세 번째 </li>
+        </ol>
+
+        <table border="1" id="book">
+                <th>과목</th>
+                <th>책제목</th>
+                <th>저자</th>
+                <th>출판사</th>
+            </tr>
+            <tr>
+                <td rowspan="2">웹프로그래밍</td>
+                <td>HTML5</td>
+                <td>임순범</td>
+                <td>생능</td>
+            </tr>
+            <tr>
+                <td>소셜 미디어</td>
+                <td>최윤철</td>
+                <td>생능</td>
+            </tr>
+            <tr>
+                <th>합계</th>
+                <td colspan="3">2권</td>
+            </tr>
+        </table>
+    </body>
+</html>
