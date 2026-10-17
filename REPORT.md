@@ -18,8 +18,8 @@
 | F-04 | ① 2026-2 수강 과목 6개가 목록(`<ul>`)으로 표시됨 확인 ② 과목마다 과목명과 전공/교양 표시 확인 ③ 「웹프로그래밍 및 AI에이전트 활용」 클릭 시 F-05 영역(#weekly)으로 이동 확인 | Pass | [캡처](images/check_F04.png) |
 | F-05 | ① 1~15주차 칸 15개 표시 확인 ② 실습을 진행한 2·3·5·6·7주차를 하나씩 클릭해 각 실습 페이지(doc01, doc02, doc05, doc06, doc07)로 이동 확인. 1주차(OT)와 4주차(추석 휴강)는 실습이 없어 링크 없이 점선 칸으로 표시 ③ 8~15주차가 "예정"으로 표시되고 링크 없음 확인 ④ 진행 주차(파란색)와 예정 주차(회색)가 색으로 구분됨 확인 | Pass | [코드](images/check_F05.0.png), [화면](images/check_F05.1.png) |
 | F-06 | ① footer에 "최종 수정일: 2026-10-17" 형식 표시 확인 ② GitHub 저장소의 마지막 커밋 날짜(2026-10-17)와 일치 확인 | Pass | [코드](images/check_F06.0.png), [화면](images/check_F06.1.png), [저장소](images/check_F06.2.png) |
-| Q-HTML | W3C HTML 검사기(https://validator.w3.org/)에 이력서 HTML 파일을 업로드해 검사. DOCTYPE·lang·charset·title, header·main·section·footer 구조, 표·목록·링크 사용 확인 | Pass (오류·경고 0) | [캡처](images/check_html.png) |
-| Q-CSS | W3C CSS 검사기(https://jigsaw.w3.org/css-validator/)로 style.css 검사 + 소스에서 인라인 style 속성과 `<style>` 태그 0개 확인(외부 style.css만 사용) + 창 너비를 줄여도 배치가 유지되는지 확인 | Pass (오류 0) | [캡처](images/check_style.css.png) |
+| Q-HTML | W3C HTML 검사기(https://validator.w3.org/)에서 Check by: address로 배포 URL(https://lifebreeze.github.io/web.project/) 검사. "No errors or warnings to show" 확인, Outline에서 h1(Life1008) 아래 h2 3개(실적 목록·수강 과목·주차별 링크) 구조 확인 | Pass (오류·경고 0) | [결과](images/check_html.1.png), [Outline](images/check_html.2.png) |
+| Q-CSS | W3C CSS 검사기(https://jigsaw.w3.org/css-validator/)로 배포 URL 검사("발견된 오류가 없습니다") + 소스에서 인라인 style 속성과 `<style>` 태그 0개 확인(외부 style.css만 사용) + 창 너비를 줄여도 배치가 유지되는지 확인 | Pass (오류 0) | [캡처](images/check_style.css.png) |
 | Q-DEPLOY | 배포 URL에서 모든 링크(상단 메뉴 3개, 과목 링크, 주차 링크 5개, GitHub 링크)를 클릭하고, 디자인(style.css)과 GitHub 로고가 표시되는지 확인 | Pass | [캡처](images/check_deploy.png) |
 
 ---
