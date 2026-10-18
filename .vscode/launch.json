@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open doc00.html",
-            "file": "${workspaceFolder}/doc00.html"
+            "name": "Open current file",
+            "file": "${file}"
         }
     ]
 }
