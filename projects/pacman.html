@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팩맨 게임 - Life1008</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+    <header class="bar">
+        <div class="container bar-inner">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark" aria-hidden="true">L</span>
+                <span class="brand-text">
+                    <span class="brand-name">Life1008</span>
+                    <span class="brand-sub">프로젝트 상세</span>
+                </span>
+            </a>
+            <a class="btn btn-ghost back-link" href="../index.html#achievements">&larr; 이력서로</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="container p-hero">
+            <div class="p-chips">
+                <span class="chip chip-live">2023.12 · 프로젝트</span>
+                <span class="chip">C 언어 · 콘솔 게임</span>
+            </div>
+            <h1 class="p-title">팩맨 게임</h1>
+            <p class="p-lead">C 언어로 만든 콘솔 팩맨입니다. 무작위로 만들어지는 미로에서 악마(X)를 피해 먹이(.)를 모두 먹으면 이깁니다. 아래에서 원본 규칙 그대로 바로 플레이할 수 있습니다.</p>
+            <dl class="p-meta">
+                <div><dt>시기</dt><dd>2023년 11월 ~ 12월</dd></div>
+                <div><dt>언어</dt><dd>C (Windows 콘솔)</dd></div>
+                <div><dt>본인 역할</dt><dd>게임 로직 및 UI 구현</dd></div>
+                <div><dt>기준 버전</dt><dd>pacmanreal (3).cpp</dd></div>
+            </dl>
+        </section>
+
+        <section class="container p-section" aria-labelledby="play-title">
+            <h2 class="p-h2" id="play-title">바로 플레이하기</h2>
+            <div class="stage">
+                <div class="stage-bar">
+                    <div class="stage-buttons" role="group" aria-label="난이도">
+                        <button type="button" class="stage-btn" data-level="easy" aria-pressed="false">1. 쉬움</button>
+                        <button type="button" class="stage-btn" data-level="normal" aria-pressed="false">2. 보통</button>
+                        <button type="button" class="stage-btn" data-level="hard" aria-pressed="false">3. 어려움</button>
+                    </div>
+                    <p class="stage-stats" aria-live="polite">
+                        <span>난이도 <b id="pm-level">-</b></span>
+                        <span>Score <b id="pm-score">0</b></span>
+                        <span>Lives <b id="pm-lives">-</b></span>
+                        <span>먹은 먹이 <b id="pm-food">-</b></span>
+                    </p>
+                </div>
+                <canvas id="pacman" tabindex="0" aria-label="팩맨 게임 화면. 방향키나 W A S D로 움직입니다."></canvas>
+                <div class="pad" aria-label="방향 버튼">
+                    <button type="button" class="pad-up" data-move="ArrowUp" aria-label="위">&uarr;</button>
+                    <button type="button" class="pad-left" data-move="ArrowLeft" aria-label="왼쪽">&larr;</button>
+                    <button type="button" class="pad-down" data-move="ArrowDown" aria-label="아래">&darr;</button>
+                    <button type="button" class="pad-right" data-move="ArrowRight" aria-label="오른쪽">&rarr;</button>
+                </div>
+                <p class="stage-help">게임 화면을 한 번 누른 뒤 <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 또는 방향키로 움직입니다. 원본처럼 한 번 움직일 때마다 악마도 한 번 움직입니다. <kbd>R</kbd> 다시 하기(누를 때마다 새로운 맵 구조로 바뀝니다), <kbd>Q</kbd> 메뉴로.</p>
+            </div>
+            <noscript><p class="p-note">이 게임은 자바스크립트가 켜져 있어야 실행됩니다.</p></noscript>
+        </section>
+
+        <section class="container p-section" aria-labelledby="feat-title">
+            <h2 class="p-h2" id="feat-title">구현한 것</h2>
+            <div class="features">
+                <article class="feature">
+                    <h3>매번 다른 미로</h3>
+                    <p>안쪽 칸의 20%를 무작위 벽으로 채우고, 주변이 비어 있는 칸에만 벽을 20~30개 더 세워 길이 막히지 않게 했습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>난이도 3단계</h3>
+                    <p>구조체 <code>Difficulty</code> 하나로 목숨, 악마 수, 벽 수, 먹이 수, 악마 이동 여부를 한꺼번에 바꿉니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>어려움: 시야 제한</h3>
+                    <p>팩맨에서 맨해튼 거리 7칸 안만 보이고 나머지는 어둡게 가려, 악마가 어디서 나올지 모르게 했습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>움직이는 악마</h3>
+                    <p>보통부터는 악마가 턴마다 절반 확률로 2칸씩 점프합니다. 벽, 먹이, 다른 악마가 있는 칸은 피합니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>콘솔 색상</h3>
+                    <p><code>SetConsoleTextAttribute</code>로 팩맨은 노랑, 악마는 빨강, 벽은 파랑으로 찍어 화면을 구분했습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>점수와 상태</h3>
+                    <p>점수, 남은 목숨, 전체 먹이 수, 먹은 먹이 수를 매 턴 화면 아래에 보여 줍니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="code-title">
+            <h2 class="p-h2" id="code-title">핵심 코드</h2>
+            <pre class="code"><code>struct Difficulty {
+    int lives;
+    int demonMoveEnabled;
+    int wallCount;
+    int demonadd;
+    int randomfood;
+    int visibilityRadius;
+};
+
+case 3:
+    lives = 1;
+    gameStart((struct Difficulty){.lives = lives, .demonMoveEnabled = 1,
+        .wallCount = 10, .demonadd = 20, .randomfood = 25, .visibilityRadius = 7});</code></pre>
+        </section>
+
+        <section class="container p-section" aria-labelledby="debug-title">
+            <h2 class="p-h2" id="debug-title">디버그 해결 경험</h2>
+            <div class="debug-list">
+                <article class="debug">
+                    <h3>벽이 길을 막아 갇히는 판</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>무작위로 벽을 세우다 보니 팩맨이나 먹이가 벽에 둘러싸여 갈 수 없는 판이 자주 나왔습니다.</dd></div>
+                        <div><dt>원인</dt><dd>벽을 놓을 칸을 고를 때 주변 칸을 확인하지 않아 벽끼리 붙으면서 통로가 막혔습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>상하좌우 네 칸에 벽이 없을 때만 벽을 추가하도록 조건을 넣었습니다. 웹 버전에서는 모든 먹이에 닿을 수 있는지 탐색으로 확인하고, 아니면 판을 다시 만듭니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>글자 색이 번지는 화면</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>팩맨과 악마에 색을 넣자 그 뒤에 찍히는 벽과 먹이까지 같은 색으로 바뀌었습니다.</dd></div>
+                        <div><dt>원인</dt><dd><code>SetConsoleTextAttribute</code>로 바꾼 색은 다시 바꾸기 전까지 콘솔에 계속 남습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>색 있는 글자를 하나 찍을 때마다 바로 기본색(7)으로 되돌리도록 했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>남은 먹이 수가 화면에 안 나옴</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>전체 먹이 수를 화면 아래에 보여 주려 했지만 <code>draw()</code>에서 값을 알 수 없었습니다.</dd></div>
+                        <div><dt>원인</dt><dd>먹이 수는 <code>placeFood()</code> 안의 지역 변수라서 함수 밖으로 전달되지 않았습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd><code>placeFood(difficulty, &amp;totalFood)</code>처럼 포인터로 넘겨 값을 받아 오고, <code>draw()</code>에 인자로 전달했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>먹이를 다 먹어도 끝나지 않음</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>먹이를 모두 먹어도 승리 화면이 나오지 않고 게임이 계속됐습니다.</dd></div>
+                        <div><dt>원인</dt><dd>남은 먹이 수 <code>food</code>를 0으로 시작해 줄이기만 해서, 0이 되는 순간이 오지 않았습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>웹으로 옮기며 남은 먹이 수를 전체 먹이 수로 시작하게 고쳐 승리 판정이 동작하게 했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>한 번 부딪히면 악마가 멈춤</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>악마와 한 번 부딪힌 뒤로는 모든 악마가 그 자리에서 움직이지 않았습니다.</dd></div>
+                        <div><dt>원인</dt><dd>부딪힘 표시 <code>isEaten</code>을 1로 바꾼 뒤 다시 0으로 돌려놓지 않았습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>웹 버전에서는 부딪힌 뒤 3턴만 멈췄다가 다시 움직이게 했습니다.</dd></div>
+                    </dl>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="learn-title">
+            <h2 class="p-h2" id="learn-title">배운 점과 성취</h2>
+            <div class="learn">
+                <div class="learn-col">
+                    <h3>핵심으로 배운 것</h3>
+                    <ul class="learn-list">
+                        <li>2차원 배열 하나로 게임 판 전체(벽, 먹이, 캐릭터)를 표현하고 갱신하는 방법</li>
+                        <li>구조체로 난이도 설정을 묶어 함수 하나에 넘기는 설계</li>
+                        <li>포인터로 함수 밖의 값을 바꾸는 방법(call by reference)</li>
+                        <li><code>rand()</code>로 무작위 맵을 만들 때 생기는 예외 상황을 조건으로 막는 법</li>
+                    </ul>
+                </div>
+                <div class="learn-col learn-achieve">
+                    <h3>성취</h3>
+                    <ul class="learn-list">
+                        <li>버전 8개를 거치며 판 크기, 난이도 3단계, 시야 제한까지 기능을 단계적으로 늘렸습니다.</li>
+                        <li>C언어를 배우고 처음으로 만든 게임입니다.</li>
+                        <li>1학년 2학기 기말고사 과제로 제출했고, 이 사이트에서 원본 규칙과 난이도 그대로 체험할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <nav class="container p-next" aria-label="다른 프로젝트">
+            <a href="pyramid.html"><span>&larr; 이전 프로젝트</span><strong>피라미드 탈출 게임</strong></a>
+            <a class="to-next" href="island.html"><span>다음 프로젝트 &rarr;</span><strong>무인도 탈출 게임</strong></a>
+        </nav>
+    </main>
+
+    <script src="pacman.js"></script>
+</body>
+</html>

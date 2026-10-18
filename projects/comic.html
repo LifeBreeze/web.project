@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>만화방 만들기 - Life1008</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+    <header class="bar">
+        <div class="container bar-inner">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark" aria-hidden="true">L</span>
+                <span class="brand-text">
+                    <span class="brand-name">Life1008</span>
+                    <span class="brand-sub">프로젝트 상세</span>
+                </span>
+            </a>
+            <a class="btn btn-ghost back-link" href="../index.html#achievements">&larr; 이력서로</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="container p-hero">
+            <div class="p-chips">
+                <span class="chip chip-live">2026.06 · 프로젝트</span>
+                <span class="chip">Python · tkinter</span>
+            </div>
+            <h1 class="p-title">만화방 만들기</h1>
+            <p class="p-lead">tkinter로 만든 3층짜리 "스마트 복합 만화 갤러리 룸"입니다. 층 사진을 직접 눌러 계단으로 오르내리고, 층마다 다른 장르의 만화를 찾아 열어 볼 수 있습니다. 기말 과제로 만들었습니다.</p>
+            <dl class="p-meta">
+                <div><dt>시기</dt><dd>2026년 6월</dd></div>
+                <div><dt>언어</dt><dd>Python 3 · tkinter</dd></div>
+                <div><dt>본인 역할</dt><dd>프로그래밍 개발 및 UI</dd></div>
+                <div><dt>구성</dt><dd>1층 웹툰 · 2층 일본만화 · 3층 카툰</dd></div>
+            </dl>
+        </section>
+
+        <section class="container p-section" aria-labelledby="play-title">
+            <h2 class="p-h2" id="play-title">직접 돌아다녀 보기</h2>
+            <div class="room" id="room">
+                <div class="room-menu">
+                    <div class="stage-buttons" role="group" aria-label="층 이동">
+                        <button type="button" class="stage-btn" data-floor="1F" aria-pressed="true">1층 웹툰</button>
+                        <button type="button" class="stage-btn" data-floor="2F" aria-pressed="false">2층 일본만화</button>
+                        <button type="button" class="stage-btn" data-floor="3F" aria-pressed="false">3층 카툰</button>
+                        <button type="button" class="stage-btn" id="room-list">도서 목록</button>
+                        <button type="button" class="stage-btn" data-zoom="out" disabled>축소</button>
+                        <button type="button" class="stage-btn" data-zoom="in" disabled>확대</button>
+                    </div>
+                    <output class="room-status" id="room-status">현재 위치 : 1층 웹툰</output>
+                </div>
+                <div class="room-view">
+                    <img id="room-bg" src="media/comic/1F.jpg" width="1024" height="683" alt="1층 웹툰 내부 모습">
+                    <div class="room-spots" id="room-spots"></div>
+                    <div class="room-cover" id="room-cover" hidden><img src="media/comic/books/1F-01.jpg" alt=""></div>
+                    <div class="room-dialog" id="room-dialog" role="dialog" aria-labelledby="room-dialog-title" hidden>
+                        <p class="room-dialog-title" id="room-dialog-title"></p>
+                        <div class="room-dialog-body" id="room-dialog-body"></div>
+                        <button type="button" class="room-close" id="room-close" aria-label="닫기">&times;</button>
+                    </div>
+                </div>
+                <p class="stage-help">사진 속 계단(점선 영역)을 누르면 층을 옮기고, 그 밖의 곳을 누르면 그 층의 만화를 골라 볼 수 있습니다. 원본 프로그램의 클릭 판정 좌표를 그대로 썼습니다.</p>
+            </div>
+            <p class="p-note">층 사진 출처: 서울 이태원의 만화방 ‘그래픽(GRAPHIC)’ 실제 내부 사진. 만화 표지 그림의 저작권은 각 작품의 작가와 출판사에 있으며, 과제 시연용으로만 사용했습니다.</p>
+        </section>
+
+        <section class="container p-section" aria-labelledby="feat-title">
+            <h2 class="p-h2" id="feat-title">구현한 것</h2>
+            <div class="features">
+                <article class="feature">
+                    <h3>클릭 위치로 동작 나누기</h3>
+                    <p><code>bind("&lt;Button-1&gt;")</code>로 배경 클릭 좌표를 받아 계단 영역이면 층 이동 창을, 아니면 만화 찾기 창을 띄웁니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>층마다 다른 계단</h3>
+                    <p>1층은 2·3층 중 고르고, 2층은 왼쪽 계단으로 3층, 오른쪽 계단으로 1층, 3층은 2층으로 내려갑니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>팝업 대화상자</h3>
+                    <p><code>Toplevel</code> 창으로 이동할 층을 묻고, 버튼 하나로 배경을 바꾸며 창을 닫습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>만화 열기와 상태 표시</h3>
+                    <p>파일 대화상자로 만화 그림을 열고, 경로에서 파일 이름만 잘라 위쪽 상태창에 보여 줍니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>확대와 축소</h3>
+                    <p>메뉴에서 1~4배를 입력받아 <code>zoom()</code>과 <code>subsample()</code>로 만화 그림 크기를 바꿉니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>메뉴 바 구성</h3>
+                    <p>층 이동, 장르별 도서 목록, 확대, 축소, 종료를 위쪽 메뉴 바에 모았습니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="code-title">
+            <h2 class="p-h2" id="code-title">핵심 코드</h2>
+            <pre class="code"><code>def chk_click(event):
+    floor = filename
+
+    if floor == "1F.png":
+        if 0 &lt;= event.x &lt;= 300 and 400 &lt;= event.y &lt;= 750:
+            pop_floor()       # 계단: 2층/3층 선택
+        else:
+            pop_comic()       # 그 외: 만화 찾기</code></pre>
+        </section>
+
+        <section class="container p-section" aria-labelledby="debug-title">
+            <h2 class="p-h2" id="debug-title">디버그 해결 경험</h2>
+            <div class="debug-list">
+                <article class="debug">
+                    <h3>불러온 그림이 바로 사라짐</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>층을 바꾸거나 만화를 열면 그림이 잠깐 보였다가 빈 화면이 됐습니다.</dd></div>
+                        <div><dt>원인</dt><dd>함수 안에서 만든 <code>PhotoImage</code>가 함수가 끝나면 메모리에서 지워져 라벨이 그릴 그림을 잃었습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd><code>bgLabel.image = photo</code>처럼 라벨에 그림을 붙잡아 두어 지워지지 않게 했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>층을 옮겨도 이전 만화가 남음</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>2층에서 연 만화가 1층으로 내려가도 그대로 떠 있었습니다.</dd></div>
+                        <div><dt>원인</dt><dd>배경만 바꾸고 만화 라벨은 그대로 두었습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>배경을 바꾸는 <code>chg_bg()</code>에서 <code>cLabel.place_forget()</code>으로 만화를 숨기고 현재 만화 경로도 비웠습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>상태창에 경로가 길게 나옴</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>"현재 보고 있는 만화"에 C:/Users/... 같은 전체 경로가 그대로 찍혔습니다.</dd></div>
+                        <div><dt>원인</dt><dd>파일 대화상자가 돌려주는 값은 파일 이름이 아니라 전체 경로였습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd><code>split("/")[-1]</code>로 경로를 잘라 마지막 파일 이름만 보여 주게 했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>만화 없이 확대를 누르면 오류</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>만화를 열기 전에 확대나 축소를 누르면 프로그램이 오류로 멈췄습니다.</dd></div>
+                        <div><dt>원인</dt><dd>열린 만화 경로가 비어 있는데 그 경로로 그림을 다시 읽으려 했습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>경로가 비어 있으면 "먼저 만화를 불러와주세요" 안내 창을 띄우고 함수를 끝내도록 했습니다.</dd></div>
+                    </dl>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="learn-title">
+            <h2 class="p-h2" id="learn-title">배운 점과 성취</h2>
+            <div class="learn">
+                <div class="learn-col">
+                    <h3>핵심으로 배운 것</h3>
+                    <ul class="learn-list">
+                        <li>tkinter 이벤트 바인딩으로 클릭 좌표를 받아 영역별로 다른 동작을 하게 만드는 법</li>
+                        <li><code>Toplevel</code> 팝업과 메뉴 바로 사용자 흐름을 구성하는 법</li>
+                        <li>이미지 객체의 수명(참조) 관리와 <code>zoom()</code>·<code>subsample()</code>로 크기를 바꾸는 법</li>
+                        <li>기능을 함수 단위로 나눠(배경, 만화, 팝업, 클릭) 코드를 정리하는 법</li>
+                    </ul>
+                </div>
+                <div class="learn-col learn-achieve">
+                    <h3>성취</h3>
+                    <ul class="learn-list">
+                        <li>실제 만화방(이태원 그래픽) 사진으로 3층짜리 공간을 만들고, 계단을 눌러 오가게 했습니다.</li>
+                        <li>층마다 다른 장르의 만화를 찾아 열고, 확대·축소까지 되는 갤러리를 완성했습니다.</li>
+                        <li>기말 과제로 제출했고, 이 사이트에서 원본 클릭 판정 그대로 체험할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <nav class="container p-next" aria-label="다른 프로젝트">
+            <a href="shooting.html"><span>&larr; 이전 프로젝트</span><strong>슈팅 게임 (몬스터 디펜스)</strong></a>
+            <a class="to-next" href="pyramid.html"><span>다음 프로젝트 &rarr;</span><strong>피라미드 탈출 게임</strong></a>
+        </nav>
+    </main>
+
+    <script src="comic.js"></script>
+</body>
+</html>

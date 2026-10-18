@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life1008 - 개인 이력서</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- header : F-01 소개 / F-02 연락 채널 -->
+    <!-- header : F-01 소개 / F-02 연락 채널 / A-02 상단 고정 바 -->
     <header class="site-header">
 
-        <!-- 스크롤을 내리면 상단에 고정되어 나타나는 남색 바 -->
-        <div class="scroll-bar">
-            <div class="container scroll-bar-inner">
-                <div class="scroll-bar-profile">
-                    <p class="scroll-bar-name"><span class="live-dot"></span>Life1008 <span class="year-badge">2학년</span></p>
-                    <p class="scroll-bar-sub">상명대학교 소프트웨어학과 2학년</p>
-                    <p class="scroll-bar-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
-                </div>
-                <nav class="scroll-bar-nav" aria-label="빠른 이동">
+        <!-- 상단 고정 바: 활동명, 소속, 메뉴 3개 (GitHub 링크는 첫 화면 팩맨 카드 1개) -->
+        <div class="bar">
+            <div class="container bar-inner">
+                <a class="brand" href="#top">
+                    <span class="brand-mark" aria-hidden="true">L</span>
+                    <span class="brand-text">
+                        <span class="brand-name">Life1008</span>
+                        <span class="brand-sub">상명대학교 소프트웨어학과 2학년</span>
+                    </span>
+                </a>
+                <nav class="bar-nav" aria-label="이력서 영역">
                     <ul>
                         <li><a href="#achievements">실적 목록</a></li>
                         <li><a href="#courses">수강 과목</a></li>
@@ -32,203 +32,335 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="topbar">
-                <p class="eyebrow">웹프로그래밍 과제 / 2026</p>
-                <nav aria-label="이력서 영역">
-                    <ul class="nav-list">
-                        <li><a href="#achievements">01 / 실적 목록</a></li>
-                        <li><a href="#courses">02 / 수강 과목</a></li>
-                        <li><a href="#weekly">03 / 실습 현황</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <div class="hero">
+        <!-- 첫 화면 -->
+        <div class="container hero" id="top">
+            <div class="hero-grid">
                 <div class="hero-text">
-                    <p class="hero-tagline">배우고, 만들고, 매년 성장합니다.</p>
-                    <h1 class="hero-name">Life1008<span class="hero-dot">.</span></h1>
-                    <p class="hero-affiliation">상명대학교 소프트웨어학과 2학년</p>
-                    <p class="hero-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
-                    <div class="hero-tags">
-                        <span class="tags-label">관심 분야</span>
-                        <ul class="tag-list">
-                            <li>게임 개발</li>
-                            <li>프로그래밍</li>
-                            <li>AI</li>
+                    <div class="hero-chips" data-reveal>
+                        <span class="chip chip-live"><span class="dot" aria-hidden="true"></span>상명대학교 소프트웨어학과 2학년</span>
+                        <span class="chip">최종 수정일 2026-10-18</span>
+                    </div>
+                    <h1 class="hero-name" data-reveal>Life1008</h1>
+                    <p class="hero-lead" data-reveal>배우고, 만들고, <strong>매년 성장합니다.</strong></p>
+                    <p class="hero-intro" data-reveal>게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
+                    <div class="hero-skills" data-reveal>
+                        <p class="skills-label">다룰 수 있는 언어</p>
+                        <ul class="skill-list" aria-label="다룰 수 있는 언어">
+                            <li class="skill skill-c">C</li>
+                            <li class="skill skill-cs">C#</li>
+                            <li class="skill skill-py">Python</li>
+                            <li class="skill skill-web">HTML · CSS</li>
+                            <li class="skill skill-entry">엔트리</li>
                         </ul>
+                    </div>
+                    <ul class="hero-tags" data-reveal aria-label="관심 분야">
+                        <li>게임 개발</li>
+                        <li>프로그래밍</li>
+                        <li>AI</li>
+                    </ul>
+                    <div class="hero-actions" data-reveal>
+                        <a class="btn btn-primary" href="#achievements">실적 보기 <span aria-hidden="true">&darr;</span></a>
+                        <a class="btn btn-ghost" href="#weekly">주차별 실습 보기</a>
                     </div>
                 </div>
 
-                <!-- F-02: GitHub 프로필 링크 (페이지 전체에서 1개)
-                     스크롤하면 같은 링크가 남색 바 오른쪽의 GitHub 버튼으로 바뀜 -->
-                <div class="hero-card-slot">
-                    <a class="hero-card" href="https://github.com/LifeBreeze" target="_blank" rel="noopener noreferrer">
-                        <svg class="hero-card-img" viewBox="0 0 24 24" role="img" aria-labelledby="github-logo-title">
-                            <title id="github-logo-title">GitHub 로고 - Life1008의 GitHub 프로필로 이동</title>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-                        </svg>
-                        <span class="hero-card-caption">GITHUB PROFILE &rarr;</span>
-                    </a>
-                </div>
+                <!-- 팩맨 그림: 누르면 GitHub 프로필로 이동 -->
+                <a class="pac-card" href="https://github.com/LifeBreeze" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <svg class="pac-art" viewBox="0 0 400 260" role="img" aria-labelledby="pac-title">
+                        <title id="pac-title">먹이를 먹으며 파란 유령을 쫓는 팩맨</title>
+                        <g class="pac-walls">
+                            <rect x="20" y="28" width="150" height="14" rx="7"></rect>
+                            <rect x="230" y="28" width="150" height="14" rx="7"></rect>
+                            <rect x="20" y="218" width="110" height="14" rx="7"></rect>
+                            <rect x="190" y="218" width="190" height="14" rx="7"></rect>
+                            <rect x="20" y="28" width="14" height="70" rx="7"></rect>
+                            <rect x="366" y="162" width="14" height="70" rx="7"></rect>
+                        </g>
+                        <g class="pac-dots">
+                            <circle cx="190" cy="130" r="6"></circle>
+                            <circle cx="220" cy="130" r="6"></circle>
+                            <circle cx="250" cy="130" r="6"></circle>
+                            <circle cx="280" cy="130" r="6"></circle>
+                            <circle class="pac-power" cx="310" cy="130" r="11"></circle>
+                        </g>
+                        <g class="pac-ghost">
+                            <path d="M332 154 V122 a22 22 0 0 1 44 0 V154 l-7.3 -8 l-7.3 8 l-7.3 -8 l-7.3 8 l-7.4 -8 Z"></path>
+                            <circle class="ghost-eye" cx="346" cy="122" r="5"></circle>
+                            <circle class="ghost-eye" cx="362" cy="122" r="5"></circle>
+                        </g>
+                        <g class="pac-man">
+                            <path class="pac-top" d="M120 130 L172 130 A52 52 0 0 0 68 130 Z"></path>
+                            <path class="pac-bottom" d="M120 130 L172 130 A52 52 0 0 1 68 130 Z"></path>
+                        </g>
+                    </svg>
+                    <span class="pac-caption">
+                        <span class="pac-gh"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>github.com/LifeBreeze</span>
+                        <strong>내 GitHub 보러 가기 <span aria-hidden="true">&rarr;</span></strong>
+                    </span>
+                </a>
             </div>
+
+            <!-- 한눈에 보는 숫자 -->
+            <ul class="stats" aria-label="요약">
+                <li class="stat" data-reveal><span class="stat-num">9</span><span class="stat-label">전체 실적</span><span class="stat-note">2019년부터 2026년까지</span></li>
+                <li class="stat" data-reveal><span class="stat-num">6</span><span class="stat-label">프로젝트</span><span class="stat-note">Python · C · C# · 엔트리</span></li>
+                <li class="stat" data-reveal><span class="stat-num">2</span><span class="stat-label">수상</span><span class="stat-note">해커톤 대상 포함</span></li>
+                <li class="stat stat-accent" data-reveal><span class="stat-num">5<small>/15</small></span><span class="stat-label">실습 진행 주차</span><span class="stat-note">웹프로그래밍 2026-2</span></li>
+            </ul>
         </div>
     </header>
 
-    <main class="container main">
+    <main>
 
         <!-- section : F-03 실적 목록 -->
-        <section id="achievements" class="panel">
-            <div class="panel-head">
-                <div>
-                    <p class="section-no">01 / ACHIEVEMENTS</p>
+        <section id="achievements" class="section">
+            <div class="container">
+                <div class="section-head" data-reveal>
                     <h2 class="section-title">실적 목록</h2>
+                    <p class="section-desc">고등학교 시절부터 지금까지의 수상, 프로젝트, 활동을 최근 순으로 정리했습니다.</p>
                 </div>
-                <ul class="count-list">
-                    <li class="count count-all">전체 <strong>9</strong>건</li>
-                    <li class="count count-award">수상 <strong>2</strong>건</li>
-                    <li class="count count-project">프로젝트 <strong>6</strong>건</li>
-                    <li class="count count-activity">활동 <strong>1</strong>건</li>
-                </ul>
-            </div>
 
-            <div class="table-wrap">
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="col-date">시기</th>
-                            <th scope="col" class="col-type">분류</th>
-                            <th scope="col">내용</th>
-                            <th scope="col">본인 역할</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-date">2026.10</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td class="record-title">개인 이력서 웹사이트 제작 및 배포</td>
-                            <td>기획, HTML/CSS 디자인, 배포 환경 구축</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2026.06</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>만화방 제작 프로젝트</td>
-                            <td>Python 프로그래밍 개발 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2026.06</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>피라미드 탈출 게임 제작 프로젝트</td>
-                            <td>C# / 게임 구상, 소켓 프로그래밍 개발 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2026.05</td>
-                            <td class="col-type"><span class="badge badge-award">수상</span></td>
-                            <td>2026학년도 제1학기 해커톤 대회 대상 수상</td>
-                            <td>Python 기반 기초 문제 해결 알고리즘 설계 및 PPT 디자인</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2023.12</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>팩맨 게임 제작 프로젝트</td>
-                            <td>C / 게임 로직 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2023.10</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>무인도 탈출 게임 제작 프로젝트</td>
-                            <td>엔트리 / 게임 구상, 로직 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2023.06</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>슈팅 게임 제작 프로젝트</td>
-                            <td>Python / 게임 로직 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2020.04</td>
-                            <td class="col-type"><span class="badge badge-activity">활동</span></td>
-                            <td>고등학교 화학 동아리 회장 및 실험 기획</td>
-                            <td>동아리 활동 기획 및 운영</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2019.07</td>
-                            <td class="col-type"><span class="badge badge-award">수상</span></td>
-                            <td>고등학교 모범학생 표창장</td>
-                            <td>모범학생 선정</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tabs" role="group" aria-label="분류별 보기" data-reveal>
+                    <button type="button" class="tab" data-filter="all" aria-pressed="true">전체 <span>9</span></button>
+                    <button type="button" class="tab" data-filter="award" aria-pressed="false">수상 <span>2</span></button>
+                    <button type="button" class="tab" data-filter="project" aria-pressed="false">프로젝트 <span>6</span></button>
+                    <button type="button" class="tab" data-filter="activity" aria-pressed="false">활동 <span>1</span></button>
+                </div>
+
+                <div class="card table-card" data-reveal>
+                    <table class="record-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="col-date">시기</th>
+                                <th scope="col" class="col-type">분류</th>
+                                <th scope="col">내용</th>
+                                <th scope="col">본인 역할</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-type="project">
+                                <td class="col-date">2026.10</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title">개인 이력서 웹사이트 제작 및 배포</td>
+                                <td class="record-role">기획, HTML/CSS 디자인, 배포 환경 구축</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2026.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/comic.html">만화방 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">Python 프로그래밍 개발 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2026.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/pyramid.html">피라미드 탈출 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">C# / 게임 구상, 소켓 프로그래밍 개발 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="award">
+                                <td class="col-date">2026.05</td>
+                                <td class="col-type"><span class="badge badge-award">수상</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/hackathon.html">2026학년도 제1학기 해커톤 대회 대상 수상 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">Python 기반 기초 문제 해결 알고리즘 설계 및 PPT 디자인</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2023.12</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/pacman.html">팩맨 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">C / 게임 로직 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2023.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/island.html">무인도 탈출 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">엔트리 / 게임 구상, 로직 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2023.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/shooting.html">슈팅 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">Python / 게임 로직 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="activity">
+                                <td class="col-date">2020.04</td>
+                                <td class="col-type"><span class="badge badge-activity">활동</span></td>
+                                <td class="record-title"><a class="record-link" href="https://cafe.naver.com/mhcs12" target="_blank" rel="noopener noreferrer">고등학교 화학 동아리 회장 및 실험 기획 <span class="ext">동아리 카페 <span aria-hidden="true">&nearr;</span></span></a></td>
+                                <td class="record-role">동아리 활동 기획 및 운영</td>
+                            </tr>
+                            <tr data-type="award">
+                                <td class="col-date">2019.07</td>
+                                <td class="col-type"><span class="badge badge-award">수상</span></td>
+                                <td class="record-title">고등학교 모범학생 표창장</td>
+                                <td class="record-role">모범학생 선정</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 직접 해 볼 수 있는 프로젝트 -->
+                <div class="showcase">
+                    <h3 class="showcase-title" data-reveal>직접 해 볼 수 있는 프로젝트</h3>
+                    <ul class="showcase-list">
+                        <li data-reveal><a class="show-card" href="projects/pacman.html"><img src="projects/media/pacman/preview.png" width="800" height="540" alt="검은 화면에 파란 벽과 노란 C, 빨간 X가 찍힌 팩맨 콘솔 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">C · 플레이</span><strong>팩맨 게임</strong><span>난이도 3단계, 원본 규칙 그대로</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/island.html"><img src="projects/media/island/scene00.jpg" width="960" height="540" alt="푸른 바다 위 섬, 무인도 탈출 시작 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">엔트리 · 플레이</span><strong>무인도 탈출 게임</strong><span>선택지를 골라 엔딩 3개 찾기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/shooting.html"><img src="projects/media/shooting/background.png" width="564" height="564" alt="덩굴이 덮인 돌길, 슈팅 게임 배경" loading="lazy"><span class="show-meta"><span class="badge badge-project">Python · 플레이</span><strong>몬스터 디펜스</strong><span>원본 그림과 효과음으로 플레이</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/pyramid.html"><img src="projects/media/pyramid/start.jpg" width="1600" height="873" alt="스핑크스 앞 피라미드 탈출게임 시작 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">C# · 체험판</span><strong>피라미드 탈출 게임</strong><span>4인 온라인 퀴즈를 혼자 풀어 보기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/comic.html"><img src="projects/media/comic/1F.jpg" width="1024" height="683" alt="계단과 책장이 있는 만화방 1층" loading="lazy"><span class="show-meta"><span class="badge badge-project">Python · 체험</span><strong>만화방 만들기</strong><span>계단을 눌러 층을 오가기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/hackathon.html"><img src="projects/media/hackathon/poster.jpg" width="2000" height="2832" alt="해커톤 10조 알고리즘 포스터" loading="lazy"><span class="show-meta"><span class="badge badge-award">수상 · 대상</span><strong>해커톤 알고리즘 7문제</strong><span>포스터와 문제 A 계산기</span></span></a></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- section : F-04 수강 과목 -->
-        <section id="courses" class="panel">
-            <div class="panel-head">
-                <div>
-                    <p class="section-no">02 / COURSES</p>
-                    <h2 class="section-title">2026-2 수강 과목</h2>
+        <section id="courses" class="section section-alt">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <div class="term-head">
+                        <h2 class="section-title" id="course-title"><button type="button" class="term-toggle" id="term-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="term-menu"><span id="term-label">2026-2학기</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button> 수강 과목</h2>
+                        <ul class="term-menu" id="term-menu" hidden>
+                            <li><button type="button" data-pick="2026-2" aria-current="true">2026-2학기 <span>2학년 2학기 · 지금</span></button></li>
+                            <li><button type="button" data-pick="2026-1">2026-1학기 <span>2학년 1학기</span></button></li>
+                            <li><button type="button" data-pick="2023-2">2023-2학기 <span>1학년 2학기</span></button></li>
+                            <li><button type="button" data-pick="2023-1">2023-1학기 <span>1학년 1학기</span></button></li>
+                        </ul>
+                    </div>
+                    <p class="section-desc" id="term-desc">2학년 2학기 · 이번 학기 전공 4과목, 교양 2과목을 듣고 있습니다.</p>
                 </div>
-            </div>
 
-            <ul class="course-list">
-                <li>
-                    <a class="course course-link" href="#weekly">
-                        <span class="badge badge-major">전공</span>
-                        <span class="course-name">웹프로그래밍 및 AI에이전트 활용</span>
-                        <span class="course-more">주차별 실습 링크 바로가기 &rarr;</span>
-                    </a>
-                </li>
-                <li class="course">
-                    <span class="badge badge-major">전공</span>
-                    <span class="course-name">이산수학</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-major">전공</span>
-                    <span class="course-name">컴퓨터프로그래밍Ⅱ</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-major">전공</span>
-                    <span class="course-name">컴퓨터프로그래밍Ⅱ실습</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-liberal">교양</span>
-                    <span class="course-name">AI시대의컬처리터러시</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-liberal">교양</span>
-                    <span class="course-name">사진과사회학</span>
-                </li>
-            </ul>
+                <ul class="course-list" data-term="2026-2" data-desc="2학년 2학기 · 이번 학기 전공 4과목, 교양 2과목을 듣고 있습니다.">
+                    <li class="course-item course-feature" data-reveal>
+                        <a class="course course-link" href="#weekly">
+                            <span class="badge badge-major">전공</span>
+                            <span class="course-name">웹프로그래밍 및 AI에이전트 활용</span>
+                            <span class="course-more">주차별 실습 링크 바로가기 <span aria-hidden="true">&rarr;</span></span>
+                        </a>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">이산수학</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍Ⅱ</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍Ⅱ실습</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">AI시대의컬처리터러시</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">사진과사회학</span></div>
+                    </li>
+                </ul>
+                <ul class="course-list" data-term="2026-1" data-desc="2학년 1학기 · 전공 4과목, 교양 3과목을 들었습니다." hidden>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">GUI 프로그래밍</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍I</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍 실습I</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">소프트웨어개론</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">호모엠파티쿠스</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">바디디자인</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">농구</span></div>
+                    </li>
+                </ul>
+                <ul class="course-list" data-term="2023-2" data-desc="1학년 2학기 · 전공 4과목, 교양 3과목을 들었습니다." hidden>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">객체지향프로그래밍</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터구조</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">프로그래밍프로젝트</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">공업수학</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">사고와표현</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">알고리즘과게임콘텐츠</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">상상속의아이디어</span></div>
+                    </li>
+                </ul>
+                <ul class="course-list" data-term="2023-1" data-desc="1학년 1학기 · 전공 3과목, 교양 4과목을 들었습니다." hidden>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">C프로그래밍</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">IT-Engineering프로젝트</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">미적분학</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">컴퓨팅사고와데이터의이해</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">EnglishforAcademicPurpose</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">만화로보는문화</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">시사영어</span></div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <!-- section : F-05 본 과목 주차별 링크 -->
-        <section id="weekly" class="panel">
-            <div class="panel-head">
-                <div>
-                    <p class="section-no">03 / WEB PROGRAMMING</p>
+        <section id="weekly" class="section">
+            <div class="container">
+                <div class="section-head" data-reveal>
                     <h2 class="section-title">웹프로그래밍 및 AI에이전트 활용 - 주차별 링크</h2>
+                    <p class="section-desc">실습을 진행한 주차를 누르면 그 주차의 실습 페이지로 이동합니다.</p>
                 </div>
-            </div>
-            <p class="panel-note">진행한 주차를 클릭하면 해당 주차의 실습 페이지로 이동합니다.</p>
 
-            <ul class="week-list">
-                <li class="week week-off"><span class="week-no">1주차</span><span class="week-state">OT</span></li>
-                <li><a class="week week-done" href="doc01.html"><span class="week-no">2주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc02.html"><span class="week-no">3주차</span><span class="week-state">실습 진행</span></a></li>
-                <li class="week week-off"><span class="week-no">4주차</span><span class="week-state">추석 휴강</span></li>
-                <li><a class="week week-done" href="doc05.html"><span class="week-no">5주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc06.html"><span class="week-no">6주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc07.html"><span class="week-no">7주차</span><span class="week-state">실습 진행</span></a></li>
-                <li class="week week-planned"><span class="week-no">8주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">9주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">10주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">11주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">12주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">13주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">14주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">15주차</span><span class="week-state">예정</span></li>
-            </ul>
+                <div class="progress card" data-reveal>
+                    <div class="progress-text">
+                        <p class="progress-title">15주 중 <strong>5주</strong> 실습 완료</p>
+                        <ul class="legend" aria-label="칸 색 안내">
+                            <li><span class="key key-done" aria-hidden="true"></span>실습 진행</li>
+                            <li><span class="key key-off" aria-hidden="true"></span>실습 없음</li>
+                            <li><span class="key key-planned" aria-hidden="true"></span>예정</li>
+                        </ul>
+                    </div>
+                    <div class="progress-track" aria-hidden="true"><span class="progress-fill"></span></div>
+                </div>
+
+                <ul class="week-list">
+                    <li class="week week-off"><span class="week-no">1주차</span><span class="week-state">OT</span></li>
+                    <li><a class="week week-done" href="doc01.html"><span class="week-no">2주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li><a class="week week-done" href="doc02.html"><span class="week-no">3주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li class="week week-off"><span class="week-no">4주차</span><span class="week-state">추석 휴강</span></li>
+                    <li><a class="week week-done" href="doc05.html"><span class="week-no">5주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li><a class="week week-done" href="doc06.html"><span class="week-no">6주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li><a class="week week-done" href="doc07.html"><span class="week-no">7주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li class="week week-planned"><span class="week-no">8주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">9주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">10주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">11주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">12주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">13주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">14주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">15주차</span><span class="week-state">예정</span></li>
+                </ul>
+            </div>
         </section>
 
     </main>
@@ -236,38 +368,123 @@
     <!-- footer : F-06 최종 수정일 -->
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>&copy; 2026 Life1008. All rights reserved.</p>
-            <p class="last-modified">최종 수정일: 2026-10-17</p>
+            <p class="footer-word" aria-hidden="true">Life1008</p>
+            <div class="footer-row">
+                <p>&copy; 2026 Life1008. All rights reserved.</p>
+                <p class="last-modified">최종 수정일: 2026-10-18</p>
+            </div>
         </div>
     </footer>
 
-    <!-- 맨 위로 버튼 -->
+    <!-- A-01 맨 위로 버튼 -->
     <button type="button" class="to-top" aria-label="맨 위로 이동">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 19V5M5 12l7-7 7 7"></path>
-        </svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
     </button>
 
     <script>
-        // 소개 영역을 지나 스크롤하면 header에 is-scrolled 클래스를 붙여 남색 바를 보여 준다
         (function () {
-            var header = document.querySelector('.site-header');
+            var bar = document.querySelector('.bar');
             var hero = document.querySelector('.hero');
             var toTop = document.querySelector('.to-top');
 
+            // A-01, A-02: 소개 영역을 지나면 바에 그림자 대신 배경을 채우고 맨 위로 버튼을 보여 준다
             function update() {
-                var limit = hero.offsetTop + hero.offsetHeight - 40;
-                header.classList.toggle('is-scrolled', window.scrollY > limit);
-                toTop.classList.toggle('is-visible', window.scrollY > limit);
+                var past = window.scrollY > hero.offsetTop + hero.offsetHeight * 0.4;
+                bar.classList.toggle('is-scrolled', window.scrollY > 8);
+                toTop.classList.toggle('is-visible', past);
             }
-
             toTop.addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
             window.addEventListener('scroll', update, { passive: true });
             window.addEventListener('resize', update);
             update();
+
+            // 실적 분류 탭
+            var tabs = document.querySelectorAll('.tab');
+            var rows = document.querySelectorAll('.record-table tbody tr');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var type = tab.getAttribute('data-filter');
+                    tabs.forEach(function (t) { t.setAttribute('aria-pressed', String(t === tab)); });
+                    rows.forEach(function (row) {
+                        row.hidden = type !== 'all' && row.getAttribute('data-type') !== type;
+                    });
+                });
+            });
+
+            // 수강 과목 학기 선택: 제목의 학기를 누르면 목록이 열리고, 고른 학기의 과목으로 바뀐다
+            var termToggle = document.getElementById('term-toggle');
+            var termMenu = document.getElementById('term-menu');
+            var termLabel = document.getElementById('term-label');
+            var termDesc = document.getElementById('term-desc');
+            var termLists = document.querySelectorAll('.course-list[data-term]');
+
+            function closeTerms() {
+                termMenu.hidden = true;
+                termToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            termToggle.addEventListener('click', function () {
+                var open = termMenu.hidden;
+                termMenu.hidden = !open;
+                termToggle.setAttribute('aria-expanded', String(open));
+                if (open) termMenu.querySelector('[aria-current="true"]').focus();
+            });
+
+            termMenu.querySelectorAll('[data-pick]').forEach(function (b) {
+                b.addEventListener('click', function () {
+                    var term = b.getAttribute('data-pick');
+                    termLists.forEach(function (ul) {
+                        var on = ul.getAttribute('data-term') === term;
+                        ul.hidden = !on;
+                        if (on) {
+                            termDesc.textContent = ul.getAttribute('data-desc');
+                            ul.querySelectorAll('.course-item').forEach(function (li) { li.classList.add('is-in'); });
+                        }
+                    });
+                    termMenu.querySelectorAll('[data-pick]').forEach(function (x) {
+                        x.setAttribute('aria-current', String(x === b));
+                    });
+                    termLabel.textContent = term + '학기';
+                    closeTerms();
+                    termToggle.focus();
+                    document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!termMenu.hidden && !termMenu.contains(e.target) && !termToggle.contains(e.target)) closeTerms();
+            });
+            termMenu.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') { closeTerms(); termToggle.focus(); }
+            });
+
+            if (!('IntersectionObserver' in window)) return;
+
+            // 지금 보고 있는 영역의 메뉴에 표시
+            var links = document.querySelectorAll('.bar-nav a');
+            var spy = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    links.forEach(function (a) {
+                        a.classList.toggle('is-current', a.getAttribute('href') === '#' + entry.target.id);
+                    });
+                });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            document.querySelectorAll('main section').forEach(function (s) { spy.observe(s); });
+
+            // 화면에 들어올 때 한 번씩 올라온다 (스크립트가 없으면 처음부터 다 보인다)
+            document.documentElement.classList.add('js');
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -6% 0px' });
+            document.querySelectorAll('[data-reveal], .week').forEach(function (el) { io.observe(el); });
         })();
     </script>
 

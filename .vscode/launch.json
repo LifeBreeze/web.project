@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open doc00.html",
-            "file": "c:\\Users\\user\\OneDrive\\바탕 화면\\web.project\\doc00.html"
+            "file": "${workspaceFolder}/doc00.html"
         }
     ]
 }

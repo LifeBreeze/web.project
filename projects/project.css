@@ -1,0 +1,1164 @@
+/* ===== 프로젝트 상세 페이지 공통 (style.css 위에 덧씌움) ===== */
+
+.back-link {
+    min-height: 42px;
+}
+
+/* 머리 */
+.p-hero {
+    padding-top: 64px;
+    padding-bottom: 48px;
+}
+
+.p-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.p-title {
+    margin-top: 20px;
+    font-size: clamp(40px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+}
+
+.p-lead {
+    max-width: 38em;
+    margin-top: 18px;
+    color: var(--ink-sub);
+    font-size: 19px;
+}
+
+.p-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 36px 0 0;
+}
+
+.p-meta div {
+    padding: 18px 20px;
+    border-radius: 14px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+}
+
+.p-meta dt {
+    color: var(--ink-sub);
+    font-size: 14px;
+}
+
+.p-meta dd {
+    margin: 4px 0 0;
+    font-weight: 700;
+}
+
+/* 본문 블록 */
+.p-section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+}
+
+.p-section + .p-section {
+    padding-top: 24px;
+}
+
+.p-h2 {
+    margin-bottom: 20px;
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.p-note {
+    margin-top: 14px;
+    color: var(--ink-sub);
+    font-size: 15px;
+}
+
+/* 플레이 영역 */
+.stage {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--ink);
+    color: var(--white);
+}
+
+.stage-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stage-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+}
+
+.stage-stats b {
+    color: #ffd84d;
+}
+
+.stage-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.stage-btn {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--white);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.stage-btn:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.stage-btn:active {
+    transform: scale(0.96);
+}
+
+.stage-btn[aria-pressed="true"] {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.stage canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background-color: #000;
+    touch-action: none;
+}
+
+.stage canvas:focus-visible {
+    outline: 3px solid #ffd84d;
+    outline-offset: 3px;
+}
+
+.stage-help {
+    margin-top: 14px;
+    color: #b9c2d3;
+    font-size: 14px;
+}
+
+.stage-help kbd {
+    display: inline-block;
+    min-width: 24px;
+    padding: 1px 6px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* 휴대폰용 방향 버튼 */
+.pad {
+    display: none;
+    grid-template-columns: repeat(3, 56px);
+    grid-template-rows: repeat(2, 56px);
+    gap: 8px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.pad button {
+    border: 0;
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.pad button:active {
+    background-color: var(--blue);
+}
+
+.pad .pad-up { grid-column: 2; grid-row: 1; }
+.pad .pad-left { grid-column: 1; grid-row: 2; }
+.pad .pad-down { grid-column: 2; grid-row: 2; }
+.pad .pad-right { grid-column: 3; grid-row: 2; }
+.pad .pad-fire { grid-column: 3; grid-row: 1; background-color: rgba(47, 91, 234, 0.6); font-size: 14px; font-weight: 700; }
+
+@media (hover: none), (max-width: 680px) {
+    .pad {
+        display: grid;
+    }
+}
+
+/* 특징 목록 */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.feature {
+    padding: 22px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+}
+
+.feature h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.feature p {
+    color: var(--ink-sub);
+    font-size: 15px;
+}
+
+/* 원본과 달라진 점 */
+.diff-list {
+    display: grid;
+    gap: 8px;
+}
+
+.diff-list li {
+    padding: 14px 18px;
+    border-radius: 12px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    font-size: 15px;
+}
+
+.diff-list b {
+    color: var(--blue);
+}
+
+/* 코드 */
+.code {
+    margin: 0;
+    padding: 20px 22px;
+    overflow-x: auto;
+    border-radius: 14px;
+    background-color: #0b1220;
+    color: #dbe4f3;
+    font-family: Consolas, 'D2Coding', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 그림 */
+.shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.shot {
+    margin: 0;
+}
+
+.shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+}
+
+.shot figcaption {
+    margin-top: 8px;
+    color: var(--ink-sub);
+    font-size: 14px;
+}
+
+/* 이전/다음 프로젝트 */
+.p-next {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding-bottom: 96px;
+}
+
+.p-next a {
+    display: block;
+    padding: 22px 24px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.p-next a:hover {
+    border-color: var(--blue);
+    transform: translateY(-3px);
+}
+
+.p-next span {
+    display: block;
+    color: var(--ink-sub);
+    font-size: 14px;
+}
+
+.p-next strong {
+    font-size: 19px;
+}
+
+.p-next .to-next {
+    text-align: right;
+}
+
+@media (max-width: 960px) {
+    .p-meta,
+    .features,
+    .shots {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    .p-meta,
+    .features,
+    .shots,
+    .p-next {
+        grid-template-columns: 1fr;
+    }
+
+    .stage {
+        padding: 12px;
+        border-radius: 16px;
+    }
+}
+
+/* 정사각형 게임 화면 (슈팅) */
+.stage-square {
+    max-width: 640px;
+}
+
+/* 작은 스프라이트는 같은 크기 칸 가운데 */
+.shot.sprite img {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    padding: 18%;
+    background-color: #1b2a1f;
+}
+
+.shots-sprites .shot:first-child img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+/* ===== 피라미드 체험판 ===== */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.py {
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #2a1d10;
+    color: #2b1a08;
+}
+
+.py-screen[hidden] {
+    display: none;
+}
+
+.py-start {
+    position: relative;
+}
+
+.py-start-bg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.py-start-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    width: min(30%, 260px);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transform: translateX(-50%);
+    transition: transform 0.2s ease;
+}
+
+.py-start-btn img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.py-start-btn:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.py-game {
+    padding: 22px;
+    background: #d9b77e url("media/pyramid/parchment.jpg") center / cover;
+}
+
+.py-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.py-round {
+    font-weight: 700;
+}
+
+.py-hearts {
+    display: flex;
+    gap: 4px;
+}
+
+.py-hearts img {
+    width: 40px;
+    height: auto;
+}
+
+.py-timer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.py-timer img {
+    width: 28px;
+    height: auto;
+}
+
+.py-body {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.py-npc {
+    width: 100%;
+    height: auto;
+}
+
+/* 금색 테두리는 두께를 고정하고 안쪽 빨간 면만 늘어나게 해서, 문제가 길어도 칸 안에 들어간다 */
+.py-board {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    min-height: 160px;
+    padding: 16px 22px;
+    border: 24px solid #8a5a1c;
+    border-image: url("media/pyramid/board.png") 40 fill / 24px stretch;
+    color: #fff3dc;
+}
+
+.py-question {
+    min-width: 0;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+
+.py-figure {
+    margin: 16px 0 0;
+    text-align: center;
+}
+
+.py-figure img {
+    max-height: 240px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    cursor: zoom-in;
+    transition: max-height 0.3s ease;
+}
+
+.py-figure.is-open img {
+    max-height: 760px;
+    cursor: zoom-out;
+}
+
+.py-figure figcaption {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #4a3214;
+}
+
+.py-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.py-player {
+    width: 56px;
+    height: auto;
+}
+
+.py-input {
+    flex: 1;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 2px solid #7a5a2c;
+    border-radius: 12px;
+    background-color: #fff8ea;
+    color: #2b1a08;
+    font: inherit;
+    font-size: 17px;
+}
+
+.py-input:focus {
+    outline: none;
+    border-color: #7a1c12;
+}
+
+.py-feedback {
+    min-height: 28px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.py-feedback.is-ok { color: #0f6b32; }
+.py-feedback.is-bad { color: #9b1c12; }
+
+.py-result {
+    position: relative;
+}
+
+.py-result-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.py-result-card {
+    padding: 22px;
+    background-color: #2a1d10;
+    color: #f4e6c8;
+}
+
+.py-result-title {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.py-result-list {
+    display: grid;
+    gap: 4px;
+    margin: 12px 0 18px;
+    font-size: 15px;
+}
+
+@media (max-width: 680px) {
+    .py-game {
+        padding: 14px;
+    }
+
+    .py-body {
+        grid-template-columns: 1fr;
+    }
+
+    .py-npc {
+        width: 96px;
+        margin: 0 auto;
+    }
+
+    .py-board {
+        min-height: 120px;
+        padding: 10px 12px;
+        border-width: 18px;
+        border-image-width: 18px;
+    }
+
+    .py-question {
+        font-size: 16px;
+    }
+
+    .py-player {
+        display: none;
+    }
+}
+
+/* ===== 만화방 ===== */
+.room {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--ink);
+    color: var(--white);
+}
+
+.room-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.room-status {
+    padding: 8px 14px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+}
+
+.room-view {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.room-view > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.room-spots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.room-spot {
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+    border: 2px dashed rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    background-color: rgba(47, 91, 234, 0.18);
+    color: var(--white);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background-color 0.2s ease;
+}
+
+.room-spot:hover,
+.room-spot:focus-visible {
+    background-color: rgba(47, 91, 234, 0.45);
+}
+
+.room-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(92%, 420px);
+    padding: 22px;
+    border-radius: 16px;
+    background-color: var(--white);
+    color: var(--ink);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transform: translate(-50%, -50%);
+}
+
+.room-dialog[hidden] {
+    display: none;
+}
+
+.room-dialog-title {
+    margin-bottom: 14px;
+    padding-right: 28px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.room-dialog-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.room-books {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.room-books button {
+    width: 100%;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--bg);
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.room-books button:hover {
+    background-color: var(--blue-soft);
+    color: var(--blue);
+}
+
+.room-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 680px) {
+    .room {
+        padding: 12px;
+    }
+}
+
+/* ===== 해커톤 ===== */
+.chip-award {
+    background-color: var(--award-soft);
+    border-color: #f6d9a8;
+    color: var(--award);
+}
+
+.solver {
+    padding: 26px;
+}
+
+.solver-q {
+    max-width: 52em;
+}
+
+.formula {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background-color: var(--blue-soft);
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.solver-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.solver-form label {
+    display: grid;
+    gap: 6px;
+    color: var(--ink-sub);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.solver-form input {
+    width: 160px;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background-color: var(--bg);
+    color: var(--ink);
+    font: inherit;
+    font-size: 17px;
+}
+
+.solver-out {
+    display: block;
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background-color: var(--ink);
+    color: #ffd84d;
+    font-size: 20px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.problems {
+    display: grid;
+    gap: 8px;
+}
+
+.problem {
+    border-radius: 14px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+}
+
+.problem summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.problem summary::-webkit-details-marker {
+    display: none;
+}
+
+.problem summary::after {
+    content: "+";
+    margin-left: auto;
+    color: var(--ink-sub);
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.problem[open] summary::after {
+    content: "−";
+}
+
+.problem-key {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 800;
+}
+
+.problem p {
+    padding: 0 20px 18px 68px;
+    color: var(--ink-sub);
+}
+
+.poster {
+    display: block;
+    max-width: 760px;
+    text-decoration: none;
+}
+
+.poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background-color: var(--white);
+}
+
+.poster-cta {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+@media (max-width: 680px) {
+    .problem p {
+        padding-left: 20px;
+    }
+
+    .solver-form input {
+        width: 100%;
+    }
+
+    .solver-form label {
+        flex: 1;
+    }
+}
+
+/* ===== 무인도 탈출 ===== */
+.isl-view {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.isl-view > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.isl-rabbit {
+    position: absolute;
+    width: 9%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: crosshair;
+    transform: translate(-50%, -50%);
+    transition: left 0.45s ease, top 0.45s ease;
+}
+
+.isl-rabbit[hidden] {
+    display: none;
+}
+
+.isl-rabbit img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.isl-text {
+    margin-top: 14px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.isl-text[hidden] {
+    display: none;
+}
+
+.isl-meter {
+    display: block;
+    width: 100%;
+    height: 14px;
+    margin-top: 12px;
+    accent-color: var(--blue);
+}
+
+.isl-meter[hidden] {
+    display: none;
+}
+
+.isl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.isl-video {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    border-radius: 14px;
+    background-color: #000;
+}
+
+.room-cover {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.45);
+    cursor: zoom-out;
+}
+
+.room-cover[hidden] {
+    display: none;
+}
+
+.room-cover img {
+    max-height: 86%;
+    width: auto;
+    max-width: 80%;
+    border-radius: 6px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    cursor: default;
+    transition: transform 0.25s ease;
+}
+
+.stage-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* ===== 디버그 해결 경험 ===== */
+.debug-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.debug {
+    padding: 22px 24px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+}
+
+.debug h3 {
+    margin: 0 0 14px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.debug dl {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+}
+
+.debug dl div {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 10px;
+    align-items: start;
+}
+
+.debug dt {
+    padding: 2px 0;
+    border-radius: 6px;
+    background-color: var(--bg);
+    color: var(--ink-sub);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.debug dd {
+    margin: 0;
+    color: var(--ink-sub);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.debug .debug-fix dt {
+    background-color: var(--blue-soft);
+    color: var(--blue);
+}
+
+.debug .debug-fix dd {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+/* ===== 배운 점과 성취 ===== */
+.learn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.learn-col {
+    padding: 24px 26px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+}
+
+.learn-col h3 {
+    margin: 0 0 14px;
+    font-size: 18px;
+}
+
+.learn-achieve {
+    background-color: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+}
+
+.learn-list {
+    display: grid;
+    gap: 10px;
+}
+
+.learn-list li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.learn-list li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--blue);
+}
+
+.learn-achieve .learn-list li::before {
+    background-color: #ffd84d;
+}
+
+.learn-achieve code {
+    color: #ffd84d;
+}
+
+@media (max-width: 860px) {
+    .debug-list,
+    .learn {
+        grid-template-columns: 1fr;
+    }
+}
+
+.isl-text {
+    white-space: pre-line;
+}
+
+/* 게임 화면은 가운데 정렬 */
+.stage-square,
+.isl-video,
+.poster {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stage canvas {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-section:has(.stage-square) > .p-h2 {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피라미드 탈출 게임 - Life1008</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+    <header class="bar">
+        <div class="container bar-inner">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark" aria-hidden="true">L</span>
+                <span class="brand-text">
+                    <span class="brand-name">Life1008</span>
+                    <span class="brand-sub">프로젝트 상세</span>
+                </span>
+            </a>
+            <a class="btn btn-ghost back-link" href="../index.html#achievements">&larr; 이력서로</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="container p-hero">
+            <div class="p-chips">
+                <span class="chip chip-live">2026.06 · 프로젝트</span>
+                <span class="chip">C# · WinForms · TCP 소켓</span>
+            </div>
+            <h1 class="p-title">피라미드 탈출 게임</h1>
+            <p class="p-lead">최대 4명이 서버에 접속해 함께 푸는 온라인 방탈출 퀴즈입니다. 피라미드에 갇힌 탐험가들이 이집트 문제 4개를 45초 안에 풀어야 하고, 틀리면 하트를 잃습니다. 아래 체험판은 원본 문제와 그림으로 혼자 풀어 볼 수 있게 만들었습니다.</p>
+            <dl class="p-meta">
+                <div><dt>시기</dt><dd>2026년 6월</dd></div>
+                <div><dt>언어</dt><dd>C# (.NET WinForms)</dd></div>
+                <div><dt>본인 역할</dt><dd>게임 구상, 소켓 통신, UI</dd></div>
+                <div><dt>구성</dt><dd>서버 1 + 클라이언트 최대 4</dd></div>
+            </dl>
+        </section>
+
+        <section class="container p-section" aria-labelledby="play-title">
+            <h2 class="p-h2" id="play-title">혼자 풀어 보기</h2>
+            <div class="py" id="pyramid">
+
+                <div class="py-screen py-start" data-screen="start">
+                    <img class="py-start-bg" src="media/pyramid/start.jpg" width="1600" height="873" alt="밤하늘 아래 스핑크스와 돌기둥이 늘어선 길, 위에 피라미드 탈출게임 제목">
+                    <button type="button" class="py-start-btn" data-action="start"><img src="media/pyramid/start-button.png" width="360" height="179" alt="게임 시작"></button>
+                </div>
+
+                <div class="py-screen py-game" data-screen="game" hidden>
+                    <div class="py-top">
+                        <p class="py-round">문제 <b id="py-round">1 / 4</b></p>
+                        <div class="py-hearts" id="py-hearts" aria-label="남은 목숨"></div>
+                        <p class="py-timer"><img src="media/pyramid/time.png" width="96" height="149" alt=""><span><b id="py-timer">45</b>초</span></p>
+                    </div>
+                    <div class="py-body">
+                        <img class="py-npc" src="media/pyramid/npc.png" width="360" height="390" alt="문제를 내는 파라오">
+                        <div class="py-board">
+                            <p class="py-question" id="py-question" aria-live="polite"></p>
+                        </div>
+                    </div>
+                    <figure class="py-figure" id="py-figure" hidden>
+                        <img id="py-picture" src="media/pyramid/q2.jpg" alt="">
+                        <figcaption>그림을 누르면 크게 보거나 작게 볼 수 있습니다.</figcaption>
+                    </figure>
+                    <form class="py-form" id="py-form" autocomplete="off">
+                        <img class="py-player" src="media/pyramid/player.png" width="264" height="368" alt="플레이어 1 탐험가">
+                        <label class="visually-hidden" for="py-answer">답 입력</label>
+                        <input class="py-input" id="py-answer" type="text" placeholder="답을 입력하세요">
+                        <button class="btn btn-primary" type="submit">제출</button>
+                    </form>
+                    <p class="py-feedback" id="py-feedback" aria-live="assertive"></p>
+                </div>
+
+                <div class="py-screen py-result" data-screen="result" hidden>
+                    <img class="py-result-img" id="py-result-img" src="media/pyramid/clear.jpg" alt="">
+                    <div class="py-result-card">
+                        <p class="py-result-title" id="py-result-title"></p>
+                        <ul class="py-result-list" id="py-result-list"></ul>
+                        <button type="button" class="btn btn-primary" data-action="start">다시 도전하기</button>
+                    </div>
+                </div>
+            </div>
+            <noscript><p class="p-note">체험판은 자바스크립트가 켜져 있어야 실행됩니다.</p></noscript>
+        </section>
+
+        <section class="container p-section" aria-labelledby="flow-title">
+            <h2 class="p-h2" id="flow-title">원본은 이렇게 동작합니다</h2>
+            <div class="features">
+                <article class="feature">
+                    <h3>서버 (EscapeServer)</h3>
+                    <p><code>TcpListener</code>로 최대 4명의 접속을 받고, 모두 답을 제출하면 다음 라운드를 알립니다. 하트가 0이 된 플레이어는 탈락 처리합니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>클라이언트 (EscapeClient)</h3>
+                    <p>접속 대기 화면, 게임 화면, 결과 화면 3개의 폼으로 나뉩니다. 수신은 별도 스레드에서 하고 화면 갱신은 <code>Invoke</code>로 넘깁니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>간단한 통신 규칙</h3>
+                    <p><code>START</code>, <code>SUBMIT</code>, <code>HEART|번호|개수</code>처럼 줄바꿈으로 끝나는 문자열 명령을 주고받습니다. 끊겨 들어온 조각은 모아 두었다가 한 줄이 완성되면 처리합니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>다른 플레이어 답 보기</h3>
+                    <p>누가 어떤 답을 냈는지 말풍선으로 모두의 화면에 띄우고, 하트 상태도 실시간으로 맞춥니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>45초 타이머</h3>
+                    <p>라운드마다 45초를 세고, 시간이 다 되면 오답처럼 하트를 하나 잃습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>직접 만든 그림</h3>
+                    <p>시작 화면, 플레이어 4명, 파라오, 하트, 결과 화면을 이집트 유적 분위기에 맞춰 준비해 넣었습니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="code-title">
+            <h2 class="p-h2" id="code-title">핵심 코드: 끊긴 패킷 이어 붙이기</h2>
+            <pre class="code"><code>// 인코딩을 통해 문자열로 결합 후 데이터 유실 방지를 위해 remain 변수에 누적
+string[] messages = (remain + received).Split('\n');
+remain = messages[messages.Length - 1]; // 미완성된 마지막 조각은 다음 루프로 이관
+
+for (int i = 0; i &lt; messages.Length - 1; i++)
+    ProcessMessage(messages[i]);        // 온전한 명령어 한 줄씩 처리</code></pre>
+            <p class="p-note">원본 코드의 흐름을 줄여 옮겼습니다.</p>
+        </section>
+
+        <section class="container p-section" aria-labelledby="art-title">
+            <h2 class="p-h2" id="art-title">게임에 쓴 그림</h2>
+            <div class="shots">
+                <figure class="shot"><img src="media/pyramid/clear.jpg" width="1400" height="764" alt="보물이 쌓인 방의 문이 열린 탈출 성공 화면" loading="lazy"><figcaption>탈출 성공 화면</figcaption></figure>
+                <figure class="shot"><img src="media/pyramid/fail.jpg" width="1400" height="763" alt="탈출 실패 화면" loading="lazy"><figcaption>탈출 실패 화면</figcaption></figure>
+                <figure class="shot"><img src="media/pyramid/q2.jpg" width="537" height="800" alt="상형 문자 그림 문제" loading="lazy"><figcaption>2번 그림 문제</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="debug-title">
+            <h2 class="p-h2" id="debug-title">디버그 해결 경험</h2>
+            <div class="debug-list">
+                <article class="debug">
+                    <h3>명령어가 잘려서 도착함</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>여러 플레이어가 동시에 답을 내면 명령이 중간에 끊기거나 두 개가 붙어서 들어와 처리에 실패했습니다.</dd></div>
+                        <div><dt>원인</dt><dd>TCP는 메시지 단위가 아니라 바이트 흐름이라서, 한 번 읽을 때 명령이 딱 하나씩 오지 않습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>받은 문자열을 <code>remain</code>에 이어 붙이고 줄바꿈(<code>\n</code>)으로 나눈 뒤, 마지막 미완성 조각은 다음 수신 때까지 남겨 두었습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>수신 중 화면이 멈추거나 오류가 남</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>서버에서 메시지를 기다리는 동안 창이 멈추고, 받은 뒤 화면을 바꾸면 크로스 스레드 오류가 났습니다.</dd></div>
+                        <div><dt>원인</dt><dd>수신 대기를 UI 스레드에서 했고, 다른 스레드에서 폼 컨트롤을 직접 건드렸습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>수신은 별도 백그라운드 스레드(<code>IsBackground = true</code>)로 돌리고, 화면 변경은 <code>Invoke</code>로 UI 스레드에 넘겼습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>답에 특수 문자를 넣으면 통신이 깨짐</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>답에 <code>|</code>나 줄바꿈을 넣으면 다른 플레이어 화면에 이상한 값이 뜨거나 명령이 무시됐습니다.</dd></div>
+                        <div><dt>원인</dt><dd><code>|</code>와 줄바꿈을 명령 구분 기호로 쓰고 있어서 답 안의 같은 문자가 명령을 쪼갰습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>보내기 전에 줄바꿈은 공백으로, <code>|</code>는 <code>/</code>로 바꿔 데이터를 정리했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>탈락한 사람 때문에 다음 라운드로 안 넘어감</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>한 명이 탈락하면 나머지가 다 답을 내도 다음 문제가 나오지 않았습니다.</dd></div>
+                        <div><dt>원인</dt><dd>서버가 전체 인원 수만큼 제출이 와야 넘어가도록 세고 있었습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>살아 있는 인원(<code>GetAlivePlayerCount()</code>)만 세고, 탈락한 플레이어의 제출은 무시하도록 바꿨습니다.</dd></div>
+                    </dl>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="learn-title">
+            <h2 class="p-h2" id="learn-title">배운 점과 성취</h2>
+            <div class="learn">
+                <div class="learn-col">
+                    <h3>핵심으로 배운 것</h3>
+                    <ul class="learn-list">
+                        <li>TCP 소켓으로 서버와 클라이언트가 문자열 명령을 주고받는 통신 규칙(프로토콜) 설계</li>
+                        <li>멀티 스레드 환경에서 UI를 안전하게 바꾸는 법(<code>Invoke</code>)</li>
+                        <li>여러 폼(대기, 게임, 결과)으로 화면을 나누고 데이터를 넘기는 방법</li>
+                        <li>팀원과 기획, 그림, 코드를 나눠 하나의 게임으로 합치는 과정</li>
+                    </ul>
+                </div>
+                <div class="learn-col learn-achieve">
+                    <h3>성취</h3>
+                    <ul class="learn-list">
+                        <li>최대 4명이 실시간으로 함께 푸는 온라인 게임을 처음으로 완성했습니다.</li>
+                        <li>하트, 타이머, 다른 사람의 답 말풍선까지 모든 플레이어 화면을 맞춰 보여 줍니다.</li>
+                        <li>2학년 1학기 기말고사 과제로 제출했고, 이 사이트에서 원본 문제와 정답 판정 그대로 체험할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <nav class="container p-next" aria-label="다른 프로젝트">
+            <a href="comic.html"><span>&larr; 이전 프로젝트</span><strong>만화방 만들기</strong></a>
+            <a class="to-next" href="pacman.html"><span>다음 프로젝트 &rarr;</span><strong>팩맨 게임</strong></a>
+        </nav>
+    </main>
+
+    <script src="pyramid.js"></script>
+</body>
+</html>

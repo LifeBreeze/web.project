@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life1008 - 개인 이력서</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <style>
-/* ===== Life1008 이력서 스타일시트 ===== */
+/* ===== Life1008 이력서 (새 디자인) ===== */
 
 :root {
-    --navy: #003366;
-    --blue: #0056b3;
-    --blue-soft: #e6eef8;
-    --blue-line: #c9d8ec;
-    --ink: #1e293b;
-    --ink-sub: #475569;
-    --ink-mute: #94a3b8;
-    --bg: #e3e9f1;
+    --bg: #f6f7f9;
     --white: #ffffff;
-    --line: #e2e8f0;
-    --stripe: #f1f5f9;
-    --award-bg: #fef3c7;
-    --award-fg: #92400e;
-    --activity-bg: #ede9fe;
-    --activity-fg: #5b21b6;
-    --radius: 12px;
-    --bar-h: 112px;
+    --ink: #0f172a;
+    --ink-sub: #475569;
+    --ink-mute: #8a94a6;
+    --line: #e4e8ef;
+    --blue: #2f5bea;
+    --blue-dark: #1f44c4;
+    --blue-soft: #eef2ff;
+    --blue-line: #c9d5fb;
+    --award: #b45309;
+    --award-soft: #fff4e0;
+    --activity: #0f766e;
+    --activity-soft: #e3f6f3;
+    --radius: 16px;
+    --bar-h: 76px;
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 * {
@@ -40,16 +38,20 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Noto Sans KR', sans-serif;
     background-color: var(--bg);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg fill='%23003366' fill-opacity='0.05'%3E%3Cg transform='translate(30 36) rotate(-14 26.400000000000002 26.400000000000002) scale(2.2)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(208 22) rotate(10 15.600000000000001 15.600000000000001) scale(1.3)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(126 150) rotate(8 20.4 20.4) scale(1.7)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(262 190) rotate(-8 28.799999999999997 28.799999999999997) scale(2.4)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(24 248) rotate(16 16.799999999999997 16.799999999999997) scale(1.4)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-size: 340px 340px;
     color: var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-size: 17px;
     line-height: 1.6;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, p, ul {
+    margin: 0;
 }
 
 ul {
-    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -58,500 +60,481 @@ a {
     color: inherit;
 }
 
+:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+::selection {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
 .container {
     width: 100%;
-    max-width: 1120px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 32px;
 }
 
-/* ===== Header / Hero ===== */
-.site-header {
-    position: relative;
-    overflow: hidden;
-    padding: 32px 0 56px;
-    background-color: #0a1a33;
-    background-image:
-        radial-gradient(circle at 82% 35%, rgba(0, 86, 179, 0.45) 0, rgba(0, 86, 179, 0) 40%),
-        radial-gradient(circle at 8% 95%, rgba(96, 165, 250, 0.22) 0, rgba(96, 165, 250, 0) 32%),
-        radial-gradient(circle at 45% 0%, rgba(30, 64, 175, 0.35) 0, rgba(30, 64, 175, 0) 35%),
-        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cg transform='translate(30 36) rotate(-14 26.400000000000002 26.400000000000002) scale(2.2)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(208 22) rotate(10 15.600000000000001 15.600000000000001) scale(1.3)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(126 150) rotate(8 20.4 20.4) scale(1.7)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(262 190) rotate(-8 28.799999999999997 28.799999999999997) scale(2.4)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3Cg transform='translate(24 248) rotate(16 16.799999999999997 16.799999999999997) scale(1.4)'%3E%3Cpath d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-size: auto, auto, auto, 22px 22px, 340px 340px;
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
 }
 
-/* 배경 장식: 흐릿한 코드 기호 */
-.site-header::before {
-    content: "</>";
-    position: absolute;
-    left: -20px;
-    bottom: -60px;
-    font-size: 16rem;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.05em;
-    color: rgba(255, 255, 255, 0.04);
-    pointer-events: none;
+/* ===== 버튼 ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease);
 }
 
-/* 배경 장식: 하단 그라데이션 라인 */
-.site-header::after {
-    content: "";
-    position: absolute;
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.btn-primary {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-dark);
+}
+
+.btn-ghost {
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    color: var(--ink);
+}
+
+.btn-ghost:hover {
+    border-color: var(--ink);
+}
+
+.btn-dark {
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background-color: var(--ink);
+    color: var(--white);
+    font-size: 15px;
+}
+
+.btn-dark:hover {
+    background-color: var(--blue);
+}
+
+/* ===== 상단 고정 바 (A-02) ===== */
+.bar {
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    height: 3px;
-    background-image: linear-gradient(90deg, rgba(0, 51, 102, 0), var(--blue), rgba(96, 165, 250, 0.6), rgba(0, 51, 102, 0));
+    z-index: 50;
+    background-color: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.site-header > .container {
-    position: relative;
+.bar.is-scrolled {
+    background-color: var(--white);
+    border-bottom-color: var(--line);
 }
 
-.topbar {
+.bar-inner {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 32px;
+    height: var(--bar-h);
 }
 
-.eyebrow,
-.section-no {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: var(--blue);
-}
-
-.site-header .eyebrow {
-    color: #7cb8ff;
-}
-
-.nav-list {
+.brand {
     display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
-}
-
-.nav-list a {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #cfe0f5;
+    align-items: center;
+    gap: 12px;
+    margin-right: auto;
     text-decoration: none;
 }
 
-.nav-list a:hover,
-.nav-list a:focus {
-    color: var(--white);
-}
-
-.hero {
+.brand-mark {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    align-items: center;
-    gap: 48px;
-    margin-top: 56px;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 19px;
+    font-weight: 800;
 }
 
-.hero-tagline {
-    margin: 0 0 8px;
-    font-size: 1.1rem;
-    color: #a9bfdc;
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.brand-sub {
+    font-size: 13px;
+    color: var(--ink-sub);
+}
+
+.bar-nav ul {
+    display: flex;
+    gap: 6px;
+}
+
+.bar-nav a {
+    display: block;
+    padding: 8px 14px;
+    border-radius: 10px;
+    color: var(--ink-sub);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.bar-nav a:hover,
+.bar-nav a.is-current {
+    background-color: var(--blue-soft);
+    color: var(--blue);
+}
+
+/* ===== 첫 화면 (F-01) ===== */
+.hero {
+    padding-top: 88px;
+    padding-bottom: 96px;
+}
+
+.hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    color: var(--ink-sub);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.chip-live {
+    background-color: var(--blue-soft);
+    border-color: var(--blue-line);
+    color: var(--blue);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.6); opacity: 0.5; }
 }
 
 .hero-name {
-    margin: 0;
-    font-size: 5rem;
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-    color: var(--white);
+    margin-top: 28px;
+    font-size: clamp(72px, 12vw, 168px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.055em;
 }
 
-.hero-dot {
-    color: #4ea1ff;
-}
-
-.hero-affiliation {
-    margin: 16px 0 0;
-    font-size: 1.2rem;
+.hero-lead {
+    margin-top: 20px;
+    font-size: clamp(28px, 3.4vw, 46px);
     font-weight: 700;
-    color: #e2ecf8;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.hero-lead strong {
+    color: var(--blue);
+    font-weight: 700;
 }
 
 .hero-intro {
-    margin: 16px 0 0;
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: #b8c9e0;
+    max-width: 40em;
+    margin-top: 18px;
+    color: var(--ink-sub);
+    font-size: 19px;
 }
 
 .hero-tags {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
+    gap: 8px;
     margin-top: 24px;
 }
 
-.tags-label {
-    font-size: 0.9rem;
-    color: #a9bfdc;
+.hero-tags li {
+    padding: 6px 14px;
+    border-radius: 8px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    font-size: 15px;
+    font-weight: 600;
 }
 
-.tag-list {
+.hero-tags li::before {
+    content: "#";
+    margin-right: 2px;
+    color: var(--blue);
+}
+
+.hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 36px;
 }
 
-.tag-list li {
-    padding: 4px 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.06);
-    color: #e2ecf8;
-    font-size: 0.85rem;
+/* 요약 숫자 */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 72px;
 }
 
-/* GitHub 카드 (자리 고정용 slot 안에 위치) */
-.hero-card-slot {
-    position: relative;
-    height: 320px;
-}
-
-/* 카드 주변을 도는 궤도 곡선 */
-.hero-card-slot::before,
-.hero-card-slot::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 130%;
-    height: 62%;
-    border: 1px solid rgba(124, 184, 255, 0.35);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.hero-card-slot::before {
-    transform: translate(-50%, -50%) rotate(-28deg);
-}
-
-.hero-card-slot::after {
-    border-style: dashed;
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) rotate(24deg);
-}
-
-.hero-card {
+.stat {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50% 50% 32px 50%;
-    background-color: rgba(255, 255, 255, 0.06);
-    background-image: linear-gradient(150deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 60%, rgba(78, 161, 255, 0.12) 100%);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-    text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.hero-card:hover,
-.hero-card:focus {
-    transform: translateY(-4px);
-    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45);
-}
-
-.hero-card-img {
-    width: 140px;
-    height: 140px;
-    fill: var(--white);
-}
-
-.hero-card-caption {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: #e2ecf8;
-}
-
-/* ===== 스크롤 시 고정되는 남색 바 ===== */
-.scroll-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    height: var(--bar-h);
-    background-color: var(--navy);
-    color: var(--white);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-100%);
-    visibility: hidden;
-    transition: transform 0.3s ease, visibility 0.3s;
-}
-
-.site-header.is-scrolled .scroll-bar {
-    transform: translateY(0);
-    visibility: visible;
-}
-
-.scroll-bar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    height: 100%;
-    padding-right: 250px;
-}
-
-.scroll-bar-profile p {
-    margin: 0;
-}
-
-.scroll-bar-name {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.9rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-}
-
-.live-dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #60a5fa;
-}
-
-.year-badge {
-    padding: 2px 10px;
-    border: 1px solid #2563eb;
-    border-radius: 999px;
-    background-color: #1e3a8a;
-    color: #dbeafe;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0;
-}
-
-.scroll-bar-sub {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #bfdbfe;
-}
-
-.scroll-bar-intro {
-    font-size: 0.9rem;
-    color: #e2e8f0;
-}
-
-.scroll-bar-nav ul {
-    display: flex;
-    gap: 16px;
-    padding-right: 24px;
-    border-right: 1px solid #1e40af;
-}
-
-.scroll-bar-nav a {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #bfdbfe;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.scroll-bar-nav a:hover,
-.scroll-bar-nav a:focus {
-    color: var(--white);
-}
-
-/* 스크롤 시 옥토캣 카드가 남색 바 오른쪽의 GitHub 버튼으로 바뀜 (같은 링크 1개) */
-.site-header.is-scrolled .hero-card {
-    position: fixed;
-    top: calc(var(--bar-h) / 2);
-    right: 24px;
-    z-index: 101;
-    flex-direction: row;
-    gap: 8px;
-    height: auto;
-    padding: 8px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    background-image: none;
-    box-shadow: none;
-    transform: translateY(-50%);
-    animation: fade-in 0.3s ease;
-}
-
-.site-header.is-scrolled .hero-card:hover,
-.site-header.is-scrolled .hero-card:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%);
-}
-
-.site-header.is-scrolled .hero-card-img {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    fill: var(--white);
-}
-
-.site-header.is-scrolled .hero-card-caption {
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    color: var(--white);
-}
-
-@keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@media (min-width: 1120px) {
-    .site-header.is-scrolled .hero-card {
-        right: calc((100% - 1120px) / 2 + 24px);
-    }
-}
-
-/* ===== Main / Panels ===== */
-.main {
-    padding-top: 48px;
-    padding-bottom: 48px;
-}
-
-.panel {
-    margin-bottom: 40px;
-    padding: 28px;
-    border: 1px solid var(--line);
+    gap: 4px;
+    padding: 26px 26px 24px;
     border-radius: var(--radius);
     background-color: var(--white);
-    scroll-margin-top: calc(var(--bar-h) + 24px);
+    border: 1px solid var(--line);
 }
 
-.panel-head {
+.stat-num {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-num small {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink-mute);
+}
+
+.stat-label {
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.stat-note {
+    color: var(--ink-sub);
+    font-size: 14px;
+}
+
+.stat-accent {
+    background-color: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+}
+
+.stat-accent .stat-num small,
+.stat-accent .stat-note {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== 섹션 공통 ===== */
+.section {
+    padding: 112px 0;
+    scroll-margin-top: var(--bar-h);
+}
+
+.section-alt {
+    background-color: var(--white);
+}
+
+.section-head {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--line);
+    gap: 12px 40px;
+    margin-bottom: 36px;
 }
 
 .section-title {
-    margin: 4px 0 0;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: clamp(30px, 3.6vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
 }
 
-.panel-note {
-    margin: -8px 0 20px;
-    font-size: 0.85rem;
+.section-desc {
+    max-width: 30em;
     color: var(--ink-sub);
 }
 
-/* 건수 요약 */
-.count-list {
+/* ===== 실적 목록 (F-03) ===== */
+.tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    margin-bottom: 20px;
 }
 
-.count {
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 0.8rem;
-}
-
-.count-all { background-color: var(--stripe); color: var(--ink); }
-.count-award { background-color: var(--award-bg); color: var(--award-fg); }
-.count-project { background-color: var(--blue-soft); color: var(--navy); }
-.count-activity { background-color: var(--activity-bg); color: var(--activity-fg); }
-
-/* 실적 표 */
-.table-wrap {
-    overflow-x: auto;
+.tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 16px;
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 999px;
+    background-color: var(--white);
+    color: var(--ink-sub);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease);
+}
+
+.tab span {
+    min-width: 22px;
+    padding: 1px 7px;
+    border-radius: 999px;
+    background-color: var(--bg);
+    font-size: 13px;
+    text-align: center;
+}
+
+.tab:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.tab:active {
+    transform: scale(0.97);
+}
+
+.tab[aria-pressed="true"] {
+    background-color: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+}
+
+.tab[aria-pressed="true"] span {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.table-card {
+    overflow-x: auto;
 }
 
 .record-table {
     width: 100%;
-    min-width: 640px;
+    min-width: 720px;
     border-collapse: collapse;
-    font-size: 0.9rem;
 }
 
 .record-table th,
 .record-table td {
-    padding: 14px 16px;
+    padding: 18px 22px;
     text-align: left;
-    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
 }
 
 .record-table th {
-    background-color: var(--navy);
-    color: var(--white);
-    font-weight: 700;
+    background-color: #f9fafc;
+    color: var(--ink-sub);
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
 }
 
-.record-table tbody tr:nth-child(even) {
-    background-color: var(--stripe);
+.record-table tbody tr + tr td {
+    border-top: 1px solid var(--line);
+}
+
+.record-table tbody tr {
+    transition: background-color 0.15s ease;
 }
 
 .record-table tbody tr:hover {
-    background-color: var(--line);
+    background-color: #f9fafc;
 }
 
-.record-table .col-date,
-.record-table .col-type {
-    width: 110px;
-    text-align: center;
+.record-table .col-date {
+    width: 112px;
+    color: var(--ink-sub);
+    font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
 
-.record-table td.col-date {
-    color: var(--ink-sub);
-    font-weight: 500;
+.record-table .col-type {
+    width: 120px;
 }
 
 .record-title {
     font-weight: 700;
 }
 
-/* 배지 */
+.record-role {
+    color: var(--ink-sub);
+}
+
+/* 분류 배지 */
 .badge {
     display: inline-block;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
 }
 
-.badge-project { background-color: var(--blue-soft); color: var(--navy); }
-.badge-award { background-color: var(--award-bg); color: var(--award-fg); }
-.badge-activity { background-color: var(--activity-bg); color: var(--activity-fg); }
-.badge-major { background-color: var(--navy); color: var(--white); }
-.badge-liberal { background-color: var(--ink-sub); color: var(--white); }
+.badge-project { background-color: var(--blue-soft); color: var(--blue); }
+.badge-award { background-color: var(--award-soft); color: var(--award); }
+.badge-activity { background-color: var(--activity-soft); color: var(--activity); }
+.badge-major { background-color: var(--ink); color: var(--white); }
+.badge-liberal { background-color: var(--white); color: var(--ink-sub); }
 
-/* 수강 과목 */
+/* ===== 수강 과목 (F-04) ===== */
 .course-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -562,276 +545,235 @@ a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 14px;
     height: 100%;
-    padding: 16px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background-color: var(--stripe);
+    min-height: 150px;
+    padding: 24px;
+    border-radius: var(--radius);
+    background-color: var(--bg);
 }
 
 .course-name {
+    font-size: 20px;
     font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
 }
 
 .course-link {
-    border: 2px solid var(--blue-line);
-    background-color: var(--blue-soft);
+    background-color: var(--blue);
+    color: var(--white);
     text-decoration: none;
-    transition: border-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.25s var(--ease);
 }
 
-.course-link:hover,
-.course-link:focus {
-    border-color: var(--blue);
-}
-
-.course-more {
-    font-size: 0.8rem;
-    font-weight: 500;
+.course-link .badge-major {
+    background-color: var(--white);
     color: var(--blue);
 }
 
-/* 주차별 링크 */
+.course-more {
+    margin-top: auto;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.course-link:hover {
+    background-color: var(--blue-dark);
+    transform: translateY(-4px);
+}
+
+/* ===== 주차별 링크 (F-05) ===== */
+.progress {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 24px 26px;
+}
+
+.progress-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+}
+
+.progress-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.progress-title strong {
+    color: var(--blue);
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    color: var(--ink-sub);
+    font-size: 14px;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.key {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+.key-done { background-color: var(--blue); }
+.key-off { border: 2px dashed #b6c0cf; }
+.key-planned { background-color: #e7ebf1; }
+
+.progress-track {
+    height: 10px;
+    border-radius: 999px;
+    background-color: #e7ebf1;
+    overflow: hidden;
+}
+
+.progress-fill {
+    display: block;
+    width: 33.333%;
+    height: 100%;
+    border-radius: 999px;
+    background-color: var(--blue);
+    transform-origin: left;
+}
+
 .week-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
 }
 
+.week-list li {
+    display: flex;
+}
+
 .week {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: space-between;
-    height: 80px;
-    padding: 12px;
-    border-radius: 8px;
-    text-align: center;
+    gap: 18px;
+    min-height: 112px;
+    padding: 18px 20px;
+    border-radius: 14px;
 }
 
 .week-no {
-    font-size: 0.75rem;
+    font-size: 15px;
     font-weight: 700;
 }
 
 .week-state {
-    font-size: 0.9rem;
+    font-size: 17px;
     font-weight: 700;
 }
 
 .week-done {
-    border: 1px solid var(--blue-line);
-    background-color: var(--blue-soft);
-    color: var(--navy);
+    background-color: var(--blue);
+    color: var(--white);
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.25s var(--ease);
+}
+
+.week-done .week-no {
+    color: rgba(255, 255, 255, 0.82);
 }
 
 .week-done:hover,
-.week-done:focus {
-    background-color: var(--blue);
-    color: var(--white);
+.week-done:focus-visible {
+    background-color: var(--blue-dark);
+    transform: translateY(-4px);
 }
 
-.week-planned {
-    border: 1px solid var(--line);
-    background-color: var(--stripe);
-    color: var(--ink-mute);
-}
-
-/* 실습이 없던 주차 (OT, 휴강): 링크 없음 */
 .week-off {
-    border: 1px dashed #b6c2d1;
+    border: 2px dashed #b6c0cf;
     background-color: var(--white);
     color: var(--ink-sub);
 }
 
-/* ===== Footer ===== */
+.week-planned {
+    background-color: #e7ebf1;
+    color: #5b6578;
+}
+
+/* ===== footer (F-06) ===== */
 .site-footer {
-    background-color: #0f172a;
-    color: var(--ink-mute);
-    font-size: 0.85rem;
+    background-color: var(--ink);
+    color: #b9c2d3;
+    overflow: hidden;
 }
 
 .footer-inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 72px;
+    padding-bottom: 32px;
 }
 
-.footer-inner p {
-    margin: 0;
+.footer-word {
+    color: var(--white);
+    font-size: clamp(64px, 15vw, 210px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-top: 40px;
+    font-size: 15px;
 }
 
 .last-modified {
-    font-family: monospace;
-    color: #60a5fa;
+    color: var(--white);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-    /* 화면이 좁아져도 고양이 카드는 옆에 유지 */
-    .hero {
-        grid-template-columns: 1fr 240px;
-        gap: 28px;
-    }
-
-    .hero-card-slot {
-        height: 240px;
-    }
-
-    .hero-card-img {
-        width: 100px;
-        height: 100px;
-    }
-
-    :root {
-        --bar-h: 72px;
-    }
-
-    .scroll-bar-inner {
-        padding-right: 150px;
-    }
-
-    .scroll-bar-name {
-        font-size: 1.4rem;
-    }
-
-    .scroll-bar-intro,
-    .scroll-bar-nav {
-        display: none;
-    }
-
-    .hero-name {
-        font-size: 3.5rem;
-    }
-
-    .course-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .week-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .hero {
-        grid-template-columns: 1fr 120px;
-        gap: 16px;
-        margin-top: 40px;
-    }
-
-    .hero-card-slot {
-        height: 150px;
-    }
-
-    .hero-card {
-        gap: 8px;
-        border-radius: 50% 50% 20px 50%;
-    }
-
-    .hero-card-img {
-        width: 56px;
-        height: 56px;
-    }
-
-    .hero-card-caption {
-        display: none;
-    }
-
-    .hero-name {
-        font-size: 2.4rem;
-    }
-
-    .hero-affiliation {
-        font-size: 1rem;
-    }
-
-    .hero-tagline {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 560px) {
-    .container {
-        padding: 0 16px;
-    }
-
-    .hero-intro {
-        font-size: 1rem;
-    }
-
-    .course-list,
-    .week-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .panel {
-        padding: 20px;
-    }
-
-    .scroll-bar-inner {
-        padding-right: 80px;
-    }
-
-    .nav-list {
-        gap: 8px 16px;
-    }
-
-    .nav-list a {
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-    }
-
-    .site-header::before {
-        font-size: 9rem;
-    }
-
-    .scroll-bar-sub {
-        font-size: 0.8rem;
-    }
-
-    .site-header.is-scrolled .hero-card {
-        right: 16px;
-        padding: 8px 10px;
-    }
-
-}
-
-@media (max-width: 640px) {
-    .site-header.is-scrolled .hero-card {
-        right: 16px;
-        padding: 8px 10px;
-    }
-}
-
-/* ===== 맨 위로 버튼 (오른쪽 아래) ===== */
+/* ===== 맨 위로 버튼 (A-01) ===== */
 .to-top {
     position: fixed;
     right: 24px;
     bottom: 24px;
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 60;
+    display: grid;
+    place-items: center;
     width: 52px;
     height: 52px;
     padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-    background-color: var(--navy);
+    border: 0;
+    border-radius: 14px;
+    background-color: var(--ink);
     color: var(--white);
-    box-shadow: 0 8px 20px rgba(0, 51, 102, 0.35);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background-color 0.2s ease;
+    transition: opacity 0.3s ease, transform 0.3s var(--ease), visibility 0.3s, background-color 0.2s ease;
+}
+
+.to-top svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .to-top.is-visible {
@@ -840,41 +782,684 @@ a {
     transform: translateY(0);
 }
 
-.to-top:hover,
-.to-top:focus {
+.to-top:hover {
     background-color: var(--blue);
 }
 
-.to-top svg {
-    width: 22px;
-    height: 22px;
+/* ===== 등장 움직임 (스크립트가 켜졌을 때만) ===== */
+.js [data-reveal],
+.js .week {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease), background-color 0.2s ease;
 }
 
-@media (max-width: 560px) {
+.js [data-reveal].is-in,
+.js .week.is-in {
+    opacity: 1;
+    transform: none;
+}
+
+.js .week-done.is-in:hover,
+.js .week-done.is-in:focus-visible,
+.js .course-item.is-in .course-link:hover {
+    transform: translateY(-4px);
+}
+
+.js .hero [data-reveal]:nth-child(2) { transition-delay: 70ms; }
+.js .hero [data-reveal]:nth-child(3) { transition-delay: 140ms; }
+.js .hero [data-reveal]:nth-child(4) { transition-delay: 210ms; }
+.js .hero [data-reveal]:nth-child(5) { transition-delay: 280ms; }
+.js .hero [data-reveal]:nth-child(6) { transition-delay: 350ms; }
+.js .stats .stat:nth-child(2) { transition-delay: 70ms; }
+.js .stats .stat:nth-child(3) { transition-delay: 140ms; }
+.js .stats .stat:nth-child(4) { transition-delay: 210ms; }
+.js .course-list li:nth-child(2) { transition-delay: 60ms; }
+.js .course-list li:nth-child(3) { transition-delay: 120ms; }
+.js .course-list li:nth-child(5) { transition-delay: 60ms; }
+.js .course-list li:nth-child(6) { transition-delay: 120ms; }
+
+.js .progress .progress-fill {
+    transform: scaleX(0);
+    transition: transform 1.1s var(--ease) 0.2s;
+}
+
+.js .progress.is-in .progress-fill {
+    transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .dot {
+        animation: none;
+    }
+
+    .js [data-reveal],
+    .js .week,
+    .js .progress .progress-fill {
+        transform: none;
+        transition: opacity 0.3s ease;
+    }
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 960px) {
+    .brand-sub {
+        display: none;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    :root {
+        --bar-h: 116px;
+    }
+
+    .container {
+        padding: 0 18px;
+    }
+
+    .bar-inner {
+        flex-wrap: wrap;
+        align-content: center;
+        gap: 10px 12px;
+    }
+
+    .bar-nav {
+        order: 3;
+        width: 100%;
+    }
+
+    .bar-nav ul {
+        justify-content: space-between;
+    }
+
+    .bar-nav a {
+        padding: 6px 10px;
+    }
+
+    .hero {
+        padding-top: 48px;
+        padding-bottom: 72px;
+    }
+
+    .hero-name {
+        font-size: 22vw;
+    }
+
+    .hero-intro {
+        font-size: 17px;
+    }
+
+    .hero-actions .btn {
+        flex: 1;
+    }
+
+    .stats {
+        gap: 10px;
+        margin-top: 48px;
+    }
+
+    .stat {
+        padding: 20px 18px;
+    }
+
+    .stat-num {
+        font-size: 40px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    /* 표는 한 줄씩 카드처럼 쌓는다 */
+    .record-table {
+        min-width: 0;
+    }
+
+    .record-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .record-table,
+    .record-table tbody,
+    .record-table td {
+        display: block;
+    }
+
+    .record-table tr {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 6px 12px;
+        padding: 18px;
+    }
+
+    .record-table tr[hidden] {
+        display: none;
+    }
+
+    .record-table td,
+    .record-table tbody tr + tr td {
+        padding: 0;
+        border-top: 0;
+    }
+
+    .record-table tbody tr + tr {
+        border-top: 1px solid var(--line);
+    }
+
+    .record-table .col-date,
+    .record-table .col-type {
+        width: auto;
+    }
+
+    .record-table .record-title,
+    .record-table .record-role {
+        grid-column: 1 / -1;
+    }
+
+    .course-list {
+        grid-template-columns: 1fr;
+    }
+
+    .course {
+        min-height: 0;
+    }
+
+    .week-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .week {
+        min-height: 96px;
+        padding: 14px;
+    }
+
+    .week-state {
+        font-size: 15px;
+    }
+
     .to-top {
         right: 16px;
         bottom: 16px;
-        width: 44px;
-        height: 44px;
+        width: 46px;
+        height: 46px;
     }
+}
+
+/* ===== 실적 상세 링크와 프로젝트 카드 ===== */
+.record-link {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.record-link:hover {
+    color: var(--blue);
+}
+
+.record-link > span[aria-hidden="true"] {
+    color: var(--blue);
+}
+
+.record-link .ext {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 6px;
+    background-color: var(--activity-soft);
+    color: var(--activity);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.showcase {
+    margin-top: 64px;
+}
+
+.showcase-title {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.showcase-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.show-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    transition: transform 0.25s var(--ease), border-color 0.2s ease;
+}
+
+.show-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+}
+
+.show-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: top;
+    background-color: #000;
+}
+
+.show-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 16px;
+}
+
+.show-meta strong {
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+.show-meta > span:last-child {
+    color: var(--ink-sub);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+@media (max-width: 1100px) {
+    .showcase-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    .showcase-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .show-meta {
+        padding: 12px;
+    }
+}
+
+
+/* ===== 상단 바 고정: 스크롤해도 항상 보이게 ===== */
+.site-header {
+    padding-top: var(--bar-h);
+}
+
+body > .bar + main {
+    padding-top: var(--bar-h);
+}
+
+/* ===== 첫 화면: 글 + 팩맨 그림 ===== */
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 440px);
+    align-items: center;
+    gap: 48px;
+}
+
+.hero-skills {
+    margin-top: 24px;
+}
+
+.skills-label {
+    margin-bottom: 10px;
+    color: var(--ink-sub);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background-color: var(--ink);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.skill::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.skill-c::before { background-color: #7aa2ff; }
+.skill-cs::before { background-color: #b98cff; }
+.skill-py::before { background-color: #ffd84d; }
+.skill-web::before { background-color: #ff8a5c; }
+.skill-entry::before { background-color: #5fd38d; }
+
+.hero-tags {
+    margin-top: 14px;
+}
+
+.pac-card {
+    display: block;
+    overflow: hidden;
+    border-radius: 24px;
+    background-color: var(--ink);
+    color: var(--white);
+    text-decoration: none;
+    transition: transform 0.3s var(--ease);
+}
+
+.pac-card:hover {
+    transform: translateY(-6px) rotate(-1deg);
+}
+
+.pac-art {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 18px 18px 0;
+}
+
+.pac-walls rect {
+    fill: none;
+    stroke: var(--blue);
+    stroke-width: 3;
+}
+
+.pac-dots circle {
+    fill: #f2e6c9;
+}
+
+.pac-dots {
+    animation: pac-dots 0.5s linear infinite;
+}
+
+.pac-power {
+    animation: pac-blink 0.8s steps(2) infinite;
+}
+
+.pac-ghost path {
+    fill: var(--blue);
+}
+
+.ghost-eye {
+    fill: var(--white);
+}
+
+.pac-ghost {
+    animation: pac-float 1.6s ease-in-out infinite;
+}
+
+.pac-man path {
+    fill: #ffd84d;
+    transform-box: view-box;
+    transform-origin: 120px 130px;
+}
+
+.pac-top {
+    animation: pac-top 0.25s ease-in-out infinite alternate;
+}
+
+.pac-bottom {
+    animation: pac-bottom 0.25s ease-in-out infinite alternate;
+}
+
+@keyframes pac-top {
+    from { transform: rotate(-32deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes pac-bottom {
+    from { transform: rotate(32deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes pac-dots {
+    from { transform: translateX(0); }
+    to { transform: translateX(-30px); }
+}
+
+@keyframes pac-blink {
+    50% { opacity: 0.25; }
+}
+
+@keyframes pac-float {
+    50% { transform: translateY(-6px); }
+}
+
+.pac-caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 16px 24px 22px;
+}
+
+.pac-gh {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #b9c2d3;
+    font-size: 14px;
+}
+
+.pac-gh svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.pac-caption strong {
+    color: #ffd84d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pac-dots,
+    .pac-power,
+    .pac-ghost,
+    .pac-top,
+    .pac-bottom {
+        animation: none;
+    }
+}
+
+@media (max-width: 960px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .pac-card {
+        max-width: 480px;
+    }
+}
+
+/* 제목이 왼쪽 칸을 넘어 팩맨 카드에 붙지 않게: 칸 너비에 맞춘 크기 + 넉넉한 간격 */
+.hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+    gap: 80px;
+}
+
+.hero-text {
+    min-width: 0;
+    container-type: inline-size;
+}
+
+.hero-name {
+    font-size: min(22cqw, 150px);
+}
+
+@media (max-width: 1100px) {
+    .hero-grid {
+        gap: 48px;
+    }
+}
+
+@media (max-width: 960px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-name {
+        font-size: clamp(72px, 16vw, 150px);
+    }
+}
+
+
+/* ===== 수강 과목 학기 선택 ===== */
+.term-head {
+    position: relative;
+}
+
+.term-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px 0 0;
+    border: 0;
+    border-bottom: 3px solid var(--blue);
+    background: none;
+    color: var(--blue);
+    font: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.term-toggle svg {
+    width: 0.7em;
+    height: 0.7em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s ease;
+}
+
+.term-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.term-toggle:hover {
+    color: var(--blue-dark);
+}
+
+.term-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    z-index: 20;
+    display: grid;
+    gap: 4px;
+    width: 280px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 8px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+.term-menu[hidden] {
+    display: none;
+}
+
+.term-menu button {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+}
+
+.term-menu button span {
+    color: var(--ink-sub);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.term-menu button:hover,
+.term-menu button:focus-visible {
+    background-color: var(--bg);
+}
+
+.term-menu button[aria-current="true"] {
+    background-color: var(--blue-soft);
+    color: var(--blue);
+}
+
+.course-list[hidden] {
+    display: none;
+}
+
+.course-name {
+    overflow-wrap: anywhere;
 }
 
 </style>
 </head>
 <body>
 
-    <!-- header : F-01 소개 / F-02 연락 채널 -->
+    <!-- header : F-01 소개 / F-02 연락 채널 / A-02 상단 고정 바 -->
     <header class="site-header">
 
-        <!-- 스크롤을 내리면 상단에 고정되어 나타나는 남색 바 -->
-        <div class="scroll-bar">
-            <div class="container scroll-bar-inner">
-                <div class="scroll-bar-profile">
-                    <p class="scroll-bar-name"><span class="live-dot"></span>Life1008 <span class="year-badge">2학년</span></p>
-                    <p class="scroll-bar-sub">상명대학교 소프트웨어학과 2학년</p>
-                    <p class="scroll-bar-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
-                </div>
-                <nav class="scroll-bar-nav" aria-label="빠른 이동">
+        <!-- 상단 고정 바: 활동명, 소속, 메뉴 3개 (GitHub 링크는 첫 화면 팩맨 카드 1개) -->
+        <div class="bar">
+            <div class="container bar-inner">
+                <a class="brand" href="#top">
+                    <span class="brand-mark" aria-hidden="true">L</span>
+                    <span class="brand-text">
+                        <span class="brand-name">Life1008</span>
+                        <span class="brand-sub">상명대학교 소프트웨어학과 2학년</span>
+                    </span>
+                </a>
+                <nav class="bar-nav" aria-label="이력서 영역">
                     <ul>
                         <li><a href="#achievements">실적 목록</a></li>
                         <li><a href="#courses">수강 과목</a></li>
@@ -884,203 +1469,335 @@ a {
             </div>
         </div>
 
-        <div class="container">
-            <div class="topbar">
-                <p class="eyebrow">웹프로그래밍 과제 / 2026</p>
-                <nav aria-label="이력서 영역">
-                    <ul class="nav-list">
-                        <li><a href="#achievements">01 / 실적 목록</a></li>
-                        <li><a href="#courses">02 / 수강 과목</a></li>
-                        <li><a href="#weekly">03 / 실습 현황</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <div class="hero">
+        <!-- 첫 화면 -->
+        <div class="container hero" id="top">
+            <div class="hero-grid">
                 <div class="hero-text">
-                    <p class="hero-tagline">배우고, 만들고, 매년 성장합니다.</p>
-                    <h1 class="hero-name">Life1008<span class="hero-dot">.</span></h1>
-                    <p class="hero-affiliation">상명대학교 소프트웨어학과 2학년</p>
-                    <p class="hero-intro">게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
-                    <div class="hero-tags">
-                        <span class="tags-label">관심 분야</span>
-                        <ul class="tag-list">
-                            <li>게임 개발</li>
-                            <li>프로그래밍</li>
-                            <li>AI</li>
+                    <div class="hero-chips" data-reveal>
+                        <span class="chip chip-live"><span class="dot" aria-hidden="true"></span>상명대학교 소프트웨어학과 2학년</span>
+                        <span class="chip">최종 수정일 2026-10-18</span>
+                    </div>
+                    <h1 class="hero-name" data-reveal>Life1008</h1>
+                    <p class="hero-lead" data-reveal>배우고, 만들고, <strong>매년 성장합니다.</strong></p>
+                    <p class="hero-intro" data-reveal>게임과 웹 개발에 관심을 두고 매년 성장하고픈 대기만성형 학생입니다.</p>
+                    <div class="hero-skills" data-reveal>
+                        <p class="skills-label">다룰 수 있는 언어</p>
+                        <ul class="skill-list" aria-label="다룰 수 있는 언어">
+                            <li class="skill skill-c">C</li>
+                            <li class="skill skill-cs">C#</li>
+                            <li class="skill skill-py">Python</li>
+                            <li class="skill skill-web">HTML · CSS</li>
+                            <li class="skill skill-entry">엔트리</li>
                         </ul>
+                    </div>
+                    <ul class="hero-tags" data-reveal aria-label="관심 분야">
+                        <li>게임 개발</li>
+                        <li>프로그래밍</li>
+                        <li>AI</li>
+                    </ul>
+                    <div class="hero-actions" data-reveal>
+                        <a class="btn btn-primary" href="#achievements">실적 보기 <span aria-hidden="true">&darr;</span></a>
+                        <a class="btn btn-ghost" href="#weekly">주차별 실습 보기</a>
                     </div>
                 </div>
 
-                <!-- F-02: GitHub 프로필 링크 (페이지 전체에서 1개)
-                     스크롤하면 같은 링크가 남색 바 오른쪽의 GitHub 버튼으로 바뀜 -->
-                <div class="hero-card-slot">
-                    <a class="hero-card" href="https://github.com/LifeBreeze" target="_blank" rel="noopener noreferrer">
-                        <svg class="hero-card-img" viewBox="0 0 24 24" role="img" aria-labelledby="github-logo-title">
-                            <title id="github-logo-title">GitHub 로고 - Life1008의 GitHub 프로필로 이동</title>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-                        </svg>
-                        <span class="hero-card-caption">GITHUB PROFILE &rarr;</span>
-                    </a>
-                </div>
+                <!-- 팩맨 그림: 누르면 GitHub 프로필로 이동 -->
+                <a class="pac-card" href="https://github.com/LifeBreeze" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <svg class="pac-art" viewBox="0 0 400 260" role="img" aria-labelledby="pac-title">
+                        <title id="pac-title">먹이를 먹으며 파란 유령을 쫓는 팩맨</title>
+                        <g class="pac-walls">
+                            <rect x="20" y="28" width="150" height="14" rx="7"></rect>
+                            <rect x="230" y="28" width="150" height="14" rx="7"></rect>
+                            <rect x="20" y="218" width="110" height="14" rx="7"></rect>
+                            <rect x="190" y="218" width="190" height="14" rx="7"></rect>
+                            <rect x="20" y="28" width="14" height="70" rx="7"></rect>
+                            <rect x="366" y="162" width="14" height="70" rx="7"></rect>
+                        </g>
+                        <g class="pac-dots">
+                            <circle cx="190" cy="130" r="6"></circle>
+                            <circle cx="220" cy="130" r="6"></circle>
+                            <circle cx="250" cy="130" r="6"></circle>
+                            <circle cx="280" cy="130" r="6"></circle>
+                            <circle class="pac-power" cx="310" cy="130" r="11"></circle>
+                        </g>
+                        <g class="pac-ghost">
+                            <path d="M332 154 V122 a22 22 0 0 1 44 0 V154 l-7.3 -8 l-7.3 8 l-7.3 -8 l-7.3 8 l-7.4 -8 Z"></path>
+                            <circle class="ghost-eye" cx="346" cy="122" r="5"></circle>
+                            <circle class="ghost-eye" cx="362" cy="122" r="5"></circle>
+                        </g>
+                        <g class="pac-man">
+                            <path class="pac-top" d="M120 130 L172 130 A52 52 0 0 0 68 130 Z"></path>
+                            <path class="pac-bottom" d="M120 130 L172 130 A52 52 0 0 1 68 130 Z"></path>
+                        </g>
+                    </svg>
+                    <span class="pac-caption">
+                        <span class="pac-gh"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>github.com/LifeBreeze</span>
+                        <strong>내 GitHub 보러 가기 <span aria-hidden="true">&rarr;</span></strong>
+                    </span>
+                </a>
             </div>
+
+            <!-- 한눈에 보는 숫자 -->
+            <ul class="stats" aria-label="요약">
+                <li class="stat" data-reveal><span class="stat-num">9</span><span class="stat-label">전체 실적</span><span class="stat-note">2019년부터 2026년까지</span></li>
+                <li class="stat" data-reveal><span class="stat-num">6</span><span class="stat-label">프로젝트</span><span class="stat-note">Python · C · C# · 엔트리</span></li>
+                <li class="stat" data-reveal><span class="stat-num">2</span><span class="stat-label">수상</span><span class="stat-note">해커톤 대상 포함</span></li>
+                <li class="stat stat-accent" data-reveal><span class="stat-num">5<small>/15</small></span><span class="stat-label">실습 진행 주차</span><span class="stat-note">웹프로그래밍 2026-2</span></li>
+            </ul>
         </div>
     </header>
 
-    <main class="container main">
+    <main>
 
         <!-- section : F-03 실적 목록 -->
-        <section id="achievements" class="panel">
-            <div class="panel-head">
-                <div>
-                    <p class="section-no">01 / ACHIEVEMENTS</p>
+        <section id="achievements" class="section">
+            <div class="container">
+                <div class="section-head" data-reveal>
                     <h2 class="section-title">실적 목록</h2>
+                    <p class="section-desc">고등학교 시절부터 지금까지의 수상, 프로젝트, 활동을 최근 순으로 정리했습니다.</p>
                 </div>
-                <ul class="count-list">
-                    <li class="count count-all">전체 <strong>9</strong>건</li>
-                    <li class="count count-award">수상 <strong>2</strong>건</li>
-                    <li class="count count-project">프로젝트 <strong>6</strong>건</li>
-                    <li class="count count-activity">활동 <strong>1</strong>건</li>
-                </ul>
-            </div>
 
-            <div class="table-wrap">
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="col-date">시기</th>
-                            <th scope="col" class="col-type">분류</th>
-                            <th scope="col">내용</th>
-                            <th scope="col">본인 역할</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-date">2026.10</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td class="record-title">개인 이력서 웹사이트 제작 및 배포</td>
-                            <td>기획, HTML/CSS 디자인, 배포 환경 구축</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2026.06</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>만화방 제작 프로젝트</td>
-                            <td>Python 프로그래밍 개발 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2026.06</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>피라미드 탈출 게임 제작 프로젝트</td>
-                            <td>C# / 게임 구상, 소켓 프로그래밍 개발 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2026.05</td>
-                            <td class="col-type"><span class="badge badge-award">수상</span></td>
-                            <td>2026학년도 제1학기 해커톤 대회 대상 수상</td>
-                            <td>Python 기반 기초 문제 해결 알고리즘 설계 및 PPT 디자인</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2023.12</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>팩맨 게임 제작 프로젝트</td>
-                            <td>C / 게임 로직 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2023.10</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>무인도 탈출 게임 제작 프로젝트</td>
-                            <td>엔트리 / 게임 구상, 로직 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2023.06</td>
-                            <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
-                            <td>슈팅 게임 제작 프로젝트</td>
-                            <td>Python / 게임 로직 및 UI 구현</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2020.04</td>
-                            <td class="col-type"><span class="badge badge-activity">활동</span></td>
-                            <td>고등학교 화학 동아리 회장 및 실험 기획</td>
-                            <td>동아리 활동 기획 및 운영</td>
-                        </tr>
-                        <tr>
-                            <td class="col-date">2019.07</td>
-                            <td class="col-type"><span class="badge badge-award">수상</span></td>
-                            <td>고등학교 모범학생 표창장</td>
-                            <td>모범학생 선정</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tabs" role="group" aria-label="분류별 보기" data-reveal>
+                    <button type="button" class="tab" data-filter="all" aria-pressed="true">전체 <span>9</span></button>
+                    <button type="button" class="tab" data-filter="award" aria-pressed="false">수상 <span>2</span></button>
+                    <button type="button" class="tab" data-filter="project" aria-pressed="false">프로젝트 <span>6</span></button>
+                    <button type="button" class="tab" data-filter="activity" aria-pressed="false">활동 <span>1</span></button>
+                </div>
+
+                <div class="card table-card" data-reveal>
+                    <table class="record-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="col-date">시기</th>
+                                <th scope="col" class="col-type">분류</th>
+                                <th scope="col">내용</th>
+                                <th scope="col">본인 역할</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-type="project">
+                                <td class="col-date">2026.10</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title">개인 이력서 웹사이트 제작 및 배포</td>
+                                <td class="record-role">기획, HTML/CSS 디자인, 배포 환경 구축</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2026.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/comic.html">만화방 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">Python 프로그래밍 개발 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2026.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/pyramid.html">피라미드 탈출 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">C# / 게임 구상, 소켓 프로그래밍 개발 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="award">
+                                <td class="col-date">2026.05</td>
+                                <td class="col-type"><span class="badge badge-award">수상</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/hackathon.html">2026학년도 제1학기 해커톤 대회 대상 수상 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">Python 기반 기초 문제 해결 알고리즘 설계 및 PPT 디자인</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2023.12</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/pacman.html">팩맨 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">C / 게임 로직 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2023.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/island.html">무인도 탈출 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">엔트리 / 게임 구상, 로직 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2023.06</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/shooting.html">슈팅 게임 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">Python / 게임 로직 및 UI 구현</td>
+                            </tr>
+                            <tr data-type="activity">
+                                <td class="col-date">2020.04</td>
+                                <td class="col-type"><span class="badge badge-activity">활동</span></td>
+                                <td class="record-title"><a class="record-link" href="https://cafe.naver.com/mhcs12" target="_blank" rel="noopener noreferrer">고등학교 화학 동아리 회장 및 실험 기획 <span class="ext">동아리 카페 <span aria-hidden="true">&nearr;</span></span></a></td>
+                                <td class="record-role">동아리 활동 기획 및 운영</td>
+                            </tr>
+                            <tr data-type="award">
+                                <td class="col-date">2019.07</td>
+                                <td class="col-type"><span class="badge badge-award">수상</span></td>
+                                <td class="record-title">고등학교 모범학생 표창장</td>
+                                <td class="record-role">모범학생 선정</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 직접 해 볼 수 있는 프로젝트 -->
+                <div class="showcase">
+                    <h3 class="showcase-title" data-reveal>직접 해 볼 수 있는 프로젝트</h3>
+                    <ul class="showcase-list">
+                        <li data-reveal><a class="show-card" href="projects/pacman.html"><img src="projects/media/pacman/preview.png" width="800" height="540" alt="검은 화면에 파란 벽과 노란 C, 빨간 X가 찍힌 팩맨 콘솔 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">C · 플레이</span><strong>팩맨 게임</strong><span>난이도 3단계, 원본 규칙 그대로</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/island.html"><img src="projects/media/island/scene00.jpg" width="960" height="540" alt="푸른 바다 위 섬, 무인도 탈출 시작 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">엔트리 · 플레이</span><strong>무인도 탈출 게임</strong><span>선택지를 골라 엔딩 3개 찾기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/shooting.html"><img src="projects/media/shooting/background.png" width="564" height="564" alt="덩굴이 덮인 돌길, 슈팅 게임 배경" loading="lazy"><span class="show-meta"><span class="badge badge-project">Python · 플레이</span><strong>몬스터 디펜스</strong><span>원본 그림과 효과음으로 플레이</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/pyramid.html"><img src="projects/media/pyramid/start.jpg" width="1600" height="873" alt="스핑크스 앞 피라미드 탈출게임 시작 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">C# · 체험판</span><strong>피라미드 탈출 게임</strong><span>4인 온라인 퀴즈를 혼자 풀어 보기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/comic.html"><img src="projects/media/comic/1F.jpg" width="1024" height="683" alt="계단과 책장이 있는 만화방 1층" loading="lazy"><span class="show-meta"><span class="badge badge-project">Python · 체험</span><strong>만화방 만들기</strong><span>계단을 눌러 층을 오가기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/hackathon.html"><img src="projects/media/hackathon/poster.jpg" width="2000" height="2832" alt="해커톤 10조 알고리즘 포스터" loading="lazy"><span class="show-meta"><span class="badge badge-award">수상 · 대상</span><strong>해커톤 알고리즘 7문제</strong><span>포스터와 문제 A 계산기</span></span></a></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <!-- section : F-04 수강 과목 -->
-        <section id="courses" class="panel">
-            <div class="panel-head">
-                <div>
-                    <p class="section-no">02 / COURSES</p>
-                    <h2 class="section-title">2026-2 수강 과목</h2>
+        <section id="courses" class="section section-alt">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <div class="term-head">
+                        <h2 class="section-title" id="course-title"><button type="button" class="term-toggle" id="term-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="term-menu"><span id="term-label">2026-2학기</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button> 수강 과목</h2>
+                        <ul class="term-menu" id="term-menu" hidden>
+                            <li><button type="button" data-pick="2026-2" aria-current="true">2026-2학기 <span>2학년 2학기 · 지금</span></button></li>
+                            <li><button type="button" data-pick="2026-1">2026-1학기 <span>2학년 1학기</span></button></li>
+                            <li><button type="button" data-pick="2023-2">2023-2학기 <span>1학년 2학기</span></button></li>
+                            <li><button type="button" data-pick="2023-1">2023-1학기 <span>1학년 1학기</span></button></li>
+                        </ul>
+                    </div>
+                    <p class="section-desc" id="term-desc">2학년 2학기 · 이번 학기 전공 4과목, 교양 2과목을 듣고 있습니다.</p>
                 </div>
-            </div>
 
-            <ul class="course-list">
-                <li>
-                    <a class="course course-link" href="#weekly">
-                        <span class="badge badge-major">전공</span>
-                        <span class="course-name">웹프로그래밍 및 AI에이전트 활용</span>
-                        <span class="course-more">주차별 실습 링크 바로가기 &rarr;</span>
-                    </a>
-                </li>
-                <li class="course">
-                    <span class="badge badge-major">전공</span>
-                    <span class="course-name">이산수학</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-major">전공</span>
-                    <span class="course-name">컴퓨터프로그래밍Ⅱ</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-major">전공</span>
-                    <span class="course-name">컴퓨터프로그래밍Ⅱ실습</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-liberal">교양</span>
-                    <span class="course-name">AI시대의컬처리터러시</span>
-                </li>
-                <li class="course">
-                    <span class="badge badge-liberal">교양</span>
-                    <span class="course-name">사진과사회학</span>
-                </li>
-            </ul>
+                <ul class="course-list" data-term="2026-2" data-desc="2학년 2학기 · 이번 학기 전공 4과목, 교양 2과목을 듣고 있습니다.">
+                    <li class="course-item course-feature" data-reveal>
+                        <a class="course course-link" href="#weekly">
+                            <span class="badge badge-major">전공</span>
+                            <span class="course-name">웹프로그래밍 및 AI에이전트 활용</span>
+                            <span class="course-more">주차별 실습 링크 바로가기 <span aria-hidden="true">&rarr;</span></span>
+                        </a>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">이산수학</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍Ⅱ</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍Ⅱ실습</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">AI시대의컬처리터러시</span></div>
+                    </li>
+                    <li class="course-item" data-reveal>
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">사진과사회학</span></div>
+                    </li>
+                </ul>
+                <ul class="course-list" data-term="2026-1" data-desc="2학년 1학기 · 전공 4과목, 교양 3과목을 들었습니다." hidden>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">GUI 프로그래밍</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍I</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터프로그래밍 실습I</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">소프트웨어개론</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">호모엠파티쿠스</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">바디디자인</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">농구</span></div>
+                    </li>
+                </ul>
+                <ul class="course-list" data-term="2023-2" data-desc="1학년 2학기 · 전공 4과목, 교양 3과목을 들었습니다." hidden>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">객체지향프로그래밍</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">컴퓨터구조</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">프로그래밍프로젝트</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">공업수학</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">사고와표현</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">알고리즘과게임콘텐츠</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">상상속의아이디어</span></div>
+                    </li>
+                </ul>
+                <ul class="course-list" data-term="2023-1" data-desc="1학년 1학기 · 전공 3과목, 교양 4과목을 들었습니다." hidden>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">C프로그래밍</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">IT-Engineering프로젝트</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-major">전공</span><span class="course-name">미적분학</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">컴퓨팅사고와데이터의이해</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">EnglishforAcademicPurpose</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">만화로보는문화</span></div>
+                    </li>
+                    <li class="course-item">
+                        <div class="course"><span class="badge badge-liberal">교양</span><span class="course-name">시사영어</span></div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <!-- section : F-05 본 과목 주차별 링크 -->
-        <section id="weekly" class="panel">
-            <div class="panel-head">
-                <div>
-                    <p class="section-no">03 / WEB PROGRAMMING</p>
+        <section id="weekly" class="section">
+            <div class="container">
+                <div class="section-head" data-reveal>
                     <h2 class="section-title">웹프로그래밍 및 AI에이전트 활용 - 주차별 링크</h2>
+                    <p class="section-desc">실습을 진행한 주차를 누르면 그 주차의 실습 페이지로 이동합니다.</p>
                 </div>
-            </div>
-            <p class="panel-note">진행한 주차를 클릭하면 해당 주차의 실습 페이지로 이동합니다.</p>
 
-            <ul class="week-list">
-                <li class="week week-off"><span class="week-no">1주차</span><span class="week-state">OT</span></li>
-                <li><a class="week week-done" href="doc01.html"><span class="week-no">2주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc2.html"><span class="week-no">3주차</span><span class="week-state">실습 진행</span></a></li>
-                <li class="week week-off"><span class="week-no">4주차</span><span class="week-state">추석 휴강</span></li>
-                <li><a class="week week-done" href="index.html"><span class="week-no">5주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc04.html"><span class="week-no">6주차</span><span class="week-state">실습 진행</span></a></li>
-                <li><a class="week week-done" href="doc07.html"><span class="week-no">7주차</span><span class="week-state">실습 진행</span></a></li>
-                <li class="week week-planned"><span class="week-no">8주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">9주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">10주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">11주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">12주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">13주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">14주차</span><span class="week-state">예정</span></li>
-                <li class="week week-planned"><span class="week-no">15주차</span><span class="week-state">예정</span></li>
-            </ul>
+                <div class="progress card" data-reveal>
+                    <div class="progress-text">
+                        <p class="progress-title">15주 중 <strong>5주</strong> 실습 완료</p>
+                        <ul class="legend" aria-label="칸 색 안내">
+                            <li><span class="key key-done" aria-hidden="true"></span>실습 진행</li>
+                            <li><span class="key key-off" aria-hidden="true"></span>실습 없음</li>
+                            <li><span class="key key-planned" aria-hidden="true"></span>예정</li>
+                        </ul>
+                    </div>
+                    <div class="progress-track" aria-hidden="true"><span class="progress-fill"></span></div>
+                </div>
+
+                <ul class="week-list">
+                    <li class="week week-off"><span class="week-no">1주차</span><span class="week-state">OT</span></li>
+                    <li><a class="week week-done" href="doc01.html"><span class="week-no">2주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li><a class="week week-done" href="doc02.html"><span class="week-no">3주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li class="week week-off"><span class="week-no">4주차</span><span class="week-state">추석 휴강</span></li>
+                    <li><a class="week week-done" href="doc05.html"><span class="week-no">5주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li><a class="week week-done" href="doc06.html"><span class="week-no">6주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li><a class="week week-done" href="doc07.html"><span class="week-no">7주차</span><span class="week-state">실습 진행 <span aria-hidden="true">&rarr;</span></span></a></li>
+                    <li class="week week-planned"><span class="week-no">8주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">9주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">10주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">11주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">12주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">13주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">14주차</span><span class="week-state">예정</span></li>
+                    <li class="week week-planned"><span class="week-no">15주차</span><span class="week-state">예정</span></li>
+                </ul>
+            </div>
         </section>
 
     </main>
@@ -1088,38 +1805,123 @@ a {
     <!-- footer : F-06 최종 수정일 -->
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>&copy; 2026 Life1008. All rights reserved.</p>
-            <p class="last-modified">최종 수정일: 2026-10-17</p>
+            <p class="footer-word" aria-hidden="true">Life1008</p>
+            <div class="footer-row">
+                <p>&copy; 2026 Life1008. All rights reserved.</p>
+                <p class="last-modified">최종 수정일: 2026-10-18</p>
+            </div>
         </div>
     </footer>
 
-    <!-- 맨 위로 버튼 -->
+    <!-- A-01 맨 위로 버튼 -->
     <button type="button" class="to-top" aria-label="맨 위로 이동">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 19V5M5 12l7-7 7 7"></path>
-        </svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
     </button>
 
     <script>
-        // 소개 영역을 지나 스크롤하면 header에 is-scrolled 클래스를 붙여 남색 바를 보여 준다
         (function () {
-            var header = document.querySelector('.site-header');
+            var bar = document.querySelector('.bar');
             var hero = document.querySelector('.hero');
             var toTop = document.querySelector('.to-top');
 
+            // A-01, A-02: 소개 영역을 지나면 바에 그림자 대신 배경을 채우고 맨 위로 버튼을 보여 준다
             function update() {
-                var limit = hero.offsetTop + hero.offsetHeight - 40;
-                header.classList.toggle('is-scrolled', window.scrollY > limit);
-                toTop.classList.toggle('is-visible', window.scrollY > limit);
+                var past = window.scrollY > hero.offsetTop + hero.offsetHeight * 0.4;
+                bar.classList.toggle('is-scrolled', window.scrollY > 8);
+                toTop.classList.toggle('is-visible', past);
             }
-
             toTop.addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
             window.addEventListener('scroll', update, { passive: true });
             window.addEventListener('resize', update);
             update();
+
+            // 실적 분류 탭
+            var tabs = document.querySelectorAll('.tab');
+            var rows = document.querySelectorAll('.record-table tbody tr');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var type = tab.getAttribute('data-filter');
+                    tabs.forEach(function (t) { t.setAttribute('aria-pressed', String(t === tab)); });
+                    rows.forEach(function (row) {
+                        row.hidden = type !== 'all' && row.getAttribute('data-type') !== type;
+                    });
+                });
+            });
+
+            // 수강 과목 학기 선택: 제목의 학기를 누르면 목록이 열리고, 고른 학기의 과목으로 바뀐다
+            var termToggle = document.getElementById('term-toggle');
+            var termMenu = document.getElementById('term-menu');
+            var termLabel = document.getElementById('term-label');
+            var termDesc = document.getElementById('term-desc');
+            var termLists = document.querySelectorAll('.course-list[data-term]');
+
+            function closeTerms() {
+                termMenu.hidden = true;
+                termToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            termToggle.addEventListener('click', function () {
+                var open = termMenu.hidden;
+                termMenu.hidden = !open;
+                termToggle.setAttribute('aria-expanded', String(open));
+                if (open) termMenu.querySelector('[aria-current="true"]').focus();
+            });
+
+            termMenu.querySelectorAll('[data-pick]').forEach(function (b) {
+                b.addEventListener('click', function () {
+                    var term = b.getAttribute('data-pick');
+                    termLists.forEach(function (ul) {
+                        var on = ul.getAttribute('data-term') === term;
+                        ul.hidden = !on;
+                        if (on) {
+                            termDesc.textContent = ul.getAttribute('data-desc');
+                            ul.querySelectorAll('.course-item').forEach(function (li) { li.classList.add('is-in'); });
+                        }
+                    });
+                    termMenu.querySelectorAll('[data-pick]').forEach(function (x) {
+                        x.setAttribute('aria-current', String(x === b));
+                    });
+                    termLabel.textContent = term + '학기';
+                    closeTerms();
+                    termToggle.focus();
+                    document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!termMenu.hidden && !termMenu.contains(e.target) && !termToggle.contains(e.target)) closeTerms();
+            });
+            termMenu.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') { closeTerms(); termToggle.focus(); }
+            });
+
+            if (!('IntersectionObserver' in window)) return;
+
+            // 지금 보고 있는 영역의 메뉴에 표시
+            var links = document.querySelectorAll('.bar-nav a');
+            var spy = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    links.forEach(function (a) {
+                        a.classList.toggle('is-current', a.getAttribute('href') === '#' + entry.target.id);
+                    });
+                });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            document.querySelectorAll('main section').forEach(function (s) { spy.observe(s); });
+
+            // 화면에 들어올 때 한 번씩 올라온다 (스크립트가 없으면 처음부터 다 보인다)
+            document.documentElement.classList.add('js');
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -6% 0px' });
+            document.querySelectorAll('[data-reveal], .week').forEach(function (el) { io.observe(el); });
         })();
     </script>
 
