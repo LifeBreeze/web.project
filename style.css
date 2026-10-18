@@ -1308,11 +1308,10 @@ body > .bar + main {
 
 .hero-text {
     min-width: 0;
-    container-type: inline-size;
 }
 
 .hero-name {
-    font-size: min(22cqw, 150px);
+    font-size: clamp(64px, 9.5vw, 136px);
 }
 
 @media (max-width: 1100px) {
