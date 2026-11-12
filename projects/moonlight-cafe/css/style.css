@@ -14,7 +14,8 @@
   --line: #DCD6CB;      /* 옅은 선 — 구분선, 테두리 */
   --night: #10141D;     /* 밤 — 홈 첫 화면, 푸터 */
   --moon: #ECE5D5;      /* 달빛 — 밤 배경 위 글자 */
-  --brass: #9C8257;     /* 황동 — 선택된 메뉴 밑줄, 찜 별에만 */
+  --brass: #9C8257;     /* 황동 — 선택된 메뉴·탭 밑줄 */
+  --star: #D9A21B;      /* 진한 노랑 — 찜한 별 */
 
   --moon-soft: rgba(236, 229, 213, 0.72); /* 밤 배경 위 본문 */
   --moon-faint: rgba(236, 229, 213, 0.62); /* 밤 배경 위 작은 글자 */
@@ -463,12 +464,12 @@ button {
 }
 
 /* 휴대폰에서는 "영업 중"만, 조금 넓어지면 "· 02:00까지"까지 */
-.open-status-detail {
+.open-status .open-status-detail {
   display: none;
 }
 
 @media (min-width: 560px) {
-  .open-status-detail {
+  .open-status .open-status-detail {
     display: inline;
   }
 }
@@ -551,9 +552,15 @@ button {
   align-items: center;
   min-height: calc(100vh - var(--header-h));
   min-height: calc(100svh - var(--header-h));
-  padding-block: 96px;
+  padding-block: 56px 72px;
   background: var(--night);
   color: var(--moon);
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  gap: 40px;
 }
 
 .hero .label {
@@ -564,14 +571,254 @@ button {
   margin-top: 20px;
 }
 
-.hero-text {
+.hero-greeting {
   max-width: 30em;
-  margin-top: 24px;
-  color: var(--moon-soft);
+  margin-top: 28px;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: var(--moon);
+}
+
+.hero-hours {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  color: var(--moon-faint);
 }
 
 .hero .btn {
-  margin-top: 48px;
+  margin-top: 44px;
+}
+
+.hero-moon-wrap {
+  justify-self: end;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding-block: 96px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .hero-moon-wrap {
+    order: 2;
+    margin-right: 2vw;
+  }
+}
+
+/*
+ * 첫 화면의 큰 달. 이미지 없이 radial-gradient를 겹쳐 실제 달의 앞면처럼 그린다.
+ * 바다 무늬는 실제 위치를 참고했다(왼쪽 위 비의 바다, 오른쪽 고요의 바다 등).
+ * 별·반짝임은 없다. 영업 중(.is-open)이면 빛무리만 조금 밝아진다.
+ */
+.hero-moon {
+  --hm: clamp(150px, 40vw, 200px);
+  width: var(--hm);
+  height: var(--hm);
+  border-radius: 50%;
+  background:
+    /* 밝은 충돌구(티코): 아래쪽에 하나만, 흐릿하게 */
+    radial-gradient(circle at 44% 83%, rgba(255, 252, 242, 0.45) 0 0.8%, transparent 2.6%),
+    /* 바다 무늬 */
+    radial-gradient(ellipse 20% 15% at 36% 28%, rgba(112, 101, 80, 0.42), transparent 72%),
+    radial-gradient(ellipse 11% 10% at 57% 30%, rgba(112, 101, 80, 0.4), transparent 76%),
+    radial-gradient(ellipse 14% 12% at 63% 45%, rgba(112, 101, 80, 0.36), transparent 76%),
+    radial-gradient(ellipse 6% 7% at 82% 36%, rgba(112, 101, 80, 0.4), transparent 82%),
+    radial-gradient(ellipse 8% 11% at 74% 57%, rgba(112, 101, 80, 0.28), transparent 76%),
+    radial-gradient(ellipse 5% 6% at 65% 62%, rgba(112, 101, 80, 0.26), transparent 80%),
+    radial-gradient(ellipse 15% 28% at 22% 50%, rgba(112, 101, 80, 0.32), transparent 72%),
+    radial-gradient(ellipse 12% 8% at 42% 63%, rgba(112, 101, 80, 0.24), transparent 76%),
+    radial-gradient(ellipse 22% 4% at 46% 16%, rgba(112, 101, 80, 0.2), transparent 80%),
+    /* 표면 명암 */
+    radial-gradient(circle at 42% 38%, #F8F2E2 0%, #EAE0C8 45%, #D2C5A6 85%, #BBAD8D 100%);
+  box-shadow:
+    inset calc(var(--hm) * -0.05) calc(var(--hm) * -0.04) calc(var(--hm) * 0.12) rgba(16, 20, 29, 0.28),
+    0 0 calc(var(--hm) * 0.25) calc(var(--hm) * 0.02) rgba(236, 229, 213, 0.1),
+    0 0 calc(var(--hm) * 1.1) 0 rgba(236, 229, 213, 0.05);
+  transition: box-shadow 1.6s var(--ease);
+  animation: moon-rise 1.8s var(--ease) both;
+}
+
+.hero-moon.is-open {
+  box-shadow:
+    inset calc(var(--hm) * -0.05) calc(var(--hm) * -0.04) calc(var(--hm) * 0.12) rgba(16, 20, 29, 0.28),
+    0 0 calc(var(--hm) * 0.3) calc(var(--hm) * 0.04) rgba(236, 229, 213, 0.2),
+    0 0 calc(var(--hm) * 1.2) 0 rgba(236, 229, 213, 0.1);
+}
+
+@media (min-width: 900px) {
+  .hero-moon {
+    --hm: clamp(280px, 30vw, 400px);
+  }
+}
+
+@keyframes moon-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* ---------- 7-1. 홈 시그니처 (휴대폰은 옆으로 밀어 보기) ---------- */
+.section-head--row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px 24px;
+}
+
+.section-head-title {
+  display: grid;
+  gap: 12px;
+}
+
+.section-head--row .link-more {
+  margin-top: 0;
+}
+
+.signature-list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 62%;
+  gap: 16px;
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  scroll-padding-inline: var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.signature-list::-webkit-scrollbar {
+  display: none;
+}
+
+.signature-item {
+  scroll-snap-align: start;
+}
+
+.signature-link {
+  display: block;
+}
+
+.signature-photo {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--night);
+}
+
+.signature-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.signature-link:hover .signature-photo img {
+  transform: scale(1.04);
+}
+
+.signature-name {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+}
+
+.signature-en {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 0.9375rem;
+  color: var(--text-sub);
+}
+
+.signature-price {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: var(--text-sub);
+}
+
+@media (min-width: 768px) {
+  .signature-list {
+    grid-auto-columns: 36%;
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .signature-list {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+}
+
+/* ---------- 7-2. 소식 목록 ---------- */
+.news-list {
+  border-top: 1px solid var(--line);
+}
+
+.news-link {
+  display: grid;
+  gap: 6px;
+  padding-block: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.news-meta {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+.news-meta time {
+  font-variant-numeric: tabular-nums;
+}
+
+.news-title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+}
+
+.news-link:hover .news-title {
+  text-decoration-line: underline;
+}
+
+.news-summary {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-sub);
+  text-wrap: pretty;
+}
+
+/* ---------- 7-3. 홈 찾아오시는 길 ---------- */
+.status-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-inline[hidden] {
+  display: none;
+}
+
+.visit-btn {
+  margin-top: 32px;
 }
 
 /* ---------- 8. 정보 목록 · 표 ---------- */
@@ -1037,8 +1284,8 @@ button {
 }
 
 .fav-btn[aria-pressed="true"] .star {
-  fill: var(--brass);
-  stroke: var(--brass);
+  fill: var(--star);
+  stroke: var(--star);
 }
 
 .menu-item .fav-btn {
