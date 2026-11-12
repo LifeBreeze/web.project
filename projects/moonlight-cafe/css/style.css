@@ -432,6 +432,117 @@ button {
   }
 }
 
+/* 아주 좁은 화면에서는 로고 영문을 숨겨 영업 상태가 들어갈 자리를 만든다. */
+@media (max-width: 359px) {
+  .header-inner .logo-en {
+    display: none;
+  }
+}
+
+/* ---------- 6-1. 영업 상태 (작은 달 + 글자) ---------- */
+.open-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 12px;
+  font-size: 0.8125rem;
+  line-height: 1;
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+
+.open-status[hidden] {
+  display: none;
+}
+
+.open-status-label {
+  color: var(--text);
+}
+
+/* 휴대폰에서는 "영업 중"만, 조금 넓어지면 "· 02:00까지"까지 */
+.open-status-detail {
+  display: none;
+}
+
+@media (min-width: 560px) {
+  .open-status-detail {
+    display: inline;
+  }
+}
+
+@media (min-width: 900px) {
+  .open-status {
+    order: 2;
+    margin: 0 0 0 40px;
+    padding-left: 40px;
+    border-left: 1px solid var(--line);
+    height: 20px;
+  }
+
+  .site-nav {
+    order: 1;
+    margin-left: auto;
+  }
+}
+
+/*
+ * 실제처럼 그린 달. 이미지 없이 radial-gradient를 겹쳐 그린다.
+ * 기본은 빛이 꺼진 달(그믐 느낌), .is-lit이면 빛나는 보름달.
+ * 크기는 --moon-size로 바꾼다. 헤더 12px, 찾아오시는 길 48px 안팎.
+ */
+.moon {
+  --moon-size: 12px;
+  position: relative;
+  flex: none;
+  width: var(--moon-size);
+  height: var(--moon-size);
+  border-radius: 50%;
+  /* 꺼진 달: 어두운 표면에 오른쪽 가장자리만 희미하게 */
+  background:
+    radial-gradient(circle at 30% 50%, #2A2F39 0 58%, transparent 72%),
+    radial-gradient(circle at 50% 50%, #3A3F49, #23272F);
+  box-shadow:
+    inset calc(var(--moon-size) * -0.07) 0 calc(var(--moon-size) * 0.08) calc(var(--moon-size) * -0.02) rgba(236, 229, 213, 0.34),
+    0 0 0 0 rgba(214, 196, 150, 0);
+  transition: box-shadow 1.2s var(--ease);
+}
+
+/* 빛나는 표면은 겹쳐 둔 층의 투명도로 천천히 켜고 끈다. */
+.moon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0;
+  background:
+    /* 바다 무늬: 실제 달처럼 경계가 흐릿하고 고르지 않은 얼룩 */
+    radial-gradient(ellipse 30% 22% at 36% 30%, rgba(128, 116, 92, 0.42), transparent 100%),
+    radial-gradient(ellipse 15% 13% at 60% 30%, rgba(128, 116, 92, 0.36), transparent 100%),
+    radial-gradient(ellipse 20% 22% at 66% 50%, rgba(128, 116, 92, 0.32), transparent 100%),
+    radial-gradient(ellipse 13% 30% at 24% 56%, rgba(128, 116, 92, 0.28), transparent 100%),
+    radial-gradient(ellipse 12% 10% at 52% 66%, rgba(128, 116, 92, 0.20), transparent 100%),
+    /* 표면 명암: 왼쪽 위가 밝고 가장자리로 갈수록 살짝 어둡게 */
+    radial-gradient(circle at 40% 36%, #FBF6EA 0%, #EEE5D0 50%, #D5C9AD 100%);
+  box-shadow: inset 0 0 0 0.75px rgba(27, 31, 39, 0.18);
+  transition: opacity 1.2s var(--ease);
+}
+
+.moon.is-lit {
+  /* 아주 약한 빛무리 */
+  box-shadow:
+    inset 0 0 0 0 rgba(236, 229, 213, 0),
+    0 0 calc(var(--moon-size) * 0.6) calc(var(--moon-size) * 0.12) rgba(214, 196, 150, 0.55);
+}
+
+.moon.is-lit::before {
+  opacity: 1;
+}
+
+.moon--lg {
+  --moon-size: 48px;
+}
+
 /* ---------- 7. 홈 첫 화면 ---------- */
 .hero {
   display: flex;
@@ -565,7 +676,57 @@ button {
   }
 }
 
-/* ---------- 10. 동작 줄이기 설정 존중 ---------- */
+/* ---------- 10. 맨 위로 버튼 ---------- */
+.to-top {
+  position: fixed;
+  right: var(--gutter);
+  bottom: 24px;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(251, 250, 247, 0.92);
+  color: var(--text);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease),
+    visibility 0.4s, border-color 0.3s var(--ease);
+}
+
+.to-top svg {
+  width: 16px;
+  height: 16px;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top:hover {
+  border-color: var(--text);
+}
+
+/* ---------- 11. 천천히 나타나기 (common.js가 .reveal을 붙인다) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 12. 동작 줄이기 설정 존중 ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
