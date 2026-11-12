@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life1008 - 개인 이력서</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link rel="stylesheet" href="style.css?v=20261018-2">
+    <link rel="stylesheet" href="style.css?v=20261104">
 </head>
 <body>
+
+    <!-- Claude 수정 테스트 (2026-11-12) -->
 
     <!-- header : F-01 소개 / F-02 연락 채널 / A-02 상단 고정 바 -->
     <header class="site-header">
@@ -102,8 +104,8 @@
 
             <!-- 한눈에 보는 숫자 -->
             <ul class="stats" aria-label="요약">
-                <li class="stat" data-reveal><span class="stat-num">9</span><span class="stat-label">전체 실적</span><span class="stat-note">2019년부터 2026년까지</span></li>
-                <li class="stat" data-reveal><span class="stat-num">6</span><span class="stat-label">프로젝트</span><span class="stat-note">Python · C · C# · 엔트리</span></li>
+                <li class="stat" data-reveal><span class="stat-num">11</span><span class="stat-label">전체 실적</span><span class="stat-note">2019년부터 2026년까지</span></li>
+                <li class="stat" data-reveal><span class="stat-num">8</span><span class="stat-label">프로젝트</span><span class="stat-note">Python · C · C# · 엔트리</span></li>
                 <li class="stat" data-reveal><span class="stat-num">2</span><span class="stat-label">수상</span><span class="stat-note">해커톤 대상 포함</span></li>
                 <li class="stat stat-accent" data-reveal><span class="stat-num">5<small>/15</small></span><span class="stat-label">실습 진행 주차</span><span class="stat-note">웹프로그래밍 2026-2</span></li>
             </ul>
@@ -121,9 +123,9 @@
                 </div>
 
                 <div class="tabs" role="group" aria-label="분류별 보기" data-reveal>
-                    <button type="button" class="tab" data-filter="all" aria-pressed="true">전체 <span>9</span></button>
+                    <button type="button" class="tab" data-filter="all" aria-pressed="true">전체 <span>11</span></button>
                     <button type="button" class="tab" data-filter="award" aria-pressed="false">수상 <span>2</span></button>
-                    <button type="button" class="tab" data-filter="project" aria-pressed="false">프로젝트 <span>6</span></button>
+                    <button type="button" class="tab" data-filter="project" aria-pressed="false">프로젝트 <span>8</span></button>
                     <button type="button" class="tab" data-filter="activity" aria-pressed="false">활동 <span>1</span></button>
                 </div>
 
@@ -138,6 +140,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr data-type="project">
+                                <td class="col-date">2026.11</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/vicarious.html">Vicarious 인생 시뮬레이션 게임 제작 (개인 프로젝트) <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">C / 기획, 세계관 설계, 게임 로직 구현</td>
+                            </tr>
+                            <tr data-type="project">
+                                <td class="col-date">2026.11</td>
+                                <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
+                                <td class="record-title"><a class="record-link" href="projects/chess.html">콘솔 체스 PLUS 제작 프로젝트 <span aria-hidden="true">&rarr;</span></a></td>
+                                <td class="record-role">C / 오픈소스 체스 버그 수정 및 기능 추가</td>
+                            </tr>
                             <tr data-type="project">
                                 <td class="col-date">2026.10</td>
                                 <td class="col-type"><span class="badge badge-project">프로젝트</span></td>
@@ -200,6 +214,8 @@
                 <div class="showcase">
                     <h3 class="showcase-title" data-reveal>직접 해 볼 수 있는 프로젝트</h3>
                     <ul class="showcase-list">
+                        <li data-reveal><a class="show-card" href="projects/vicarious.html"><img src="projects/media/vicarious/preview.png" width="800" height="540" alt="검은 콘솔 화면에 출생 정보와 인생 사건이 찍힌 Vicarious 플레이 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">C · 플레이</span><strong>Vicarious</strong><span>10개 종족 중 하나로 태어나 한 생 살기</span></span></a></li>
+                        <li data-reveal><a class="show-card" href="projects/chess.html"><img src="projects/media/chess/preview.png" width="800" height="540" alt="갈색과 초록 칸에 WP, BK 글자로 말을 표시한 콘솔 체스판" loading="lazy"><span class="show-meta"><span class="badge badge-project">C · 플레이</span><strong>콘솔 체스 PLUS</strong><span>둘이서 두는 체스, 무르기와 기보까지</span></span></a></li>
                         <li data-reveal><a class="show-card" href="projects/pacman.html"><img src="projects/media/pacman/preview.png" width="800" height="540" alt="검은 화면에 파란 벽과 노란 C, 빨간 X가 찍힌 팩맨 콘솔 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">C · 플레이</span><strong>팩맨 게임</strong><span>난이도 3단계, 원본 규칙 그대로</span></span></a></li>
                         <li data-reveal><a class="show-card" href="projects/island.html"><img src="projects/media/island/scene00.jpg" width="960" height="540" alt="푸른 바다 위 섬, 무인도 탈출 시작 화면" loading="lazy"><span class="show-meta"><span class="badge badge-project">엔트리 · 플레이</span><strong>무인도 탈출 게임</strong><span>선택지를 골라 엔딩 3개 찾기</span></span></a></li>
                         <li data-reveal><a class="show-card" href="projects/shooting.html"><img src="projects/media/shooting/background.png" width="564" height="564" alt="덩굴이 덮인 돌길, 슈팅 게임 배경" loading="lazy"><span class="show-meta"><span class="badge badge-project">Python · 플레이</span><strong>몬스터 디펜스</strong><span>원본 그림과 효과음으로 플레이</span></span></a></li>

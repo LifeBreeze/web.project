@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vicarious - Life1008</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../style.css?v=20261104">
+    <link rel="stylesheet" href="project.css?v=20261104b">
+</head>
+<body>
+
+    <header class="bar">
+        <div class="container bar-inner">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark" aria-hidden="true">L</span>
+                <span class="brand-text">
+                    <span class="brand-name">Life1008</span>
+                    <span class="brand-sub">프로젝트 상세</span>
+                </span>
+            </a>
+            <a class="btn btn-ghost back-link" href="../index.html#achievements">&larr; 이력서로</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="container p-hero">
+            <div class="p-chips">
+                <span class="chip chip-live">2026.11 · 개인 프로젝트</span>
+                <span class="chip">C 언어 · 콘솔 게임</span>
+                <span class="chip">텍스트 시뮬레이션</span>
+            </div>
+            <h1 class="p-title">Vicarious</h1>
+            <p class="p-lead">행성 '티아니어'에서 무작위 종족과 신분으로 태어나 한 사람의 일생을 살아 보는 C 언어 인생 시뮬레이션입니다. 5개 대륙, 10개 종족, 27개 직업, 170여 개의 사건을 직접 설계했습니다. 아래에서 원본과 같은 확률과 문장으로 바로 플레이할 수 있습니다.</p>
+            <dl class="p-meta">
+                <div><dt>시기</dt><dd>2026년 11월</dd></div>
+                <div><dt>언어</dt><dd>C (Visual Studio)</dd></div>
+                <div><dt>본인 역할</dt><dd>기획, 세계관 설계, 게임 로직 구현</dd></div>
+                <div><dt>구성</dt><dd>main.c · life.c · data.c · game.h</dd></div>
+            </dl>
+        </section>
+
+        <section class="container p-section" aria-labelledby="play-title">
+            <h2 class="p-h2" id="play-title">바로 플레이하기</h2>
+            <div class="stage">
+                <div class="stage-bar">
+                    <p class="stage-stats" aria-live="polite"><span><b id="vic-info">아직 태어나지 않았습니다</b></span></p>
+                    <div class="stage-buttons">
+                        <button type="button" class="stage-btn" id="vic-fast" aria-pressed="false">빠르게</button>
+                        <button type="button" class="stage-btn" id="vic-file">기록 파일 받기</button>
+                    </div>
+                </div>
+                <div class="vic-stats">
+                    <div class="vic-stat" data-stat="0">건강 <b>-</b><div class="vic-bar"><span></span></div></div>
+                    <div class="vic-stat" data-stat="1">행복 <b>-</b><div class="vic-bar"><span></span></div></div>
+                    <div class="vic-stat" data-stat="2">재산 <b>-</b><div class="vic-bar"><span></span></div></div>
+                    <div class="vic-stat" data-stat="3">지식 <b>-</b><div class="vic-bar"><span></span></div></div>
+                    <div class="vic-stat" data-stat="4">명성 <b>-</b><div class="vic-bar"><span></span></div></div>
+                </div>
+                <div class="term vic-term" id="vic-term" aria-live="polite"></div>
+                <div class="term-quick vic-choices" id="vic-choices"></div>
+                <p class="stage-help">선택지는 버튼을 누르거나 숫자 키 <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd>으로 고르고, 계속은 <kbd>Enter</kbd>입니다. 인생 기록은 이 브라우저에 저장되고 <b>기록 파일 받기</b>로 vicarious_records.txt를 내려받을 수 있습니다.</p>
+            </div>
+            <noscript><p class="p-note">이 게임은 자바스크립트가 켜져 있어야 실행됩니다.</p></noscript>
+        </section>
+
+        <section class="container p-section" aria-labelledby="feat-title">
+            <h2 class="p-h2" id="feat-title">구현한 것</h2>
+            <div class="features">
+                <article class="feature">
+                    <h3>종족마다 다른 수명과 시간</h3>
+                    <p>고블린 40년부터 뱀파이어 1000년까지 수명이 다르고, 한 턴은 수명의 80분의 1입니다. 나이 단계도 수명 대비 비율로 나눠 어떤 종족이든 80턴 안팎의 일생이 됩니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>조건이 붙는 사건</h3>
+                    <p>사건마다 나이 단계, 종족, 신분, 결혼 여부 같은 조건과 한 번만, 쿨다운, 최대 3회 규칙을 붙여 매번 다른 이야기가 나오게 했습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>이어지는 이야기</h3>
+                    <p>가게를 차리면 경쟁 가게가, 빚을 지면 빚 독촉과 상환이 이어지도록 표시(플래그)로 사건을 연결했습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>가족과 친구, 같은 날 태어난 이들</h3>
+                    <p>부모, 배우자, 자녀, 친구도 함께 나이를 먹고 세상을 떠납니다. 같은 날 다른 종족 4명이 태어나 그들의 소식이 들려옵니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>직업과 위기</h3>
+                    <p>공통·신분·종족 직업 중 하나를 고르면 직업 사건과 직업 위험이 생기고, 사고는 바로 죽지 않고 '위기'로 먼저 나타나 건강이 높을수록 살아남습니다.</p>
+                </article>
+                <article class="feature">
+                    <h3>점수, 통계, 기록 파일</h3>
+                    <p>능력치 평균, 업적, 수명을 채운 정도로 점수를 매기고, 여러 판의 통계와 인생 요약을 파일로 저장합니다. 슬라임은 분열체로 다음 세대를 이어 갑니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="code-title">
+            <h2 class="p-h2" id="code-title">핵심 코드</h2>
+            <pre class="code"><code>/* 사건: 문장과 효과, 조건을 데이터로 분리해 data.c 에 모았다 */
+typedef struct {
+    char name[30];          /* 짧은 이름 (기록·사망 원인에 사용) */
+    char text[120];         /* 화면에 보여 줄 문장 */
+    int  race;              /* -1 공통, 0~9 종족 사건 */
+    int  stage;             /* 일어나는 나이 단계 */
+    int  effect[STAT_COUNT];/* 능력치 변화 */
+    int  cond;              /* 일어나기 위한 조건 (enum Cond) */
+    int  special;           /* 특별 처리 번호 (enum Special) */
+    int  once;              /* 1이면 일생에 한 번만 */
+    int  npcRel;            /* 등장하는 사람. 문장의 %s 에 이름이 들어간다 */
+    int  needFlag;          /* 이 표시가 켜져 있어야 일어난다 */
+} Event;
+
+/* 이번 턴에 일어날 수 있는 사건만 모아서 그중 하나를 고른다 */
+if (e-&gt;once &amp;&amp; p-&gt;eventUsed[i]) continue;
+if (p-&gt;eventUsed[i] &gt;= MAX_REPEAT) continue;
+if (p-&gt;eventUsed[i] &amp;&amp; p-&gt;turn - p-&gt;lastTurn[i] &lt; COOLDOWN) continue;
+if (!checkCond(p, e-&gt;cond)) continue;
+list[n++] = i;</code></pre>
+        </section>
+
+        <section class="container p-section" aria-labelledby="debug-title">
+            <h2 class="p-h2" id="debug-title">디버그 해결 경험</h2>
+            <div class="debug-list">
+                <article class="debug">
+                    <h3>같은 사건이 계속 반복됨</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>한 사람의 일생에 같은 사건이 연달아, 또는 열 번 넘게 나와 이야기가 단조로웠습니다.</dd></div>
+                        <div><dt>원인</dt><dd>조건에 맞는 사건 중에서 매 턴 무작위로만 골라서, 후보가 적은 단계에서는 같은 사건이 계속 뽑혔습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>사건별로 나온 횟수와 마지막 턴을 기록해, 8턴 안에는 다시 나오지 않고 일생에 최대 3번까지만 나오게 했습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>컴파일러마다 한글이 깨짐</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>Visual Studio에서는 한글이 잘 나오는데, gcc로 컴파일하면 콘솔 글자가 깨졌습니다.</dd></div>
+                        <div><dt>원인</dt><dd>gcc는 소스의 한글을 UTF-8 그대로 두고, Windows 콘솔은 기본이 CP949라 서로 맞지 않았습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>gcc로 컴파일할 때만 <code>SetConsoleOutputCP(65001)</code>로 콘솔을 UTF-8로 바꾸도록 <code>#if</code>로 나눴습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>화면의 숫자와 실제 능력치가 다름</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>고블린은 재산 변화가 2배인데, 화면에는 원래 숫자가 찍혀 계산이 맞지 않아 보였습니다.</dd></div>
+                        <div><dt>원인</dt><dd>능력치를 바꾸는 <code>addStat()</code>에서만 2배를 하고, 출력하는 쪽은 원래 값을 썼습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>출력하는 <code>changeStat()</code>에서도 같은 조건으로 2배를 해서 보이는 숫자와 실제 변화를 맞췄습니다.</dd></div>
+                    </dl>
+                </article>
+                <article class="debug">
+                    <h3>엉뚱한 직업이 선택됨</h3>
+                    <dl>
+                        <div><dt>문제</dt><dd>직업 사건이 다른 직업을 가진 사람에게 나오거나, 후계자가 아닌데 후계자 규칙이 적용됐습니다.</dd></div>
+                        <div><dt>원인</dt><dd>직업 번호를 숫자로 직접 적어서, <code>jobs</code> 배열 순서를 바꾸자 번호가 어긋났습니다.</dd></div>
+                        <div class="debug-fix"><dt>해결</dt><dd>직업 번호를 <code>enum JobId</code>로 이름 붙이고, 배열 순서와 같아야 한다는 주석을 달아 번호 대신 이름으로 쓰게 했습니다.</dd></div>
+                    </dl>
+                </article>
+            </div>
+        </section>
+
+        <section class="container p-section" aria-labelledby="learn-title">
+            <h2 class="p-h2" id="learn-title">배운 점과 성취</h2>
+            <div class="learn">
+                <div class="learn-col">
+                    <h3>핵심으로 배운 것</h3>
+                    <ul class="learn-list">
+                        <li>구조체 배열로 게임 데이터(종족, 직업, 사건)와 로직을 분리하는 설계</li>
+                        <li><code>enum</code>으로 숫자에 이름을 붙여 실수를 줄이는 방법</li>
+                        <li>헤더 파일과 <code>extern</code>으로 여러 .c 파일을 나눠 관리하는 법</li>
+                        <li>천분율 확률과 가중치로 게임 밸런스를 조절하는 방법</li>
+                    </ul>
+                </div>
+                <div class="learn-col learn-achieve">
+                    <h3>성취</h3>
+                    <ul class="learn-list">
+                        <li>과제가 아닌 개인 프로젝트로, 세계관부터 밸런스까지 혼자 설계하고 만들었습니다.</li>
+                        <li>사건 170여 개를 데이터로 분리해 숫자만 바꿔도 게임 밸런스를 조절할 수 있게 했습니다.</li>
+                        <li>이 사이트에서 원본과 같은 확률과 문장으로 플레이할 수 있습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <nav class="container p-next" aria-label="다른 프로젝트">
+            <a href="chess.html"><span>&larr; 이전 프로젝트</span><strong>콘솔 체스 PLUS</strong></a>
+            <a class="to-next" href="pacman.html"><span>다음 프로젝트 &rarr;</span><strong>팩맨 게임</strong></a>
+        </nav>
+    </main>
+
+    <script src="vicarious-data.js"></script>
+    <script src="vicarious.js"></script>
+</body>
+</html>

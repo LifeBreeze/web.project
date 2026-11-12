@@ -1162,3 +1162,209 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* ===== 콘솔 화면 (체스, Vicarious) ===== */
+.term {
+    height: 420px;
+    padding: 14px 16px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background-color: #0c0c0c;
+    color: #cccccc;
+    font-family: Consolas, 'D2Coding', 'Pretendard Variable', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.c-term {
+    font-family: Consolas, 'D2Coding', 'Pretendard Variable', monospace;
+}
+
+.c-gray { color: #8a8a8a; }
+.c-green { color: #16c60c; }
+.c-cyan { color: #61d6d6; }
+.c-red { color: #e74856; }
+.c-yellow { color: #f9f1a5; }
+.c-echo { color: #f9f1a5; }
+
+.term-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.term-quick:empty {
+    display: none;
+}
+
+.term-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+    background-color: #0c0c0c;
+}
+
+.term-form:focus-within {
+    border-color: #ffd84d;
+}
+
+.term-prompt {
+    flex-shrink: 0;
+    color: #f9f1a5;
+    font-family: Consolas, 'D2Coding', 'Pretendard Variable', monospace;
+    font-size: 14px;
+}
+
+.term-input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    font-family: Consolas, 'D2Coding', monospace;
+    font-size: 15px;
+    outline: none;
+}
+
+/* ===== 체스 ===== */
+.chess {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: 22px repeat(8, 1fr) 22px;
+    gap: 0;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #0c0c0c;
+}
+
+.cb-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+    color: #cccccc;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+}
+
+.cb-sq {
+    aspect-ratio: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    font-family: Consolas, 'D2Coding', monospace;
+    font-size: clamp(11px, 1.6vw, 17px);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cb-sq.is-light { background-color: #7f96a8; }
+.cb-sq.is-dark { background-color: #4e6577; }
+.cb-sq.is-white { color: #ffffff; }
+.cb-sq.is-black { color: #111111; }
+.cb-sq.is-sel { background-color: #f2c94c; color: #111111; }
+.cb-sq.is-move { background-color: #8fd19e; color: #111111; }
+.cb-sq.is-take { background-color: #e57373; color: #111111; }
+
+.cb-sq:focus-visible {
+    outline: 3px solid #ffd84d;
+    outline-offset: -3px;
+}
+
+.chess-captured {
+    margin-top: 12px;
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.chess-log {
+    height: 380px;
+}
+
+@media (max-width: 960px) {
+    .chess {
+        grid-template-columns: 1fr;
+    }
+
+    .cb-sq {
+        font-size: clamp(11px, 3.4vw, 17px);
+    }
+
+    .chess-log {
+        height: 260px;
+    }
+}
+
+/* ===== Vicarious ===== */
+.vic-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px 14px;
+    margin-bottom: 14px;
+}
+
+.vic-stat {
+    font-size: 13px;
+    color: #b9c2d3;
+}
+
+.vic-stat b {
+    float: right;
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+}
+
+.vic-bar {
+    height: 6px;
+    margin-top: 6px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+}
+
+.vic-bar span {
+    display: block;
+    height: 100%;
+    width: 50%;
+    border-radius: 3px;
+    background-color: #61d6d6;
+    transition: width 0.3s ease;
+}
+
+.vic-term {
+    height: 480px;
+}
+
+.vic-choices .stage-btn {
+    text-align: left;
+}
+
+.vic-continue {
+    width: 100%;
+}
+
+@media (max-width: 680px) {
+    .vic-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .vic-term {
+        height: 400px;
+    }
+}
