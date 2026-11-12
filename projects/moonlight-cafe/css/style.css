@@ -63,6 +63,8 @@ body {
   line-height: 1.7;
   word-break: keep-all;
   overflow-wrap: break-word;
+  /* Cormorant Garamond의 숫자 0이 영문 o처럼 보이지 않도록 반듯한 숫자를 쓴다. */
+  font-variant-numeric: lining-nums;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -726,7 +728,594 @@ button {
   transform: none;
 }
 
-/* ---------- 12. 동작 줄이기 설정 존중 ---------- */
+/* ---------- 12. 메뉴 페이지 ---------- */
+
+/* 카테고리 탭: 헤더 아래에 붙어 따라온다. 휴대폰에서는 옆으로 밀어 본다. */
+.menu-tabs-bar {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 30;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-tabs {
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.menu-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-tabs-list {
+  display: flex;
+  gap: 28px;
+  white-space: nowrap;
+}
+
+.menu-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 52px;
+  font-size: 0.9375rem;
+  color: var(--text-sub);
+  transition: color 0.3s var(--ease);
+}
+
+.menu-tab:hover,
+.menu-tab[aria-current="true"] {
+  color: var(--text);
+}
+
+/* 선택된 탭: 황동색 가는 밑줄 */
+.menu-tab[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--brass);
+}
+
+.menu-tab:focus-visible {
+  outline-offset: -4px;
+}
+
+.menu-tab .star {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+}
+
+.menu-tab-count {
+  margin-left: 2px;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-sub);
+}
+
+@media (min-width: 768px) {
+  .menu-tabs-list {
+    gap: 36px;
+  }
+}
+
+/* 검색창과 개수 */
+.menu-board {
+  padding-block: 32px var(--section-space);
+}
+
+.menu-board-head {
+  display: grid;
+  gap: 12px;
+}
+
+.menu-search {
+  position: relative;
+}
+
+.menu-search-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  color: var(--text-sub);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.menu-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0 0 28px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.3s var(--ease);
+}
+
+.menu-search-input::placeholder {
+  color: var(--text-sub);
+}
+
+.menu-search-input:focus {
+  outline: none;
+  border-bottom-color: var(--text);
+}
+
+.menu-count {
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+@media (min-width: 768px) {
+  .menu-board {
+    padding-top: 48px;
+  }
+
+  .menu-board-head {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-search {
+    width: 320px;
+  }
+}
+
+/* 메뉴판: 카테고리마다 제목 + 목록 */
+.menu-group {
+  padding-top: 48px;
+}
+
+.menu-group-head {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 16px;
+}
+
+.menu-list {
+  display: grid;
+  border-top: 1px solid var(--text);
+}
+
+@media (min-width: 900px) {
+  .menu-group {
+    padding-top: 64px;
+  }
+
+  .menu-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+  }
+}
+
+.menu-item {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+
+/* 한 줄 전체가 버튼: 사진 · 이름과 설명 · 가격 */
+.menu-item-open {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  width: calc(100% + 24px);
+  margin-inline: -12px;
+  padding: 20px 12px 22px;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease);
+}
+
+.menu-item-open:hover {
+  background: rgba(27, 31, 39, 0.03);
+}
+
+.menu-item-open:focus-visible {
+  outline-offset: -2px;
+}
+
+.menu-thumb {
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  background: var(--night);
+}
+
+.menu-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.menu-item-open:hover .menu-thumb img {
+  transform: scale(1.05);
+}
+
+.menu-item-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.menu-item-name {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.menu-item-en {
+  font-family: var(--font-en);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--text-sub);
+}
+
+.menu-item-desc {
+  margin-top: 6px;
+  text-wrap: pretty;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+}
+
+.menu-meta {
+  margin-top: 8px;
+  font-family: var(--font-en);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  color: var(--text-sub);
+}
+
+.menu-meta-ko {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.menu-item-price {
+  padding-top: 2px;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+/* 찜 별: 평소에는 가는 선, 찜하면 황동색으로 채운다. */
+.fav-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: color 0.3s var(--ease);
+}
+
+.fav-btn:hover {
+  color: var(--text);
+}
+
+.fav-btn .star {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.1;
+  transition: fill 0.3s var(--ease), stroke 0.3s var(--ease);
+}
+
+.fav-btn[aria-pressed="true"] .star {
+  fill: var(--brass);
+  stroke: var(--brass);
+}
+
+.menu-item .fav-btn {
+  position: absolute;
+  right: -10px;
+  bottom: 10px;
+}
+
+.fav-btn--text {
+  display: inline-flex;
+  gap: 8px;
+  width: auto;
+  padding-inline: 4px;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.menu-empty {
+  padding-block: 64px;
+  color: var(--text-sub);
+}
+
+/* ---------- 13. 메뉴 상세 창 ---------- */
+html:has(.menu-dialog[open]) {
+  overflow: hidden;
+}
+
+.menu-dialog {
+  width: min(880px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.menu-dialog[open] {
+  animation: dialog-in 0.35s var(--ease);
+}
+
+.menu-dialog::backdrop {
+  background: rgba(16, 20, 29, 0.62);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.menu-dialog-inner {
+  display: grid;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(251, 250, 247, 0.94);
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease);
+}
+
+.dialog-close::before,
+.dialog-close::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 50%;
+  height: 1px;
+  background: var(--text);
+}
+
+.dialog-close::before {
+  transform: rotate(45deg);
+}
+
+.dialog-close::after {
+  transform: rotate(-45deg);
+}
+
+.dialog-close:hover {
+  border-color: var(--text);
+}
+
+.menu-dialog-photo {
+  aspect-ratio: 4 / 3;
+  background: var(--night);
+}
+
+.menu-dialog-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-dialog-body {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 32px;
+}
+
+.menu-dialog-body .title-lg {
+  margin-top: 12px;
+  font-size: clamp(1.625rem, 3vw, 2rem);
+}
+
+.menu-dialog-en {
+  margin-top: 4px;
+  font-family: var(--font-en);
+  font-size: 1.0625rem;
+  color: var(--text-sub);
+}
+
+.menu-dialog-body .menu-meta {
+  margin-top: 16px;
+}
+
+.menu-dialog-detail {
+  margin-top: 20px;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--text-sub);
+  text-wrap: pretty;
+}
+
+.menu-dialog-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.menu-dialog-price {
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 768px) {
+  .menu-dialog-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  /* 사진 칸은 창 높이만큼 어둡게 채우고, 정사각형 사진을 가운데 둔다. */
+  .menu-dialog-photo {
+    display: flex;
+    align-items: center;
+    aspect-ratio: auto;
+  }
+
+  .menu-dialog-photo img {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .menu-dialog-body {
+    padding: 48px 44px 40px;
+  }
+}
+
+/* 원두 선택 (커피 6개만) */
+.bean-picker {
+  min-width: 0;
+  margin: 24px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.bean-legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+.bean-options {
+  border-top: 1px solid var(--line);
+}
+
+.bean-option {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.bean-option input {
+  display: grid;
+  place-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0;
+  border: 1px solid var(--text-sub);
+  border-radius: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.bean-option input::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text);
+  transform: scale(0);
+  transition: transform 0.2s var(--ease);
+}
+
+.bean-option input:checked {
+  border-color: var(--text);
+}
+
+.bean-option input:checked::before {
+  transform: scale(1);
+}
+
+.bean-text {
+  display: grid;
+  gap: 1px;
+}
+
+.bean-name {
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.bean-option input:checked + .bean-text .bean-name {
+  font-weight: 600;
+}
+
+.bean-en {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  color: var(--text-sub);
+}
+
+.bean-taste {
+  margin-top: 2px;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+.bean-extra {
+  padding-top: 2px;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  color: var(--text-sub);
+}
+
+.bean-note {
+  margin-top: 12px;
+  font-size: 0.8125rem;
+  color: var(--text-sub);
+}
+
+/* ---------- 14. 동작 줄이기 설정 존중 ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
