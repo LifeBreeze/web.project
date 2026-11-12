@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>찾아오시는 길 · 달빛 Café Dalbit</title>
+  <meta name="description" content="달빛의 주소, 영업시간, 오시는 방법을 안내합니다.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/style.css?v=20261112">
+  <script src="js/common.js?v=20261112" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-ko">달빛</span>
+        <span class="logo-en">Café Dalbit</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bar nav-toggle-bar--top"></span>
+        <span class="nav-toggle-bar nav-toggle-bar--bottom"></span>
+        <span class="sr-only">메뉴 열기</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="주 메뉴">
+        <ul>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="menu.html">메뉴</a></li>
+          <li><a href="about.html">소개</a></li>
+          <li><a href="visit.html" aria-current="page">찾아오시는 길</a></li>
+          <li><a href="news.html">소식</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <p class="label">Visit</p>
+        <h1 class="title-xl">찾아오시는 길</h1>
+        <p class="lead">저녁 여섯 시부터 새벽 두 시까지 문을 엽니다.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="address-title">
+      <div class="container split">
+        <div class="section-head">
+          <p class="label"><span class="label-num">01</span>— Address</p>
+          <h2 id="address-title" class="title-lg">주소와 연락처</h2>
+        </div>
+        <dl class="info-list">
+          <div>
+            <dt>주소</dt>
+            <dd>서울시 중구 월하길 15, 1층</dd>
+          </div>
+          <div>
+            <dt>전화</dt>
+            <dd>02-000-0000</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="hours-title">
+      <div class="container split">
+        <div class="section-head">
+          <p class="label"><span class="label-num">02</span>— Hours</p>
+          <h2 id="hours-title" class="title-lg">영업시간</h2>
+        </div>
+        <table class="hours-table">
+          <caption class="sr-only">요일별 영업시간</caption>
+          <tbody>
+            <tr>
+              <th scope="row">화 – 일</th>
+              <td>18:00 – 02:00</td>
+            </tr>
+            <tr>
+              <th scope="row">월</th>
+              <td>휴무</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="map-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="label"><span class="label-num">03</span>— Map</p>
+          <h2 id="map-title" class="title-lg">약도</h2>
+        </div>
+        <p class="pending">약도를 준비하고 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="route-title">
+      <div class="container split">
+        <div class="section-head">
+          <p class="label"><span class="label-num">04</span>— Route</p>
+          <h2 id="route-title" class="title-lg">오시는 방법</h2>
+        </div>
+        <dl class="info-list">
+          <div>
+            <dt>지하철</dt>
+            <dd>월하역 2번 출구에서 걸어서 5분</dd>
+          </div>
+          <div>
+            <dt>버스</dt>
+            <dd>월하길 입구 정류장에서 걸어서 2분</dd>
+          </div>
+          <div>
+            <dt>주차</dt>
+            <dd>주차 공간이 없어 대중교통을 권합니다</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p class="logo-ko">달빛</p>
+        <p class="label">Evening coffee, under the moon</p>
+      </div>
+      <dl class="footer-info">
+        <div>
+          <dt>Hours</dt>
+          <dd>화–일 18:00 – 02:00<br>월요일 휴무</dd>
+        </div>
+        <div>
+          <dt>Address</dt>
+          <dd>서울시 중구 월하길 15, 1층</dd>
+        </div>
+        <div>
+          <dt>Contact</dt>
+          <dd>02-000-0000</dd>
+        </div>
+      </dl>
+      <p class="footer-note">달빛은 가상의 카페입니다 · 웹프로그래밍 수업 과제</p>
+    </div>
+  </footer>
+</body>
+</html>
