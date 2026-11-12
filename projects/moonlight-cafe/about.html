@@ -10,9 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261112-5">
-  <script src="js/data-menu.js?v=20261112-5" defer></script>
-  <script src="js/common.js?v=20261112-5" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261112-6">
+  <script src="js/data-menu.js?v=20261112-6" defer></script>
+  <script src="js/common.js?v=20261112-6" defer></script>
+  <script src="js/pages.js?v=20261112-6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -56,7 +57,10 @@
           <p class="label"><span class="label-num">01</span>— Story</p>
           <h2 id="story-title" class="title-lg">카페 이야기</h2>
         </div>
-        <p class="body-text">하루를 마친 저녁, 잠시 머물다 갈 수 있는 곳을 생각하며 문을 열었습니다.</p>
+        <div>
+          <p class="body-text">달빛은 해가 진 뒤에 문을 여는 작은 카페입니다. 하루를 마친 사람들이 잠시 머물다 갈 수 있는 곳을 생각하며 저녁 여섯 시에 불을 켭니다.</p>
+          <p class="body-text">분주한 음악과 주문 소리 대신 낮은 조명과 천천히 내린 커피 한 잔을 준비합니다. 혼자 오셔도, 둘이 오셔도 편히 앉아 계실 수 있도록 자리 사이를 넉넉히 두었습니다.</p>
+        </div>
       </div>
     </section>
 
@@ -66,7 +70,12 @@
           <p class="label"><span class="label-num">02</span>— Name</p>
           <h2 id="name-title" class="title-lg">달빛이라는 이름</h2>
         </div>
-        <p class="body-text">해가 진 뒤에야 문을 여는 카페라서, 밤을 밝히는 달빛을 이름으로 삼았습니다.</p>
+        <div>
+          <blockquote class="quote">
+            <p>하루를 마친 밤,<br>달빛 아래 조용히 쉬어 가는 곳.</p>
+          </blockquote>
+          <p class="body-text">해가 진 뒤에야 문을 여는 카페라서, 밤을 밝히는 달빛을 이름으로 삼았습니다. 보름달 라떼, 초승달 크림 콜드브루, 블루문 토닉처럼 시그니처 메뉴의 이름도 밤하늘에서 빌려 왔습니다.</p>
+        </div>
       </div>
     </section>
 
@@ -76,17 +85,36 @@
           <p class="label"><span class="label-num">03</span>— Space</p>
           <h2 id="space-title" class="title-lg">공간</h2>
         </div>
-        <p class="pending">공간 사진을 준비하고 있습니다.</p>
+        <div class="space-grid">
+          <figure class="space-item">
+            <div class="space-photo"><img src="images/about/counter.jpg" alt="짙은 원목 바 카운터 위로 낮은 조명이 비치는 모습" width="800" height="1000" loading="lazy" data-fallback></div>
+            <figcaption><span class="space-name">바 카운터</span>원두를 갈고 커피를 내리는 자리</figcaption>
+          </figure>
+          <figure class="space-item">
+            <div class="space-photo"><img src="images/about/window-seat.jpg" alt="밤 풍경이 보이는 긴 창가 자리" width="800" height="1000" loading="lazy" data-fallback></div>
+            <figcaption><span class="space-name">창가 자리</span>달이 보이는 긴 창</figcaption>
+          </figure>
+          <figure class="space-item">
+            <div class="space-photo"><img src="images/about/lamp-table.jpg" alt="작은 탁상 등이 놓인 2인 테이블" width="800" height="1000" loading="lazy" data-fallback></div>
+            <figcaption><span class="space-name">안쪽 테이블</span>작은 등 아래 조용한 자리</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="beans-title">
-      <div class="container split">
-        <div class="section-head">
-          <p class="label"><span class="label-num">04</span>— Beans</p>
-          <h2 id="beans-title" class="title-lg">원두</h2>
+      <div class="container">
+        <div class="split">
+          <div class="section-head">
+            <p class="label"><span class="label-num">04</span>— Beans</p>
+            <h2 id="beans-title" class="title-lg">원두</h2>
+          </div>
+          <div>
+            <p class="body-text">카페에서 많이 찾는 원두 세 가지를 준비했습니다. 커피 메뉴 가운데 일부는 원두를 골라 맛을 바꿀 수 있습니다.</p>
+            <p class="body-text" data-bean-menus></p>
+          </div>
         </div>
-        <p class="body-text">브라질 산토스, 콜롬비아 수프리모, 에티오피아 예가체프. 세 가지 원두 가운데 취향에 맞는 한 가지를 고르실 수 있습니다.</p>
+        <ol class="bean-list" data-bean-list></ol>
       </div>
     </section>
   </main>

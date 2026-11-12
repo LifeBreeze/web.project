@@ -10,9 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261112-5">
-  <script src="js/data-news.js?v=20261112-5" defer></script>
-  <script src="js/common.js?v=20261112-5" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261112-6">
+  <script src="js/data-news.js?v=20261112-6" defer></script>
+  <script src="js/common.js?v=20261112-6" defer></script>
+  <script src="js/pages.js?v=20261112-6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -50,9 +51,11 @@
       </div>
     </section>
 
-    <section class="section" aria-label="소식 목록">
+    <section class="news-board" aria-label="소식 목록">
       <div class="container">
-        <p class="pending">소식을 준비하고 있습니다.</p>
+        <ol class="news-page-list" data-news-page>
+          <li><p class="pending">소식을 불러오고 있습니다.</p></li>
+        </ol>
       </div>
     </section>
   </main>
