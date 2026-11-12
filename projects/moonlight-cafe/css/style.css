@@ -565,6 +565,7 @@ button {
 
 .hero .label {
   color: var(--moon-faint);
+  text-wrap: balance; /* 좁은 화면에서 MOON 한 단어만 줄바꿈되지 않게 */
 }
 
 .hero .title-xl {
@@ -573,6 +574,7 @@ button {
 
 .hero-greeting {
   max-width: 30em;
+  text-wrap: balance;
   margin-top: 28px;
   font-family: var(--font-serif);
   font-size: 1.125rem;
