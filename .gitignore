@@ -1,2 +1,5 @@
 # Obsidian 볼트 (개인 작업 노트, 공개하지 않음)
 obsidian/
+
+# Obsidian 화면 상태 파일 (볼트를 공개하게 되더라도 계속 제외)
+**/.obsidian/workspace*.json
