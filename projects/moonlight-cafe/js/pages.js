@@ -27,7 +27,6 @@
     list.innerHTML = BEANS.map(function (bean, index) {
       return (
         '<li class="bean-card">' +
-          '<p class="label">' + String(index + 1).padStart(2, "0") + "</p>" +
           '<h3 class="title-md">' + escapeHtml(bean.name) + "</h3>" +
           '<p class="bean-card-en">' + escapeHtml(bean.nameEn) + "</p>" +
           '<p class="bean-card-taste">' + escapeHtml(bean.taste) + "</p>" +
@@ -87,6 +86,8 @@
         "</li>"
       );
     }).join("");
+
+    if (window.Dalbit && window.Dalbit.reveal) window.Dalbit.reveal(list.children);
 
     // 글이 스크립트로 그려지므로, 홈에서 news.html#id로 왔을 때 직접 그 글로 옮긴다.
     function goToHash() {

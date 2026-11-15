@@ -8,184 +8,200 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261115-1">
-  <script src="js/data-menu.js?v=20261115-1" defer></script>
-  <script src="js/data-news.js?v=20261115-1" defer></script>
-  <script src="js/common.js?v=20261115-1" defer></script>
-  <script src="js/home.js?v=20261115-1" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261115-4">
+  <script src="js/data-menu.js?v=20261115-4" defer></script>
+  <script src="js/data-news.js?v=20261115-4" defer></script>
+  <script src="js/common.js?v=20261115-4" defer></script>
+  <script src="js/home.js?v=20261115-4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html">
-        <span class="logo-ko">달빛</span>
-        <span class="logo-en">Café Dalbit</span>
-      </a>
-      <p class="open-status" data-open-status hidden></p>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bar nav-toggle-bar--top"></span>
-        <span class="nav-toggle-bar nav-toggle-bar--bottom"></span>
-        <span class="sr-only">메뉴 열기</span>
-      </button>
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-current="page">달빛</a>
       <nav id="site-nav" class="site-nav" aria-label="주 메뉴">
         <ul>
-          <li><a href="index.html" aria-current="page">홈</a></li>
           <li><a href="menu.html">메뉴</a></li>
           <li><a href="about.html">소개</a></li>
           <li><a href="visit.html">찾아오시는 길</a></li>
           <li><a href="news.html">소식</a></li>
         </ul>
       </nav>
+      <p class="open-status" data-open-status hidden></p>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bar nav-toggle-bar--top"></span>
+        <span class="nav-toggle-bar nav-toggle-bar--bottom"></span>
+        <span class="sr-only">메뉴 열기</span>
+      </button>
     </div>
   </header>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <div class="hero-moon-wrap" aria-hidden="true">
-          <div class="hero-moon" data-hero-moon></div>
-          <!-- 전통 구름무늬(운문): 달 앞을 천천히 지나간다 -->
-          <svg class="hero-cloud hero-cloud--front" viewBox="0 0 210 85" focusable="false">
-            <path class="cloud-body" d="M20 66C6 66 4 48 18 44 15 30 33 23 44 33 47 17 71 12 82 26 91 15 112 19 113 34 125 31 134 42 128 53 150 53 178 50 204 40 186 56 160 66 130 66Z"/>
-            <g class="cloud-curl"><path d="M24 56C19 50 27 45 32 49 35 53 30 57 28 54"/><path d="M58 40C55 29 72 26 75 35 77 43 64 45 64 38 64 34 70 34 70 37"/><path d="M97 43C95 35 108 33 110 40 111 46 103 47 103 42"/><path d="M34 60C60 62 96 61 126 57"/></g>
-          </svg>
-          <svg class="hero-cloud hero-cloud--back" viewBox="0 0 210 85" focusable="false">
-            <path class="cloud-body" d="M20 66C6 66 4 48 18 44 15 30 33 23 44 33 47 17 71 12 82 26 91 15 112 19 113 34 125 31 134 42 128 53 150 53 178 50 204 40 186 56 160 66 130 66Z"/>
-            <g class="cloud-curl"><path d="M24 56C19 50 27 45 32 49 35 53 30 57 28 54"/><path d="M58 40C55 29 72 26 75 35 77 43 64 45 64 38 64 34 70 34 70 37"/><path d="M97 43C95 35 108 33 110 40 111 46 103 47 103 42"/><path d="M34 60C60 62 96 61 126 57"/></g>
-          </svg>
-        </div>
-        <div class="hero-copy">
-          <p class="label">Evening coffee, under the moon</p>
-          <h1 id="hero-title" class="title-xl">달이 뜨면<br>문을 엽니다</h1>
-          <p class="hero-greeting" data-greeting>저녁 여섯 시에 문을 여는 조용한 카페입니다.</p>
-          <p class="hero-hours">화–일 18:00 – 02:00 · 월요일 휴무</p>
-          <a class="btn btn--light" href="menu.html">메뉴 보기</a>
-        </div>
+      <figure class="hero-moon" data-hero-moon>
+        <svg class="hero-moon-svg" viewBox="0 0 400 400" role="img" aria-labelledby="hero-moon-label">
+          <title id="hero-moon-label" data-moon-label>오늘 밤의 달</title>
+          <defs>
+            <clipPath id="moon-disc"><circle cx="200" cy="200" r="196"/></clipPath>
+          </defs>
+          <g clip-path="url(#moon-disc)">
+            <image href="images/found/moon-nearside.jpg" x="-8" y="-8" width="416" height="416" preserveAspectRatio="xMidYMid slice"/>
+            <path class="hero-moon-shadow" data-moon-shadow d=""/>
+          </g>
+        </svg>
+      </figure>
+      <p class="hero-wordmark" aria-hidden="true">DALBIT</p>
+      <h1 id="hero-title" class="hero-title" data-reveal>달이 뜨면 문을 엽니다</h1>
+      <div class="hero-row" data-reveal>
+        <p class="hero-spec" data-moon-phase>오늘 밤의 달</p>
+        <a class="btn" href="menu.html">메뉴 보기</a>
+        <p class="hero-spec" data-countdown>화–일 18:00 – 02:00</p>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="signature-title">
-      <div class="container">
-        <div class="section-head section-head--row">
-          <div class="section-head-title">
-            <p class="label"><span class="label-num">01</span>— Signature</p>
-            <h2 id="signature-title" class="title-lg">달빛의 한 잔</h2>
-          </div>
-          <a class="link-more" href="menu.html#signature">시그니처 메뉴 보기</a>
-        </div>
-        <ul class="signature-list" data-signature-list></ul>
+    <section class="showcase" aria-labelledby="showcase-title">
+      <div class="showcase-head">
+        <h2 id="showcase-title" class="showcase-title" data-reveal>달의 모양을 닮은 다섯 잔</h2>
+        <p class="showcase-note" data-reveal>사진은 메뉴가 아니라, 메뉴의 이름이 된 달입니다. <a class="text-link" href="menu.html#signature">시그니처 메뉴 자세히 보기</a></p>
+      </div>
+      <ul class="moon-band" data-reveal>
+        <li class="moon-panel" style="--grow: 5">
+          <a href="menu.html#signature">
+            <img src="images/found/moon-nearside.jpg" alt="" width="1100" height="1100" loading="lazy">
+            <span class="panel-text">
+              <span class="panel-name">보름달 라떼</span>
+              <span class="panel-desc">꿀과 바닐라 크림을 둥글게 얹은 라떼</span>
+              <span class="panel-price">6,500원</span>
+            </span>
+          </a>
+        </li>
+        <li class="moon-panel" style="--grow: 2">
+          <a href="menu.html#signature">
+            <img src="images/found/crescent-moon.jpg" alt="" width="667" height="1000" loading="lazy">
+            <span class="panel-text">
+              <span class="panel-name">초승달 크림 콜드브루</span>
+              <span class="panel-price">6,300원</span>
+            </span>
+          </a>
+        </li>
+        <li class="moon-panel" style="--grow: 3">
+          <a href="menu.html#signature">
+            <img src="images/found/moon-atmosphere.jpg" alt="" width="1600" height="1067" loading="lazy">
+            <span class="panel-text">
+              <span class="panel-name">블루문 토닉</span>
+              <span class="panel-price">6,800원</span>
+            </span>
+          </a>
+        </li>
+        <li class="moon-panel" style="--grow: 2">
+          <a href="menu.html#signature">
+            <img src="images/found/first-quarter-moon.jpg" alt="" width="1200" height="1200" loading="lazy">
+            <span class="panel-text">
+              <span class="panel-name">월광 흑임자 라떼</span>
+              <span class="panel-price">6,500원</span>
+            </span>
+          </a>
+        </li>
+        <li class="moon-panel" style="--grow: 3">
+          <a href="menu.html#signature">
+            <img src="images/found/whipple-moon.jpg" alt="" width="901" height="1200" loading="lazy">
+            <span class="panel-text">
+              <span class="panel-name">월하 유자 케이크</span>
+              <span class="panel-price">7,000원</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about" aria-labelledby="about-title">
+      <div class="about-pin">
+        <h2 id="about-title" class="about-title" data-reveal>달 아래<br>한 잔</h2>
+        <p class="about-lead" data-reveal>하루를 마친 저녁, 달빛 아래 잠시 머물다 갈 수 있는 곳을 생각하며 문을 열었습니다. 낮은 조명과 한 잔의 커피로 조용한 밤을 채웁니다.</p>
+        <a class="text-link" href="about.html" data-reveal>달빛 이야기 더 보기</a>
+      </div>
+      <div class="about-exhibits">
+        <figure class="exhibit" data-reveal>
+          <img src="images/found/moon-jar.jpg" alt="둥근 몸통이 조금 기울어진 흰 백자 달항아리" width="900" height="1200" loading="lazy">
+          <figcaption>
+            <span class="exhibit-name">백자 달항아리</span>
+            <span class="exhibit-meta">조선, 18세기 · 메트로폴리탄 미술관</span>
+            <span class="exhibit-text">조금 기울고 둥근 모양을 그대로 아름답게 여긴 그릇입니다. 달빛의 잔과 접시도 그런 마음으로 고릅니다.</span>
+          </figcaption>
+        </figure>
+        <figure class="exhibit" data-reveal>
+          <img src="images/found/whipple-moon.jpg" alt="종이에 인화된 오래된 보름달 사진" width="901" height="1200" loading="lazy">
+          <figcaption>
+            <span class="exhibit-name">달, 1857–60년</span>
+            <span class="exhibit-meta">존 애덤스 휘플 사진 · 메트로폴리탄 미술관</span>
+            <span class="exhibit-text">망원경에 사진기를 대고 찍은 초기의 달 사진입니다. 백육십 년이 지나도 같은 달이 뜹니다.</span>
+          </figcaption>
+        </figure>
+        <figure class="exhibit" data-reveal>
+          <img src="images/found/mellan-full-moon.jpg" alt="가는 선을 휘어 새긴 보름달 판화" width="881" height="1000" loading="lazy">
+          <figcaption>
+            <span class="exhibit-name">보름달, 1635년</span>
+            <span class="exhibit-meta">클로드 멜랑 판화 · 메트로폴리탄 미술관</span>
+            <span class="exhibit-text">선 하나를 휘어 가며 달의 얼굴을 새긴 판화입니다. 밤을 오래 들여다본 사람의 기록입니다.</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="about-title">
-      <div class="container split">
-        <div class="section-head">
-          <p class="label"><span class="label-num">02</span>— About</p>
-          <h2 id="about-title" class="title-lg">달빛 아래,<br>조용한 자리</h2>
-        </div>
-        <div class="about-body">
-          <div>
-            <p class="body-text">하루를 마친 저녁, 달빛 아래 잠시 머물다 갈 수 있는 곳을 생각하며 문을 열었습니다. 낮은 조명과 한 잔의 커피로 조용한 밤을 채웁니다.</p>
-            <a class="link-more" href="about.html">더 알아보기</a>
-          </div>
-          <!-- 한옥의 둥근 달창(만월창) 너머로 보이는 달 -->
-          <svg class="moon-window" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
-            <defs>
-              <clipPath id="moon-window-clip"><circle cx="160" cy="160" r="136"/></clipPath>
-              <radialGradient id="moon-window-moon" cx="42%" cy="38%">
-                <stop offset="0" stop-color="#F8F2E2"/><stop offset=".6" stop-color="#E6DBC2"/><stop offset="1" stop-color="#C9BB9B"/>
-              </radialGradient>
-              <radialGradient id="moon-window-glow">
-                <stop offset=".45" stop-color="#ECE5D5" stop-opacity=".22"/><stop offset="1" stop-color="#ECE5D5" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <circle class="mw-ring-outer" cx="160" cy="160" r="152"/>
-            <circle class="mw-ring" cx="160" cy="160" r="145"/>
-            <g clip-path="url(#moon-window-clip)">
-              <rect class="mw-sky" width="320" height="320"/>
-              <circle cx="196" cy="124" r="84" fill="url(#moon-window-glow)"/>
-              <circle cx="196" cy="124" r="42" fill="url(#moon-window-moon)"/>
-              <g class="mw-cloud" transform="translate(246 128) scale(-.85 .85)">
-                <path class="cloud-body" d="M20 66C6 66 4 48 18 44 15 30 33 23 44 33 47 17 71 12 82 26 91 15 112 19 113 34 125 31 134 42 128 53 150 53 178 50 204 40 186 56 160 66 130 66Z"/>
-                <g class="cloud-curl"><path d="M24 56C19 50 27 45 32 49 35 53 30 57 28 54"/><path d="M58 40C55 29 72 26 75 35 77 43 64 45 64 38 64 34 70 34 70 37"/><path d="M97 43C95 35 108 33 110 40 111 46 103 47 103 42"/><path d="M34 60C60 62 96 61 126 57"/></g>
-              </g>
-              <path class="mw-lattice" d="M88 0V320 M124 0V320 M160 0V320 M196 0V320 M232 0V320 M0 88H320 M0 124H320 M0 160H320 M0 196H320 M0 232H320"/>
-            </g>
-            <circle class="mw-frame" cx="160" cy="160" r="136"/>
-          </svg>
-        </div>
+    <section class="lineup" aria-labelledby="lineup-title">
+      <div class="lineup-head" data-reveal>
+        <h2 id="lineup-title" class="lineup-title">오늘 밤의 메뉴</h2>
+        <a class="text-link" href="menu.html">찜하기와 원두 고르기는 메뉴 페이지에서</a>
+      </div>
+      <div class="lineup-body" data-menu-lineup>
+        <p class="lineup-fallback">메뉴 서른여섯 가지는 <a class="text-link" href="menu.html">메뉴 페이지</a>에서 볼 수 있습니다.</p>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="news-title">
-      <div class="container split">
-        <div class="section-head">
-          <p class="label"><span class="label-num">03</span>— News</p>
-          <h2 id="news-title" class="title-lg">소식</h2>
-        </div>
-        <div>
-          <ul class="news-list" data-news-list></ul>
-          <a class="link-more" href="news.html">소식 전체 보기</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="visit-title">
-      <div class="container split">
-        <div class="section-head">
-          <p class="label"><span class="label-num">04</span>— Visit</p>
-          <h2 id="visit-title" class="title-lg">찾아오시는 길</h2>
-        </div>
-        <div>
-          <dl class="info-list">
-            <div>
-              <dt>지금</dt>
-              <dd><span class="status-inline" data-open-status hidden></span></dd>
-            </div>
-            <div>
-              <dt>영업시간</dt>
-              <dd>화–일 18:00 – 02:00 · 월요일 휴무</dd>
-            </div>
-            <div>
-              <dt>주소</dt>
-              <dd>서울시 중구 월하길 15, 1층</dd>
-            </div>
-            <div>
-              <dt>전화</dt>
-              <dd>02-000-0000</dd>
-            </div>
-          </dl>
-          <a class="btn visit-btn" href="visit.html">찾아오시는 길</a>
-        </div>
+    <section class="visit" aria-labelledby="visit-title">
+      <p class="visit-lead" data-reveal>자정이 지나도 새벽 두 시까지 불을 켜 둡니다.</p>
+      <h2 id="visit-title" class="visit-address" data-reveal><a href="visit.html">월하길 15</a></h2>
+      <div class="visit-foot" data-reveal>
+        <p>서울시 중구 월하길 15, 1층<br>02-000-0000</p>
+        <p>화–일 18:00 – 02:00<br>월요일 휴무</p>
+        <p><a class="text-link" href="visit.html">약도와 오시는 길</a><br><span data-news-latest><a class="text-link" href="news.html">소식 보기</a></span></p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <p class="logo-ko">달빛</p>
-        <p class="label">Evening coffee, under the moon</p>
+    <img class="footer-photo" src="images/found/seoul-night.jpg" alt="" width="1600" height="1200" loading="lazy">
+    <div class="footer-top">
+      <ul class="footer-links">
+        <li><a href="menu.html">메뉴</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="visit.html">찾아오시는 길</a></li>
+        <li><a href="news.html">소식</a></li>
+      </ul>
+      <p class="footer-contact">서울시 중구 월하길 15, 1층<br>02-000-0000<br>화–일 18:00 – 02:00, 월요일 휴무</p>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-wordmark" aria-hidden="true">달빛</p>
+      <div class="footer-legal">
+        <p>달빛은 가상의 카페입니다. 웹프로그래밍 수업 과제로 만들었습니다.</p>
+        <details class="credits">
+          <summary>사진 출처</summary>
+          <p>사진은 자유롭게 쓸 수 있는 공개 자료입니다. 달빛의 메뉴나 공간을 찍은 사진이 아닙니다.</p>
+          <ul>
+            <li>달의 앞면: NASA/GSFC/Arizona State University, public domain, <a href="https://commons.wikimedia.org/wiki/File:Moon_nearside_LRO_5000.jpg">Wikimedia Commons</a></li>
+            <li>백자 달항아리, 조선: 작가 미상, CC0, <a href="https://commons.wikimedia.org/w/index.php?curid=55984154">Wikimedia Commons</a></li>
+            <li>달, 1857–60년 사진: John Adams Whipple, public domain (CC0), <a href="https://www.metmuseum.org/art/collection/search/262301">The Metropolitan Museum of Art</a></li>
+            <li>보름달, 1635년 판화: Claude Mellan, public domain (CC0), <a href="https://www.metmuseum.org/art/collection/search/393543">The Metropolitan Museum of Art</a></li>
+            <li>서울의 밤: Syced, CC0, <a href="https://commons.wikimedia.org/wiki/File:Seoul_by_night_7.jpg">Wikimedia Commons</a></li>
+            <li>초승달: Phil Bruxvoort, public domain, <a href="https://commons.wikimedia.org/wiki/File:Crescent_Moon_(36554527602).jpg">Wikimedia Commons</a></li>
+            <li>상현달: Stephen Rahn from Macon, GA, USA, CC0, <a href="https://commons.wikimedia.org/wiki/File:First_Quarter_Moon_on_12-15-18_-_Flickr_-_StephenGA.png">Wikimedia Commons</a></li>
+            <li>대기 너머의 보름달: NASA, public domain, <a href="https://commons.wikimedia.org/wiki/File:Full_moon_partially_obscured_by_atmosphere.jpg">Wikimedia Commons</a></li>
+          </ul>
+        </details>
       </div>
-      <dl class="footer-info">
-        <div>
-          <dt>Hours</dt>
-          <dd>화–일 18:00 – 02:00<br>월요일 휴무</dd>
-        </div>
-        <div>
-          <dt>Address</dt>
-          <dd>서울시 중구 월하길 15, 1층</dd>
-        </div>
-        <div>
-          <dt>Contact</dt>
-          <dd>02-000-0000</dd>
-        </div>
-      </dl>
-      <p class="footer-note">달빛은 가상의 카페입니다 · 웹프로그래밍 수업 과제</p>
     </div>
   </footer>
 </body>

@@ -8,44 +8,39 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261115-1">
-  <script src="js/data-menu.js?v=20261115-1" defer></script>
-  <script src="js/common.js?v=20261115-1" defer></script>
-  <script src="js/menu.js?v=20261115-1" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261115-4">
+  <script src="js/data-menu.js?v=20261115-4" defer></script>
+  <script src="js/common.js?v=20261115-4" defer></script>
+  <script src="js/menu.js?v=20261115-4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
 
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html">
-        <span class="logo-ko">달빛</span>
-        <span class="logo-en">Café Dalbit</span>
-      </a>
-      <p class="open-status" data-open-status hidden></p>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bar nav-toggle-bar--top"></span>
-        <span class="nav-toggle-bar nav-toggle-bar--bottom"></span>
-        <span class="sr-only">메뉴 열기</span>
-      </button>
+    <div class="header-inner">
+      <a class="logo" href="index.html">달빛</a>
       <nav id="site-nav" class="site-nav" aria-label="주 메뉴">
         <ul>
-          <li><a href="index.html">홈</a></li>
           <li><a href="menu.html" aria-current="page">메뉴</a></li>
           <li><a href="about.html">소개</a></li>
           <li><a href="visit.html">찾아오시는 길</a></li>
           <li><a href="news.html">소식</a></li>
         </ul>
       </nav>
+      <p class="open-status" data-open-status hidden></p>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bar nav-toggle-bar--top"></span>
+        <span class="nav-toggle-bar nav-toggle-bar--bottom"></span>
+        <span class="sr-only">메뉴 열기</span>
+      </button>
     </div>
   </header>
 
     <main id="main">
     <section class="page-head">
       <div class="container">
-        <p class="label">Menu</p>
         <h1 class="title-xl">메뉴</h1>
         <p class="lead">커피와 차, 디저트와 가벼운 식사를 준비합니다.</p>
       </div>
@@ -78,26 +73,35 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <p class="logo-ko">달빛</p>
-        <p class="label">Evening coffee, under the moon</p>
+    <img class="footer-photo" src="images/found/seoul-night.jpg" alt="" width="1600" height="1200" loading="lazy">
+    <div class="footer-top">
+      <ul class="footer-links">
+        <li><a href="menu.html">메뉴</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="visit.html">찾아오시는 길</a></li>
+        <li><a href="news.html">소식</a></li>
+      </ul>
+      <p class="footer-contact">서울시 중구 월하길 15, 1층<br>02-000-0000<br>화–일 18:00 – 02:00, 월요일 휴무</p>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-wordmark" aria-hidden="true">달빛</p>
+      <div class="footer-legal">
+        <p>달빛은 가상의 카페입니다. 웹프로그래밍 수업 과제로 만들었습니다.</p>
+        <details class="credits">
+          <summary>사진 출처</summary>
+          <p>사진은 자유롭게 쓸 수 있는 공개 자료입니다. 달빛의 메뉴나 공간을 찍은 사진이 아닙니다.</p>
+          <ul>
+            <li>달의 앞면: NASA/GSFC/Arizona State University, public domain, <a href="https://commons.wikimedia.org/wiki/File:Moon_nearside_LRO_5000.jpg">Wikimedia Commons</a></li>
+            <li>백자 달항아리, 조선: 작가 미상, CC0, <a href="https://commons.wikimedia.org/w/index.php?curid=55984154">Wikimedia Commons</a></li>
+            <li>달, 1857–60년 사진: John Adams Whipple, public domain (CC0), <a href="https://www.metmuseum.org/art/collection/search/262301">The Metropolitan Museum of Art</a></li>
+            <li>보름달, 1635년 판화: Claude Mellan, public domain (CC0), <a href="https://www.metmuseum.org/art/collection/search/393543">The Metropolitan Museum of Art</a></li>
+            <li>서울의 밤: Syced, CC0, <a href="https://commons.wikimedia.org/wiki/File:Seoul_by_night_7.jpg">Wikimedia Commons</a></li>
+            <li>초승달: Phil Bruxvoort, public domain, <a href="https://commons.wikimedia.org/wiki/File:Crescent_Moon_(36554527602).jpg">Wikimedia Commons</a></li>
+            <li>상현달: Stephen Rahn from Macon, GA, USA, CC0, <a href="https://commons.wikimedia.org/wiki/File:First_Quarter_Moon_on_12-15-18_-_Flickr_-_StephenGA.png">Wikimedia Commons</a></li>
+            <li>대기 너머의 보름달: NASA, public domain, <a href="https://commons.wikimedia.org/wiki/File:Full_moon_partially_obscured_by_atmosphere.jpg">Wikimedia Commons</a></li>
+          </ul>
+        </details>
       </div>
-      <dl class="footer-info">
-        <div>
-          <dt>Hours</dt>
-          <dd>화–일 18:00 – 02:00<br>월요일 휴무</dd>
-        </div>
-        <div>
-          <dt>Address</dt>
-          <dd>서울시 중구 월하길 15, 1층</dd>
-        </div>
-        <div>
-          <dt>Contact</dt>
-          <dd>02-000-0000</dd>
-        </div>
-      </dl>
-      <p class="footer-note">달빛은 가상의 카페입니다 · 웹프로그래밍 수업 과제</p>
     </div>
   </footer>
 

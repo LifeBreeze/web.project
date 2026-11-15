@@ -203,6 +203,8 @@
     return "준비된 메뉴가 없습니다.";
   }
 
+  let hasRevealed = false;
+
   function renderList() {
     const items = visibleItems();
     const tab = TABS.find(function (t) { return t.id === state.tab; });
@@ -225,7 +227,6 @@
       return (
         '<section class="menu-group" aria-labelledby="group-' + category.id + '">' +
           '<div class="menu-group-head">' +
-            '<p class="label">' + escapeHtml(category.nameEn) + "</p>" +
             '<h3 id="group-' + category.id + '" class="title-md">' + escapeHtml(category.name) + "</h3>" +
           "</div>" +
           '<ul class="menu-list">' + groupItems.map(itemHtml).join("") + "</ul>" +
@@ -234,6 +235,12 @@
     }).join("");
 
     list.querySelectorAll("img").forEach(useFallbackImage);
+
+    // 처음 그릴 때만 천천히 나타나게 한다(검색할 때마다 깜빡이지 않도록).
+    if (!hasRevealed) {
+      hasRevealed = true;
+      if (window.Dalbit && window.Dalbit.reveal) window.Dalbit.reveal(list.querySelectorAll(".menu-group-head, .menu-item"));
+    }
   }
 
   function render() {
@@ -309,7 +316,7 @@
       const bean = selectedBean();
       dialogEl.price.textContent = formatPrice(dialogItem.price + bean.extra);
       const note = dialogEl.beans.querySelector("[data-bean-note]");
-      note.textContent = bean.name + " — " + bean.note;
+      note.textContent = bean.name + ". " + bean.note;
     } else {
       dialogEl.price.textContent = formatPrice(dialogItem.price);
     }

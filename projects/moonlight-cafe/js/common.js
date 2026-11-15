@@ -166,26 +166,39 @@
   }
 
   /* ---------- 4. 천천히 나타나기 ---------- */
+  // 같은 구역 안에서는 제목 → 글 → 사진 순서로 조금씩 늦게 나타난다.
+  // 메뉴 목록처럼 스크립트가 나중에 그리는 것은 Dalbit.reveal(목록)으로 넘겨받는다.
+  let revealObserver = null;
+
+  function reveal(items) {
+    if (!revealObserver || !items) return;
+    const order = new Map();
+    Array.prototype.forEach.call(items, function (item) {
+      const group = item.closest("section, footer") || document.body;
+      const index = order.get(group) || 0;
+      order.set(group, index + 1);
+      item.style.setProperty("--reveal-delay", Math.min(index, 4) * 80 + "ms");
+      item.classList.add("reveal");
+      revealObserver.observe(item);
+    });
+  }
+
   function initReveal() {
     // "동작 줄이기"를 켰거나 오래된 브라우저면 처음부터 모두 보인다.
     if (reduceMotion.matches || !("IntersectionObserver" in window)) return;
 
-    const items = document.querySelectorAll("main .section > .container > *, [data-reveal]");
-    if (!items.length) return;
-
-    const observer = new IntersectionObserver(function (entries) {
+    revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
 
-    items.forEach(function (item) {
-      item.classList.add("reveal");
-      observer.observe(item);
-    });
+    reveal(document.querySelectorAll(
+      "main .page-head .container > *, main .section > .container > *, main .section .split > *, [data-reveal], .footer-top > *, .footer-wordmark, .footer-legal"
+    ));
   }
 
   /* ---------- 5. 사진이 없으면 placeholder ---------- */
@@ -212,7 +225,8 @@
   window.Dalbit = {
     getOpenStatus: getOpenStatus,
     renderOpenStatus: renderOpenStatus,
-    formatPrice: formatPrice
+    formatPrice: formatPrice,
+    reveal: function (items) { reveal(items); }
   };
 
   initNav();
