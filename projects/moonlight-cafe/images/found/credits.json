@@ -115,26 +115,28 @@
     "titleKo": "백자 두 귀 잔, 조선 15세기"
   },
   {
-    "file": "projects/moonlight-cafe/images/found/hollyhock-cup.jpg",
+    "file": "projects/moonlight-cafe/images/found/moon-atmosphere.jpg",
     "media": "image",
-    "ref": "commons:76312050",
-    "title": "Hollyhock-shaped Cup",
-    "creator": null,
+    "ref": "commons:1458138",
+    "title": "Full moon partially obscured by atmosphere",
+    "creator": "NASA",
     "creatorUrl": null,
-    "date": "1475",
-    "license": "CC0",
-    "licenseCode": "cc0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "date": "Taken on 21 December 1999 15:15:15",
+    "license": "public domain",
+    "licenseCode": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
     "creditRequired": false,
-    "page": "https://commons.wikimedia.org/wiki/File:Korea,_Joseon_dynasty_-_Hollyhock-shaped_Cup_-_1969.85_-_Cleveland_Museum_of_Art.tif",
+    "page": "https://commons.wikimedia.org/wiki/File:Full_moon_partially_obscured_by_atmosphere.jpg",
     "via": "Wikimedia Commons",
-    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Korea%2C_Joseon_dynasty_-_Hollyhock-shaped_Cup_-_1969.85_-_Cleveland_Museum_of_Art.tif/lossy-page1-1920px-Korea%2C_Joseon_dynasty_-_Hollyhock-shaped_Cup_-_1969.85_-_Cleveland_Museum_of_Art.tif.jpg",
-    "width": 1400,
-    "height": 900,
-    "bytes": 154090,
-    "credit": "\"Hollyhock-shaped Cup\", CC0, via Wikimedia Commons",
-    "notes": [],
-    "saved": "2026-11-15T14:06:01.079Z",
-    "titleKo": "접시꽃 모양 백자 잔, 조선"
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Full_moon_partially_obscured_by_atmosphere.jpg/1920px-Full_moon_partially_obscured_by_atmosphere.jpg",
+    "width": 1920,
+    "height": 1280,
+    "bytes": 120700,
+    "credit": "\"Full moon partially obscured by atmosphere\" by NASA, public domain, via Wikimedia Commons",
+    "notes": [
+      "4:3으로 잘라 씀"
+    ],
+    "saved": "2026-11-15T13:37:22.838Z",
+    "titleKo": "대기 너머로 뜬 보름달"
   }
 ]
