@@ -517,18 +517,51 @@ button, input {
 }
 
 .hero-photo {
-  height: clamp(300px, 52vw, calc(100svh - var(--header-h) - 120px));
-  min-height: 300px;
-  margin-top: clamp(40px, 6vw, 88px);
+  display: grid;
+  gap: 14px;
+  max-width: calc(var(--max) + var(--margin) * 2);
+  margin: clamp(48px, 6vw, 96px) auto 0;
+  padding-inline: var(--margin);
+}
+
+.hero-photo-frame {
   overflow: hidden;
   background: var(--surface);
 }
 
 .hero-photo img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   animation: photo-settle 2.6s var(--ease) both;
+}
+
+.hero-photo figcaption {
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  /* 사진은 오른쪽 7칸만, 설명은 왼쪽 아래에 작게 */
+  .hero-photo {
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: end;
+  }
+
+  .hero-photo figcaption {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 18em;
+  }
+
+  .hero-photo-frame {
+    grid-column: 2;
+  }
+
+  .hero-photo img {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 @keyframes photo-settle {
@@ -1055,23 +1088,46 @@ button, input {
   margin-top: 20px;
 }
 
-/* 소개 · 찾아오시는 길 · 소식은 제목 아래 넓은 사진 한 장 */
+/* 소개 · 찾아오시는 길 · 소식은 제목 옆에 작은 사진 한 장 */
 .page-photo {
-  margin-top: clamp(40px, 5vw, 72px);
+  max-width: 560px;
+  margin-top: 40px;
   overflow: hidden;
   background: var(--surface);
 }
 
 .page-photo img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   animation: photo-settle 2.6s var(--ease) both;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 900px) {
+  .page-head .container:has(.page-photo) {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    grid-template-rows: 1fr auto;
+    column-gap: 64px;
+  }
+
+  .page-head .container:has(.page-photo) > :not(.page-photo) {
+    grid-column: 1;
+  }
+
+  .page-head .container:has(.page-photo) > .title-xl {
+    align-self: end;
+  }
+
+  .page-photo {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    max-width: none;
+    margin-top: 0;
+  }
+
   .page-photo img {
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 4 / 3;
   }
 }
 
@@ -2177,6 +2233,20 @@ html:has(.menu-dialog[open]) {
   display: none;
 }
 
+/* 큰 그림도 화면 가득 채우지 않고 오른쪽 8칸만, 설명은 왼쪽 아래 */
+.shot--bleed {
+  display: grid;
+  gap: 12px;
+  max-width: calc(var(--max) + var(--margin) * 2);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.shot--bleed figcaption.container {
+  margin: 0;
+  padding: 0;
+}
+
 .shot--bleed img {
   aspect-ratio: 4 / 3;
 }
@@ -2184,7 +2254,23 @@ html:has(.menu-dialog[open]) {
 @media (min-width: 700px) {
   .shot--bleed img {
     aspect-ratio: 16 / 9;
-    max-height: calc(100svh - var(--header-h));
+  }
+}
+
+@media (min-width: 900px) {
+  .shot--bleed {
+    grid-template-columns: 4fr 8fr;
+    gap: 64px;
+    align-items: end;
+  }
+
+  .shot--bleed img {
+    grid-column: 2;
+  }
+
+  .shot--bleed figcaption.container {
+    grid-column: 1;
+    grid-row: 1;
   }
 }
 
@@ -2199,6 +2285,7 @@ html:has(.menu-dialog[open]) {
 .shot-pair {
   display: grid;
   gap: 0 16px;
+  max-width: calc(1040px + var(--margin) * 2);
 }
 
 .shot-pair .shot {
