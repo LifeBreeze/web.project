@@ -204,9 +204,19 @@
   /* ---------- 5. 사진이 없으면 사진을 숨긴다 ---------- */
   // HTML에 직접 쓴 <img data-fallback>용. 사진이 아직 없으면 감싼 칸에 no-photo를 붙여
   // 색 바탕만 보이게 한다. 사진 파일을 넣으면 저절로 나타난다.
+  // data-fallback="다른 사진 경로"라고 쓰면 숨기기 전에 그 사진을 한 번 대신 보여 준다
+  // (대신 보여 줄 때의 설명은 data-fallback-alt).
   function initImageFallback() {
     document.querySelectorAll("img[data-fallback]").forEach(function (img) {
       function useFallback() {
+        const spare = img.dataset.fallback;
+        if (spare && !img.dataset.fallbackUsed) {
+          img.dataset.fallbackUsed = "true";
+          if (img.dataset.fallbackAlt) img.alt = img.dataset.fallbackAlt;
+          img.addEventListener("error", useFallback, { once: true });
+          img.src = spare;
+          return;
+        }
         img.hidden = true;
         if (img.parentElement) img.parentElement.classList.add("no-photo");
       }
