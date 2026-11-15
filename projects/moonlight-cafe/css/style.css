@@ -865,13 +865,10 @@ button, input {
   max-width: 520px;
 }
 
-/* 네모난 틀 없이 가장자리를 바탕색으로 번지게 */
 .beans-photo img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  -webkit-mask-image: radial-gradient(closest-side, #000 34%, rgba(0, 0, 0, 0.6) 66%, transparent 100%); /* taste-skill-ignore: 사진 가장자리를 번지게 하는 마스크 */
-  mask-image: radial-gradient(closest-side, #000 34%, rgba(0, 0, 0, 0.6) 66%, transparent 100%); /* taste-skill-ignore: 사진 가장자리를 번지게 하는 마스크 */
 }
 
 .beans-text {

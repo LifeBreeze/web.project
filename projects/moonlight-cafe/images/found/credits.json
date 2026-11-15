@@ -1,28 +1,5 @@
 [
   {
-    "file": "projects/moonlight-cafe/images/found/roasted-beans.jpg",
-    "media": "image",
-    "ref": "commons:41936",
-    "title": "Roasted coffee beans",
-    "creator": "MarkSweep",
-    "creatorUrl": null,
-    "date": "Unknown date",
-    "license": "public domain",
-    "licenseCode": "pd",
-    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
-    "creditRequired": false,
-    "page": "https://commons.wikimedia.org/wiki/File:Roasted_coffee_beans.jpg",
-    "via": "Wikimedia Commons",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Roasted_coffee_beans.jpg",
-    "width": 1400,
-    "height": 1050,
-    "bytes": 599153,
-    "credit": "\"Roasted coffee beans\" by MarkSweep, public domain, via Wikimedia Commons",
-    "notes": [],
-    "saved": "2026-11-15T14:05:57.355Z",
-    "titleKo": "볶은 커피콩"
-  },
-  {
     "file": "projects/moonlight-cafe/images/found/latte-cup.jpg",
     "media": "image",
     "ref": "commons:70214600",
