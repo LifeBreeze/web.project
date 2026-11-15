@@ -670,25 +670,12 @@ button, input {
     grid-template-columns: repeat(3, 1fr);
     gap: 48px 20px;
   }
-
-  /* 작품집처럼 가운데 칸을 내려 엇갈리게 */
-  .sig-card:nth-child(3n + 2) {
-    margin-top: 56px;
-  }
 }
 
 @media (min-width: 1100px) {
   .sig-list {
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
-  }
-
-  .sig-card:nth-child(3n + 2) {
-    margin-top: 0;
-  }
-
-  .sig-card:nth-child(even) {
-    margin-top: 56px;
   }
 }
 
