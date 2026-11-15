@@ -1950,6 +1950,8 @@ html:has(.menu-dialog[open]) {
 .map-bg { fill: var(--surface); }
 .map-block rect { fill: var(--surface-2); }
 .map-road path { fill: none; stroke: #cfc6b8; stroke-width: 2; }
+.map-street path { fill: none; stroke: var(--bg); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; }
+.map-contour path { fill: none; stroke: var(--surface-2); stroke-width: 1.5; }
 .map-road-name { font-size: 12px; fill: var(--muted); }
 .map-route { fill: none; stroke: var(--brand); stroke-width: 2.5; stroke-dasharray: 2 7; stroke-linecap: round; }
 .map-exit circle { fill: var(--bg); stroke: var(--brand); stroke-width: 1.5; }

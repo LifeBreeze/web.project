@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261116-1">
-  <script src="js/common.js?v=20261116-1" defer></script>
-  <script src="js/pages.js?v=20261116-1" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261116-2">
+  <script src="js/common.js?v=20261116-2" defer></script>
+  <script src="js/pages.js?v=20261116-2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -43,7 +43,7 @@
       <div class="container">
         <h1 class="title-xl">찾아오시는 길</h1>
         <p class="lead">저녁 여섯 시부터 새벽 두 시까지 문을 엽니다.</p>
-        <figure class="page-photo"><img src="images/space/facade.jpg" alt="벽돌 건물 1층, 나무 문 옆 긴 창 너머로 불 켜진 달빛의 실내" width="1600" height="2000" data-fallback="images/found/latte-cup.jpg" data-fallback-alt="손바닥 위에 놓인 라떼 한 잔"></figure>
+        <figure class="page-photo"><img src="images/space/facade.jpg" alt="해방촌 언덕길의 벽돌 건물 1층, 나무 문 옆 긴 창 너머로 불 켜진 달빛의 실내" width="1600" height="2000" data-fallback="images/found/latte-cup.jpg" data-fallback-alt="손바닥 위에 놓인 라떼 한 잔"></figure>
       </div>
     </section>
 
@@ -55,7 +55,7 @@
         <dl class="info-list">
           <div>
             <dt>주소</dt>
-            <dd>서울시 중구 월하길 15, 1층</dd>
+            <dd>서울시 용산구 해방촌 월하길 15, 1층</dd>
           </div>
           <div>
             <dt>전화</dt>
@@ -118,7 +118,7 @@
         <figure class="map-figure">
           <svg class="map" viewBox="0 0 480 360" role="img" aria-labelledby="map-svg-title map-svg-desc">
             <title id="map-svg-title">달빛 가는 길 약도</title>
-            <desc id="map-svg-desc">월하역 2번 출구로 나와 월하대로를 따라 오른쪽으로 걷다가, 월하길로 들어서면 왼쪽에 달빛이 있습니다. 월하길 입구에 버스 정류장이 있습니다.</desc>
+            <desc id="map-svg-desc">녹사평역에서 신흥로 언덕길을 따라 해방촌 오거리까지 올라간 뒤, 동쪽으로 내려가는 월하길로 들어서면 왼쪽에 달빛이 있습니다. 달빛 동쪽은 비탈이 낮아져 지붕들 너머로 하늘이 트여 있습니다.</desc>
             <defs>
               <radialGradient id="map-moon" cx="40%" cy="38%" r="70%">
                 <stop offset="0" stop-color="#F8F2E2"/>
@@ -126,47 +126,54 @@
               </radialGradient>
             </defs>
             <rect class="map-bg" width="480" height="360"/>
+            <!-- 등고선: 서북쪽(남산)이 높고 동쪽으로 낮아진다 -->
+            <g class="map-contour">
+              <path d="M0 96 C 60 70, 120 40, 150 0"/>
+              <path d="M0 150 C 90 120, 170 70, 214 0"/>
+              <path d="M396 0 C 400 90, 420 190, 480 250"/>
+              <path d="M428 0 C 432 80, 448 160, 480 196"/>
+              <path d="M300 360 C 360 300, 420 270, 480 300"/>
+            </g>
             <!-- 건물 -->
             <g class="map-block">
-              <rect x="24" y="24" width="112" height="76"/>
-              <rect x="156" y="24" width="120" height="76"/>
-              <rect x="24" y="152" width="112" height="92"/>
-              <rect x="156" y="152" width="108" height="92"/>
-              <rect x="340" y="24" width="116" height="100"/>
-              <rect x="340" y="146" width="76" height="78"/>
-              <rect x="24" y="330" width="160" height="30"/>
-              <rect x="204" y="330" width="252" height="30"/>
+              <rect x="236" y="34" width="56" height="56"/>
+              <rect x="302" y="34" width="84" height="56"/>
+              <rect x="244" y="176" width="66" height="56"/>
+              <rect x="322" y="186" width="58" height="48"/>
+              <rect x="128" y="236" width="76" height="58"/>
             </g>
             <!-- 길 -->
-            <g class="map-road">
-              <path d="M0 264 H480 M0 296 H480"/>
-              <path d="M290 0 V264 M318 0 V264"/>
-              <path d="M0 122 H290 M0 132 H290"/>
+            <g class="map-street">
+              <path d="M40 330 C 110 300, 70 240, 130 206 S 200 160, 212 126"/>
+              <path d="M212 126 C 280 130, 340 140, 470 186"/>
+              <path d="M212 126 C 196 90, 170 50, 160 0"/>
             </g>
-            <text class="map-road-name" x="470" y="286" text-anchor="end">월하대로</text>
-            <text class="map-road-name" x="304" y="60" text-anchor="middle" transform="rotate(-90 304 60)">월하길</text>
+            <text class="map-road-name" x="58" y="246" text-anchor="middle" transform="rotate(-56 58 246)">신흥로</text>
+            <text class="map-road-name" x="420" y="156" text-anchor="middle" transform="rotate(19 420 156)">월하길</text>
+            <text class="map-road-name" x="150" y="22" text-anchor="end">남산 쪽</text>
+            <text class="map-road-name" x="470" y="300" text-anchor="end">비탈 아래, 이태원 쪽</text>
             <!-- 걷는 길 -->
-            <path class="map-route" d="M84 280 H304 V188"/>
-            <!-- 지하철 출구 -->
+            <path class="map-route" d="M40 330 C 110 300, 70 240, 130 206 S 200 160, 212 126 C 260 129, 300 134, 344 142"/>
+            <!-- 지하철 -->
             <g class="map-exit">
-              <circle cx="84" cy="280" r="11"/>
-              <text x="84" y="284.5" text-anchor="middle">2</text>
+              <circle cx="40" cy="330" r="11"/>
+              <text x="40" y="334.5" text-anchor="middle">6</text>
             </g>
-            <text class="map-label" x="84" y="318" text-anchor="middle">월하역 2번 출구</text>
-            <!-- 버스 정류장 -->
-            <rect class="map-bus" x="324" y="240" width="12" height="12"/>
-            <text class="map-label" x="344" y="241"><tspan x="344">월하길 입구</tspan><tspan x="344" dy="1.25em">정류장</tspan></text>
+            <text class="map-label" x="58" y="346">녹사평역</text>
+            <!-- 버스 · 오거리 -->
+            <rect class="map-bus" x="218" y="104" width="12" height="12"/>
+            <text class="map-label" x="194" y="92" text-anchor="end"><tspan x="194">해방촌</tspan><tspan x="194" dy="1.25em">오거리</tspan></text>
             <!-- 달빛 -->
-            <circle class="map-cafe" cx="264" cy="180" r="13" fill="url(#map-moon)"/>
-            <text class="map-cafe-name" x="244" y="178" text-anchor="end">달빛</text>
-            <text class="map-label" x="244" y="196" text-anchor="end">1층</text>
+            <circle class="map-cafe" cx="344" cy="122" r="13" fill="url(#map-moon)"/>
+            <text class="map-cafe-name" x="364" y="121">달빛</text>
+            <text class="map-label" x="404" y="121">1층</text>
             <!-- 북쪽 -->
             <g class="map-north">
-              <path d="M450 200 V172 M444 180 L450 172 L456 180"/>
-              <text x="450" y="164" text-anchor="middle">N</text>
+              <path d="M450 92 V64 M444 72 L450 64 L456 72"/>
+              <text x="450" y="56" text-anchor="middle">N</text>
             </g>
           </svg>
-          <figcaption class="map-caption">실제 지도가 아닌 간단한 약도입니다. 월하역 2번 출구에서 걸어서 5분 거리입니다.</figcaption>
+          <figcaption class="map-caption">실제 지도가 아닌 간단한 약도입니다. 녹사평역에서 언덕길을 따라 걸어서 15분 거리입니다.</figcaption>
         </figure>
       </div>
     </section>
@@ -179,11 +186,11 @@
         <dl class="info-list">
           <div>
             <dt>지하철</dt>
-            <dd>월하역 2번 출구에서 걸어서 5분</dd>
+            <dd>6호선 녹사평역에서 신흥로 언덕길을 따라 걸어서 15분</dd>
           </div>
           <div>
             <dt>버스</dt>
-            <dd>월하길 입구 정류장에서 걸어서 2분</dd>
+            <dd>해방촌 오거리에서 내려 월하길을 따라 걸어서 3분</dd>
           </div>
           <div>
             <dt>주차</dt>
@@ -204,7 +211,7 @@
         <li><a href="visit.html">찾아오시는 길</a></li>
         <li><a href="news.html">소식</a></li>
       </ul>
-      <p class="footer-contact">서울시 중구 월하길 15, 1층<br>02-000-0000<br>화–일 18:00 – 02:00, 월요일 휴무</p>
+      <p class="footer-contact">서울시 용산구 해방촌 월하길 15, 1층<br>02-000-0000<br>화–일 18:00 – 02:00, 월요일 휴무</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-legal">
