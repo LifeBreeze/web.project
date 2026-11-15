@@ -665,45 +665,30 @@ button, input {
   font-variant-numeric: tabular-nums;
 }
 
-.sig-card:last-child {
-  grid-column: 1 / -1;
-}
-
-.sig-card:last-child .sig-chip {
-  aspect-ratio: 16 / 9;
-}
-
 @media (min-width: 700px) {
   .sig-list {
     grid-template-columns: repeat(3, 1fr);
+    gap: 48px 20px;
   }
 
-  .sig-card:last-child {
-    grid-column: auto;
-  }
-
-  .sig-card:last-child .sig-chip {
-    aspect-ratio: 4 / 5;
-  }
-
-  .sig-card:nth-child(4) {
-    grid-column: 1 / span 1;
+  /* 작품집처럼 가운데 칸을 내려 엇갈리게 */
+  .sig-card:nth-child(3n + 2) {
+    margin-top: 56px;
   }
 }
 
 @media (min-width: 1100px) {
   .sig-list {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
   }
 
-  .sig-card:nth-child(4) {
-    grid-column: auto;
+  .sig-card:nth-child(3n + 2) {
+    margin-top: 0;
   }
 
-  /* 작품집처럼 칸을 엇갈리게 */
   .sig-card:nth-child(even) {
-    margin-top: 64px;
+    margin-top: 56px;
   }
 }
 

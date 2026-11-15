@@ -86,6 +86,19 @@ const MENU = [
     beans: false,
     image: "images/menu/yuja-cake.jpg"
   },
+  {
+    id: "moon-halo-montblanc",
+    category: "signature",
+    name: "달무리 밤 몽블랑",
+    nameEn: "Moon Halo Mont Blanc",
+    price: 7200,
+    desc: "쌀 타르트에 밤 크림을 둥글게 짜고 슈가파우더로 달무리를 그림",
+    detail: "바삭하게 구운 쌀 타르트 위에 공주 밤으로 만든 크림을 실처럼 둥글게 짜 올리고, 꼭대기에 밤 조림 하나를 얹었습니다. 남색 접시 둘레에 슈가파우더를 뿌려 달무리를 그렸습니다. 달지 않은 크림이라 아메리카노와 잘 어울립니다.",
+    badges: ["new"],
+    temp: [],
+    beans: false,
+    image: "images/menu/moon-halo-montblanc.jpg"
+  },
 
   /* ② 커피 */
   {
