@@ -584,7 +584,6 @@ button, input {
 
 /* 공통: 홈 구역 사이 간격과 머리말 */
 .signature,
-.space-teaser,
 .story,
 .beans,
 .visit,
@@ -708,52 +707,22 @@ button, input {
   }
 }
 
-/* 5-3. 공간 맛보기: 평면도 */
-.space-teaser {
-  display: grid;
-  gap: 40px;
-}
-
-.space-teaser-text {
-  display: grid;
-  justify-items: start;
-  align-content: start;
-  gap: 24px;
-}
-
-.space-teaser-plan .pl-num {
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .space-teaser {
-    grid-template-columns: 4fr 8fr;
-    gap: 64px;
-    align-items: center;
-  }
-}
-
 /* 5-4. 이야기 */
 .story {
   display: grid;
   gap: 48px;
 }
 
-.story-photos {
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: 16px;
-  align-items: end;
+.story-photo {
+  justify-self: center;
+  width: 100%;
+  max-width: 480px;
 }
 
 .story-photo img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-}
-
-.story-photo--tall img {
-  aspect-ratio: 3 / 4;
 }
 
 .story-photo figcaption {
@@ -808,7 +777,7 @@ button, input {
 
 @media (min-width: 900px) {
   .story {
-    grid-template-columns: 7fr 5fr;
+    grid-template-columns: 6fr 6fr;
     gap: 64px;
     align-items: center;
   }
@@ -890,10 +859,19 @@ button, input {
   gap: 48px;
 }
 
+.beans-photo {
+  justify-self: center;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* 네모난 틀 없이 가장자리를 바탕색으로 번지게 */
 .beans-photo img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  -webkit-mask-image: radial-gradient(closest-side, #000 34%, rgba(0, 0, 0, 0.6) 66%, transparent 100%); /* taste-skill-ignore: 사진 가장자리를 번지게 하는 마스크 */
+  mask-image: radial-gradient(closest-side, #000 34%, rgba(0, 0, 0, 0.6) 66%, transparent 100%); /* taste-skill-ignore: 사진 가장자리를 번지게 하는 마스크 */
 }
 
 .beans-text {
