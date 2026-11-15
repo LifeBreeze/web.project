@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+KR:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261112-8">
-  <script src="js/data-menu.js?v=20261112-8" defer></script>
-  <script src="js/data-news.js?v=20261112-8" defer></script>
-  <script src="js/common.js?v=20261112-8" defer></script>
-  <script src="js/home.js?v=20261112-8" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261115-1">
+  <script src="js/data-menu.js?v=20261115-1" defer></script>
+  <script src="js/data-news.js?v=20261115-1" defer></script>
+  <script src="js/common.js?v=20261115-1" defer></script>
+  <script src="js/home.js?v=20261115-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -48,6 +48,15 @@
       <div class="container hero-inner">
         <div class="hero-moon-wrap" aria-hidden="true">
           <div class="hero-moon" data-hero-moon></div>
+          <!-- 전통 구름무늬(운문): 달 앞을 천천히 지나간다 -->
+          <svg class="hero-cloud hero-cloud--front" viewBox="0 0 210 85" focusable="false">
+            <path class="cloud-body" d="M20 66C6 66 4 48 18 44 15 30 33 23 44 33 47 17 71 12 82 26 91 15 112 19 113 34 125 31 134 42 128 53 150 53 178 50 204 40 186 56 160 66 130 66Z"/>
+            <g class="cloud-curl"><path d="M24 56C19 50 27 45 32 49 35 53 30 57 28 54"/><path d="M58 40C55 29 72 26 75 35 77 43 64 45 64 38 64 34 70 34 70 37"/><path d="M97 43C95 35 108 33 110 40 111 46 103 47 103 42"/><path d="M34 60C60 62 96 61 126 57"/></g>
+          </svg>
+          <svg class="hero-cloud hero-cloud--back" viewBox="0 0 210 85" focusable="false">
+            <path class="cloud-body" d="M20 66C6 66 4 48 18 44 15 30 33 23 44 33 47 17 71 12 82 26 91 15 112 19 113 34 125 31 134 42 128 53 150 53 178 50 204 40 186 56 160 66 130 66Z"/>
+            <g class="cloud-curl"><path d="M24 56C19 50 27 45 32 49 35 53 30 57 28 54"/><path d="M58 40C55 29 72 26 75 35 77 43 64 45 64 38 64 34 70 34 70 37"/><path d="M97 43C95 35 108 33 110 40 111 46 103 47 103 42"/><path d="M34 60C60 62 96 61 126 57"/></g>
+          </svg>
         </div>
         <div class="hero-copy">
           <p class="label">Evening coffee, under the moon</p>
@@ -78,9 +87,36 @@
           <p class="label"><span class="label-num">02</span>— About</p>
           <h2 id="about-title" class="title-lg">달빛 아래,<br>조용한 자리</h2>
         </div>
-        <div>
-          <p class="body-text">하루를 마친 저녁, 잠시 머물다 갈 수 있는 곳을 생각하며 문을 열었습니다. 낮은 조명과 한 잔의 커피로 조용한 밤을 채웁니다.</p>
-          <a class="link-more" href="about.html">더 알아보기</a>
+        <div class="about-body">
+          <div>
+            <p class="body-text">하루를 마친 저녁, 달빛 아래 잠시 머물다 갈 수 있는 곳을 생각하며 문을 열었습니다. 낮은 조명과 한 잔의 커피로 조용한 밤을 채웁니다.</p>
+            <a class="link-more" href="about.html">더 알아보기</a>
+          </div>
+          <!-- 한옥의 둥근 달창(만월창) 너머로 보이는 달 -->
+          <svg class="moon-window" viewBox="0 0 320 320" aria-hidden="true" focusable="false">
+            <defs>
+              <clipPath id="moon-window-clip"><circle cx="160" cy="160" r="136"/></clipPath>
+              <radialGradient id="moon-window-moon" cx="42%" cy="38%">
+                <stop offset="0" stop-color="#F8F2E2"/><stop offset=".6" stop-color="#E6DBC2"/><stop offset="1" stop-color="#C9BB9B"/>
+              </radialGradient>
+              <radialGradient id="moon-window-glow">
+                <stop offset=".45" stop-color="#ECE5D5" stop-opacity=".22"/><stop offset="1" stop-color="#ECE5D5" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle class="mw-ring-outer" cx="160" cy="160" r="152"/>
+            <circle class="mw-ring" cx="160" cy="160" r="145"/>
+            <g clip-path="url(#moon-window-clip)">
+              <rect class="mw-sky" width="320" height="320"/>
+              <circle cx="196" cy="124" r="84" fill="url(#moon-window-glow)"/>
+              <circle cx="196" cy="124" r="42" fill="url(#moon-window-moon)"/>
+              <g class="mw-cloud" transform="translate(246 128) scale(-.85 .85)">
+                <path class="cloud-body" d="M20 66C6 66 4 48 18 44 15 30 33 23 44 33 47 17 71 12 82 26 91 15 112 19 113 34 125 31 134 42 128 53 150 53 178 50 204 40 186 56 160 66 130 66Z"/>
+                <g class="cloud-curl"><path d="M24 56C19 50 27 45 32 49 35 53 30 57 28 54"/><path d="M58 40C55 29 72 26 75 35 77 43 64 45 64 38 64 34 70 34 70 37"/><path d="M97 43C95 35 108 33 110 40 111 46 103 47 103 42"/><path d="M34 60C60 62 96 61 126 57"/></g>
+              </g>
+              <path class="mw-lattice" d="M88 0V320 M124 0V320 M160 0V320 M196 0V320 M232 0V320 M0 88H320 M0 124H320 M0 160H320 M0 196H320 M0 232H320"/>
+            </g>
+            <circle class="mw-frame" cx="160" cy="160" r="136"/>
+          </svg>
         </div>
       </div>
     </section>

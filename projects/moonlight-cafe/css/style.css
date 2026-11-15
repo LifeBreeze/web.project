@@ -1886,6 +1886,259 @@ html:has(.menu-dialog[open]) {
   }
 }
 
+/* ---------- 13-4. 전통 문양 장식 ---------- */
+/*
+ * 딱딱해 보이지 않도록 한국 전통 문양을 가는 선으로 더한다.
+ * - 한지 질감: 아이보리 바탕 전체 (images/pattern/hanji.svg)
+ * - 구름무늬(운문): 첫 화면의 달 앞, 하위 페이지 제목 오른쪽, 홈 달창
+ * - 번개무늬(뇌문) 띠: 첫 화면 아래 · 푸터 위 (images/pattern/key-band.svg)
+ * - 네 잎 꽃무늬(사판화): 구역과 구역 사이 구분선 가운데 (images/pattern/flower.svg)
+ * - 둥근 달창(만월창): 홈 소개 옆 그림
+ */
+
+/* 한지 질감 */
+body {
+  background: var(--bg) url("../images/pattern/hanji.svg") repeat;
+}
+
+/* 둥근 모서리로 조금 더 부드럽게 */
+.btn {
+  border-radius: 999px;
+}
+
+.signature-photo,
+.menu-thumb,
+.space-photo {
+  border-radius: 6px;
+}
+
+/* 구역 사이 구분선 가운데의 꽃무늬 */
+.section {
+  position: relative;
+}
+
+/* 한지 질감이 끊기지 않도록 구분선은 가운데를 비워 그리고, 그 자리에 꽃무늬를 둔다 */
+.section + .section {
+  border-top: 0;
+}
+
+.section + .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  transform: translateY(-50%);
+  background:
+    url("../images/pattern/flower.svg") center / 18px no-repeat,
+    linear-gradient(to right,
+      var(--line) calc(50% - 24px), transparent calc(50% - 24px),
+      transparent calc(50% + 24px), var(--line) calc(50% + 24px)) center / 100% 1px no-repeat;
+}
+
+/* 첫 화면 아래와 푸터 위의 번개무늬 띠 */
+.hero {
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  height: 14px;
+  background: url("../images/pattern/key-band.svg") repeat-x center / 20px 14px;
+  opacity: 0.8;
+}
+
+.site-footer {
+  position: relative;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: url("../images/pattern/key-band.svg") repeat-x center / 20px 14px;
+}
+
+/* 첫 화면: 달 앞을 지나는 구름 */
+.hero-moon-wrap {
+  position: relative;
+}
+
+.hero-moon {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-cloud {
+  position: absolute;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero-cloud .cloud-body {
+  stroke: var(--moon-faint);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+
+.hero-cloud .cloud-curl {
+  fill: none;
+  stroke: var(--moon-faint);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+}
+
+/* 앞 구름: 달 왼쪽 아래를 살짝 가리고, 꼬리는 바깥(왼쪽)으로 흐른다 */
+.hero-cloud--front {
+  z-index: 2;
+  width: calc(var(--hm-size, 200px) * 1.05);
+  left: -63%;
+  bottom: -4%;
+  scale: -1 1;
+  animation: cloud-drift 22s ease-in-out infinite alternate;
+}
+
+.hero-cloud--front .cloud-body {
+  fill: var(--night);
+  fill-opacity: 0.94;
+}
+
+/* 뒤 구름: 달 뒤 오른쪽 위로 옅게 */
+.hero-cloud--back {
+  z-index: 0;
+  width: calc(var(--hm-size, 200px) * 0.7);
+  top: -4%;
+  right: -38%;
+  opacity: 0.45;
+  animation: cloud-drift 30s ease-in-out infinite alternate-reverse;
+}
+
+.hero-cloud--back .cloud-body {
+  fill: none;
+}
+
+.hero-moon-wrap {
+  --hm-size: clamp(150px, 40vw, 200px);
+}
+
+@media (min-width: 900px) {
+  .hero-moon-wrap {
+    --hm-size: clamp(280px, 30vw, 400px);
+  }
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-6%);
+  }
+}
+
+/* 하위 페이지 제목 오른쪽 구름무늬 */
+.page-head {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-head::after {
+  content: "";
+  position: absolute;
+  right: max(var(--gutter), calc((100% - var(--container)) / 2));
+  bottom: 18%;
+  width: clamp(150px, 28vw, 300px);
+  aspect-ratio: 210 / 85;
+  background: url("../images/pattern/cloud-line.svg") center / contain no-repeat;
+  pointer-events: none;
+}
+
+@media (max-width: 599px) {
+  .page-head::after {
+    top: 28px;
+    bottom: auto;
+    width: 130px;
+    opacity: 0.8;
+  }
+}
+
+/* 홈 소개: 글 옆의 둥근 달창 */
+.about-body {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+
+.moon-window {
+  width: min(70%, 240px);
+  height: auto;
+  justify-self: center;
+}
+
+@media (min-width: 1024px) {
+  .about-body {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 48px;
+  }
+
+  .moon-window {
+    width: 100%;
+  }
+}
+
+.mw-ring-outer {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.mw-ring {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1;
+}
+
+.mw-sky {
+  fill: var(--night);
+}
+
+.mw-cloud .cloud-body {
+  fill: var(--night);
+  stroke: var(--moon-faint);
+  stroke-width: 1;
+}
+
+.mw-cloud .cloud-curl {
+  fill: none;
+  stroke: var(--moon-faint);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+/* 창살(정자살): 등불을 받은 나무 살 */
+.mw-lattice {
+  fill: none;
+  stroke: #D8CBAE;
+  stroke-opacity: 0.5;
+  stroke-width: 2;
+}
+
+.mw-frame {
+  fill: none;
+  stroke: #3A3229;
+  stroke-width: 7;
+}
+
 /* ---------- 14. 동작 줄이기 설정 존중 ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1897,5 +2150,10 @@ html:has(.menu-dialog[open]) {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+
+  /* 구름은 끝없이 반복되므로 아예 멈춘다 */
+  .hero-cloud {
+    animation: none !important;
   }
 }
