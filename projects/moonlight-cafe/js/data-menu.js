@@ -5,7 +5,7 @@
  * - badges: best(인기) · new(신메뉴) · season(시즌)
  * - temp: 고를 수 있는 온도. 음식과 아포가토는 빈 배열.
  * - beans: true면 상세 창에서 원두를 고를 수 있다(커피 6개).
- * - image: 사진이 아직 없으면 화면에서 images/placeholder.svg로 바꿔 보여 준다.
+ * - image: 사진이 아직 없으면 사진 칸을 숨기고 글자만 보여 준다.
  */
 
 const CATEGORIES = [

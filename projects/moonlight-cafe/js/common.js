@@ -201,13 +201,14 @@
     ));
   }
 
-  /* ---------- 5. 사진이 없으면 placeholder ---------- */
-  // HTML에 직접 쓴 <img data-fallback>용. 스크립트보다 먼저 실패한 사진도 바꾼다.
+  /* ---------- 5. 사진이 없으면 사진을 숨긴다 ---------- */
+  // HTML에 직접 쓴 <img data-fallback>용. 사진이 아직 없으면 감싼 칸에 no-photo를 붙여
+  // 색 바탕만 보이게 한다. 사진 파일을 넣으면 저절로 나타난다.
   function initImageFallback() {
-    const PLACEHOLDER = "images/placeholder.svg";
     document.querySelectorAll("img[data-fallback]").forEach(function (img) {
       function useFallback() {
-        if (img.getAttribute("src") !== PLACEHOLDER) img.src = PLACEHOLDER;
+        img.hidden = true;
+        if (img.parentElement) img.parentElement.classList.add("no-photo");
       }
       if (img.complete && img.naturalWidth === 0) {
         useFallback();

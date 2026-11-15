@@ -21,7 +21,6 @@
   const tabsBar = document.querySelector(".menu-tabs-bar");
   const board = document.querySelector(".menu-board");
 
-  const PLACEHOLDER = "images/placeholder.svg";
   const STORAGE_KEY = "moonlight-favorites";
   const BADGE_TEXT = { best: "BEST", new: "NEW", season: "SEASONAL" };
   const formatPrice = window.Dalbit ? window.Dalbit.formatPrice : function (n) {
@@ -121,11 +120,13 @@
     return favorites.has(item.id) ? item.name + " 찜 해제" : item.name + " 찜하기";
   }
 
-  /* ---------- 사진이 없으면 placeholder ---------- */
+  /* ---------- 사진이 없으면 사진 칸을 숨긴다 ---------- */
+  // 사진이 아직 없는 메뉴는 글자만 보여 준다. images/menu/에 사진을 넣으면 저절로 나타난다.
   function useFallbackImage(img) {
     img.addEventListener("error", function () {
-      img.src = PLACEHOLDER;
-      img.classList.add("is-placeholder");
+      img.hidden = true;
+      const box = img.closest(".menu-item, .menu-dialog");
+      if (box) box.classList.add("no-photo");
     }, { once: true });
   }
 
@@ -328,7 +329,8 @@
     dialogItem = item;
     dialogTrigger = trigger || null;
 
-    dialogEl.image.classList.remove("is-placeholder");
+    dialogEl.image.hidden = false;
+    dialogEl.image.closest(".menu-dialog").classList.remove("no-photo");
     dialogEl.image.src = item.image;
     dialogEl.image.alt = item.name;
     useFallbackImage(dialogEl.image);
