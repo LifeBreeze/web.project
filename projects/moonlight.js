@@ -7,9 +7,11 @@
     'use strict';
 
     var BASE = 'moonlight-cafe/';
+    var PUBLIC = 'https://lifebreeze.github.io/web.project/projects/moonlight-cafe/';
     var frame = document.getElementById('site-frame');
     var view = document.getElementById('site-view');
-    var openLink = document.getElementById('site-open');
+    var address = document.getElementById('site-address');
+    var addressText = document.getElementById('site-address-url');
     if (!frame || !view) return;
 
     var pageButtons = document.querySelectorAll('[data-page]');
@@ -19,7 +21,9 @@
         pageButtons.forEach(function (button) {
             button.setAttribute('aria-pressed', String(button.dataset.page === page));
         });
-        if (openLink) openLink.href = BASE + page;
+        // 창 위 주소줄: 공개 주소를 보여 주고, 누르면 그 쪽을 새 창으로 연다
+        if (address) address.href = PUBLIC + page;
+        if (addressText) addressText.textContent = PUBLIC.replace('https://', '') + page;
     }
 
     pageButtons.forEach(function (button) {
