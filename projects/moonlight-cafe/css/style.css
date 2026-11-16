@@ -586,8 +586,7 @@ button, input {
 .signature,
 .story,
 .beans,
-.visit,
-.lineup-inner {
+.visit {
   max-width: calc(var(--max) + var(--margin) * 2);
   margin: var(--gap-section) auto 0;
   padding-inline: var(--margin);
@@ -753,76 +752,6 @@ button, input {
     gap: 64px;
     align-items: center;
   }
-}
-
-/* 5-5. 메뉴판: 넓은 띠 위에 서른여섯 가지 */
-.lineup {
-  margin-top: var(--gap-section);
-  padding-block: calc(var(--gap-section) * 0.7);
-  background: var(--surface);
-}
-
-.lineup-inner {
-  margin-top: 0;
-}
-
-.lineup-body {
-  display: grid;
-  gap: 48px;
-}
-
-@media (min-width: 640px) {
-  .lineup-body {
-    grid-template-columns: 1fr 1fr;
-    gap: 56px 48px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .lineup-body {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 64px 56px;
-  }
-}
-
-.lineup-cat {
-  margin-bottom: 12px;
-  font-size: var(--step-lead);
-}
-
-.lineup-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 16px;
-  padding-block: 9px;
-}
-
-.lineup-name {
-  font-weight: 500;
-}
-
-.lineup-price {
-  grid-column: 2;
-  grid-row: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-.lineup-en {
-  grid-column: 1;
-  font-size: var(--step-small);
-  color: var(--muted);
-}
-
-.lineup-temp {
-  grid-column: 2;
-  grid-row: 2;
-  justify-self: end;
-  font-size: var(--step-small);
-  color: var(--muted);
-}
-
-.lineup-fallback {
-  max-width: 32em;
 }
 
 /* 5-6. 원두 */

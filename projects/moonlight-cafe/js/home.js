@@ -1,11 +1,10 @@
 /*
  * 달빛 홈 — index.html에서만 쓴다.
- * data-menu.js · data-news.js · common.js 다음에 불러온다.
+ * data-news.js · common.js 다음에 불러온다.
  *
  * 1. 오늘 밤의 달: 날짜로 달의 위상을 계산해 첫 화면의 달 사진에 그림자를 드리운다.
  *    영업 중이면 달이 밝게, 문을 닫았으면 어둡게 보인다. 마감·오픈까지 남은 시간도 적는다.
- * 2. 오늘 밤의 메뉴: MENU 전체를 메뉴판처럼 한 크기 글자로 늘어놓는다.
- * 3. 최신 소식 한 줄.
+ * 2. 최신 소식 한 줄.
  *
  * 콘솔에서 시험: Dalbit.updateHero(new Date(2026, 10, 18, 22, 0))  // 수요일 22:00
  */
@@ -111,34 +110,7 @@
     updateHero();
   }, 60 * 1000);
 
-  /* ---------- 2. 오늘 밤의 메뉴 ---------- */
-  const lineup = document.querySelector("[data-menu-lineup]");
-
-  if (lineup && typeof MENU !== "undefined" && typeof CATEGORIES !== "undefined") {
-    lineup.innerHTML = CATEGORIES.map(function (category) {
-      const items = MENU.filter(function (item) { return item.category === category.id; });
-      return (
-        '<div class="lineup-group">' +
-          '<h3 class="lineup-cat">' + escapeHtml(category.name) + "</h3>" +
-          '<ul class="lineup-list">' +
-            items.map(function (item) {
-              return (
-                '<li class="lineup-row">' +
-                  '<span class="lineup-name">' + escapeHtml(item.name) + "</span>" +
-                  '<span class="lineup-en">' + escapeHtml(item.nameEn) + "</span>" +
-                  '<span class="lineup-temp">' + escapeHtml(item.temp.join(" · ")) + "</span>" +
-                  '<span class="lineup-price">' + window.Dalbit.formatPrice(item.price) + "</span>" +
-                "</li>"
-              );
-            }).join("") +
-          "</ul>" +
-        "</div>"
-      );
-    }).join("");
-    if (window.Dalbit.reveal) window.Dalbit.reveal(lineup.querySelectorAll(".lineup-cat, .lineup-row"));
-  }
-
-  /* ---------- 3. 최신 소식 한 줄 ---------- */
+  /* ---------- 2. 최신 소식 한 줄 ---------- */
   const latest = document.querySelector("[data-news-latest]");
 
   if (latest && typeof NEWS !== "undefined" && NEWS.length) {
