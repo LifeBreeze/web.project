@@ -429,7 +429,7 @@ button, input {
 }
 
 /* ---------- 5. 홈 ---------- */
-/* 5-1. 첫 화면: 제목과 정보, 그 아래 화면 가득 사진 한 장 */
+/* 5-1. 첫 화면: 왼쪽 글 · 오른쪽 사진을 한 줄에, 그 아래 정보 네 칸 */
 .hero-head {
   display: grid;
   gap: 40px;
@@ -519,9 +519,7 @@ button, input {
 .hero-photo {
   display: grid;
   gap: 14px;
-  max-width: calc(var(--max) + var(--margin) * 2);
-  margin: clamp(48px, 6vw, 96px) auto 0;
-  padding-inline: var(--margin);
+  margin: 0;
 }
 
 .hero-photo-frame {
@@ -541,26 +539,28 @@ button, input {
   color: var(--muted);
 }
 
-@media (min-width: 900px) {
-  /* 사진은 오른쪽 7칸만, 설명은 왼쪽 아래에 작게 */
-  .hero-photo {
-    grid-template-columns: 5fr 7fr;
-    gap: 64px;
-    align-items: end;
+/* 정보: 좁은 화면은 목록, 넓은 화면은 네 칸 한 줄 */
+.hero-meta {
+  max-width: calc(var(--max) + var(--margin) * 2);
+  margin: clamp(40px, 5vw, 72px) auto 0;
+  padding-inline: var(--margin);
+}
+
+@media (min-width: 700px) {
+  .hero-meta {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 40px;
   }
 
-  .hero-photo figcaption {
-    grid-column: 1;
-    grid-row: 1;
-    max-width: 18em;
+  .hero-meta div {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
+}
 
-  .hero-photo-frame {
-    grid-column: 2;
-  }
-
-  .hero-photo img {
-    aspect-ratio: 16 / 9;
+@media (min-width: 1100px) {
+  .hero-meta {
+    grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
   }
 }
 
@@ -572,13 +572,9 @@ button, input {
 
 @media (min-width: 900px) {
   .hero-head {
-    grid-template-columns: 8fr 4fr;
+    grid-template-columns: 5fr 7fr;
     gap: 64px;
-    align-items: end;
-  }
-
-  .hero-meta {
-    padding-bottom: 8px;
+    align-items: center;
   }
 }
 
@@ -1904,6 +1900,15 @@ html:has(.menu-dialog[open]) {
   .visit-hours .today-tag {
     margin-left: 6px;
   }
+}
+
+/* 소개: 이어지는 두 글(카페 이야기 · 달빛이라는 이름)은 사이를 좁게 */
+.about-story:has(+ .about-story) {
+  padding-bottom: 0;
+}
+
+.about-story + .about-story {
+  padding-top: clamp(48px, 6vw, 88px);
 }
 
 /* 약도 */
