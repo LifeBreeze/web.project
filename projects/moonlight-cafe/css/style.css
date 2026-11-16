@@ -2180,14 +2180,13 @@ html:has(.menu-dialog[open]) {
     margin-block: 0;
   }
 
-  /* 작품집처럼 두 번째 사진을 조금 내려 엇갈리게 */
-  .shot-pair .shot:nth-child(2) {
-    margin-top: 96px;
+  /* 두 쌍이 이어지면 한 장의 2×2 사진 모음처럼 같은 간격으로 */
+  .shot-pair:has(+ .shot-pair) {
+    margin-bottom: 0;
   }
 
-  .shot-pair .shot:only-child,
-  .shot-pair .shot.no-photo + .shot {
-    margin-top: 0;
+  .shot-pair + .shot-pair {
+    margin-top: 40px;
   }
 }
 
