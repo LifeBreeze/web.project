@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261116-9">
-  <script src="js/common.js?v=20261116-9" defer></script>
-  <script src="js/pages.js?v=20261116-9" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261116-10">
+  <script src="js/common.js?v=20261116-10" defer></script>
+  <script src="js/pages.js?v=20261116-10" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -47,21 +47,8 @@
       </div>
     </section>
 
-    <section class="section" aria-label="주소와 영업시간">
+    <section class="section" aria-label="영업시간과 오늘 밤의 달">
       <div class="container visit-pair">
-        <div class="visit-col">
-          <h2 id="address-title" class="title-lg">주소와 연락처</h2>
-          <dl class="info-list">
-            <div>
-              <dt>주소</dt>
-              <dd>서울시 용산구 해방촌 월하길 15, 1층</dd>
-            </div>
-            <div>
-              <dt>전화</dt>
-              <dd>02-000-0000</dd>
-            </div>
-          </dl>
-        </div>
         <div class="visit-col">
           <h2 id="hours-title" class="title-lg">영업시간</h2>
           <p class="status-large" data-open-status hidden></p>
@@ -100,11 +87,33 @@
           </table>
           <p class="hours-note">자정을 넘긴 새벽 두 시까지는 전날 밤 영업입니다. 일요일 밤에 오시면 월요일 새벽 두 시까지 머무실 수 있습니다.</p>
         </div>
+        <div class="visit-col">
+          <h2 id="moon-title" class="title-lg">오늘 밤의 달</h2>
+          <figure class="tonight-window" data-tonight>
+            <img src="images/space/moon-tonight.jpg" alt="만월창 너머 해방촌 지붕들 위의 밤하늘, 창 앞 둥근 테이블의 라떼와 케이크" width="1200" height="1440" loading="lazy" data-fallback>
+            <svg class="tonight-window-moon" viewBox="0 0 1200 1440" role="img" aria-labelledby="tonight-label">
+              <title id="tonight-label" data-tonight-label>만월창 너머 오늘 밤의 달</title>
+              <defs>
+                <radialGradient id="tonight-glow">
+                  <stop offset="0.3" stop-color="#fff1c8" stop-opacity="0.6"/>
+                  <stop offset="1" stop-color="#fff1c8" stop-opacity="0"/>
+                </radialGradient>
+                <clipPath id="tonight-sky"><circle cx="600" cy="653" r="349"/></clipPath>
+              </defs>
+              <g clip-path="url(#tonight-sky)">
+                <circle cx="725" cy="447" r="170" fill="url(#tonight-glow)" data-tonight-glow/>
+                <circle cx="725" cy="447" r="58" fill="#f6e2a6"/>
+                <path data-tonight-shadow d="" fill="#3e4c76" fill-opacity="0.92"/>
+              </g>
+            </svg>
+          </figure>
+          <p class="tonight-text" data-tonight-text>만월창 너머로 오늘 날짜의 달 모양을 그립니다.</p>
+        </div>
       </div>
     </section>
 
     <section class="section" aria-label="약도와 오시는 방법">
-      <div class="container visit-pair visit-pair--map">
+      <div class="container visit-pair">
         <div class="visit-col">
           <h2 id="map-title" class="title-lg">약도</h2>
           <figure class="map-figure">
@@ -168,7 +177,7 @@
             <figcaption class="map-caption">실제 지도가 아닌 간단한 약도입니다. 녹사평역에서 언덕길을 따라 걸어서 15분 거리입니다.</figcaption>
           </figure>
         </div>
-        <div class="visit-col">
+        <div class="visit-col visit-col--stack">
           <h2 id="route-title" class="title-lg">오시는 방법</h2>
           <dl class="info-list">
             <div>
@@ -182,6 +191,17 @@
             <div>
               <dt>주차</dt>
               <dd>주차 공간이 없어 대중교통을 권합니다</dd>
+            </div>
+          </dl>
+          <h2 id="address-title" class="title-lg">주소와 연락처</h2>
+          <dl class="info-list">
+            <div>
+              <dt>주소</dt>
+              <dd>서울시 용산구 해방촌 월하길 15, 1층</dd>
+            </div>
+            <div>
+              <dt>전화</dt>
+              <dd>02-000-0000</dd>
             </div>
           </dl>
         </div>

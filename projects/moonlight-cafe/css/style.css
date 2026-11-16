@@ -983,7 +983,7 @@ button, input {
   .page-head .container:has(.page-photo) {
     display: grid;
     grid-template-columns: 7fr 5fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr auto auto 1fr;
     column-gap: 64px;
   }
 
@@ -991,19 +991,24 @@ button, input {
     grid-column: 1;
   }
 
+  /* 제목과 소개는 사진 높이의 가운데에 */
   .page-head .container:has(.page-photo) > .title-xl {
-    align-self: end;
+    grid-row: 2;
+  }
+
+  .page-head .container:has(.page-photo) > .lead {
+    grid-row: 3;
   }
 
   .page-photo {
     grid-column: 2;
-    grid-row: 1 / span 2;
+    grid-row: 1 / -1;
     max-width: none;
     margin-top: 0;
   }
 
   .page-photo img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
   }
 }
 
@@ -1811,7 +1816,7 @@ html:has(.menu-dialog[open]) {
   color: var(--ink);
 }
 
-/* 찾아오시는 길: 두 가지를 한 줄에 나란히(주소 · 영업시간 / 약도 · 오시는 방법) */
+/* 찾아오시는 길: 두 가지를 한 줄에 나란히(영업시간 · 오늘 밤의 달 / 약도 · 오시는 방법과 주소) */
 .visit-pair {
   display: grid;
   gap: 56px;
@@ -1823,19 +1828,48 @@ html:has(.menu-dialog[open]) {
   align-content: start;
 }
 
+.visit-col--stack {
+  row-gap: 24px;
+}
+
+.visit-col--stack h2:not(:first-child) {
+  margin-top: 32px;
+}
+
 .visit-col .status-large {
   margin-bottom: 0;
 }
 
 @media (min-width: 900px) {
   .visit-pair {
-    grid-template-columns: 5fr 7fr;
+    grid-template-columns: 7fr 5fr;
     gap: 64px;
   }
+}
 
-  .visit-pair--map {
-    grid-template-columns: 7fr 5fr;
-  }
+/* 오늘 밤의 달: 만월창 그림 위에 날짜에 맞는 달 모양을 얹는다 */
+.tonight-window {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.tonight-window img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tonight-window-moon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tonight-text {
+  color: var(--ink);
 }
 
 /* 약도 */

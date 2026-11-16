@@ -20,37 +20,6 @@
   }
 
   /* ---------- 1. 오늘 밤의 달 ---------- */
-  const SYNODIC = 29.530588853;                       // 삭망월(일)
-  const KNOWN_NEW_MOON = Date.UTC(2000, 0, 6, 18, 14); // 기준 삭: 2000-01-06 18:14 UTC
-
-  function moonPhase(now) {
-    const days = (now.getTime() - KNOWN_NEW_MOON) / 86400000;
-    const age = ((days % SYNODIC) + SYNODIC) % SYNODIC;
-    const angle = (age / SYNODIC) * Math.PI * 2;
-    const lit = (1 - Math.cos(angle)) / 2;
-
-    let name;
-    if (age < 1 || age >= 28.5) name = "삭, 보이지 않는 달";
-    else if (age < 6.4) name = "초승달";
-    else if (age < 8.4) name = "상현달";
-    else if (age < 13.8) name = "차오르는 달";
-    else if (age < 15.8) name = "보름달";
-    else if (age < 21.1) name = "기우는 달";
-    else if (age < 23.1) name = "하현달";
-    else name = "그믐달";
-
-    return { age: age, angle: angle, lit: lit, name: name, waxing: angle <= Math.PI };
-  }
-
-  // 지름 392인 달(가운데 200,200)의 그림자 모양. 차는 달은 왼쪽, 기우는 달은 오른쪽이 어둡다.
-  function shadowPath(phase) {
-    const r = 196;
-    const theta = phase.waxing ? phase.angle : Math.PI * 2 - phase.angle;
-    const rx = Math.abs(r * Math.cos(theta)).toFixed(2);
-    const sweep = Math.cos(theta) > 0 ? 0 : 1;
-    return "M200 4 A196 196 0 0 0 200 396 A" + rx + " 196 0 0 " + sweep + " 200 4 Z";
-  }
-
   function minutesText(minutes) {
     const h = Math.floor(minutes / 60);
     const m = minutes % 60;
@@ -90,10 +59,10 @@
   function updateHero(now) {
     const date = now instanceof Date ? now : new Date();
     const status = window.Dalbit.getOpenStatus(date);
-    const phase = moonPhase(date);
+    const phase = window.Dalbit.moonPhase(date);
 
     if (shadow) {
-      shadow.setAttribute("d", shadowPath(phase));
+      shadow.setAttribute("d", window.Dalbit.moonShadowPath(phase, 200, 200, 196));
       shadow.setAttribute("transform", phase.waxing ? "" : "matrix(-1 0 0 1 400 0)");
     }
     const percent = Math.round(phase.lit * 100);

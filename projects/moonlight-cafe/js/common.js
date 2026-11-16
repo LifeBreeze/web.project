@@ -229,6 +229,41 @@
   }
 
   /* ---------- 다른 스크립트·콘솔에서 쓰는 도구 ---------- */
+  // 오늘 밤의 달: 날짜로 달의 나이(월령)와 밝은 비율을 계산한다. 홈 첫 화면과 찾아오시는 길에서 쓴다.
+  const SYNODIC = 29.530588853;                       // 삭망월(일)
+  const KNOWN_NEW_MOON = Date.UTC(2000, 0, 6, 18, 14); // 기준 삭: 2000-01-06 18:14 UTC
+
+  function moonPhase(now) {
+    const date = now instanceof Date ? now : new Date();
+    const days = (date.getTime() - KNOWN_NEW_MOON) / 86400000;
+    const age = ((days % SYNODIC) + SYNODIC) % SYNODIC;
+    const angle = (age / SYNODIC) * Math.PI * 2;
+    const lit = (1 - Math.cos(angle)) / 2;
+
+    let name;
+    if (age < 1 || age >= 28.5) name = "삭, 보이지 않는 달";
+    else if (age < 6.4) name = "초승달";
+    else if (age < 8.4) name = "상현달";
+    else if (age < 13.8) name = "차오르는 달";
+    else if (age < 15.8) name = "보름달";
+    else if (age < 21.1) name = "기우는 달";
+    else if (age < 23.1) name = "하현달";
+    else name = "그믐달";
+
+    const toFull = ((SYNODIC / 2 - age) % SYNODIC + SYNODIC) % SYNODIC;
+    return { age: age, angle: angle, lit: lit, name: name, waxing: angle <= Math.PI, daysToFull: toFull };
+  }
+
+  // 가운데 (cx, cy), 반지름 r인 달의 그림자 모양(차는 달 기준, 왼쪽이 어둡다).
+  // 기우는 달은 그린 쪽에서 matrix(-1 0 0 1 2cx 0)으로 뒤집는다.
+  function moonShadowPath(phase, cx, cy, r) {
+    const theta = phase.waxing ? phase.angle : Math.PI * 2 - phase.angle;
+    const rx = Math.abs(r * Math.cos(theta)).toFixed(2);
+    const sweep = Math.cos(theta) > 0 ? 0 : 1;
+    const top = cx + " " + (cy - r), bottom = cx + " " + (cy + r);
+    return "M" + top + " A" + r + " " + r + " 0 0 0 " + bottom + " A" + rx + " " + r + " 0 0 " + sweep + " " + top + " Z";
+  }
+
   function formatPrice(price) {
     return price.toLocaleString("ko-KR") + "원";
   }
@@ -237,6 +272,8 @@
     getOpenStatus: getOpenStatus,
     renderOpenStatus: renderOpenStatus,
     formatPrice: formatPrice,
+    moonPhase: moonPhase,
+    moonShadowPath: moonShadowPath,
     reveal: function (items) { reveal(items); }
   };
 
