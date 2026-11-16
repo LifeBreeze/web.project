@@ -523,6 +523,7 @@ button, input {
 }
 
 .hero-photo-frame {
+  position: relative;
   overflow: hidden;
   background: var(--surface);
 }
@@ -531,12 +532,103 @@ button, input {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+}
+
+.hero-photo img.is-current {
   animation: photo-settle 2.6s var(--ease) both;
 }
 
+/* 첫 사진 뒤에 붙는 사진들: 같은 칸에 겹쳐 두고, 차례가 오면 서서히 나타난다 */
+.hero-photo img + img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.hero-photo-frame img {
+  transition: opacity 0.9s var(--ease);
+}
+
+.hero-photo img:not(.is-current) {
+  opacity: 0;
+}
+
+/* 사진 왼쪽 반, 오른쪽 반을 누르면 이전 · 다음 사진 */
+.hero-photo-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.hero-photo-nav--prev {
+  left: 0;
+  justify-content: flex-start;
+}
+
+.hero-photo-nav--next {
+  right: 0;
+  justify-content: flex-end;
+}
+
+.hero-photo-nav span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.hero-photo-frame:hover .hero-photo-nav span,
+.hero-photo-nav:focus-visible span {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-photo-nav:active span {
+  transform: scale(0.92);
+}
+
+.hero-photo-nav:focus-visible {
+  outline: none;
+}
+
+.hero-photo-nav:focus-visible span {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (hover: none) {
+  .hero-photo-nav span {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
 .hero-photo figcaption {
+  display: flex;
+  gap: 12px;
   font-size: var(--step-small);
   color: var(--muted);
+}
+
+.hero-photo-count {
+  flex: none;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 
 /* 정보: 좁은 화면은 목록, 넓은 화면은 네 칸 한 줄 */
