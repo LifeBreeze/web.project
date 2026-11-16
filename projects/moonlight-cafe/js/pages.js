@@ -3,8 +3,7 @@
  * 각 기능은 해당 요소가 있는 페이지에서만 동작한다.
  *
  * 1. 소개: 원두 3종을 BEANS에서, 원두를 고를 수 있는 메뉴 이름을 MENU에서 가져온다.
- * 2. 찾아오시는 길: 영업시간 표에서 오늘(영업일 기준) 줄을 표시하고,
- *    만월창 그림 속 하늘에 오늘 날짜의 달 모양을 그린다.
+ * 2. 찾아오시는 길: 영업시간 표에서 오늘(영업일 기준) 줄을 표시한다.
  * 3. 소식: NEWS 전체를 목록으로 그리고, 주소에 #소식id가 있으면 그 글로 옮긴다.
  */
 (function () {
@@ -68,33 +67,6 @@
     });
   }
 
-  // 만월창 그림(1200×1440) 속 달의 자리. 그림을 그린 장면의 카메라로 계산한 값이다.
-  const WINDOW_MOON = { cx: 725, cy: 447, r: 58 };
-
-  function drawTonightMoon(now) {
-    const figure = document.querySelector("[data-tonight]");
-    if (!figure || !window.Dalbit || !window.Dalbit.moonPhase) return;
-    const date = now instanceof Date ? now : new Date();
-    const phase = window.Dalbit.moonPhase(date);
-    const m = WINDOW_MOON;
-
-    const shadow = figure.querySelector("[data-tonight-shadow]"); // taste-skill-ignore: 달 그림자 모양
-    shadow.setAttribute("d", window.Dalbit.moonShadowPath(phase, m.cx, m.cy, m.r));
-    shadow.setAttribute("transform", phase.waxing ? "" : "matrix(-1 0 0 1 " + m.cx * 2 + " 0)");
-    figure.querySelector("[data-tonight-glow]").setAttribute("opacity", (0.12 + phase.lit * 0.88).toFixed(2));
-
-    const percent = Math.round(phase.lit * 100);
-    const days = Math.round(phase.daysToFull);
-    const toFull = phase.name === "보름달" ? "오늘이 보름 무렵입니다" : "보름달까지 " + days + "일";
-    const label = figure.querySelector("[data-tonight-label]");
-    if (label) label.textContent = "만월창 너머 오늘 밤의 달, " + phase.name + ", " + percent + "퍼센트 밝음";
-    const text = document.querySelector("[data-tonight-text]");
-    if (text) {
-      text.textContent = (date.getMonth() + 1) + "월 " + date.getDate() + "일 밤, " + phase.name +
-        " · " + percent + "% 밝음 · " + toFull;
-    }
-  }
-
   /* ---------- 3. 소식 ---------- */
   function initNews() {
     const list = document.querySelector("[data-news-page]");
@@ -135,14 +107,7 @@
 
   initBeans();
   markToday();
-  drawTonightMoon();
-  if (document.querySelector("[data-tonight], .hours-table")) {
-    window.setInterval(function () { markToday(); drawTonightMoon(); }, 10 * 60 * 1000);
-  }
   initNews();
 
-  if (window.Dalbit) {
-    window.Dalbit.markToday = markToday;
-    window.Dalbit.drawTonightMoon = drawTonightMoon; // 콘솔에서 시험: Dalbit.drawTonightMoon(new Date(2026, 10, 24))
-  }
+  if (window.Dalbit) window.Dalbit.markToday = markToday;
 })();

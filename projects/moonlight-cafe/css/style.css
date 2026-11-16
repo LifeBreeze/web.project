@@ -1816,7 +1816,7 @@ html:has(.menu-dialog[open]) {
   color: var(--ink);
 }
 
-/* 찾아오시는 길: 두 가지를 한 줄에 나란히(영업시간 · 오늘 밤의 달 / 약도 · 오시는 방법과 주소) */
+/* 찾아오시는 길: 영업시간은 일주일을 한 줄로, 약도 옆에 오시는 방법과 주소 */
 .visit-pair {
   display: grid;
   gap: 56px;
@@ -1847,29 +1847,63 @@ html:has(.menu-dialog[open]) {
   }
 }
 
-/* 오늘 밤의 달: 만월창 그림 위에 날짜에 맞는 달 모양을 얹는다 */
-.tonight-window {
-  position: relative;
-  margin: 0;
-  overflow: hidden;
-  background: var(--surface);
+.visit-hours {
+  display: grid;
+  gap: 24px;
 }
 
-.tonight-window img {
-  display: block;
-  width: 100%;
-  height: auto;
+.visit-hours .status-large {
+  margin-bottom: 0;
 }
 
-.tonight-window-moon {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.visit-hours .hours-note {
+  margin-top: 0;
 }
 
-.tonight-text {
-  color: var(--ink);
+/* 넓은 화면: 월요일부터 일요일까지 일곱 칸을 한 줄로 */
+@media (min-width: 900px) {
+  .visit-hours .hours-table tbody {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  .visit-hours .hours-table tr {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+  }
+
+  .visit-hours .hours-table th,
+  .visit-hours .hours-table td {
+    display: block;
+    border-radius: 0;
+    background: none;
+    text-align: left;
+  }
+
+  .visit-hours .hours-table th {
+    padding: 18px 18px 6px;
+  }
+
+  .visit-hours .hours-table td {
+    padding: 0 18px 20px;
+    font-size: var(--step-lead);
+  }
+
+  .visit-hours .hours-table tr.is-today {
+    background: var(--warm);
+  }
+
+  .visit-hours .hours-table tr.is-today th,
+  .visit-hours .hours-table tr.is-today td {
+    background: none;
+  }
+
+  .visit-hours .today-tag {
+    margin-left: 6px;
+  }
 }
 
 /* 약도 */

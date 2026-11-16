@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="css/style.css?v=20261116-10">
-  <script src="js/common.js?v=20261116-10" defer></script>
-  <script src="js/pages.js?v=20261116-10" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261116-11">
+  <script src="js/common.js?v=20261116-11" defer></script>
+  <script src="js/pages.js?v=20261116-11" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -47,68 +47,44 @@
       </div>
     </section>
 
-    <section class="section" aria-label="영업시간과 오늘 밤의 달">
-      <div class="container visit-pair">
-        <div class="visit-col">
-          <h2 id="hours-title" class="title-lg">영업시간</h2>
-          <p class="status-large" data-open-status hidden></p>
-          <table class="hours-table">
-            <caption class="sr-only">요일별 영업시간</caption>
-            <tbody>
-            <tr data-day="1">
-              <th scope="row">월요일</th>
-              <td>휴무</td>
-            </tr>
-            <tr data-day="2">
-              <th scope="row">화요일</th>
-              <td>18:00 – 02:00</td>
-            </tr>
-            <tr data-day="3">
-              <th scope="row">수요일</th>
-              <td>18:00 – 02:00</td>
-            </tr>
-            <tr data-day="4">
-              <th scope="row">목요일</th>
-              <td>18:00 – 02:00</td>
-            </tr>
-            <tr data-day="5">
-              <th scope="row">금요일</th>
-              <td>18:00 – 02:00</td>
-            </tr>
-            <tr data-day="6">
-              <th scope="row">토요일</th>
-              <td>18:00 – 02:00</td>
-            </tr>
-            <tr data-day="0">
-              <th scope="row">일요일</th>
-              <td>18:00 – 02:00</td>
-            </tr>
-            </tbody>
-          </table>
-          <p class="hours-note">자정을 넘긴 새벽 두 시까지는 전날 밤 영업입니다. 일요일 밤에 오시면 월요일 새벽 두 시까지 머무실 수 있습니다.</p>
-        </div>
-        <div class="visit-col">
-          <h2 id="moon-title" class="title-lg">오늘 밤의 달</h2>
-          <figure class="tonight-window" data-tonight>
-            <img src="images/space/moon-tonight.jpg" alt="만월창 너머 해방촌 지붕들 위의 밤하늘, 창 앞 둥근 테이블의 라떼와 케이크" width="1200" height="1440" loading="lazy" data-fallback>
-            <svg class="tonight-window-moon" viewBox="0 0 1200 1440" role="img" aria-labelledby="tonight-label">
-              <title id="tonight-label" data-tonight-label>만월창 너머 오늘 밤의 달</title>
-              <defs>
-                <radialGradient id="tonight-glow">
-                  <stop offset="0.3" stop-color="#fff1c8" stop-opacity="0.6"/>
-                  <stop offset="1" stop-color="#fff1c8" stop-opacity="0"/>
-                </radialGradient>
-                <clipPath id="tonight-sky"><circle cx="600" cy="653" r="349"/></clipPath>
-              </defs>
-              <g clip-path="url(#tonight-sky)">
-                <circle cx="725" cy="447" r="170" fill="url(#tonight-glow)" data-tonight-glow/>
-                <circle cx="725" cy="447" r="58" fill="#f6e2a6"/>
-                <path data-tonight-shadow d="" fill="#3e4c76" fill-opacity="0.92"/>
-              </g>
-            </svg>
-          </figure>
-          <p class="tonight-text" data-tonight-text>만월창 너머로 오늘 날짜의 달 모양을 그립니다.</p>
-        </div>
+    <section class="section" aria-labelledby="hours-title">
+      <div class="container visit-hours">
+        <h2 id="hours-title" class="title-lg">영업시간</h2>
+        <p class="status-large" data-open-status hidden></p>
+        <table class="hours-table">
+          <caption class="sr-only">요일별 영업시간</caption>
+          <tbody>
+          <tr data-day="1">
+            <th scope="row">월요일</th>
+            <td>휴무</td>
+          </tr>
+          <tr data-day="2">
+            <th scope="row">화요일</th>
+            <td>18:00 – 02:00</td>
+          </tr>
+          <tr data-day="3">
+            <th scope="row">수요일</th>
+            <td>18:00 – 02:00</td>
+          </tr>
+          <tr data-day="4">
+            <th scope="row">목요일</th>
+            <td>18:00 – 02:00</td>
+          </tr>
+          <tr data-day="5">
+            <th scope="row">금요일</th>
+            <td>18:00 – 02:00</td>
+          </tr>
+          <tr data-day="6">
+            <th scope="row">토요일</th>
+            <td>18:00 – 02:00</td>
+          </tr>
+          <tr data-day="0">
+            <th scope="row">일요일</th>
+            <td>18:00 – 02:00</td>
+          </tr>
+          </tbody>
+        </table>
+        <p class="hours-note">자정을 넘긴 새벽 두 시까지는 전날 밤 영업입니다. 일요일 밤에 오시면 월요일 새벽 두 시까지 머무실 수 있습니다.</p>
       </div>
     </section>
 
