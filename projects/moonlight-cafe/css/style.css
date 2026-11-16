@@ -1811,6 +1811,33 @@ html:has(.menu-dialog[open]) {
   color: var(--ink);
 }
 
+/* 찾아오시는 길: 두 가지를 한 줄에 나란히(주소 · 영업시간 / 약도 · 오시는 방법) */
+.visit-pair {
+  display: grid;
+  gap: 56px;
+}
+
+.visit-col {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.visit-col .status-large {
+  margin-bottom: 0;
+}
+
+@media (min-width: 900px) {
+  .visit-pair {
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+  }
+
+  .visit-pair--map {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
 /* 약도 */
 .map-figure {
   margin: 0;
