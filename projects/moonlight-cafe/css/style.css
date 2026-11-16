@@ -47,7 +47,7 @@
 
   --margin: clamp(20px, 4vw, 64px);
   --max: 1320px;
-  --gap-section: clamp(96px, 11vw, 176px);
+  --gap-section: clamp(72px, 8vw, 120px);
   --radius: 0;
   --radius-sm: 0;
   --header-h: 64px;
@@ -1909,6 +1909,30 @@ html:has(.menu-dialog[open]) {
 
 .about-story + .about-story {
   padding-top: clamp(48px, 6vw, 88px);
+}
+
+/* 제목 아래 작은 그림: 왼쪽 제목 칸이 비지 않게 */
+.head-shot {
+  display: grid;
+  gap: 10px;
+  max-width: 28rem;
+  margin: 16px 0 0;
+}
+
+.head-shot img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--surface);
+}
+
+.head-shot img[src*="facade"] {
+  object-position: 50% 62%;
+}
+
+.head-shot figcaption {
+  font-size: var(--step-small);
+  color: var(--muted);
 }
 
 /* 약도 */
