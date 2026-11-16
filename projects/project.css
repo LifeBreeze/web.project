@@ -1368,3 +1368,71 @@
         height: 400px;
     }
 }
+
+/* ===== 달빛 카페: 페이지 안의 큰 창 ===== */
+.container-wide {
+    max-width: 1440px;
+}
+
+.site-stage {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--ink);
+    color: var(--white);
+}
+
+.site-stage-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stage-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.site-view {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #2a3242;
+}
+
+.site-view iframe {
+    display: block;
+    width: 100%;
+    height: clamp(560px, 82vh, 920px);
+    border: 0;
+    border-radius: 12px;
+    background-color: #f6f3ee;
+    transition: width 0.35s ease;
+}
+
+/* 휴대폰 크기: 폭 390px 창을 가운데에 */
+.site-view.is-phone {
+    padding: 24px 0;
+}
+
+.site-view.is-phone iframe {
+    width: min(390px, 100%);
+    height: min(780px, 82vh);
+    border-radius: 24px;
+}
+
+@media (max-width: 680px) {
+    .site-stage {
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    .site-view iframe {
+        height: 78vh;
+    }
+}
