@@ -1040,6 +1040,11 @@ button, input {
   .split .section-head {
     margin-bottom: 0;
   }
+
+  /* 왼쪽에 제목과 사진이 함께 있으면, 오른쪽 글을 그 높이의 가운데에 둔다 */
+  .split:has(.head-shot) {
+    align-items: center;
+  }
 }
 
 .title-lg {
