@@ -277,9 +277,20 @@
     reveal: function (items) { reveal(items); }
   };
 
+  // 다른 쪽에서 주소#제목으로 넘어왔을 때(휴대폰 아래 '길찾기' 등):
+  // 사진이 늦게 불러와지며 위치가 밀리므로, 다 불러온 뒤 그 제목으로 한 번 더 맞춘다.
+  function initHashLanding() {
+    if (!window.location.hash) return;
+    window.addEventListener("load", function () {
+      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) target.scrollIntoView({ block: "start", behavior: "instant" });
+    }, { once: true });
+  }
+
   initNav();
   initOpenStatus();
   initToTop();
   initReveal();
   initImageFallback();
+  initHashLanding();
 })();

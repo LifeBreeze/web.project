@@ -2749,3 +2749,227 @@ html:has(.menu-dialog[open]) {
     transform: none !important;
   }
 }
+
+/* ==========================================================
+   휴대폰 전용 (699px 이하)
+   넓은 화면의 배치를 세로로 쌓기만 하지 않고, 휴대폰에서 쓰기 좋게 바꾼다.
+   - 아래쪽 고정 버튼 줄: 메뉴판 · 길찾기 · 전화
+   - 시그니처 · 소개의 공간 사진: 옆으로 밀어 넘기기
+   - 메뉴판: 작은 사진 + 이름 · 가격 한 줄 + 설명 두 줄
+   - 공간: 사진 두 장 나란히, 재료는 색 동그라미 목록
+   ========================================================== */
+.phone-bar {
+  display: none;
+}
+
+/* 주소#제목으로 넘어왔을 때 제목이 붙박이 머리글에 가리지 않게 */
+h2[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+@media (max-width: 699px) {
+  body {
+    padding-bottom: calc(66px + env(safe-area-inset-bottom));
+  }
+
+  /* 아래쪽 고정 버튼 줄 */
+  .phone-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    background: var(--ink);
+  }
+
+  .phone-bar a {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 3px;
+    min-height: 54px;
+    color: color-mix(in srgb, var(--bg) 72%, transparent);
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.2s var(--ease), transform 0.15s var(--ease);
+  }
+
+  .phone-bar a[aria-current="page"] {
+    color: var(--bg);
+  }
+
+  .phone-bar a:active {
+    transform: scale(0.92);
+  }
+
+  .phone-bar a:focus-visible {
+    outline: 2px solid var(--bg);
+    outline-offset: -4px;
+  }
+
+  .phone-bar svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* 옆으로 밀어 넘기는 줄: 다음 카드가 조금 보여서 더 있다는 걸 알 수 있다 */
+  .sig-list,
+  .space-grid,
+  .bean-list {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    gap: 14px;
+    margin: -8px calc(var(--margin) * -1) 0;
+    padding: 8px var(--margin) 4px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margin);
+    scrollbar-width: none;
+  }
+
+  .sig-list::-webkit-scrollbar,
+  .space-grid::-webkit-scrollbar,
+  .bean-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sig-list {
+    grid-auto-columns: 62%;
+  }
+
+  .space-grid {
+    grid-auto-columns: 74%;
+  }
+
+  .bean-list {
+    grid-auto-columns: 82%;
+    margin-top: 32px;
+  }
+
+  .sig-card,
+  .space-item,
+  .bean-list > li {
+    scroll-snap-align: start;
+  }
+
+  /* 메뉴판: 한 줄에 사진 · 이름 · 가격, 아래에 설명 두 줄 */
+  .menu-list {
+    gap: 0;
+  }
+
+  .menu-item-open {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "thumb name price"
+      "thumb desc desc"
+      "thumb meta meta";
+    gap: 2px 14px;
+    padding: 14px 0 16px;
+  }
+
+  .menu-item.no-photo .menu-item-open {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name price"
+      "desc desc"
+      "meta meta";
+  }
+
+  .menu-thumb {
+    grid-area: thumb;
+    width: 64px;
+    height: 64px;
+  }
+
+  .menu-item-text {
+    display: contents;
+  }
+
+  .menu-item-name {
+    grid-area: name;
+    font-size: 1.12rem;
+  }
+
+  .menu-item-en {
+    display: none;
+  }
+
+  .menu-item-desc {
+    grid-area: desc;
+    display: -webkit-box;
+    margin-top: 2px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .menu-meta {
+    grid-area: meta;
+    margin-top: 4px;
+    padding-right: 44px;
+  }
+
+  .menu-item-price {
+    grid-area: price;
+    padding-top: 2px;
+  }
+
+  .menu-item .fav-btn {
+    right: -10px;
+    bottom: 4px;
+  }
+
+  /* 공간: 사진 두 장을 나란히 */
+  .shot-pair {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 12px;
+  }
+
+  .shot-pair .shot {
+    margin-block: 0 28px;
+  }
+
+  .shot-pair .shot img {
+    aspect-ratio: 4 / 5;
+  }
+
+  /* 재료: 색 동그라미 + 이름 두 줄 목록 */
+  .materials {
+    gap: 18px 12px;
+    margin-top: 32px;
+  }
+
+  .materials li {
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 0;
+    align-items: center;
+  }
+
+  .materials .swatch {
+    grid-row: span 2;
+    width: 40px;
+    margin: 0;
+    border-radius: 50%;
+  }
+
+  .materials .material-name,
+  .materials .material-use {
+    grid-column: 2;
+  }
+
+  .materials .material-name {
+    font-size: 1.05rem;
+  }
+}
