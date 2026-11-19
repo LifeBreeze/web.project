@@ -34,9 +34,6 @@ function logoHTML() {
 
 function buildChrome() {
   var page = document.body.getAttribute('data-page');
-  var note = document.createElement('div');
-  note.className = 'topnote';
-  note.innerHTML = '<b>비공식 리디자인 시안</b> · 웹 수업 과제로 다시 만든 화면입니다. 실제 (주)펜테크 공식 사이트가 아닙니다.';
 
   var gnb = NAV.map(function (n) {
     var cur = n.key === page ? ' aria-current="page"' : '';
@@ -58,7 +55,6 @@ function buildChrome() {
 
   document.body.insertBefore(mnav, document.body.firstChild);
   document.body.insertBefore(head, document.body.firstChild);
-  document.body.insertBefore(note, document.body.firstChild);
 
   var foot = document.createElement('footer');
   foot.className = 'foot';
@@ -86,12 +82,18 @@ function buildChrome() {
   function setMenu(open) {
     burger.setAttribute('aria-expanded', open); burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
     mnav.classList.toggle('open', open); document.body.style.overflow = open ? 'hidden' : '';
-    document.documentElement.style.setProperty('--note-h', Math.max(0, note.getBoundingClientRect().bottom) + 'px');
+    document.body.classList.toggle('menu-open', open); topState();
+    document.documentElement.style.setProperty('--note-h', '0px');   // 맨 위 안내 띠를 뺐으므로 0
   }
   burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
   mnav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
 
   window.addEventListener('scroll', function () { top.classList.toggle('show', window.scrollY > 500); }, { passive: true });
+
+  // 페이지 맨 위에서는 헤더를 투명하게 해서 배너 사진과 이어 보이게, 조금만 내려도 흰 헤더로
+  function topState() { head.classList.toggle('is-top', window.scrollY < 10 && !document.body.classList.contains('menu-open')); }
+  window.addEventListener('scroll', topState, { passive: true });
+  topState();
 }
 
 /* ── 사진 칸: 누르면 크게 보기. group이 같은 사진끼리 넘겨 본다 ── */

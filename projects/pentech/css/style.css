@@ -955,3 +955,64 @@ html, body { overflow-x: clip; }
   .fp-body .btns .btn { height: 44px; padding: 0 18px; font-size: 14.5px; }
 }
 @media (min-width: 981px) { .finder-panel { min-height: 700px; } }
+
+
+/* ─────────── 배너와 자연스럽게 이어지기: 투명 헤더 · 사진 위 숫자 띠 · 공법 색 빼기 ─────────── */
+/* 헤더: 맨 위에서는 배너 사진 위에 투명하게 얹힘(흰 글씨), 내리면 흰 헤더 */
+.head { margin-bottom: calc(var(--head-h) * -1); transition: background-color .25s, border-color .25s, box-shadow .25s; }
+.head:not(.is-top) { box-shadow: 0 10px 28px -22px rgba(15,27,61,.6); }
+.head.is-top { background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.head.is-top .logo img { filter: brightness(0) invert(1); }
+.head.is-top .gnb > li > a { color: #fff; }
+.head.is-top .gnb > li > a:hover, .head.is-top .gnb > li:focus-within > a { color: var(--accent-l); }
+.head.is-top .gnb > li > a[aria-current="page"] { color: #fff; }
+.head.is-top .gnb > li > a[aria-current="page"]::after { background: var(--accent-l); }
+.head.is-top .gnb .caret { opacity: .85; }
+.head.is-top .tel-pill { background: #fff; color: var(--accent); }
+.head.is-top .tel-pill:hover { background: var(--blue-soft); }
+.head.is-top .burger span { background: #fff; }
+
+/* 첫 화면: 헤더 자리까지 사진이 올라가고, 숫자 띠는 사진 아래쪽에 얹혀 사진이 끊기지 않고 이어짐 */
+.hero { display: block; min-height: clamp(620px, 54vw, 760px); }
+.hero-in { padding: calc(var(--head-h) + 76px) 36px 210px; }
+.hero::before { background: linear-gradient(180deg, rgba(8,24,70,.6) 0, rgba(8,24,70,0) 180px),
+  linear-gradient(90deg, rgba(8,24,70,.88) 0%, rgba(10,32,92,.55) 42%, rgba(10,32,92,0) 82%); }
+.hero .facts { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; border: 0; padding-top: 70px;
+  background: linear-gradient(0deg, rgba(9,22,58,.95) 0%, rgba(9,22,58,.8) 50%, rgba(9,22,58,0) 100%); }
+.hero .facts li { padding: 28px 28px 30px; }
+
+/* 하위 페이지 배너: 투명 헤더 자리까지 사진이 올라감 */
+.page-head { padding: calc(var(--head-h) + 40px) 0 60px; min-height: 430px; }
+.page-head.slim { min-height: 350px; padding: calc(var(--head-h) + 32px) 0 52px; }
+.page-head::before { background: linear-gradient(180deg, rgba(8,26,76,.6) 0, rgba(8,26,76,0) 180px),
+  linear-gradient(90deg, rgba(8,26,76,.9) 0%, rgba(12,38,104,.7) 44%, rgba(12,38,104,.22) 100%); }
+
+/* 공법 이름 앞의 색 점 빼기 */
+.tech-switch a i { display: none; }
+.tech-switch a { padding: 9px 20px; }
+
+@media (max-width: 980px) {
+  .hero-in { padding: calc(var(--head-h) + 60px) 28px 260px; }
+  .page-head { min-height: 0; padding: calc(var(--head-h) + 32px) 0 52px; }
+  .page-head.slim { min-height: 0; padding: calc(var(--head-h) + 28px) 0 44px; }
+}
+@media (max-width: 760px) {
+  .hero { min-height: 640px; }
+  .hero-in { padding: calc(var(--head-h) + 52px) 20px 270px; }
+  .hero .facts { padding-top: 50px; }
+  .hero .facts li { padding: 18px 16px; }
+  .hero .facts li:nth-child(n+3) { border-top-color: rgba(255,255,255,.1); }
+}
+
+/* 숫자 띠: 예전 '.hero .wrap' 규칙(2열 격자)이 섞여 들어오지 않게 4열로 고정 */
+.hero .facts ul { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding-bottom: 0; align-items: stretch; }
+@media (max-width: 980px) {
+  .hero .facts ul { grid-template-columns: 1fr 1fr; }
+  .hero .facts li:nth-child(3) { border-left: 0; padding-left: 0; }
+  .hero .facts li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.1); }
+}
+
+/* 기술 페이지 배너도 투명 헤더 자리만큼 위 여백 (예전 기술 페이지 전용 여백 규칙을 덮어씀) */
+body[data-page="tech"] .page-head { padding: calc(var(--head-h) + 40px) 0 56px; }
+@media (max-width: 980px) { body[data-page="tech"] .page-head { padding: calc(var(--head-h) + 28px) 0 48px; } }
+.tel-pill { transition: background-color .18s, color .18s; }
