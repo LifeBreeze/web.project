@@ -1267,3 +1267,95 @@ html[lang="en"] .hero-3 h2.hero-words { font-size: clamp(22px, 2.6vw, 44px); }
 /* 영문 로고는 가로로 더 길어서 한국어 로고와 비슷한 크기로 */
 .logo-en img { height: 36px; }
 @media (max-width: 980px) { .logo-en img { height: 30px; } }
+
+
+/* ─────────── 홈 첫 화면 v2: 헤더 뒤까지 꽉 찬 사진 · 왼쪽 글 · 아래 숫자 띠 · 옆으로 넘김 ─────────── */
+/* 헤더(로고 왼쪽 · 메뉴 가운데 · 전화 오른쪽 간격)는 그대로, 맨 위에서는 사진 위에 투명하게 얹힘 */
+body[data-page="home"] .head { margin-bottom: calc(var(--head-h) * -1); }
+body[data-page="home"] .head.is-top { background: transparent; box-shadow: none; }
+body[data-page="home"] .head.is-top .tel-pill { background: #fff; color: var(--accent); }
+body[data-page="home"] .head.is-top .tel-pill:hover { background: var(--blue-soft); }
+body[data-page="home"] .head.is-top .gnb > li > a { font-weight: 600; }
+
+body[data-page="home"] .hero { padding: 0; background: none; color: #fff; min-height: 0; scroll-margin-top: 0; }
+body[data-page="home"] .hero-viewport { border-radius: 0; }
+body[data-page="home"] .hero .hero-card { height: 100vh; height: 100svh; min-height: 640px; max-height: 1080px; border-radius: 0; }
+body[data-page="home"] .hero .hero-card::before {
+  background: linear-gradient(180deg, rgba(8,24,70,.62) 0, rgba(8,24,70,0) 190px),
+    linear-gradient(90deg, rgba(8,24,70,.82) 0%, rgba(10,32,92,.48) 46%, rgba(10,32,92,0) 85%),
+    linear-gradient(0deg, rgba(8,24,70,.5) 0, rgba(8,24,70,0) 38%); }
+
+/* 글: 왼쪽 가운데, 큰 제목 두 줄 → 설명 → 버튼 */
+body[data-page="home"] .hero .hero-copy { position: absolute; left: clamp(32px, 6vw, 110px); right: clamp(32px, 6vw, 110px); top: 0; bottom: 150px; display: flex; flex-direction: column; justify-content: center; max-width: 920px; padding-top: var(--head-h); }
+body[data-page="home"] .hero .hero-card .hero-words { position: static; display: block; padding: 0; margin: 0; font-size: clamp(38px, 5.2vw, 84px); font-weight: 700; line-height: 1.16; letter-spacing: -.05em; color: #fff; text-shadow: 0 2px 28px rgba(0,22,70,.35); }
+body[data-page="home"] .hero .hero-words span { display: block; white-space: normal; }
+body[data-page="home"] .hero .hero-copy .lead { margin: 30px 0 0; font-size: clamp(16px, 1.25vw, 19px); line-height: 1.75; color: rgba(255,255,255,.92); max-width: 560px; }
+body[data-page="home"] .hero .hero-copy .btns { margin-top: 34px; }
+body[data-page="home"] .hero .hero-card .hero-copy { opacity: 0; transition: opacity .6s ease .1s; }
+body[data-page="home"] .hero .hero-card.active .hero-copy { opacity: 1; }
+
+/* 숫자 띠: 사진 아래쪽에 얹힘 (슬라이드가 바뀌어도 그대로) */
+body[data-page="home"] .hero .facts { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; background: linear-gradient(0deg, rgba(9,22,58,.92) 0%, rgba(9,22,58,.72) 55%, rgba(9,22,58,0) 100%); border: 0; padding-top: 60px; }
+body[data-page="home"] .hero .facts ul { max-width: none; margin: 0; padding: 0 clamp(32px, 6vw, 110px); display: grid; grid-template-columns: repeat(4, 1fr); }
+body[data-page="home"] .hero .facts li { padding: 26px 28px 30px; border-left: 1px solid rgba(255,255,255,.14); }
+body[data-page="home"] .hero .facts li:first-child { border-left: 0; padding-left: 0; }
+body[data-page="home"] .hero .facts b { color: #8fb4ff; font-size: clamp(28px, 2.8vw, 42px); font-weight: 800; letter-spacing: -.04em; }
+body[data-page="home"] .hero .facts span { color: rgba(255,255,255,.86); margin-top: 4px; font-size: 15px; }
+
+/* 넘기는 단추: 숫자 띠 바로 위 오른쪽 */
+body[data-page="home"] .hero-ticks { left: auto; right: clamp(32px, 6vw, 110px); top: auto; bottom: 168px; transform: none; padding: 6px 12px; }
+body[data-page="home"] .hero-arrow { top: auto; bottom: 156px; transform: none; width: 50px; height: 50px; }
+body[data-page="home"] .hero-arrow.prev { left: auto; right: calc(clamp(32px, 6vw, 110px) + 130px); }
+body[data-page="home"] .hero-arrow.next { right: calc(clamp(32px, 6vw, 110px) + 70px); }
+body[data-page="home"] .hero-ticks { right: calc(clamp(32px, 6vw, 110px) + 0px); }
+
+@media (max-width: 980px) {
+  body[data-page="home"] .hero .facts ul { grid-template-columns: 1fr 1fr; padding: 0 32px; }
+  body[data-page="home"] .hero .facts li:nth-child(3) { border-left: 0; padding-left: 0; }
+  body[data-page="home"] .hero .facts li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.12); }
+  body[data-page="home"] .hero .facts li { padding: 16px 18px; }
+  body[data-page="home"] .hero .hero-copy { bottom: 210px; }
+  body[data-page="home"] .hero-ticks { bottom: 230px; }
+  body[data-page="home"] .hero-arrow { bottom: 218px; }
+}
+/* 휴대폰: 아래 고정 단추 줄을 피해 숫자 띠를 사진 아래에 이어 붙임 */
+@media (max-width: 760px) {
+  body[data-page="home"] .hero .hero-card { height: calc(100svh - 96px - 150px); min-height: 480px; }
+  body[data-page="home"] .hero .hero-copy { left: 22px; right: 22px; bottom: 0; padding-top: calc(var(--head-h) + 8px); justify-content: center; }
+  body[data-page="home"] .hero .hero-card .hero-words { font-size: clamp(32px, 9.6vw, 46px); }
+  body[data-page="home"] .hero .hero-copy .lead { margin-top: 20px; font-size: 15.5px; }
+  body[data-page="home"] .hero .hero-copy .btns { margin-top: 24px; }
+  body[data-page="home"] .hero .hero-copy .btns .btn { width: 100%; }
+  body[data-page="home"] .hero .facts { position: relative; padding-top: 0; background: #0a1c4d; }
+  body[data-page="home"] .hero .facts ul { padding: 0 16px; }
+  body[data-page="home"] .hero .facts li { padding: 12px 10px; }
+  body[data-page="home"] .hero .facts li:nth-child(odd) { padding-left: 0; }
+  body[data-page="home"] .hero .facts b { font-size: 24px; }
+  body[data-page="home"] .hero .facts span { font-size: 13px; }
+  body[data-page="home"] .hero-ticks { bottom: auto; top: calc(var(--head-h) + 8px); right: 14px; }
+}
+/* 영어 화면: 글자가 길어서 조금 작게 */
+html[lang="en"] body[data-page="home"] .hero .hero-card .hero-words { font-size: clamp(34px, 4.5vw, 74px); }
+@media (max-width: 760px) { html[lang="en"] body[data-page="home"] .hero .hero-card .hero-words { font-size: clamp(28px, 8vw, 40px); } }
+
+/* 넘기는 단추 정리: [눈금][이전][다음] 순으로 숫자 띠 위 오른쪽 */
+body[data-page="home"] .hero-arrow { bottom: 206px; }
+body[data-page="home"] .hero-arrow.next { right: clamp(32px, 6vw, 110px); }
+body[data-page="home"] .hero-arrow.prev { right: calc(clamp(32px, 6vw, 110px) + 62px); }
+body[data-page="home"] .hero-ticks { right: calc(clamp(32px, 6vw, 110px) + 134px); bottom: 220px; }
+@media (max-width: 980px) {
+  body[data-page="home"] .hero-arrow { bottom: 226px; }
+  body[data-page="home"] .hero-ticks { bottom: 240px; }
+}
+@media (max-width: 760px) {
+  body[data-page="home"] .hero-ticks { right: 14px; bottom: auto; }
+}
+
+/* 둘째 · 셋째 화면은 글이 길어서 한 줄에 들어가게 조금 작게 */
+body[data-page="home"] .hero .hero-copy { max-width: 1100px; }
+body[data-page="home"] .hero .hero-card.hero-2 .hero-words, body[data-page="home"] .hero .hero-card.hero-3 .hero-words { font-size: clamp(32px, 4.1vw, 66px); }
+html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html[lang="en"] body[data-page="home"] .hero .hero-card.hero-3 .hero-words { font-size: clamp(30px, 3.6vw, 58px); }
+@media (max-width: 760px) {
+  body[data-page="home"] .hero .hero-card.hero-2 .hero-words, body[data-page="home"] .hero .hero-card.hero-3 .hero-words { font-size: clamp(28px, 8.4vw, 40px); }
+  html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html[lang="en"] body[data-page="home"] .hero .hero-card.hero-3 .hero-words { font-size: clamp(26px, 7.4vw, 36px); }
+}
