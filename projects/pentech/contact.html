@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>고객지원 — (주)펜테크 | 리디자인 시안</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css?v=20261119-21">
+</head>
+<body data-page="contact">
+<main>
+  <section class="page-head slim" style="--banner:url('https://www.pentech.kr/images/contact/s01_bg.webp')">
+    <div class="wrap"><div>
+      <nav class="crumb" aria-label="현재 위치"><a href="index.html">홈</a><span>고객지원</span></nav>
+      <h1 class="rv-h"><small>SUPPORT</small>현장에 맞는 정확한 상담으로<br>최적의 시공 해법을 제안합니다</h1>
+    </div></div>
+  </section>
+
+  <nav class="toc" aria-label="고객지원 목차"><div class="wrap"><ul>
+    <li><a href="#inquiry">견적 문의</a></li><li><a href="#docs">시공 제안서</a></li><li><a href="#faq">자주 묻는 질문</a></li>
+  </ul></div></nav>
+
+  <section class="sec" id="inquiry">
+    <div class="wrap form-wrap">
+      <div class="form-aside rv">
+        <span class="eyebrow"><b>01</b> 견적 문의</span>
+        <h2 class="h2">상담이 필요하신가요?</h2>
+        <p class="lead">건물 종류와 문제 부위를 알려 주시면 펜테크가 가장 알맞은 해결 방법을 제안해 드립니다. 어떤 공법인지 몰라도 괜찮습니다.</p>
+        <div class="call">
+          <div class="call-top">
+            <span class="call-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
+            <div><small>전화가 더 빠릅니다</small><b>1599-7041</b></div>
+          </div>
+          <a class="btn btn-blue" href="tel:1599-7041">바로 전화하기</a>
+        </div>
+        <p class="steps-title">상담은 이렇게 진행돼요</p>
+        <ol class="steps-card">
+          <li><div><b>문의 접수</b><span>건물 종류와 문제 부위를 남겨 주세요.</span></div></li>
+          <li><div><b>현장 진단</b><span>건물 상태를 살피고, 필요하면 드론 · AI로 균열을 진단합니다.</span></div></li>
+          <li><div><b>공법 · 견적 제안</b><span>지붕, 외벽, 바닥에 맞는 공법과 견적을 안내합니다.</span></div></li>
+          <li><div><b>시공 · 사후 관리</b><span>검증된 공법으로 시공하고 마무리까지 책임집니다.</span></div></li>
+        </ol>
+      </div>
+      <form class="form rv" id="inqForm" novalidate>
+        <fieldset class="field full" data-req>
+          <legend>문의 종류 <span class="req">*</span></legend>
+          <div class="seg">
+            <label><input type="radio" name="kind" value="견적" checked><span>견적 문의</span></label>
+            <label><input type="radio" name="kind" value="협약"><span>협약 문의</span></label>
+          </div>
+          <span class="err">문의 종류를 골라 주세요.</span>
+        </fieldset>
+        <div class="field full">
+          <label for="f-tech">관심 공법</label>
+          <select id="f-tech" name="tech"></select>
+        </div>
+        <div class="field" data-req>
+          <label for="f-name">담당자명 <span class="req">*</span></label>
+          <input id="f-name" name="name" autocomplete="name">
+          <span class="err">담당자 이름을 적어 주세요.</span>
+        </div>
+        <div class="field" data-req>
+          <label for="f-org">회사명 · 단지명 <span class="req">*</span></label>
+          <input id="f-org" name="org" autocomplete="organization" placeholder="예: OO아파트 관리사무소">
+          <span class="err">회사나 단지 이름을 적어 주세요.</span>
+        </div>
+        <div class="field" data-req>
+          <label for="f-tel">연락처 <span class="req">*</span></label>
+          <input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000">
+          <span class="err">연락 가능한 번호를 적어 주세요.</span>
+        </div>
+        <div class="field" data-req>
+          <label for="f-mail">이메일 <span class="req">*</span></label>
+          <input id="f-mail" name="email" type="email" autocomplete="email" placeholder="name@example.com">
+          <span class="err">이메일 형식을 확인해 주세요.</span>
+        </div>
+        <div class="field full" data-req>
+          <label for="f-msg">문의 내용 <span class="req">*</span></label>
+          <textarea id="f-msg" name="msg" placeholder="건물 종류, 위치, 문제 부위(옥상 · 외벽 · 주차장 등), 면적을 알려 주시면 더 정확합니다."></textarea>
+          <span class="err">문의 내용을 적어 주세요.</span>
+        </div>
+        <div class="field full" data-req>
+          <label class="agree"><input type="checkbox" name="agree"><span>개인정보 수집에 동의합니다. <small>문의 회신 목적으로만 쓰이며, 응대 후 파기됩니다.</small></span></label>
+          <span class="err">개인정보 수집에 동의해 주세요.</span>
+        </div>
+        <p class="form-msg" id="formMsg" tabindex="-1" role="status"></p>
+        <div class="field full"><button class="btn btn-blue" type="submit" style="width:100%">문의하기 <span class="arr">→</span></button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 기존 '다운로드' → 시공 제안서 -->
+  <section class="sec alt" id="docs">
+    <div class="wrap">
+      <div class="sec-head rv"><div>
+        <span class="eyebrow"><b>03</b> 시공 제안서</span>
+        <h2 class="h2">현장에 맞는 보수 · 방수 제안서를 드립니다</h2>
+        <p class="lead">'제안서 요청'을 누르면 위 문의 폼에 자료 이름이 채워집니다.</p>
+      </div></div>
+      <div class="docs rv" id="docList"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head rv"><div>
+        <span class="eyebrow"><b>02</b> 자주 묻는 질문</span>
+        <h2 class="h2">문의 전에 먼저 확인해 보세요</h2>
+      </div></div>
+      <div class="faq-tools">
+        <div class="filters" id="faqFilter" style="margin:0" aria-label="공법으로 거르기"></div>
+        <label class="search"><span class="sr">질문 검색</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="faqSearch" type="search" placeholder="예: 금속기와, 냄새, 겨울">
+        </label>
+      </div>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/data.js?v=20261119-21"></script>
+<script src="js/common.js?v=20261119-21"></script>
+<script src="js/pages.js?v=20261119-21"></script>
+</body>
+</html>
