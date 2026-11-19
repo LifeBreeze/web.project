@@ -5,6 +5,7 @@ window.initPage = function () {
   if (page === 'about') initAbout();
   if (page === 'news') initNews();
   if (page === 'contact') initContact();
+  if (page === 'partner') initPartners();
 };
 
 /* ── 시공사례: 공법 필터 + 하위 분류 묶음 ── */
@@ -84,7 +85,7 @@ function initAbout() {
     var o = OFFICES[i], q = encodeURIComponent(o.addr.replace('서해구', '서구'));
     $$('.office', offBox).forEach(function (b, bi) { b.setAttribute('aria-pressed', bi === i); });
     map.src = 'https://maps.google.com/maps?q=' + q + '&z=16&output=embed&hl=ko';
-    map.title = o.name + ' 위치 지도';
+    map.title = T(o.name + ' 위치 지도');
     $('#naverLink').href = 'https://map.naver.com/p/search/' + encodeURIComponent(o.addr);
     $('#kakaoLink').href = 'https://map.kakao.com/?q=' + encodeURIComponent(o.addr);
     $('#copyAddr').setAttribute('data-addr', o.addr);
@@ -93,8 +94,8 @@ function initAbout() {
   $('#copyAddr').addEventListener('click', function () {
     var btn = this, a = btn.getAttribute('data-addr');
     function done() { btn.textContent = '복사했어요'; setTimeout(function () { btn.textContent = '주소 복사'; }, 1600); }
-    if (navigator.clipboard) navigator.clipboard.writeText(a).then(done, function () { prompt('주소를 복사하세요', a); });
-    else prompt('주소를 복사하세요', a);
+    if (navigator.clipboard) navigator.clipboard.writeText(a).then(done, function () { prompt(T('주소를 복사하세요'), a); });
+    else prompt(T('주소를 복사하세요'), a);
   });
   showOffice(0);
 }
@@ -120,6 +121,7 @@ function initContact() {
   var sel = $('#f-tech');
   sel.innerHTML = '<option value="">공법을 고르세요 (모르면 비워 두세요)</option>' + TECH.map(function (t) { return '<option value="' + t.id + '">' + t.name + ' — ' + t.area + '</option>'; }).join('') + '<option value="etc">잘 모르겠어요 · 진단 요청</option>';
   var m = /[?&]tech=(\w+)/.exec(location.search); if (m) sel.value = m[1];
+  if (/[?&]kind=/.test(decodeURIComponent(location.search)) && /kind=협약/.test(decodeURIComponent(location.search))) { var kr = document.querySelector('input[name="kind"][value="협약"]'); if (kr) kr.checked = true; }
   var form = $('#inqForm');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -175,8 +177,55 @@ function initContact() {
     e.preventDefault();
     var t = /tech=(\w*)/.exec(a.getAttribute('href'));
     if (t && t[1]) sel.value = t[1];
-    $('#f-msg').value = '[' + a.getAttribute('data-doc') + '] 자료를 받고 싶습니다.\n';
+    $('#f-msg').value = LANG === 'en' ? 'I would like to receive the [' + T(a.getAttribute('data-doc')) + '] material.\n' : '[' + a.getAttribute('data-doc') + '] 자료를 받고 싶습니다.\n';
     document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });
     setTimeout(function () { $('#f-name').focus({ preventScroll: true }); }, 500);
   });
+}
+
+
+/* ── 협력기업: 지역 · 검색으로 협약사 찾기 (89곳, 한 장에 모두) ── */
+function initPartners() {
+  var bar = $('#pRegion'), body = $('#pBody'), q = $('#pSearch'), cnt = $('#pCount'), empty = $('#pEmpty'), cur = '전체';
+  // '서울 금천구'는 서울로 묶음
+  var order = ['서울', '인천', '경기도', '대전', '대구', '울산', '부산', '충청북도', '충청남도', '경상북도', '경상남도', '전라북도'];
+  function region(p) { return p[0].indexOf('서울') === 0 ? '서울' : p[0]; }
+  var regs = order.filter(function (r) { return PARTNERS.some(function (p) { return region(p) === r; }); });
+  bar.innerHTML = ['전체'].concat(regs).map(function (r) {
+    var n = r === '전체' ? PARTNERS.length : PARTNERS.filter(function (p) { return region(p) === r; }).length;
+    return '<button class="chip" aria-pressed="' + (r === '전체') + '" data-r="' + r + '">' + r + '<span class="n">' + n + '</span></button>';
+  }).join('');
+  var per = 20, page = 1, pager = $('#pPager');
+  function render(scroll) {
+    var s = q.value.trim().toLowerCase();
+    var items = PARTNERS.filter(function (p) { return (cur === '전체' || region(p) === cur) && (!s || (p[1] + p[3] + p[0]).toLowerCase().indexOf(s) > -1); });
+    var pages = Math.max(1, Math.ceil(items.length / per));
+    if (page > pages) page = pages;
+    var start = (page - 1) * per;
+    body.innerHTML = items.slice(start, start + per).map(function (p, i) {
+      var tel = p[2].replace(/~.*$/, '').replace(/[^\d]/g, '');
+      return '<div class="prow" role="row"><span class="no">' + (start + i + 1) + '</span><span class="rg">' + esc(p[0]) + '</span><b class="nm">' + esc(p[1]) + '</b>' +
+        '<a class="tl" href="tel:' + tel + '">' + esc(p[2]) + '</a><span class="ad">' + esc(p[3]) + '</span></div>';
+    }).join('');
+    cnt.textContent = items.length;
+    empty.hidden = items.length > 0;
+    // 쪽 번호: 20개씩 끊어서 다음 목록으로
+    var h = '';
+    if (pages > 1) {
+      h = '<button aria-label="이전 쪽" ' + (page === 1 ? 'disabled' : '') + ' data-p="' + (page - 1) + '">‹</button>';
+      for (var i = 1; i <= pages; i++) h += '<button data-p="' + i + '"' + (i === page ? ' aria-current="page"' : '') + '>' + i + '</button>';
+      h += '<button aria-label="다음 쪽" ' + (page === pages ? 'disabled' : '') + ' data-p="' + (page + 1) + '">›</button>';
+    }
+    pager.innerHTML = h;
+    if (scroll === true) $('#list .ptable').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  pager.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b && !b.disabled) { page = +b.getAttribute('data-p'); render(true); } });
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest('.chip'); if (!b) return;
+    cur = b.getAttribute('data-r'); page = 1;
+    $$('.chip', bar).forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    render();
+  });
+  q.addEventListener('input', function () { page = 1; render(); });
+  render();
 }

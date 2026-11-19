@@ -1,3 +1,19 @@
+/* 언어: 한국어(기본) / 영어. 고른 언어는 이 브라우저에 기억한다. 영어로 바꾸는 일은 i18n.js가 맡는다 */
+var LANG = (function () {
+  try {
+    var m = /[?&]lang=(en|ko)/.exec(location.search);
+    if (m) { localStorage.setItem('pentech-lang', m[1]); return m[1]; }
+    return localStorage.getItem('pentech-lang') === 'en' ? 'en' : 'ko';
+  } catch (e) { return 'ko'; }
+})();
+document.documentElement.lang = LANG;
+function T(s) { return window.__tr ? window.__tr(s) : s; }
+function setLang(l) {
+  try { localStorage.setItem('pentech-lang', l); } catch (e) {}
+  var u = new URL(location.href); u.searchParams.delete('lang');
+  if (u.href === location.href) location.reload(); else location.href = u.href;
+}
+
 /* 모든 페이지 공통: 머리 · 푸터 · ☰ · 맨 위로 · 사진 크게 보기 · 영상 창 · 나타나기 효과 */
 document.documentElement.classList.add('js');
 
@@ -23,12 +39,15 @@ var NAV = [
   { key: 'tech', label: '기술공법', href: 'tech.html?id=roof', sub: TECH.map(function (t) { return [t.name, 'tech.html?id=' + t.id, t.area]; }) },
   { key: 'cases', label: '시공사례', href: 'cases.html', sub: [['지붕방수', 'cases.html#roof', '루프가드'], ['외벽보수 · 방수', 'cases.html#wall', '월터가드'], ['바닥재', 'cases.html#floor', '펜터가드 외']] },
   { key: 'about', label: '회사소개', href: 'about.html', sub: [['CEO 인사말', 'about.html#ceo'], ['회사소개', 'about.html#company'], ['연혁', 'about.html#history'], ['비전 · ESG', 'about.html#vision'], ['특허 · 인증', 'about.html#cert'], ['회사 위치', 'about.html#location']] },
+  { key: 'partner', label: '협력기업', href: 'partners.html', sub: [['협약사 리스트', 'partners.html#list'], ['협약 문의', 'contact.html?kind=협약#inquiry']] },
   { key: 'news', label: '소식', href: 'news.html', sub: [['언론보도', 'news.html#press'], ['블로그 · 유튜브', 'news.html#channels']] },
-  { key: 'contact', label: '고객지원', href: 'contact.html', sub: [['견적 문의', 'contact.html#inquiry'], ['시공 제안서', 'contact.html#docs'], ['자주 묻는 질문', 'contact.html#faq']] }
+  { key: 'contact', label: '고객지원', href: 'contact.html', sub: [['견적/협약 문의', 'contact.html#inquiry'], ['시공 제안서', 'contact.html#docs'], ['자주 묻는 질문', 'contact.html#faq']] }
 ];
 
 function logoHTML() {
   // 회사 원래 로고 (pentech.kr)
+  // 영어 화면에서는 영문 로고(PENTECH PAINT TECHNOLOGY)
+  if (LANG === 'en') return '<a class="logo logo-en" href="index.html" aria-label="Pentech home"><img src="images/logo-en.png" alt="Pentech Paint Technology" width="950" height="226"></a>';
   return '<a class="logo" href="index.html" aria-label="(주)펜테크 홈"><img src="images/logo.png" alt="(주)펜테크 Paint Technology" width="632" height="172"></a>';
 }
 
@@ -44,7 +63,8 @@ function buildChrome() {
   head.className = 'head';
   head.innerHTML = '<div class="wrap">' + logoHTML() +
     '<nav aria-label="주 메뉴" style="height:100%"><ul class="gnb">' + gnb + '</ul></nav>' +
-    '<div class="head-cta"><a class="tel-pill" href="tel:' + PHONE + '" aria-label="상담 전화 ' + PHONE + '">' + ICON.phone + PHONE + '</a></div>' +
+    '<div class="head-cta"><a class="tel-pill" href="tel:' + PHONE + '" aria-label="상담 전화 ' + PHONE + '">' + ICON.phone + PHONE + '</a>' +
+    '<div class="lang" role="group" aria-label="언어 선택"><button type="button" data-l="ko" aria-pressed="' + (LANG === 'ko') + '" lang="ko">KR</button><span aria-hidden="true"></span><button type="button" data-l="en" aria-pressed="' + (LANG === 'en') + '" lang="en">EN</button></div></div>' +
     '<button class="burger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button></div>';
 
   var mnav = document.createElement('nav');
@@ -80,7 +100,7 @@ function buildChrome() {
   // ☰
   var burger = $('.burger', head);
   function setMenu(open) {
-    burger.setAttribute('aria-expanded', open); burger.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    burger.setAttribute('aria-expanded', open); burger.setAttribute('aria-label', T(open ? '메뉴 닫기' : '메뉴 열기'));
     mnav.classList.toggle('open', open); document.body.style.overflow = open ? 'hidden' : '';
     document.body.classList.toggle('menu-open', open); topState();
     document.documentElement.style.setProperty('--note-h', '0px');   // 맨 위 안내 띠를 뺐으므로 0
@@ -91,7 +111,11 @@ function buildChrome() {
   window.addEventListener('scroll', function () { top.classList.toggle('show', window.scrollY > 500); }, { passive: true });
 
   // 페이지 맨 위에서는 헤더를 투명하게 해서 배너 사진과 이어 보이게, 조금만 내려도 흰 헤더로
-  function topState() { head.classList.toggle('is-top', window.scrollY < 10 && !document.body.classList.contains('menu-open')); }
+  function topState() {
+    var home = document.body.getAttribute('data-page') === 'home';     // 홈은 흰 헤더 아래에 둥근 사진이 놓이는 구성이라 항상 흰색
+    head.classList.toggle('is-top', !home && window.scrollY < 10 && !document.body.classList.contains('menu-open'));
+    head.classList.toggle('scrolled', window.scrollY > 6);
+  }
   window.addEventListener('scroll', topState, { passive: true });
   topState();
 }
@@ -221,4 +245,10 @@ document.addEventListener('DOMContentLoaded', function () {
   tocSpy();
   // 다른 페이지에서 #구역 으로 들어왔을 때, 내용이 그려진 뒤 다시 맞춰 이동
   if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) setTimeout(function () { t.scrollIntoView(); }, 60); }
+});
+
+
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('.lang button');
+  if (b && b.getAttribute('aria-pressed') !== 'true') setLang(b.getAttribute('data-l'));
 });
