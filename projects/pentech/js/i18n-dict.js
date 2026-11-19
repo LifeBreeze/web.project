@@ -990,6 +990,7 @@ window.EN_DICT = {
 "주 메뉴": "Main menu",
 "언어 선택": "Language",
 "닫기": "Close",
+"시공 사례 영상 보기": "View case videos",
 "가치까지 완성하다.": "completing the value.",
 "더 안전한 세상에 색을 입히다": "painting color onto a safer world",
 "차별화된 고탄성 구조": "a differentiated high-elasticity structure",

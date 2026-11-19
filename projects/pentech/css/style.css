@@ -1359,3 +1359,13 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   body[data-page="home"] .hero .hero-card.hero-2 .hero-words, body[data-page="home"] .hero .hero-card.hero-3 .hero-words { font-size: clamp(28px, 8.4vw, 40px); }
   html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html[lang="en"] body[data-page="home"] .hero .hero-card.hero-3 .hero-words { font-size: clamp(26px, 7.4vw, 36px); }
 }
+
+/* 공법 찾기: 영상 목록을 빼고 버튼만 → 오른쪽 카드가 왼쪽 목록 높이만큼 채우게 */
+@media (min-width: 981px) {
+  .finder-panel { display: flex; min-height: 0; }
+  .finder-panel .fp-top { flex: 1; width: 100%; }
+  .fp-body .btns { gap: 8px; }
+}
+
+/* 첫 화면 파란 버튼: 마우스를 올려도 연한 하늘색으로 바뀌지 않고 원래 파랑을 조금 더 진하게 */
+.hero .btn-blue:hover, body[data-page="home"] .hero .btn-blue:hover { background: var(--accent-d); color: #fff; }

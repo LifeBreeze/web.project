@@ -23,9 +23,8 @@ window.initPage = function () {
       '<p>' + esc(t.lead) + '</p>' +
       '<ul class="checks">' + t.keys.slice(0, 3).map(function (k) { return '<li><b>' + esc(k[0]) + '</b> — ' + esc(k[2][0]) + '</li>'; }).join('') + '</ul>' +
       '<div class="btns"><a class="btn btn-ink btn-sm" href="tech.html?id=' + t.id + '">' + t.name + ' 자세히 <span class="arr">→</span></a>' +
-      '<a class="btn btn-line btn-sm" href="tech.html?id=' + t.id + '#process">시공 과정 사진</a></div></div></div>' +
-      '<div class="fp-cases"><div class="fp-cases-head"><b>' + t.name + ' 시공 사례 영상</b><a class="link-arrow" href="cases.html#' + t.videoCat + '">더 보기 →</a></div>' +
-      '<div class="vgrid">' + TECH_VIDEOS[t.id].map(function (v) { return vcard(v); }).join('') + '</div></div>';
+      '<a class="btn btn-blue btn-sm" href="cases.html#' + t.videoCat + '">시공 사례 영상 보기 <span class="arr">→</span></a>' +
+      '<a class="btn btn-line btn-sm" href="tech.html?id=' + t.id + '#process">시공 과정 사진</a></div></div></div>';
   }
   tabs.addEventListener('click', function (e) { var b = e.target.closest('[role=tab]'); if (b) show(b.getAttribute('data-id')); });
   tabs.addEventListener('keydown', function (e) {
