@@ -121,7 +121,15 @@ function buildChrome() {
 }
 
 /* ── 사진 칸: 누르면 크게 보기. group이 같은 사진끼리 넘겨 본다 ── */
+/* 보정본(2배 확대 + 선명도 보정)이 있는 원래 사이트 사진은 images/hd/ 아래 같은 경로로 바꿔 준다 (목록: js/hd-images.js) */
+function hd(u) {
+  if (typeof IMG === 'undefined' || typeof HD_IMG === 'undefined' || !u || u.indexOf(IMG) !== 0) return u;
+  var r = u.slice(IMG.length);
+  return HD_IMG[r] ? 'images/hd/' + r : u;
+}
+
 function ph(src, cap, group, extraClass, badge) {
+  src = hd(src);
   return '<button type="button" class="ph ' + (extraClass || '') + '" data-src="' + esc(src) + '" data-cap="' + esc(cap || '') + '" data-group="' + esc(group || '') + '">' +
     '<span class="im"><img src="' + esc(src) + '" alt="' + esc(cap || '') + '" loading="lazy"></span>' +
     (badge ? '<span class="badge">' + esc(badge) + '</span>' : '') +

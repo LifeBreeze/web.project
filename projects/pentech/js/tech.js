@@ -137,11 +137,11 @@ function casesCols(n) {
 /* ── 공정 보기 ── */
 function procItems(pr) {
   var a = [];
-  pr.steps.forEach(function (s) { a.push({ imgs: [IMG + pr.base + s[0] + '.webp'], tag: /^\d+$/.test(s[1]) ? s[1] + '단계' : s[1], label: s[2], done: false }); });
+  pr.steps.forEach(function (s) { a.push({ imgs: [hd(IMG + pr.base + s[0] + '.webp')], tag: /^\d+$/.test(s[1]) ? s[1] + '단계' : s[1], label: s[2], done: false }); });
   if (pr.done && pr.done.length) {                                   // 완료 사진은 한 단계로 합쳐서 함께 보여 줌
     var labels = [];
     pr.done.forEach(function (d) { if (labels.indexOf(d[1]) < 0) labels.push(d[1]); });
-    a.push({ imgs: pr.done.map(function (d) { return IMG + pr.base + d[0] + '.webp'; }), tag: '완료', label: labels.join(' · '), done: true });
+    a.push({ imgs: pr.done.map(function (d) { return hd(IMG + pr.base + d[0] + '.webp'); }), tag: '완료', label: labels.join(' · '), done: true });
   }
   return a;
 }
