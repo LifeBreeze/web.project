@@ -21,7 +21,7 @@ window.initPage = function () {
       '<div class="fp-body"><span class="tag">' + t.where + ' 문제라면</span>' +
       '<h3>' + t.name + '<small>' + t.en + ' · ' + t.area + '</small></h3>' +
       (t.intro && t.intro[0] === t.lead ? '' : '<p>' + esc(t.lead) + '</p>') +
-      '<ul class="checks">' + (t.intro ? '<li><b>' + esc(t.intro[0]) + '</b><span>' + esc(t.intro[1]) + '</span></li>' : '') + t.keys.slice(0, 3).map(function (k) { return '<li><b>' + esc(k[0]) + '</b><span>' + esc(k[2][0]) + '</span></li>'; }).join('') + '</ul>' +
+      '<ul class="checks">' + (t.intro ? '<li><b>' + esc(t.intro[0]) + '</b><span>' + esc(t.intro[1]) + '</span></li>' : '') + '</ul>' +                                                  // 첫 번째 체크 항목(원래 사이트 글)만 보여 줌
       '<div class="btns"><a class="btn btn-ink btn-sm" href="tech.html?id=' + t.id + '">' + t.name + ' 자세히 <span class="arr">→</span></a>' +
       '<a class="btn btn-blue btn-sm" href="cases.html#' + t.videoCat + '">시공 사례 영상 보기 <span class="arr">→</span></a>' +
       '<a class="btn btn-line btn-sm" href="tech.html?id=' + t.id + '#process">시공 과정 사진</a></div></div></div>';
