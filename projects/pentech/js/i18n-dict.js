@@ -215,7 +215,7 @@ window.EN_DICT = {
 "정직하게 시공합니다": "We build honestly",
 "AI와 드론이 찾아내는": "Exterior cracks found by AI and drones:",
 "외벽 균열, 에어레카": "AIREKA",
-"육안 점검의 한계를 넘어, 드론으로 찍고 AI가 균열의 위치·길이·심각도를 자동으로 분석합니다. 노동집약적이던 건물 유지보수(MRO)를 데이터 기반으로 바꾸는 펜테크의 첫걸음입니다.": "Going beyond visual inspection, we shoot with drones and AI automatically analyzes crack location, length, and severity. It is Pentech's first step in turning labor-intensive building maintenance (MRO) into a data-driven process.",
+"노동집약적이던 건물 유지보수(MRO)를 데이터 기반으로 바꾸는 펜테크의 첫걸음입니다. 육안 점검의 한계를 넘어, 드론으로 찍고 AI가 균열의 위치·길이·심각도를 자동으로 분석합니다.": "It is Pentech's first step in turning labor-intensive building maintenance (MRO) into a data-driven process. Going beyond visual inspection, we shoot with drones and AI automatically analyzes crack location, length, and severity.",
 "드론 촬영 + AI 균열 분석": "Drone shooting + AI crack analysis",
 "보수 범위의 과잉 · 누락 방지": "Prevents over- and under-scoping of repairs",
 "시공 전 · 후 비교 감리 리포트 제공": "Before-and-after comparison supervision reports",
