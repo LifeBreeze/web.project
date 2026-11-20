@@ -1485,3 +1485,8 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 @media (min-width: 761px) {
   .pv-steps button { grid-template-columns: 86px 1fr; padding-left: 30px; padding-right: 20px; }
 }
+
+/* 공법 찾기 카드: 사진 옆 글을 사진에서 더 떼어 놓음 */
+@media (min-width: 981px) {
+  .fp-body { padding-left: 60px; padding-right: 40px; }
+}
