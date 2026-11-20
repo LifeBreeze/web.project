@@ -1604,3 +1604,10 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .art-nav { grid-template-columns: 1fr; }
   .art-nav a:last-child { text-align: left; }
 }
+
+
+/* 소식 > 언론보도: 넓은 화면에서는 사진을 한 줄 4장으로 줄여 보여 줌 */
+@media (min-width: 1280px) {
+  body[data-page="news"] .ngrid { grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
+  body[data-page="news"] .ncard h3 { font-size: 17.5px; }
+}

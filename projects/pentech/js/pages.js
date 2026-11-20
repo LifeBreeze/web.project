@@ -103,7 +103,9 @@ function initAbout() {
 
 /* ── 소식: 언론보도 3열 × 2행 ── */
 function initNews() {
-  var per = 6, pages = Math.ceil(NEWS.length / per), grid = $('#newsGrid'), pager = $('#pager');
+  // 넓은 화면(1280px 이상)에서는 한 줄 4장 × 2줄 = 8개씩, 그보다 좁으면 3장 × 2줄 = 6개씩
+  function perPage() { return window.innerWidth >= 1280 ? 8 : 6; }
+  var per = perPage(), pages = Math.ceil(NEWS.length / per), grid = $('#newsGrid'), pager = $('#pager');
   function go(p, scroll) {
     grid.innerHTML = NEWS.slice((p - 1) * per, p * per).map(newsCard).join('');
     var h = '<button aria-label="이전 쪽" ' + (p === 1 ? 'disabled' : '') + ' data-p="' + (p - 1) + '">‹</button>';
@@ -113,6 +115,10 @@ function initNews() {
     if (scroll) document.getElementById('press').scrollIntoView({ behavior: 'smooth' });
   }
   pager.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b && !b.disabled) go(+b.getAttribute('data-p'), true); });
+  window.addEventListener('resize', function () {                 // 창 너비가 1280px 기준을 넘나들면 쪽 나누기를 다시 계산
+    var np = perPage();
+    if (np !== per) { per = np; pages = Math.ceil(NEWS.length / per); go(1); }
+  });
   var q = parseInt((location.search.match(/[?&]n=(\d+)/) || [])[1], 10);
   if (q >= 0 && q < NEWS.length) {                       // 홈에서 누른 기사: 그 기사가 있는 쪽을 열고 카드를 잠깐 강조
     go(Math.floor(q / per) + 1);
