@@ -1506,3 +1506,11 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 @media (min-width: 981px) {
   .about-intro { column-gap: clamp(100px, 10vw, 160px); }
 }
+
+/* 홈 회사소개: 위(첫 화면 숫자 띠) · 아래(공법 찾기 하늘색 구역)와의 흰 여백을 넉넉히 */
+@media (min-width: 761px) {
+  #about.sec { padding: 130px 0; }
+}
+@media (max-width: 760px) {
+  #about.sec { padding: 72px 0; }
+}
