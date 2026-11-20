@@ -112,7 +112,16 @@ function initNews() {
     if (scroll) document.getElementById('press').scrollIntoView({ behavior: 'smooth' });
   }
   pager.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b && !b.disabled) go(+b.getAttribute('data-p'), true); });
-  go(1);
+  var q = parseInt((location.search.match(/[?&]n=(\d+)/) || [])[1], 10);
+  if (q >= 0 && q < NEWS.length) {                       // 홈에서 누른 기사: 그 기사가 있는 쪽을 열고 카드를 잠깐 강조
+    go(Math.floor(q / per) + 1);
+    var card = grid.children[q % per];
+    if (card) {
+      card.classList.add('hl');
+      setTimeout(function () { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
+      setTimeout(function () { card.classList.remove('hl'); }, 3200);
+    }
+  } else go(1);
 }
 
 /* ── 고객지원: 폼 · FAQ · 제안서 ── */

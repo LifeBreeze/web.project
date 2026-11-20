@@ -1574,3 +1574,7 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .pv-steps.few { align-self: center; grid-auto-rows: auto; }
   .pv-steps.few button { padding-top: 30px; padding-bottom: 30px; }
 }
+
+
+/* 홈에서 누른 언론보도 카드: 소식 페이지에 도착하면 잠깐 윤곽선으로 강조 */
+.ncard.hl { outline: 3px solid var(--accent); outline-offset: 10px; border-radius: 16px; transition: outline-color .6s; }
