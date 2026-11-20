@@ -21,7 +21,7 @@ window.initPage = function () {
       '<div class="fp-body"><span class="tag">' + t.where + ' 문제라면</span>' +
       '<h3>' + t.name + '<small>' + t.en + ' · ' + t.area + '</small></h3>' +
       '<p>' + esc(t.lead) + '</p>' +
-      '<ul class="checks">' + t.keys.slice(0, 3).map(function (k) { return '<li><b>' + esc(k[0]) + '</b> — ' + esc(k[2][0]) + '</li>'; }).join('') + '</ul>' +
+      '<ul class="checks">' + t.keys.slice(0, 3).map(function (k) { return '<li><b>' + esc(k[0]) + '</b><span>' + esc(k[2][0]) + '</span></li>'; }).join('') + '</ul>' +
       '<div class="btns"><a class="btn btn-ink btn-sm" href="tech.html?id=' + t.id + '">' + t.name + ' 자세히 <span class="arr">→</span></a>' +
       '<a class="btn btn-blue btn-sm" href="cases.html#' + t.videoCat + '">시공 사례 영상 보기 <span class="arr">→</span></a>' +
       '<a class="btn btn-line btn-sm" href="tech.html?id=' + t.id + '#process">시공 과정 사진</a></div></div></div>';
@@ -57,15 +57,13 @@ function initHero() {
   function user(k) { go(k); play(); }
 
   ticks.forEach(function (b, j) { b.addEventListener('click', function () { user(j); }); });
-  $('.hero-arrow.prev', vp).addEventListener('click', function () { user(i - 1); });
-  $('.hero-arrow.next', vp).addEventListener('click', function () { user(i + 1); });
   vp.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') { e.preventDefault(); user(i - 1); } if (e.key === 'ArrowRight') { e.preventDefault(); user(i + 1); } });
   vp.addEventListener('mouseenter', function () { hover = true; });
   vp.addEventListener('mouseleave', function () { hover = false; });
 
   // 끌어서 넘기기 (마우스 · 터치 · 펜). 세로 스크롤은 그대로 두고 가로로 끌 때만 반응
   vp.addEventListener('pointerdown', function (e) {
-    if (e.target.closest('button, a')) return;
+    if (e.target.closest('button, a, .facts')) return;
     drag = true; moved = false; startX = e.clientX; startY = e.clientY; dx = 0;
   });
   vp.addEventListener('pointermove', function (e) {

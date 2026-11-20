@@ -1369,3 +1369,99 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 
 /* 첫 화면 파란 버튼: 마우스를 올려도 연한 하늘색으로 바뀌지 않고 원래 파랑을 조금 더 진하게 */
 .hero .btn-blue:hover, body[data-page="home"] .hero .btn-blue:hover { background: var(--accent-d); color: #fff; }
+
+
+/* ─────────── 휴대폰 숨통 트기: 좁은 2열 카드를 한 줄로, 제목 · 본문 간격을 넉넉히, 위 바는 뒤가 안 비치게 ─────────── */
+@media (max-width: 760px) {
+  body { line-height: 1.78; }
+  .sec { padding: 60px 0; }
+  .sec.tight { padding: 44px 0; }
+  .sec-head { margin-bottom: 28px; }
+  .h2, body .h2 { font-size: clamp(26px, 7.2vw, 32px); line-height: 1.38; letter-spacing: -.025em; }
+  .fp-body h3 { letter-spacing: -.035em; }
+  .lead { font-size: 17px; line-height: 1.78; }
+  .about-intro { gap: 28px; }
+  .about-intro .big { font-size: 18.5px; line-height: 1.75; letter-spacing: -.02em; }
+  .about-intro .body { line-height: 1.8; }
+
+  /* 방식 4가지: 번호 왼쪽 · 글 오른쪽, 한 줄에 하나씩 */
+  .ways { grid-template-columns: 1fr; }
+  .ways li, .ways li:nth-child(n+3) { display: grid; grid-template-columns: 54px 1fr; column-gap: 8px; padding: 26px 22px 28px; border-left: 0; }
+  .ways li + li { border-top: 1px solid var(--line); }
+  .ways .no { grid-row: 1 / span 2; margin: 2px 0 0; font-size: 30px; }
+  .ways h3 { font-size: 20px; margin-bottom: 6px; letter-spacing: -.03em; }
+  .ways p { font-size: 15.5px; line-height: 1.7; }
+
+  /* 하단 카드 3장: 아이콘 왼쪽 · 글 가운데 · 화살표 오른쪽 */
+  .support a { grid-template-columns: 48px 1fr; column-gap: 16px; row-gap: 2px; align-items: center; padding: 22px 52px 22px 20px; }
+  .support .ic, .support .ic.brand { grid-row: 1 / span 2; margin: 0; }
+  .support b { font-size: 19px; }
+  .support span:not(.ic):not(.go) { font-size: 15px; line-height: 1.55; }
+  .support .go { right: 20px; top: 50%; transform: translateY(-50%); font-size: 20px; }
+
+  /* 위 바: 내려도 뒤의 글자가 비쳐 보이지 않게 거의 불투명하게 */
+  .head::before { background: rgba(255,255,255,.96); }
+  .head:not(.is-top)::before { -webkit-mask-image: none; mask-image: none; bottom: 0; border-bottom: 1px solid var(--line); }
+}
+
+/* 휴대폰: 시공사례 영상은 한 줄에 하나(왼쪽 사진 · 오른쪽 제목), 그룹 제목은 위아래로, 협약사 지역 칩은 한 줄로 옆으로 넘김 */
+@media (max-width: 760px) {
+  .vgroup + .vgroup { margin-top: 44px; }
+  .vgroup-head { flex-wrap: wrap; gap: 2px 12px; margin-bottom: 18px; }
+  .vgroup-head h2 { font-size: 24px; width: 100%; }
+  .vgroup .vgrid { grid-template-columns: 1fr; gap: 16px; }
+  .vgroup .vcard { display: grid; grid-template-columns: 132px 1fr; gap: 14px; align-items: center; }
+  .vgroup .vcard p { margin-top: 0; font-size: 15.5px; -webkit-line-clamp: 3; }
+  #pRegion { display: flex; flex-wrap: nowrap; overflow-x: auto; margin: 0 -20px !important; padding: 0 20px 6px; scrollbar-width: none; }
+  #pRegion::-webkit-scrollbar { display: none; }
+  #pRegion > * { flex: none; }
+}
+
+
+/* ─────────── 피드백 반영 (11/20) ─────────── */
+/* 메뉴 드롭다운: 글자를 왼쪽으로 붙여 위 메뉴 글자와 같은 선에 맞춤 */
+.sub { padding: 8px 6px; }
+.sub a { padding: 11px 9px; }
+
+/* 첫 화면: 버튼이 아닌 곳에서 손 모양(눌리는 듯한) 커서 없앰, 동그라미 화살표 삭제 */
+.hero-viewport, .hero-viewport:active { cursor: default; }
+.hero-arrow { display: none !important; }
+
+/* 헤더 가로 여백 48px (화면이 충분히 넓을 때) */
+@media (min-width: 1260px) {
+  html:not([lang="en"]) .head .wrap, html:not([lang="en"]) body[data-page="home"] .head .wrap { padding: 0 48px; }
+}
+@media (min-width: 1361px) {
+  html[lang="en"] .head .wrap, html[lang="en"] body[data-page="home"] .head .wrap { padding: 0 48px; }
+}
+
+/* 눈금 바(페이지 넘기기): 숫자 띠에서 전화번호 오른쪽 여백으로 */
+@media (min-width: 981px) {
+  body[data-page="home"] .hero .facts ul { grid-template-columns: 1fr 1fr 1fr 1.4fr; }
+  body[data-page="home"] .hero-ticks { right: clamp(32px, 6vw, 110px); bottom: 63px; }
+}
+@media (min-width: 761px) and (max-width: 980px) {
+  body[data-page="home"] .hero-ticks { right: clamp(32px, 6vw, 110px); }
+}
+
+/* 공법 찾기: 안내문은 제목 아래로, 체크 줄은 제목 한 줄 · 본문 한 줄로 따로 */
+.sec-head .sec-note { margin-top: 18px; max-width: 560px; }
+.fp-body .checks li { padding-left: 30px; line-height: 1.6; }
+.fp-body .checks li b { display: block; }
+.fp-body .checks li span { display: block; color: var(--ink-2); }
+.fp-body .checks li::before { top: calc(.8em - 6px); }
+
+/* 공정 보기: 완료 사진은 한 단계 안에 나란히 */
+.pv-photo.n1, .pv-photo.n2, .pv-photo.n3 { display: grid; gap: 4px; cursor: default; }
+.pv-photo.n2 { grid-template-columns: 1fr 1fr; }
+.pv-photo.n3 { grid-template-columns: 1.5fr 1fr; grid-template-rows: 1fr 1fr; }
+.pv-photo.n3 .pv-img:first-child { grid-row: 1 / span 2; }
+.pv-img { display: block; min-width: 0; min-height: 0; overflow: hidden; cursor: zoom-in; }
+.pv-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 드롭다운: 오른쪽에 떨어져 있던 설명 글을 왼쪽 글 옆으로, 같은 줄에 왼쪽 정렬로 맞춰 붙임 */
+.sub { display: grid; grid-template-columns: max-content 1fr; column-gap: 14px; min-width: 0; }
+.sub a { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; justify-content: start; align-items: baseline; gap: 0 14px; }
+.sub a small { text-align: left; justify-self: start; }
+.sub { width: max-content; min-width: 200px; }
+.sub a, .sub a small { white-space: nowrap; }

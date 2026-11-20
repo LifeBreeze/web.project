@@ -137,8 +137,12 @@ function casesCols(n) {
 /* ── 공정 보기 ── */
 function procItems(pr) {
   var a = [];
-  pr.steps.forEach(function (s) { a.push({ img: IMG + pr.base + s[0] + '.webp', tag: /^\d+$/.test(s[1]) ? s[1] + '단계' : s[1], label: s[2], done: false }); });
-  pr.done.forEach(function (d) { a.push({ img: IMG + pr.base + d[0] + '.webp', tag: '완료', label: d[1], done: true }); });
+  pr.steps.forEach(function (s) { a.push({ imgs: [IMG + pr.base + s[0] + '.webp'], tag: /^\d+$/.test(s[1]) ? s[1] + '단계' : s[1], label: s[2], done: false }); });
+  if (pr.done && pr.done.length) {                                   // 완료 사진은 한 단계로 합쳐서 함께 보여 줌
+    var labels = [];
+    pr.done.forEach(function (d) { if (labels.indexOf(d[1]) < 0) labels.push(d[1]); });
+    a.push({ imgs: pr.done.map(function (d) { return IMG + pr.base + d[0] + '.webp'; }), tag: '완료', label: labels.join(' · '), done: true });
+  }
   return a;
 }
 function initProc(t) {
@@ -147,14 +151,16 @@ function initProc(t) {
   var g = 0, i = 0, pre = -1;
   function draw() {
     var items = procItems(t.process[g]), it = items[i], last = i === items.length - 1;
-    if (pre !== g) { pre = g; items.forEach(function (s) { new Image().src = s.img; }); }   // 이 그룹 사진을 미리 받아 둠
+    if (pre !== g) { pre = g; items.forEach(function (s) { s.imgs.forEach(function (u) { new Image().src = u; }); }); }   // 이 그룹 사진을 미리 받아 둠
     var groups = t.process.length > 1 ? '<div class="pv-groups" role="tablist" aria-label="시공 종류">' + t.process.map(function (p, pi) {
       return '<button class="chip" role="tab" aria-selected="' + (pi === g) + '" data-g="' + pi + '">' + esc(p.title) + '</button>';
     }).join('') + '</div>' : '';
-    box.innerHTML = groups + '<div class="procview"><div>' +
-      '<button type="button" class="pv-photo" data-next aria-label="다음 단계 사진 보기"><img src="' + esc(it.img) + '" alt="' + esc(it.tag + ' ' + it.label) + '">' +
-      '<span class="pv-badge' + (it.done ? ' done' : '') + '">' + esc(it.tag) + '</span>' +
-      '<span class="pv-hint">' + (last ? '처음부터 다시 ↺' : '사진을 누르면 다음 단계 →') + '</span></button>' +
+    var photo = it.done
+      ? '<div class="pv-photo n' + it.imgs.length + '">' + it.imgs.map(function (u) {
+          return '<button type="button" class="pv-img" data-zoom data-src="' + esc(u) + '" data-cap="' + esc(it.label) + '" data-group="pv" aria-label="사진 크게 보기"><img src="' + esc(u) + '" alt="' + esc(it.label) + '"></button>';
+        }).join('') + '<span class="pv-badge done">' + esc(it.tag) + '</span></div>'
+      : '<button type="button" class="pv-photo" data-next aria-label="다음 단계 사진 보기"><img src="' + esc(it.imgs[0]) + '" alt="' + esc(it.tag + ' ' + it.label) + '"><span class="pv-badge">' + esc(it.tag) + '</span></button>';
+    box.innerHTML = groups + '<div class="procview"><div>' + photo +
       '<div class="pv-cap" aria-live="polite"><b>' + esc(it.label) + '</b><span>' + (i + 1) + ' / ' + items.length + '</span></div>' +
       '<div class="pv-nav"><button class="btn btn-line btn-sm" data-prev' + (i === 0 ? ' disabled style="opacity:.35"' : '') + '>← 이전</button>' +
       '<button class="btn btn-ink btn-sm" data-next>' + (last ? '처음으로' : '다음 단계 →') + '</button></div></div>' +

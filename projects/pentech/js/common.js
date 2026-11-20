@@ -148,7 +148,7 @@ function buildModal() {
     if (e.key === 'ArrowRight' && gallery.length > 1) showImg(gIndex + 1);
   });
   document.addEventListener('click', function (e) {
-    var b = e.target.closest('.ph, [data-lightbox]');
+    var b = e.target.closest('.ph, [data-lightbox], [data-zoom]');
     if (b) {
       var g = b.getAttribute('data-group');
       gallery = g ? $$('[data-group="' + g + '"]') : [b];
@@ -159,17 +159,33 @@ function buildModal() {
   });
 }
 function openModal() { lastFocus = document.activeElement; modal.classList.add('open'); document.body.style.overflow = 'hidden'; setTimeout(function () { $('.modal-x', modal).focus(); }, 10); }
-function closeModal() { modal.classList.remove('open'); modalBox.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+function closeModal() { modal.classList.remove('open', 'photo'); placeX(); modalBox.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
 function showImg(i) {
   gIndex = (i + gallery.length) % gallery.length;
   var b = gallery[gIndex];
   var nav = gallery.length > 1 ? '<button class="modal-nav prev" aria-label="이전 사진">' + ICON.prev + '</button><button class="modal-nav next" aria-label="다음 사진">' + ICON.next + '</button>' : '';
   modalBox.innerHTML = '<img' + (b.hasAttribute('data-lightbox') ? ' class="cert"' : '') + ' src="' + esc(b.getAttribute('data-src')) + '" alt="' + esc(b.getAttribute('data-cap')) + '">' + nav +
     '<p class="modal-cap">' + esc(b.getAttribute('data-cap')) + (gallery.length > 1 ? '<small>' + (gIndex + 1) + ' / ' + gallery.length + '</small>' : '') + '</p>';
+  modal.classList.add('photo'); placeX();
 }
+/* 닫기(X)는 사진의 오른쪽 위 모서리 안쪽에 얹는다 (영상일 때는 위쪽 바깥) */
+function placeX() {
+  var x = $('.modal-x', modal), im = $('img', modalBox);
+  if (!x) return;
+  if (!im || !modal.classList.contains('photo')) { x.style.top = ''; x.style.right = ''; return; }
+  function set() {
+    var box = x.parentNode, w = im.offsetWidth, h = im.offsetHeight, r = im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : w / h;
+    var vw = w / h > r ? h * r : w, vh = w / h > r ? h : w / r;
+    var left = im.offsetLeft + (w - vw) / 2, top = im.offsetTop + (h - vh) / 2;
+    x.style.top = (top + 12) + 'px'; x.style.right = (box.clientWidth - left - vw + 12) + 'px';
+  }
+  if (im.complete && im.naturalWidth) set(); else im.addEventListener('load', set);
+}
+window.addEventListener('resize', function () { if (modal && modal.classList.contains('open')) placeX(); });
 function openVideo(id) {
   var v = videoById(id);
   gallery = [];
+  modal.classList.remove('photo'); placeX();
   openModal();
   modalBox.innerHTML = '<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/' + esc(id) + '?autoplay=1&rel=0" title="' + esc(v ? v[3] : '시공 영상') + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' +
     '<p class="modal-cap">' + esc(v ? v[3] : '') + '<small>재생이 안 되면 <a href="https://www.youtube.com/watch?v=' + esc(id) + '" target="_blank" rel="noopener">유튜브에서 보기</a></small></p>';
