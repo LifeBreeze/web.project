@@ -1491,18 +1491,6 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .fp-body { padding-left: 60px; padding-right: 40px; }
 }
 
-/* 홈 회사소개 글: 전체 글씨를 조금 키우고, 아래 문단도 위 문단과 같은 두께로 */
-@media (min-width: 761px) {
-  .about-intro .h2 { font-size: clamp(32px, 4vw, 50px); }
-  .about-intro .big { font-size: 22px; }
-  .about-intro .body { font-size: 18px; font-weight: 600; }
-}
-@media (max-width: 760px) {
-  .about-intro .big { font-size: 19.5px; }
-  .about-intro .body { font-size: 17px; font-weight: 600; }
-}
-
-
 /* 홈 회사소개 문단: 한국어는 줄 단위로 끊어 표시(넓은 화면), 영어 · 좁은 화면은 이어서 흐름 */
 @media (min-width: 1280px) {
   html:not([lang="en"]) .about-intro .ln { display: block; }
