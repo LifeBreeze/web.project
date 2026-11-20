@@ -1475,3 +1475,6 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 
 /* 찾아오시는 길: 선택된 카드의 파란 띠 삭제 (검정 테두리만 남김) */
 .office[aria-pressed="true"] { box-shadow: none; }
+
+/* 내린 뒤 헤더: 그라데이션 · 반투명 유리 없이 흰색 불투명 + 얇은 아래 줄 */
+.head:not(.is-top)::before { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-mask-image: none; mask-image: none; bottom: 0; border-bottom: 1px solid var(--line); }
