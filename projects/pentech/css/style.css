@@ -1472,3 +1472,6 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 /* 시공사례 그룹 제목 아래 줄: 굵은 검정 → 얇고 연한 줄 */
 .vgroup-head { border-bottom: 1px solid var(--line); }
 .vgroup-head { border-bottom: 1.5px solid #dde2ec; }
+
+/* 찾아오시는 길: 선택된 카드의 파란 띠 삭제 (검정 테두리만 남김) */
+.office[aria-pressed="true"] { box-shadow: none; }
