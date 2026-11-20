@@ -1559,3 +1559,18 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 .why-photos .ph { height: auto; }
 .why-photos .ph .im, .why-photos.stack .ph .im, .why-photos.one .ph .im { flex: none; min-height: 0; aspect-ratio: auto; }
 .why-photos .ph .im img { position: static; inset: auto; height: auto; }
+
+/* 사진 · 글 · 표 높이 균형 (PC) */
+@media (min-width: 981px) {
+  /* 왜 문제인가: 왼쪽 글과 오른쪽 사진을 세로 가운데로 맞추고, 사진은 너무 길어지지 않게 폭을 제한 */
+  .why { align-items: center; }
+  .why-photos { width: min(100%, 500px); justify-self: center; }
+  /* 공정 보기: 왼쪽(제목 · 사진 · 버튼)은 세로 가운데, 오른쪽 차수 목록은 단계가 많으면 높이를 꽉 채우고 적으면 가운데에 */
+  .procview { align-items: stretch; }
+  .procview > div:first-child { display: flex; flex-direction: column; justify-content: center; }
+  .pv-steps { align-self: stretch; display: grid; grid-auto-rows: 1fr; }
+  .pv-steps li { display: flex; }
+  .pv-steps li > button { flex: 1; }
+  .pv-steps.few { align-self: center; grid-auto-rows: auto; }
+  .pv-steps.few button { padding-top: 30px; padding-bottom: 30px; }
+}

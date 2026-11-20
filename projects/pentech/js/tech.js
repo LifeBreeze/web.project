@@ -164,7 +164,7 @@ function initProc(t) {
       '<div class="pv-cap" aria-live="polite"><b>' + esc(it.label) + '</b><span>' + (i + 1) + ' / ' + items.length + '</span></div>' + photo +
       '<div class="pv-nav"><button class="btn btn-line btn-sm" data-prev' + (i === 0 ? ' disabled style="opacity:.35"' : '') + '>← 이전</button>' +
       '<button class="btn btn-ink btn-sm" data-next>' + (last ? '처음으로' : '다음 단계 →') + '</button></div></div>' +
-      '<ol class="pv-steps">' + items.map(function (s, si) {
+      '<ol class="pv-steps' + (items.length <= 5 ? ' few' : '') + '">' + items.map(function (s, si) {
         return '<li class="' + (s.done ? 'done' : '') + '"><button data-i="' + si + '"' + (si === i ? ' aria-current="step"' : '') + '><span class="tg">' + esc(s.tag) + '</span><span class="lb">' + esc(s.label) + '</span></button></li>';
       }).join('') + '</ol></div>';
   }
