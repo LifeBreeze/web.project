@@ -1501,3 +1501,8 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .about-intro { grid-template-columns: 1fr 1.4fr; }
   .about-intro .about-photo { order: -1; }
 }
+
+/* 홈 회사소개: 사진과 글 사이 간격을 넓힘 (PC) */
+@media (min-width: 981px) {
+  .about-intro { column-gap: clamp(100px, 10vw, 160px); }
+}
