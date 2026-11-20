@@ -1537,3 +1537,19 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 #aireka.sec.band .btn-light:hover { background: var(--accent-l); color: var(--ink); }
 #aireka.sec.band img { box-shadow: 0 34px 70px -30px rgba(0, 0, 0, .75); }
 @media (min-width: 761px) { #aireka.sec.band { padding: 120px 0; } }
+
+/* 기술공법 '○○ 하자의 5대 원인' 목록: 글씨 · 여백을 키움 */
+.causes-label { font-size: 23px; }
+.causes { margin-top: 16px !important; }
+.causes li { grid-template-columns: 52px 190px 1fr; gap: 16px; padding: 28px 0; }
+.causes em { font-size: 24px; }
+.causes b { font-size: 23px; }
+.causes b small { font-size: 14.5px; margin-top: 2px; }
+.causes span { font-size: 18.5px; line-height: 1.6; }
+@media (max-width: 760px) {
+  .causes-label { font-size: 20px; }
+  .causes li { grid-template-columns: 38px 1fr; gap: 10px 12px; padding: 22px 0; }
+  .causes em { font-size: 20px; }
+  .causes b { font-size: 20px; }
+  .causes span { font-size: 17px; }
+}
