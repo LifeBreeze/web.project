@@ -1520,3 +1520,7 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   #about.sec { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
   #about.sec > .wrap { width: 100%; }
 }
+
+/* 공법 찾기 카드: V(체크) 표시 삭제, 글은 왼쪽 끝에 맞춤 */
+.fp-body .checks li { padding-left: 0; }
+.fp-body .checks li::before { display: none; }
