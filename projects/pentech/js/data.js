@@ -13,7 +13,7 @@ var TECH = [
     lead: '노후 옥상의 5대 하자를 한 번에 해결하도록 설계된 복합 방수 시스템',
     define: '루프가드는 펜테크의 특허 공법인 <b>노출식 차열 복합시트 공법</b>으로 시공하는 지붕 방수 시스템입니다. 이 페이지에서는 이 공법을 줄여 \'루프가드\'라고 부릅니다.',
     hero: IMG + 'technology/list_01/04.webp',
-    card: IMG + 'about/company/s03_01.webp',
+    card: 'images/hd/s03_01.webp',
     layers: ['바탕면 (기존 방수층)', '하도', '보강시트', '함침', '중도', '차열 상도'],
     problem: {
       title: '노후 옥상, 왜 문제가 반복될까요?',
@@ -90,8 +90,8 @@ var TECH = [
     color: '#1d54e6',
     lead: '외벽 하자는 미관 문제가 아닌, 구조 안전의 신호입니다.',
     define: '월터가드는 외벽의 균열을 보호막처럼 감싸는 <b>외벽 전용 보수·방수 도장 시스템</b>입니다. 지붕에서 검증된 루프가드의 복합시트 공법을 외벽에 맞게 넓혔습니다.',
-    hero: IMG + 'about/company/s03_02.webp',
-    card: IMG + 'about/company/s03_02.webp',
+    hero: 'images/hd/s03_02.webp',
+    card: 'images/hd/s03_02.webp',
     layers: ['외벽 바탕 (균열 보수 · 퍼티)', '하도 (월터가드)', '중도 1차', '보강시트 · 함침', '중도 2차 (선택)', '월터가드 상도'],
     problem: {
       title: '외벽 하자는 누수와 구조 약화로 이어집니다.',
@@ -149,8 +149,8 @@ var TECH = [
     color: '#1d54e6',
     lead: '지하주차장은 건물 중 가장 가혹한 사용 환경입니다.',
     define: '펜터가드는 차량 하중과 마찰이 반복되는 <b>지하주차장 바닥을 위한 고강도 바닥 포장 시스템</b>입니다. 냄새가 거의 없고 빨리 말라 입주민 불편이 적습니다.',
-    hero: IMG + 'about/company/s03_03.webp',
-    card: IMG + 'about/company/s03_03.webp',
+    hero: 'images/hd/s03_03.webp',
+    card: 'images/hd/s03_03.webp',
     layers: ['콘크리트 바닥', '균열 보수 (백업제 · 브이커팅)', '펜터가드 하도', '펜터가드 중도', '펜터가드 상도'],
     problem: {
       title: '주차장 바닥은 매일 닳고 미끄러워집니다.',
@@ -192,7 +192,7 @@ var TECH = [
     lead: '미끄럼 사고는 표면 마찰력 부족에서 시작됩니다.',
     define: '로드가드는 도로·교차로·어린이보호구역처럼 <b>밖에 드러난 바닥에 마찰력을 더하는 MMA 미끄럼방지 포장</b>입니다.',
     hero: IMG + 'technology/list_04/02.webp',
-    card: IMG + 'about/company/s03_04.webp',
+    card: 'images/hd/s03_04.webp',
     layers: ['아스팔트 · 콘크리트 노면', '하도 (콘크리트면만)', 'MMA 레진 + 내마모 골재'],
     problem: {
       title: '도로·교차로·어린이보호구역의 미끄럼 사고',
@@ -235,8 +235,8 @@ var TECH = [
     color: '#1d54e6',
     lead: '분사 후 수십 초 안에 굳는 차세대 방수 기술',
     define: '폴리우레아는 <b>뿌리면 20~30초 만에 굳어 이음새 없는 막을 만드는 초속경화 방수재</b>입니다. 관공서의 급한 누수나 바로 써야 하는 현장에 알맞습니다.',
-    hero: IMG + 'about/company/s03_05.webp',
-    card: IMG + 'about/company/s03_05.webp',
+    hero: 'images/hd/s03_05.webp',
+    card: 'images/hd/s03_05.webp',
     layers: ['바탕 (균열 보수 · 브이커팅)', '폴리우레아 하도', '바탕 조정', '폴리우레아 중도', '폴리우레아 상도 (차열)'],
     problem: {
       title: '왜 기존 도막방수는 한계에 부딪힐까요?',
