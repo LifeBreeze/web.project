@@ -1524,3 +1524,16 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 /* 공법 찾기 카드: V(체크) 표시 삭제, 글은 왼쪽 끝에 맞춤 */
 .fp-body .checks li { padding-left: 0; }
 .fp-body .checks li::before { display: none; }
+
+/* 에어레카: 드론 사진을 구역 배경으로 깔고 어둡게, 글은 흰색 · 오른쪽에는 사진 카드 */
+#aireka.sec.band { background: #0b1220 url("../images/aireka-drone.webp") center / cover no-repeat; color: #fff; isolation: isolate; }
+#aireka.sec.band::before { content: ""; position: absolute; inset: 0; background: rgba(8, 13, 25, .72); z-index: -1; }
+#aireka.sec.band .eyebrow { color: var(--accent-l); }
+#aireka.sec.band .h2 { color: #fff; }
+#aireka.sec.band .lead { color: rgba(255, 255, 255, .88); }
+#aireka.sec.band .checks li { color: #fff; }
+#aireka.sec.band .checks li::before { border-color: #fff; }
+#aireka.sec.band .btn-light { background: #fff; color: var(--ink); }
+#aireka.sec.band .btn-light:hover { background: var(--accent-l); color: var(--ink); }
+#aireka.sec.band img { box-shadow: 0 34px 70px -30px rgba(0, 0, 0, .75); }
+@media (min-width: 761px) { #aireka.sec.band { padding: 120px 0; } }
