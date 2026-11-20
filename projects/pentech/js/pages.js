@@ -3,7 +3,8 @@ window.initPage = function () {
   var page = document.body.getAttribute('data-page');
   if (page === 'cases') initCases();
   if (page === 'about') initAbout();
-  if (page === 'news') initNews();
+  if (page === 'news' && $('#newsGrid')) initNews();
+  if (page === 'news' && $('#artBox')) initArticle();
   if (page === 'contact') initContact();
   if (page === 'partner') initPartners();
 };
@@ -122,6 +123,35 @@ function initNews() {
       setTimeout(function () { card.classList.remove('hl'); }, 3200);
     }
   } else go(1);
+}
+
+/* ── 소식: 기사 보기 (원래 펜테크 사이트 언론보도에 올라온 글을 옮겨 온 것) ── */
+function initArticle() {
+  var id = (location.search.match(/[?&]id=(\d+)/) || [])[1], box = $('#artBox'), idx = -1;
+  NEWS.forEach(function (n, i) { var m = /id=(\d+)/.exec(n[4]); if (m && m[1] === id) idx = i; });
+  var a = window.NEWS_ARTICLES && NEWS_ARTICLES[id];
+  if (!a || idx < 0) {
+    $('#artTitle').innerHTML = T('언론보도');
+    box.innerHTML = '<p>' + T('기사를 찾을 수 없습니다.') + '</p><div class="art-actions"><a class="btn btn-ink" href="news.html#press">' + T('언론보도 목록') + '</a></div>';
+    return;
+  }
+  var n = NEWS[idx];
+  document.title = a.t + ' — (주)펜테크 | 리디자인 시안';
+  $('#artTitle').innerHTML = '<small>' + esc((a.s ? a.s + ' · ' : '') + a.d) + '</small>' + esc(a.t);
+  var h = '';
+  if (a.sub) h += '<p class="art-sub">' + esc(a.sub).replace(/\n/g, '<br>') + '</p>';
+  a.b.forEach(function (b) {
+    if (b[0] === 'i') h += '<figure class="art-fig"><img src="' + esc(b[1]) + '" alt="' + esc(b[2]) + '" loading="lazy" onerror="this.closest(\'figure\').style.display=\'none\'">' + (b[2] ? '<figcaption>' + esc(b[2]) + '</figcaption>' : '') + '</figure>';
+    else if (b[0] === 'h') h += '<h3 class="art-h">' + esc(b[1]) + '</h3>';
+    else b[1].split('\n').forEach(function (t) { if (t.trim()) h += '<p>' + esc(t) + '</p>'; });
+  });
+  if (a.note === 'stub') h += '<p class="art-note">' + T('원래 사이트에도 이 기사는 제목과 기자 이름만 올라와 있습니다. 기사 전문은 아래 원문 보기에서 확인하세요.') + '</p>';
+  if (a.note === 'shared') h += '<p class="art-note">' + T('원래 사이트에는 이 기사의 본문이 따로 올라와 있지 않고 같은 안내 글이 공통으로 쓰입니다. 기사 전문은 아래 원문 보기에서 확인하세요.') + '</p>';
+  h += '<div class="art-actions"><a class="btn btn-ink" href="' + esc(n[4]) + '" target="_blank" rel="noopener">' + T('원문 기사 보기') + ' <span class="arr">↗</span></a><a class="btn btn-line" href="news.html#press">' + T('언론보도 목록') + '</a></div>';
+  var prev = NEWS[idx - 1], next = NEWS[idx + 1];
+  function link(x, label) { var m = /id=(\d+)/.exec(x[4]); return '<a href="news-article.html?id=' + m[1] + '"><small>' + label + '</small><b>' + esc(x[2]) + '</b></a>'; }
+  h += '<nav class="art-nav" aria-label="' + T('이전 · 다음 기사') + '">' + (prev ? link(prev, T('이전 기사')) : '<span></span>') + (next ? link(next, T('다음 기사')) : '<span></span>') + '</nav>';
+  box.innerHTML = h;
 }
 
 /* ── 고객지원: 폼 · FAQ · 제안서 ── */

@@ -208,10 +208,11 @@ function vcard(id, showCat) {
     '<span><p>' + esc(v[3]) + '</p>' + (showCat ? '<small>' + esc(v[1]) + '</small>' : '') + '</span></a>';
 }
 
-/* 언론보도 카드 (원문은 기존 펜테크 사이트의 기사 페이지) */
-function newsCard(n, href) {
-  if (typeof href !== 'string') href = '';                // .map(newsCard) 로 부르면 둘째 값이 숫자 순번이라 무시
-  return '<a class="ncard" href="' + (href || n[4]) + '"' + (href ? '' : ' target="_blank" rel="noopener"') + '><span class="im"><img src="' + n[3] + '" alt="" loading="lazy"></span>' +
+/* 언론보도 카드: 누르면 우리 사이트의 기사 페이지(news-article.html)로 간다. 원문은 기사 페이지 아래 '원문 기사 보기'에서 */
+function newsCard(n) {
+  var m = /id=(\d+)/.exec(n[4]);
+  var href = m ? 'news-article.html?id=' + m[1] : n[4];
+  return '<a class="ncard" href="' + href + '"' + (m ? '' : ' target="_blank" rel="noopener"') + '><span class="im"><img src="' + n[3] + '" alt="" loading="lazy"></span>' +
     '<span class="meta"><b>' + esc(n[1] || '보도') + '</b><span>' + n[0] + '</span></span><h3>' + esc(n[2]) + '</h3></a>';
 }
 

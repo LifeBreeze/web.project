@@ -35,7 +35,7 @@ window.initPage = function () {
   });
   show('roof');
 
-  $('#homeNews').innerHTML = NEWS.slice(0, 3).map(function (n, i) { return newsCard(n, 'news.html?n=' + i + '#press'); }).join('');
+  $('#homeNews').innerHTML = NEWS.slice(0, 3).map(function (n) { return newsCard(n); }).join('');
 };
 
 

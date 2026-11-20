@@ -1578,3 +1578,29 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 
 /* 홈에서 누른 언론보도 카드: 소식 페이지에 도착하면 잠깐 윤곽선으로 강조 */
 .ncard.hl { outline: 3px solid var(--accent); outline-offset: 10px; border-radius: 16px; transition: outline-color .6s; }
+
+
+/* ── 언론보도 기사 보기 ── */
+.art-head h1 { font-size: clamp(28px, 3.6vw, 46px); line-height: 1.3; letter-spacing: -.04em; max-width: 920px; }
+.art { max-width: 800px; margin: 0 auto; }
+.art-sub { font-size: 22px; font-weight: 700; line-height: 1.5; letter-spacing: -.03em; padding-left: 16px; border-left: 3px solid var(--line); margin-bottom: 36px; }
+.art p { font-size: 18px; line-height: 1.95; margin: 0 0 20px; }
+.art p.art-sub { font-size: 22px; line-height: 1.5; margin-bottom: 36px; }
+.art-h { font-size: 22px; font-weight: 800; letter-spacing: -.03em; margin: 44px 0 16px; }
+.art-fig { margin: 36px 0; }
+.art-fig img { width: 100%; height: auto; border-radius: 16px; display: block; background: var(--bg-2); }
+.art-fig figcaption { font-size: 14px; color: var(--ink-3); margin-top: 12px; line-height: 1.6; }
+.art .art-note { background: var(--bg-2); border-radius: 14px; padding: 18px 22px; color: var(--ink-2); font-size: 15.5px; line-height: 1.7; margin-top: 32px; }
+.art-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 44px; }
+.art-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; border-top: 1.5px solid var(--ink); padding-top: 28px; }
+.art-nav a { display: block; }
+.art-nav a:last-child { text-align: right; }
+.art-nav small { display: block; color: var(--ink-3); font-size: 14px; margin-bottom: 6px; }
+.art-nav b { font-size: 17px; font-weight: 700; line-height: 1.5; letter-spacing: -.02em; }
+.art-nav a:hover b { color: var(--accent); }
+@media (max-width: 760px) {
+  .art p { font-size: 17px; line-height: 1.9; }
+  .art-sub, .art p.art-sub { font-size: 19px; }
+  .art-nav { grid-template-columns: 1fr; }
+  .art-nav a:last-child { text-align: left; }
+}
