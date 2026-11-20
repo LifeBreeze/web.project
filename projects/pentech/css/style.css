@@ -1553,3 +1553,9 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .causes b { font-size: 20px; }
   .causes span { font-size: 17px; }
 }
+
+/* 기술공법 '왜 문제인가' 사진: 위아래로 쌓고, 자르지 않고 원본 비율 그대로 */
+.why-photos, .why-photos.stack, .why-photos:not(.one):not(.stack) { grid-template-columns: 1fr; grid-template-rows: none; align-content: start; }
+.why-photos .ph { height: auto; }
+.why-photos .ph .im, .why-photos.stack .ph .im, .why-photos.one .ph .im { flex: none; min-height: 0; aspect-ratio: auto; }
+.why-photos .ph .im img { position: static; inset: auto; height: auto; }
