@@ -1514,3 +1514,9 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 @media (max-width: 760px) {
   #about.sec { padding: 72px 0; }
 }
+
+/* 홈 회사소개: 구역이 화면 한 장을 꽉 채우고, 사진 · 글은 가운데 (PC) */
+@media (min-width: 761px) {
+  #about.sec { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
+  #about.sec > .wrap { width: 100%; }
+}
