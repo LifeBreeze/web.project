@@ -1520,13 +1520,3 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   #about.sec { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
   #about.sec > .wrap { width: 100%; }
 }
-
-/* 공법 찾기(PC): 제목은 왼쪽 · 탭 카드는 오른쪽에 가로로 한 줄 · 상세 카드는 그 아래 전체 폭 */
-@media (min-width: 981px) {
-  #finder > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; row-gap: 44px; align-items: center; }
-  #finder .sec-head { grid-column: 1; grid-row: 1; margin-bottom: 0; }
-  #finder .finder { display: contents; }
-  #finder .finder-tabs { grid-column: 2; grid-row: 1; position: static; display: grid; grid-auto-flow: column; grid-auto-columns: 184px; grid-auto-rows: auto; gap: 12px; overflow-x: auto; padding: 4px 4px 14px; margin: -4px; scroll-snap-type: x proximity; scrollbar-width: thin; align-self: center; }
-  #finder .finder-tabs button { min-height: 150px; align-content: start; scroll-snap-align: start; }
-  #finder .finder-panel { grid-column: 1 / -1; grid-row: 2; }
-}
