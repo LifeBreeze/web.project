@@ -144,26 +144,38 @@ function initContact() {
 
   // FAQ: 공법 필터 + 검색
   var techName = { '': '공통', roof: '루프가드', wall: '월터가드', penter: '펜터가드', road: '로드가드', poly: '폴리우레아' };
-  var filt = $('#faqFilter'), list = $('#faqList'), q = $('#faqSearch'), cur = 'all';
+  var filt = $('#faqFilter'), list = $('#faqList'), q = $('#faqSearch'), cur = 'all', fper = 10, fpage = 1, fpager = $('#faqPager');
   var keys = ['all', 'roof', 'wall', 'penter', 'road', 'poly', ''];
   filt.innerHTML = keys.map(function (k) {
     var n = k === 'all' ? FAQ.length : FAQ.filter(function (f) { return f[0] === k; }).length;
     return '<button class="chip" aria-pressed="' + (k === 'all') + '" data-k="' + k + '">' + (k === 'all' ? '전체' : techName[k]) + '<span class="n">' + n + '</span></button>';
   }).join('');
-  function renderFaq() {
+  function renderFaq(scroll) {
     var s = q.value.trim().toLowerCase();
     var items = FAQ.filter(function (f) { return (cur === 'all' || f[0] === cur) && (!s || (f[2] + f[3] + f[1]).toLowerCase().indexOf(s) > -1); });
+    var fpages = Math.max(1, Math.ceil(items.length / fper));
+    if (fpage > fpages) fpage = fpages;
+    items = items.slice((fpage - 1) * fper, fpage * fper);          // 10개씩 끊어서 보여 줌
     list.innerHTML = items.length ? items.map(function (f) {
       return '<details><summary><span class="q">Q</span><b><small>' + techName[f[0]] + (f[1] ? ' · ' + esc(f[1]) : '') + '</small>' + esc(f[2]) + '</b><span class="pm" aria-hidden="true"></span></summary><div class="a">' + esc(f[3]) + '</div></details>';
     }).join('') : '<p class="faq-empty">찾는 질문이 없나요? <a class="link-arrow" href="#inquiry">직접 문의하기 →</a></p>';
+    var h = '';
+    if (fpages > 1) {
+      h = '<button aria-label="이전 쪽" ' + (fpage === 1 ? 'disabled' : '') + ' data-p="' + (fpage - 1) + '">‹</button>';
+      for (var i = 1; i <= fpages; i++) h += '<button data-p="' + i + '"' + (i === fpage ? ' aria-current="page"' : '') + '>' + i + '</button>';
+      h += '<button aria-label="다음 쪽" ' + (fpage === fpages ? 'disabled' : '') + ' data-p="' + (fpage + 1) + '">›</button>';
+    }
+    fpager.innerHTML = h;
+    if (scroll === true) $('.faq-tools').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  fpager.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b && !b.disabled) { fpage = +b.getAttribute('data-p'); renderFaq(true); } });
   filt.addEventListener('click', function (e) {
     var b = e.target.closest('.chip'); if (!b) return;
-    cur = b.getAttribute('data-k');
+    cur = b.getAttribute('data-k'); fpage = 1;
     $$('.chip', filt).forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
     renderFaq();
   });
-  q.addEventListener('input', renderFaq);
+  q.addEventListener('input', function () { fpage = 1; renderFaq(); });
   renderFaq();
 
   // 시공 제안서 (기존 '다운로드')
