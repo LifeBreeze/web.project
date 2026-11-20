@@ -1478,3 +1478,10 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 
 /* 내린 뒤 헤더: 그라데이션 · 반투명 유리 없이 흰색 불투명 + 얇은 아래 줄 */
 .head:not(.is-top)::before { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-mask-image: none; mask-image: none; bottom: 0; border-bottom: 1px solid var(--line); }
+
+
+/* 공정 보기: 제목(글)은 사진 위로, 차수 목록은 왼쪽 여백을 넉넉히 */
+.pv-cap { margin: 0 0 14px; }
+@media (min-width: 761px) {
+  .pv-steps button { grid-template-columns: 86px 1fr; padding-left: 30px; padding-right: 20px; }
+}

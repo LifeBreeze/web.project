@@ -160,8 +160,8 @@ function initProc(t) {
           return '<button type="button" class="pv-img" data-zoom data-src="' + esc(u) + '" data-cap="' + esc(it.label) + '" data-group="pv" aria-label="사진 크게 보기"><img src="' + esc(u) + '" alt="' + esc(it.label) + '"></button>';
         }).join('') + '<span class="pv-badge done">' + esc(it.tag) + '</span></div>'
       : '<button type="button" class="pv-photo" data-next aria-label="다음 단계 사진 보기"><img src="' + esc(it.imgs[0]) + '" alt="' + esc(it.tag + ' ' + it.label) + '"><span class="pv-badge">' + esc(it.tag) + '</span></button>';
-    box.innerHTML = groups + '<div class="procview"><div>' + photo +
-      '<div class="pv-cap" aria-live="polite"><b>' + esc(it.label) + '</b><span>' + (i + 1) + ' / ' + items.length + '</span></div>' +
+    box.innerHTML = groups + '<div class="procview"><div>' +
+      '<div class="pv-cap" aria-live="polite"><b>' + esc(it.label) + '</b><span>' + (i + 1) + ' / ' + items.length + '</span></div>' + photo +
       '<div class="pv-nav"><button class="btn btn-line btn-sm" data-prev' + (i === 0 ? ' disabled style="opacity:.35"' : '') + '>← 이전</button>' +
       '<button class="btn btn-ink btn-sm" data-next>' + (last ? '처음으로' : '다음 단계 →') + '</button></div></div>' +
       '<ol class="pv-steps">' + items.map(function (s, si) {
