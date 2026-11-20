@@ -1507,3 +1507,9 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 @media (min-width: 1280px) {
   html:not([lang="en"]) .about-intro .ln { display: block; }
 }
+
+/* 홈 회사소개: 사진은 왼쪽, 글은 오른쪽 (PC) */
+@media (min-width: 981px) {
+  .about-intro { grid-template-columns: 1fr 1.4fr; }
+  .about-intro .about-photo { order: -1; }
+}
