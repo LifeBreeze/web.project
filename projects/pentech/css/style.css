@@ -485,9 +485,9 @@ fieldset.field legend { margin-bottom: 8px; }
 
 .faq-tools { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 28px; }
 .search { position: relative; flex: 0 1 260px; }
-.search input { width: 100%; font: inherit; padding: 13px 16px 13px 62px; border: 1.5px solid var(--ink); border-radius: 99px; background: #fff; }
+.search input { width: 100%; font: inherit; padding: 13px 8px 13px 40px; border: 0; border-bottom: 1.5px solid var(--ink); border-radius: 0; background: transparent; }
 .search input:focus { outline: none; border-color: var(--accent); }
-.search svg { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+.search svg { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
 .faq { border-top: 1.5px solid var(--ink); }
 .faq details { border-bottom: 1px solid var(--line); background: #fff; }
 .faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 36px 1fr 24px; gap: 10px; padding: 22px 10px; align-items: start; }
