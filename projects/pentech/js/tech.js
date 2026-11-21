@@ -8,6 +8,8 @@ window.initPage = function () {
   function eb(label) { no++; return '<span class="eyebrow"><b>' + (no < 10 ? '0' : '') + no + '</b> ' + label + '</span>'; }
 
   var h = '';
+  /* 표: 모든 열 글자 시작 간격이 같도록 열 폭을 균등하게 (첫 열은 안쪽 여백만큼 더 넓게) — 폭은 fitTables() 가 정함 */
+  function cols(n) { var c = '<colgroup>'; for (var i = 0; i < n; i++) c += '<col>'; return c + '</colgroup>'; }
 
   /* 머리: 글은 종이 칸, 사진은 옆 칸 */
   h += '<section class="page-head" style="--banner:url(\'' + t.banner + '\')"><div class="wrap"><div>' +
@@ -48,7 +50,7 @@ window.initPage = function () {
     '<div class="rv">' + strataHTML(t) + (md.diagram ? '' : '<div style="margin-top:16px">' + ph(md.image[0], md.image[1], 'method') + '</div>') + '</div></div>';
   if (t.compare) {
     var c = t.compare;
-    h += '<div class="compare rv"><h3 class="h3" style="margin-bottom:30px">' + esc(c.title) + '</h3><div class="tbl tbl-scroll"><table>' +
+    h += '<div class="compare rv"><h3 class="h3" style="margin-bottom:30px">' + esc(c.title) + '</h3><div class="tbl tbl-scroll"><table>' + cols(c.head.length) +
       '<thead><tr>' + c.head.map(function (x) { return '<th scope="col">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
       c.rows.map(function (r) { return '<tr><th scope="row">' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td><td class="hi">' + esc(r[2]) + '</td></tr>'; }).join('') +
       '</tbody></table></div></div>';
@@ -89,7 +91,7 @@ window.initPage = function () {
     '<h2 class="h2">성능 · 시험성적 · 특허</h2></div></div>';
   if (t.tests) {
     h += '<div class="tests rv">' + t.tests.map(function (ts) {
-      return '<div class="tbl tbl-scroll"><table><caption>' + esc(ts.title) + '</caption><thead><tr>' +
+      return '<div class="tbl tbl-scroll"><table><caption>' + esc(ts.title) + '</caption>' + cols(ts.head.length) + '<thead><tr>' +
         ts.head.map(function (x) { return '<th scope="col">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
         ts.rows.map(function (r) {
           return '<tr><th scope="row">' + esc(r[0]) + '</th>' + r.slice(1).map(function (v, vi) {
@@ -106,7 +108,7 @@ window.initPage = function () {
     h += '<div class="metrics rv" style="margin-top:' + (t.tests ? '16px' : '0') + '">' + t.metrics.map(function (x) { return '<div class="metric"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>';
   }
   /* 특허: 성능과 같은 구역 안에 (따로 두면 한 줄짜리 구역이 생겨 허전함) */
-  h += '<div class="sec-head rv" id="patent" style="margin:44px 0 30px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3>' +
+  h += '<div class="sec-head rv" id="patent" style="margin:72px 0 30px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3>' +
     '<a class="link-arrow" href="about.html#cert">특허 · 인증 전체 →</a></div>' +
     '<div class="patents rv">' + t.patents.map(function (x) { return patentBtn(x, 'pat-' + t.id); }).join('') + '</div>';
   h += '</div></section>';
@@ -126,6 +128,7 @@ window.initPage = function () {
   $('#tech').innerHTML = h;
   initProc(t);
   initWhyFit();
+  initTableFit();
 };
 
 /* 왜 문제인가 (PC): 사진 묶음을 '5대 원인' 표와 위·아래 줄을 맞춤. 사진은 자르지 않고 폭만 조절 */
@@ -226,4 +229,21 @@ function initProc(t) {
     if (e.target.closest('[data-next]')) { i = (i + 1) % items.length; draw(); }
   });
   draw();
+}
+
+/* 표 열 폭: 첫 열 글자는 안쪽 여백(inset)만큼 들어가 있으므로, 첫 열을 그만큼 넓혀 모든 열의 글자 시작 간격을 같게 함 */
+function fitTables() {
+  [].slice.call(document.querySelectorAll('.tbl table')).forEach(function (tb) {
+    var cs = [].slice.call(tb.querySelectorAll('col')), n = cs.length, th = tb.querySelector('thead th');
+    if (!n || !th) return;
+    var st = getComputedStyle(th), d = parseFloat(st.paddingLeft) - parseFloat(st.paddingRight);   // 첫 열 안쪽 여백 - 기본 여백(18px)
+    var W = tb.offsetWidth;
+    cs.forEach(function (c, i) { c.style.width = (i === 0 ? W / n + d * (n - 1) / n : W / n - d / n) + 'px'; });
+  });
+}
+function initTableFit() {
+  fitTables();
+  window.addEventListener('resize', fitTables);
+  if (window.ResizeObserver) [].slice.call(document.querySelectorAll('.tbl')).forEach(function (t) { new ResizeObserver(fitTables).observe(t); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTables);
 }

@@ -290,8 +290,10 @@ table { border-collapse: collapse; width: 100%; }
 .tbl caption { text-align: left; padding: 16px 20px; font-weight: 800; font-size: 18px; letter-spacing: -.03em; border-bottom: 1px solid var(--line); background: #fff; }
 .tbl th, .tbl td { padding: 14px 18px; border-bottom: 1px solid var(--line); text-align: left; }
 /* 표 맨 왼쪽 · 맨 오른쪽 칸을 테두리에서 안쪽으로 띄움 (제목 글자와 첫 칸 글자는 같은 줄) */
-.tbl th:first-child, .tbl td:first-child, .tbl caption { padding-left: clamp(20px, 2.6vw, 40px); }
-.tbl th:last-child, .tbl td:last-child { padding-right: clamp(20px, 2.6vw, 40px); }
+.tbl { --tbl-inset: clamp(20px, 2.6vw, 40px); }   /* 열 폭은 js/tech.js 의 fitTables 가 균등하게 맞춤 */
+.tbl table { table-layout: fixed; }
+.tbl th:first-child, .tbl td:first-child, .tbl caption { padding-left: var(--tbl-inset); }
+.tbl th:last-child, .tbl td:last-child { padding-right: var(--tbl-inset); }
 .tbl thead th { background: var(--dark); color: #fff; font-weight: 700; font-size: 14.5px; }
 .tbl tbody th { text-align: left; font-weight: 600; }
 .tbl tr:last-child > * { border-bottom: 0; }
