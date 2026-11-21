@@ -96,7 +96,7 @@ window.EN_DICT = {
 "고객지원 목차": "Customer support contents",
 "예: OO아파트 관리사무소": "e.g., OO Apartment management office",
 "건물 종류, 위치, 문제 부위(옥상 · 외벽 · 주차장 등), 면적을 알려 주시면 더 정확합니다.": "Telling us the building type, location, problem area (roof, wall, parking lot, etc.), and area size helps us be more accurate.",
-"예: 금속기와, 냄새, 겨울": "e.g., metal roof, smell, winter",
+"예: 방수공사, 문제": "e.g., waterproofing work, problem",
 "고객지원 — (주)펜테크 | 리디자인 시안": "Customer Support — Pentech Co., Ltd. | Redesign concept",
 "고객지원": "Customer Support",
 "현장에 맞는 정확한 상담으로": "Accurate consultation tailored to your site,",
