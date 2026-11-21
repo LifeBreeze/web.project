@@ -41,7 +41,7 @@ var NAV = [
   { key: 'about', label: '회사소개', href: 'about.html', sub: [['CEO 인사말', 'about.html#ceo'], ['회사소개', 'about.html#company'], ['연혁', 'about.html#history'], ['비전 · ESG', 'about.html#vision'], ['특허 · 인증', 'about.html#cert'], ['회사 위치', 'about.html#location']] },
   { key: 'partner', label: '협력기업', href: 'partners.html', sub: [['협약사 리스트', 'partners.html#list'], ['협약 문의', 'contact.html?kind=협약#inquiry']] },
   { key: 'news', label: '소식', href: 'news.html', sub: [['언론보도', 'news.html#press'], ['블로그 · 유튜브', 'news.html#channels']] },
-  { key: 'contact', label: '고객지원', href: 'contact.html', sub: [['견적/협약 문의', 'contact.html#inquiry'], ['시공 제안서', 'contact.html#docs'], ['자주 묻는 질문', 'faq.html']] }
+  { key: 'contact', label: '고객지원', href: 'contact.html', sub: [['견적/협약 문의', 'contact.html#inquiry'], ['시방서', 'contact.html#docs'], ['자주 묻는 질문', 'faq.html']] }
 ];
 
 function logoHTML() {

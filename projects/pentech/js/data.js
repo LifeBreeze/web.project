@@ -378,7 +378,7 @@ var HISTORY = [
   ]}
 ];
 
-/* 시공 제안서 (기존 '다운로드') */
+/* 시방서 (기존 '다운로드') */
 /* 시방서 (원래 사이트 pentech.kr/kor/contact/download.html 에 올라 있는 자료 1건). [종류, 이름, 공법, 파일 주소] */
 var DOCS = [
   ['시방서', '[ROOF GUARD 시방서] 노출식차열방수복합공법', 'roof', 'https://www.pentech.kr/upload/board/1790901747_26DWMS_0.pdf']

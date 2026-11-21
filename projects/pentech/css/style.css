@@ -1727,23 +1727,16 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 .policy::-webkit-scrollbar { width: 8px; }
 .policy::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; }
 
-/* 시방서 (원래 사이트 Proposal 페이지 모양): 제목 · 검색 · 카드(미리보기 / 다운로드) */
+/* 시방서 (원래 사이트 Proposal 페이지 모양): 제목 · 카드(미리보기 / 다운로드) */
 #docs .h2 .hl { color: var(--accent); }
-.doc-search { display: flex; gap: 12px; margin-top: 36px; }
-.doc-search input { width: min(100%, 440px); height: 62px; padding: 0 24px; border: 1px solid var(--line); border-radius: 14px; background: #fff; font: inherit; font-size: 17px; color: var(--ink); }
-.doc-search input:focus { outline: none; border-color: var(--accent); }
-.doc-search .btn { height: 62px; min-width: 150px; border-radius: 14px; }
-.pdocs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 420px)); gap: 24px; margin-top: 36px; }
+.pdocs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 420px)); gap: 24px; margin-top: 40px; }
 .pdoc { padding: 38px 36px 40px; background: #fff; border: 1px solid #2a3693; border-radius: 32px; }
 .pdoc-tag { display: inline-block; padding: 12px 34px; border: 1px solid var(--accent); border-radius: 99px; color: var(--accent); font-size: 18px; font-weight: 600; }
 .pdoc h3 { margin: 34px 0 30px; font-size: 24px; font-weight: 600; line-height: 1.4; letter-spacing: -.035em; word-break: keep-all; }
 .pdoc-btn { display: flex; align-items: center; justify-content: space-between; height: 64px; margin-top: 12px; padding: 0 22px; border-radius: 14px; background: #f6f6f8; color: var(--ink-3); font-size: 18px; transition: background .15s, color .15s; }
 .pdoc-btn:hover, .pdoc-btn:focus-visible { background: var(--blue-soft); color: var(--accent); }
 @media (max-width: 640px) {
-  .doc-search { flex-wrap: wrap; }
-  .doc-search input { width: 100%; }
-  .doc-search .btn { width: 100%; }
-  .pdocs { grid-template-columns: 1fr; }
+        .pdocs { grid-template-columns: 1fr; }
   .pdoc { padding: 28px 24px 30px; border-radius: 26px; }
   .policy { padding: 16px 18px; }
 }

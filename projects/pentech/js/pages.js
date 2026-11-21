@@ -200,23 +200,15 @@ function initContact() {
     return /^\d+\.\s/.test(ln) ? '<h4>' + esc(ln) + '</h4>' : '<p>' + esc(ln) + '</p>';
   }).join('');
 
-  // 시방서 (기존 '다운로드'): 원래 사이트 Proposal 페이지처럼 카드 + 미리보기 · 다운로드, 검색
+  // 시방서 (기존 '다운로드'): 원래 사이트 Proposal 페이지처럼 카드 + 미리보기 · 다운로드
   var ICON_DOC = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>';
   var ICON_DL = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 11 12 15.5 16.5 11"/><path d="M5 19h14"/></svg>';
-  var dq = $('#docQ'), dlist = $('#docList'), dempty = $('#docEmpty');
-  function renderDocs() {
-    var s = dq.value.trim().toLowerCase();
-    var items = DOCS.filter(function (d) { return !s || (d[0] + ' ' + d[1]).toLowerCase().indexOf(s) > -1; });
-    dlist.innerHTML = items.map(function (d) {
-      return '<article class="pdoc"><span class="pdoc-tag">' + d[0] + '</span><h3>' + esc(d[1]) + '</h3>' +
-        '<a class="pdoc-btn" href="' + esc(d[3]) + '" target="_blank" rel="noopener"><span>미리보기</span>' + ICON_DOC + '</a>' +
-        '<a class="pdoc-btn" href="' + esc(d[3]) + '" target="_blank" rel="noopener" download><span>다운로드</span>' + ICON_DL + '</a></article>';
-    }).join('');
-    dempty.hidden = items.length > 0;
-  }
-  $('#docSearch').addEventListener('submit', function (e) { e.preventDefault(); renderDocs(); });
-  dq.addEventListener('input', renderDocs);
-  renderDocs();
+  var dlist = $('#docList');
+  dlist.innerHTML = DOCS.map(function (d) {
+    return '<article class="pdoc"><span class="pdoc-tag">' + d[0] + '</span><h3>' + esc(d[1]) + '</h3>' +
+      '<a class="pdoc-btn" href="' + esc(d[3]) + '" target="_blank" rel="noopener"><span>미리보기</span>' + ICON_DOC + '</a>' +
+      '<a class="pdoc-btn" href="' + esc(d[3]) + '" target="_blank" rel="noopener" download><span>다운로드</span>' + ICON_DL + '</a></article>';
+  }).join('');
 }
 
 

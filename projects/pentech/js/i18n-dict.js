@@ -911,6 +911,8 @@ window.EN_DICT = {
 "(필수) 개인정보 수집에 동의합니다.": "(Required) I agree to the collection of personal information.",
 "개인정보 수집 동의 내용": "Personal information collection consent",
 "시방서 검색": "Search specifications",
+"최적의 시방서": "best specifications",
+"시방서를 미리 보고 내려받아 보세요.": "Preview and download the specifications.",
 "[ROOF GUARD 시방서] 노출식 차열방수 복합공법": "[ROOF GUARD specifications] Exposed heat-shielding waterproof composite method",
 "제안서": "Proposals",
 "루프가드 홍보 제안서": "Roof Guard promotional proposal",

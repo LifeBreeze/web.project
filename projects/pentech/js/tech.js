@@ -127,7 +127,7 @@ window.initPage = function () {
   /* 상담 띠 */
   h += '<section class="cta"><div class="wrap"><div><h2>' + esc(t.cta) + '</h2><p>현장 상태를 보고 ' + t.name + '가 맞는지부터 정직하게 말씀드립니다.</p></div>' +
     '<div class="btns"><a class="btn btn-light" href="contact.html?tech=' + t.id + '#inquiry">' + t.name + ' 견적 문의 <span class="arr">→</span></a>' +
-    '<a class="btn btn-line" href="contact.html#docs">시공 제안서</a></div></div></section>';
+    '<a class="btn btn-line" href="contact.html#docs">시방서</a></div></div></section>';
 
   $('#tech').innerHTML = h;
   initProc(t);
