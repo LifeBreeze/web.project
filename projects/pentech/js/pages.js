@@ -295,7 +295,7 @@ function initPartners() {
   window.addEventListener('resize', fitPartnerSearch);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPartnerSearch);
   if (window.MutationObserver) { var _pt = 0; new MutationObserver(function () { cancelAnimationFrame(_pt); _pt = requestAnimationFrame(fitPartnerSearch); }).observe(bar, { subtree: true, childList: true, characterData: true }); }
-  var per = 20, page = 1, pager = $('#pPager');
+  var per = 10, page = 1, pager = $('#pPager');
   function render(scroll) {
     var s = q.value.trim().toLowerCase();
     var items = PARTNERS.filter(function (p) { return (cur === '전체' || region(p) === cur) && (!s || (p[1] + p[3] + p[0]).toLowerCase().indexOf(s) > -1); });
