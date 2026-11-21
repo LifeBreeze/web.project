@@ -1630,3 +1630,7 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 /* 페이지 맨 위 안내 글: 두 문단(줄)으로 나눠 표시 */
 .lead-2l .ln { display: block; }
 .lead-2l .ln + .ln { margin-top: 6px; }
+
+
+/* 목록 아래 '전체 보기 →' 링크: 가운데 */
+.more-link { text-align: center; margin-top: 40px; }
