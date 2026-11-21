@@ -1633,7 +1633,7 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 
 
 /* 적용 사례: '시공 영상으로 보기' 링크는 마지막 줄 빈 칸에 (사진 높이의 가운데) */
-.cases-more { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: flex-start; }
+.cases-more { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: flex-start; padding-left: 40px; }
 
 /* 특허 N건: 링크를 제목 바로 오른쪽에 */
 #patent { justify-content: flex-start; align-items: baseline; gap: 32px; }
