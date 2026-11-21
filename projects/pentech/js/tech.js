@@ -42,13 +42,13 @@ window.initPage = function () {
         return mm ? '<li><span><b>' + mm[1] + '</b> · ' + esc(mm[2]) + '</span></li>' : '<li class="note"><span>' + esc(s) + '</span></li>';
       }).join('') + '</ol>'
     : '<ul class="checks" style="margin-top:18px">' + md.points.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>';
-  h += '<section class="sec alt" id="method"><div class="wrap"><div class="method"><div class="rv">' + eb('공법 개요') +
+  h += '<section class="sec alt" id="method"><div class="wrap"><div class="method' + (md.diagram ? ' fit' : '') + '"><div class="rv">' + eb('공법 개요') +
     '<h2 class="h2">' + esc(md.title) + '</h2>' + pts +
     '<p class="fields"><b>적용 분야</b>' + esc(md.fields) + '</p></div>' +
     '<div class="rv">' + strataHTML(t) + (md.diagram ? '' : '<div style="margin-top:16px">' + ph(md.image[0], md.image[1], 'method') + '</div>') + '</div></div>';
   if (t.compare) {
     var c = t.compare;
-    h += '<div class="compare rv"><h3 class="h3" style="margin-bottom:14px">' + esc(c.title) + '</h3><div class="tbl tbl-scroll"><table>' +
+    h += '<div class="compare rv"><h3 class="h3" style="margin-bottom:30px">' + esc(c.title) + '</h3><div class="tbl tbl-scroll"><table>' +
       '<thead><tr>' + c.head.map(function (x) { return '<th scope="col">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
       c.rows.map(function (r) { return '<tr><th scope="row">' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td><td class="hi">' + esc(r[2]) + '</td></tr>'; }).join('') +
       '</tbody></table></div></div>';
@@ -125,7 +125,43 @@ window.initPage = function () {
 
   $('#tech').innerHTML = h;
   initProc(t);
+  initWhyFit();
 };
+
+/* 왜 문제인가 (PC): 사진 묶음을 '5대 원인' 표와 위·아래 줄을 맞춤. 사진은 자르지 않고 폭만 조절 */
+function fitWhy() {
+  var box = document.querySelector('.why-photos'), list = document.querySelector('.why .causes');
+  if (!box || !list) return;
+  box.style.width = ''; box.style.marginTop = '';
+  if (window.innerWidth <= 980) return;
+  var phs = [].slice.call(box.querySelectorAll('.ph')), imgs = phs.map(function (p) { return p.querySelector('img'); });
+  if (imgs.some(function (m) { return !m.naturalWidth; })) return;          // 사진을 다 받은 뒤에 계산
+  var sumR = 0;
+  imgs.forEach(function (m) { sumR += m.naturalHeight / m.naturalWidth; });
+  var gap = (parseFloat(getComputedStyle(box).rowGap) || 0) * (phs.length - 1);
+  box.style.width = '100%';
+  function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }   // 나타나기 움직임(transform)에 영향받지 않는 위치
+  var cw = box.offsetWidth, top = pageTop(list) - pageTop(box), target = list.offsetHeight;
+  var w = Math.min(cw, 500);
+  for (var k = 0; k < 4; k++) {
+    box.style.width = w + 'px';
+    var caps = 0;
+    phs.forEach(function (p, i) { caps += p.offsetHeight - imgs[i].offsetHeight; });
+    var nw = Math.floor(Math.max(300, Math.min(600, cw, (target - gap - caps) / sumR)));
+    if (Math.abs(nw - w) < 1) break;
+    w = nw;
+  }
+  box.style.width = w + 'px';
+  box.style.marginTop = Math.max(0, top) + 'px';
+}
+function initWhyFit() {
+  var box = document.querySelector('.why-photos'), list = document.querySelector('.why .causes');
+  if (!box || !list) return;
+  [].slice.call(box.querySelectorAll('img')).forEach(function (m) { m.loading = 'eager'; m.addEventListener('load', fitWhy); });
+  window.addEventListener('resize', fitWhy);
+  if (window.ResizeObserver) new ResizeObserver(fitWhy).observe(list);       // 글꼴 · 영어 전환으로 표 높이가 바뀌면 다시 맞춤
+  fitWhy();
+}
 
 /* 적용 사례 칸 수: 마지막 줄에 사진 한 장만 남지 않게 (5장 → 5칸, 9장 → 5 + 4) */
 function casesCols(n) {

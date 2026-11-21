@@ -1563,8 +1563,13 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 /* 사진 · 글 · 표 높이 균형 (PC) */
 @media (min-width: 981px) {
   /* 왜 문제인가: 왼쪽 글과 오른쪽 사진을 세로 가운데로 맞추고, 사진은 너무 길어지지 않게 폭을 제한 */
-  .why { align-items: center; }
-  .why-photos { width: min(100%, 500px); justify-self: center; }
+  .why { align-items: start; }
+  .why-photos { width: min(100%, 500px); justify-self: end; }   /* 폭 · 세로 위치는 js/tech.js 의 fitWhy 가 '5대 원인' 표 높이에 맞춤 */
+  /* 공법 개요 (사진 없이 층 단면만 있을 때): 단면이 왼쪽 글 높이를 위아래로 꽉 채움 */
+  .method.fit { align-items: stretch; }
+  .method.fit > div:last-child { display: flex; flex-direction: column; }
+  .method.fit .strata { flex: 1; grid-auto-rows: 1fr; }
+  .method.fit .strata li { height: auto; }
   /* 공정 보기: 왼쪽(제목 · 사진 · 버튼)은 세로 가운데, 오른쪽 차수 목록은 단계가 많으면 높이를 꽉 채우고 적으면 가운데에 */
   .procview { align-items: stretch; }
   .procview > div:first-child { display: flex; flex-direction: column; justify-content: center; }
