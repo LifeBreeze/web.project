@@ -132,27 +132,41 @@ window.initPage = function () {
 function fitWhy() {
   var box = document.querySelector('.why-photos'), list = document.querySelector('.why .causes');
   if (!box || !list) return;
-  box.style.width = ''; box.style.marginTop = '';
-  if (window.innerWidth <= 980) return;
   var phs = [].slice.call(box.querySelectorAll('.ph')), imgs = phs.map(function (p) { return p.querySelector('img'); });
+  box.style.width = ''; box.style.marginTop = ''; box.style.gridTemplateColumns = '';
+  imgs.forEach(function (m) { m.style.height = ''; m.style.objectFit = ''; });
+  if (window.innerWidth <= 980) return;
   if (imgs.some(function (m) { return !m.naturalWidth; })) return;          // 사진을 다 받은 뒤에 계산
-  var sumR = 0;
+  var n = phs.length, sumR = 0;
   imgs.forEach(function (m) { sumR += m.naturalHeight / m.naturalWidth; });
-  var gap = (parseFloat(getComputedStyle(box).rowGap) || 0) * (phs.length - 1);
-  box.style.width = '100%';
+  var cs = getComputedStyle(box), gapY = (parseFloat(cs.rowGap) || 0) * (n - 1), gapX = parseFloat(cs.columnGap) || 0;
   function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }   // 나타나기 움직임(transform)에 영향받지 않는 위치
+  function caps() { var c = 0; phs.forEach(function (p, i) { c += p.offsetHeight - imgs[i].offsetHeight; }); return c; }
+  box.style.width = '100%';
   var cw = box.offsetWidth, top = pageTop(list) - pageTop(box), target = list.offsetHeight;
+  /* 1) 사진을 자르지 않고 위아래로 쌓았을 때 표 높이에 딱 맞는 폭 */
   var w = Math.min(cw, 500);
   for (var k = 0; k < 4; k++) {
     box.style.width = w + 'px';
-    var caps = 0;
-    phs.forEach(function (p, i) { caps += p.offsetHeight - imgs[i].offsetHeight; });
-    var nw = Math.floor(Math.max(300, Math.min(600, cw, (target - gap - caps) / sumR)));
+    var nw = Math.floor(Math.max(300, Math.min(600, cw, (target - gapY - caps()) / sumR)));
     if (Math.abs(nw - w) < 1) break;
     w = nw;
   }
-  box.style.width = w + 'px';
   box.style.marginTop = Math.max(0, top) + 'px';
+  if (n === 1) { box.style.width = w + 'px'; return; }
+  /* 2) 그 폭이 좁으면 루프가드처럼 넓게(540px) 키우고, 높이는 표에 맞춰 사진을 살짝 자름 */
+  var wide = Math.max(w, Math.min(cw, 540)), avail = target - gapY - caps();
+  if ((avail / n) / wide >= (sumR / n) * 0.6) {                     // 원래 높이의 60% 이상은 남을 때만
+    box.style.width = wide + 'px';
+    imgs.forEach(function (m) { m.style.height = Math.floor(avail * (m.naturalHeight / m.naturalWidth) / sumR) + 'px'; m.style.objectFit = 'cover'; });
+    return;
+  }
+  /* 3) 표가 짧아 쌓으면 너무 많이 잘리면: 두 장을 나란히 놓아 칸 폭을 꽉 채움 (높이는 표에 맞추되 너무 길쭉해지진 않게) */
+  box.style.width = '100%'; box.style.gridTemplateColumns = 'repeat(' + n + ', 1fr)';
+  var colW = (cw - gapX * (n - 1)) / n, capS = 0;
+  phs.forEach(function (p, i) { capS = Math.max(capS, p.offsetHeight - imgs[i].offsetHeight); });
+  var h = Math.floor(Math.min(target - capS, colW * 1.15));
+  imgs.forEach(function (m) { m.style.height = h + 'px'; m.style.objectFit = 'cover'; });
 }
 function initWhyFit() {
   var box = document.querySelector('.why-photos'), list = document.querySelector('.why .causes');

@@ -1622,6 +1622,10 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 .why.why-solo { grid-template-columns: minmax(0, 880px); }
 
 
+/* '다른 공법과 무엇이 다른가요?' 표: 머리글 · 칸 글자를 모두 왼쪽 정렬 */
+.compare .tbl th, .compare .tbl td { text-align: left; }
+
+
 /* 페이지 맨 위 안내 글: 두 문단(줄)으로 나눠 표시 */
 .lead-2l .ln { display: block; }
 .lead-2l .ln + .ln { margin-top: 6px; }
