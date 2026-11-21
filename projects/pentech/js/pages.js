@@ -259,7 +259,7 @@ function initContact() {
 
 /* ── 협력기업: 지역 · 검색으로 협약사 찾기 (89곳, 한 장에 모두) ── */
 function initPartners() {
-  var bar = $('#pRegion'), body = $('#pBody'), q = $('#pSearch'), cnt = $('#pCount'), empty = $('#pEmpty'), cur = '전체';
+  var bar = $('#pRegion'), body = $('#pBody'), q = $('#pSearch'), cnt = $('#pCount'), rname = $('#pRegionName'), empty = $('#pEmpty'), cur = '전체';
   // '서울 금천구'는 서울로 묶음
   var order = ['서울', '인천', '경기도', '대전', '대구', '울산', '부산', '충청북도', '충청남도', '경상북도', '경상남도', '전라북도'];
   function region(p) { return p[0].indexOf('서울') === 0 ? '서울' : p[0]; }
@@ -308,6 +308,7 @@ function initPartners() {
         '<a class="tl" href="tel:' + tel + '">' + esc(p[2]) + '</a><span class="ad">' + esc(p[3]) + '</span></div>';
     }).join('');
     cnt.textContent = items.length;
+    rname.textContent = cur === '전체' ? '전국' : cur;          // 서울을 누르면 '서울 22개 협약사'
     empty.hidden = items.length > 0;
     // 쪽 번호: 20개씩 끊어서 다음 목록으로
     var h = '';
