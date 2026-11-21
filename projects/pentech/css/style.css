@@ -1659,5 +1659,9 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .form-aside .steps-card li { flex: 1; align-content: center; }
 }
 
-/* 협력기업: 검색 칸 자체를 오른쪽에 */
+/* 협력기업: 검색 칸은 지역 칩과 한 흐름에 놓아, 칩이 줄바꿈된 마지막 줄 오른쪽 끝에 (휴대폰은 칩이 옆으로 넘어가는 줄 + 아래 검색 칸 그대로) */
 .partner-tools .search { margin-left: auto; }
+@media (min-width: 761px) {
+  .partner-tools { gap: 8px; align-items: center; }
+  .partner-tools #pRegion { display: contents; }
+}
