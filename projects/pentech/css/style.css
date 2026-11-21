@@ -1650,3 +1650,14 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 /* 협력기업: '협약 문의하기' 버튼은 위 파란 머리 오른쪽(안내 글 마지막 줄 높이)에 */
 .page-head .head-inquire { position: absolute; right: 36px; bottom: 0; }
 @media (max-width: 980px) { .page-head .head-inquire { position: static; margin-top: 24px; } }
+
+
+/* 견적 문의 (PC): 왼쪽 칸 아래 끝을 폼 아래 끝에 맞추고, 상담 순서 칸들이 남는 높이를 똑같이 나눠 가짐 */
+@media (min-width: 981px) {
+  .form-aside { display: flex; flex-direction: column; }
+  .form-aside .steps-card { flex: 1; display: flex; flex-direction: column; }
+  .form-aside .steps-card li { flex: 1; align-content: center; }
+}
+
+/* 검색 칸: 글자는 오른쪽 끝에 (돋보기는 왼쪽) */
+.search input { text-align: right; padding-right: 26px; }

@@ -165,16 +165,17 @@ function initArticle() {
 function fitInquiry() {
   var form = document.getElementById('inqForm'), aside = document.querySelector('.form-aside'), lead = aside && aside.querySelector('.lead');
   if (!form || !lead) return;
-  form.style.marginTop = '';
+  form.style.marginTop = ''; aside.style.minHeight = '';
   if (window.innerWidth <= 980) return;
   /* 왼쪽 칸(.form-aside)과 폼은 같은 줄 맨 위에서 시작하므로 '칸 맨 위에서 안내 글까지의 거리'를 씀 */
   form.style.marginTop = Math.max(0, lead.offsetTop) + 'px';
+  aside.style.minHeight = (Math.max(0, lead.offsetTop) + form.offsetHeight) + 'px';   // 왼쪽 칸 아래 끝도 폼 아래 끝에 맞춤(상담 순서 칸이 남는 높이를 채움)
 }
 
 function initContact() {
   fitInquiry();
   window.addEventListener('resize', fitInquiry);
-  if (window.ResizeObserver) new ResizeObserver(fitInquiry).observe(document.querySelector('.form-aside'));
+  if (window.ResizeObserver) { var _ro = new ResizeObserver(fitInquiry); _ro.observe(document.querySelector('.form-aside')); _ro.observe(document.getElementById('inqForm')); }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitInquiry);
   if (window.MutationObserver) { var _t = 0; new MutationObserver(function () { cancelAnimationFrame(_t); _t = requestAnimationFrame(fitInquiry); }).observe(document.querySelector('.form-aside'), { subtree: true, childList: true, characterData: true }); }
   // 견적 문의 폼 (시안: 아무것도 보내지 않음)
