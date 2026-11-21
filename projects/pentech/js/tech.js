@@ -189,7 +189,11 @@ function initWhyFit() {
 function casesCols(n) {
   if (window.innerWidth <= 760) return 2;
   if (window.innerWidth <= 960) return 3;
-  return n === 5 || n === 9 ? 5 : 4;
+  /* 사진 + '시공 영상으로 보기' 링크 칸이 마지막 줄을 딱 채우도록 (5장→3칸, 7장→4칸, 9장→5칸) */
+  if ((n + 1) % 5 === 0) return 5;
+  if ((n + 1) % 4 === 0) return 4;
+  if ((n + 1) % 3 === 0) return 3;
+  return 4;
 }
 
 /* ── 공정 보기 ── */
