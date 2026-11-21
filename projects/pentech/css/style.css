@@ -1659,5 +1659,5 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .form-aside .steps-card li { flex: 1; align-content: center; }
 }
 
-/* 검색 칸: 글자는 오른쪽 끝에 (돋보기는 왼쪽) */
-.search input { text-align: right; padding-right: 26px; }
+/* 협력기업: 검색 칸 자체를 오른쪽에 */
+.partner-tools .search { margin-left: auto; }
