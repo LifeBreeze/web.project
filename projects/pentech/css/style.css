@@ -1665,3 +1665,11 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .partner-tools { gap: 8px; align-items: center; }
   .partner-tools #pRegion { display: contents; }
 }
+
+
+/* 홈 회사소개 (PC): 사진이 오른쪽 글 묶음(작은 제목 ~ 버튼)과 같은 높이로 위 · 아래를 맞춰 커짐 */
+@media (min-width: 981px) {
+  .about-intro { align-items: stretch; }
+  .about-intro .about-photo { position: relative; }
+  .about-intro .about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }   /* 사진 자체 크기가 줄 높이를 키우지 않고, 글 높이에 맞춰 채움 */
+}
