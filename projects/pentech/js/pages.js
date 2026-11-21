@@ -268,6 +268,26 @@ function initPartners() {
     var n = r === '전체' ? PARTNERS.length : PARTNERS.filter(function (p) { return region(p) === r; }).length;
     return '<button class="chip" aria-pressed="' + (r === '전체') + '" data-r="' + r + '">' + r + '<span class="n">' + n + '</span></button>';
   }).join('');
+  /* PC: 검색 칸이 지역 칩 아래 줄에 따로 놓이면, 바로 위 줄 맨 끝 칩 두 개의 왼쪽 끝 ~ 오른쪽 끝과 같은 폭 · 같은 자리에 맞춤.
+     칩과 같은 줄에 놓이면 기본 폭(260px) 그대로 */
+  function fitPartnerSearch() {
+    var box = document.querySelector('.partner-tools'), lab = box && box.querySelector('.search');
+    if (!lab) return;
+    lab.style.flex = ''; lab.style.width = ''; lab.style.marginLeft = '';
+    if (window.innerWidth <= 760) return;
+    var chips = [].slice.call(bar.children);
+    if (chips.length < 2) return;
+    var sr = lab.getBoundingClientRect(), last = chips[chips.length - 1], lr = last.getBoundingClientRect();
+    if (sr.top < lr.bottom - 2) return;                                  // 칩과 같은 줄이면 그대로
+    var row = chips.filter(function (c) { return Math.abs(c.getBoundingClientRect().top - lr.top) < 3; });
+    if (row.length < 2) return;
+    var a = row[row.length - 2].getBoundingClientRect(), b = lr, br = box.getBoundingClientRect();
+    lab.style.flex = 'none'; lab.style.width = Math.round(b.right - a.left) + 'px'; lab.style.marginLeft = Math.round(a.left - br.left) + 'px';
+  }
+  fitPartnerSearch();
+  window.addEventListener('resize', fitPartnerSearch);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitPartnerSearch);
+  if (window.MutationObserver) { var _pt = 0; new MutationObserver(function () { cancelAnimationFrame(_pt); _pt = requestAnimationFrame(fitPartnerSearch); }).observe(bar, { subtree: true, childList: true, characterData: true }); }
   var per = 20, page = 1, pager = $('#pPager');
   function render(scroll) {
     var s = q.value.trim().toLowerCase();
