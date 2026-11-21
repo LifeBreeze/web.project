@@ -464,7 +464,7 @@ table { border-collapse: collapse; width: 100%; }
 .field label, .field legend { font-weight: 700; font-size: 15.5px; }
 .field .req { color: var(--accent); margin-left: 2px; }
 .field input, .field select, .field textarea { font: inherit; font-size: 16.5px; color: var(--ink); background: #fff; border: 1.5px solid transparent; border-bottom-color: var(--ink); padding: 14px 14px; width: 100%; border-radius: 0; }
-.field textarea { min-height: 150px; resize: vertical; }
+.field textarea { min-height: 150px; resize: none; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
 .field .err { color: #c0281c; font-size: 14px; display: none; }
 .field.bad .err { display: block; }
