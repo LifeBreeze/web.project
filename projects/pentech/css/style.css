@@ -667,7 +667,7 @@ fieldset.field legend { margin-bottom: 8px; }
 
 /* 첫 화면 */
 .hero { position: relative; min-height: clamp(540px, 46vw, 680px); display: flex; align-items: center; padding: 0; overflow: hidden; color: #fff;
-  background: #0b1f4d url("https://www.pentech.kr/images/main/s01_01_pc.webp") right center / cover no-repeat; }
+  background: #0b1f4d url("../images/hd/main/s01_01_pc.webp?v=2") right center / cover no-repeat; }
 .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,24,70,.92) 0%, rgba(10,32,92,.66) 42%, rgba(10,32,92,0) 80%); }
 .hero-in { position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 88px 36px; }
 .hero-kicker { font-size: 18px; font-weight: 600; color: var(--accent-l); letter-spacing: 0; margin-bottom: 20px; }
@@ -1033,7 +1033,7 @@ body[data-page="home"] .tel-pill:hover { background: #e4e8ef; }
 .hero { display: block; min-height: 0; padding: 0 12px 12px; background: none; overflow: visible; color: #fff; }
 .hero::before { display: none; }
 .hero-card { position: relative; height: calc(100vh - var(--head-h) - 12px); height: calc(100svh - var(--head-h) - 12px); min-height: 560px; border-radius: 34px; overflow: hidden;
-  background: #0b1f4d url("https://www.pentech.kr/images/main/s01_01_pc.webp") center / cover no-repeat; }
+  background: #0b1f4d url("../images/hd/main/s01_01_pc.webp?v=2") center / cover no-repeat; }
 .hero-card::before { content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(8,24,70,.5) 0%, rgba(8,24,70,0) 38%, rgba(8,24,70,0) 52%, rgba(8,24,70,.72) 100%); }
 .hero-top { position: absolute; left: clamp(28px, 5vw, 76px); top: clamp(30px, 5vw, 64px); max-width: 540px; }
@@ -1091,8 +1091,8 @@ body[data-page="home"] .tel-pill:hover { background: #e4e8ef; }
 /* ─────────── 큰 화면 3장 · 스크롤하면 반투명 유리 헤더 ─────────── */
 /* 큰 화면 3장: 각각 같은 크기, 위로 이동하면 헤더 바로 아래에 딱 맞게 멈춤 */
 .hero { scroll-margin-top: var(--head-h); }
-.hero-2 .hero-card { background-image: url("https://www.pentech.kr/images/main/s01_02_pc.webp"); }
-.hero-3 .hero-card { background-image: url("https://www.pentech.kr/images/main/s01_03_pc.webp"); }
+.hero-2 .hero-card { background-image: url("../images/hd/main/s01_02_pc.webp?v=2"); }
+.hero-3 .hero-card { background-image: url("../images/hd/main/s01_03_pc.webp?v=2"); }
 .hero-2 .hero-card::before, .hero-3 .hero-card::before { background: linear-gradient(180deg, rgba(8,24,70,.7) 0%, rgba(8,24,70,.2) 34%, rgba(8,24,70,.05) 52%, rgba(8,24,70,.78) 100%); }
 .hero h2.hero-words { position: absolute; left: 0; right: 0; bottom: clamp(26px, 4vw, 58px); margin: 0; padding: 0 clamp(28px, 5vw, 76px);
   display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
@@ -1138,8 +1138,8 @@ body[data-page="home"] .head.scrolled { background: transparent; box-shadow: non
 .hero-viewport:active { cursor: grabbing; }
 .hero-track { display: flex; transition: transform .7s cubic-bezier(.22,.7,.2,1); will-change: transform; }
 .hero-track .hero-card { flex: 0 0 100%; min-width: 0; border-radius: 0; }
-.hero-card.hero-2 { background-image: url("https://www.pentech.kr/images/main/s01_02_pc.webp"); }
-.hero-card.hero-3 { background-image: url("https://www.pentech.kr/images/main/s01_03_pc.webp"); }
+.hero-card.hero-2 { background-image: url("../images/hd/main/s01_02_pc.webp?v=2"); }
+.hero-card.hero-3 { background-image: url("../images/hd/main/s01_03_pc.webp?v=2"); }
 .hero-card.hero-2::before, .hero-card.hero-3::before { background: linear-gradient(180deg, rgba(8,24,70,.7) 0%, rgba(8,24,70,.2) 34%, rgba(8,24,70,.05) 52%, rgba(8,24,70,.78) 100%); }
 /* 넘어올 때 큰 글씨 세 마디가 아래서 살짝 올라옴 */
 .hero-card .hero-words span { transition: opacity .6s ease, transform .7s ease; opacity: 0; transform: translateY(18px); }
