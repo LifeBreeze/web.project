@@ -379,7 +379,7 @@ table { border-collapse: collapse; width: 100%; }
 /* ── 회사소개 ── */
 .ceo { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: center; }
 .ceo img { aspect-ratio: 5 / 4; object-fit: cover; width: 100%; }
-.ceo blockquote { font-weight: 800; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.2; letter-spacing: -.05em; margin: 16px 0 26px; }
+.ceo blockquote { font-weight: 700; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.2; letter-spacing: -.05em; margin: 16px 0 26px; }
 .ceo p { color: var(--ink-2); }
 .ceo p + p { margin-top: 14px; }
 .sign { margin-top: 28px; font-weight: 600; }
