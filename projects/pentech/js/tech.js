@@ -249,10 +249,10 @@ function initTableFit() {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTables);
 }
 
-/* 공법 개요 (층 단면만 있는 공법, PC): 층 단면을 제목 아래 글(체크 목록 ~ 적용 분야 칸)과 같은 높이 · 같은 위치로 맞춤.
-   단면 위 '마감 ↑' 글자는 제목 높이쯤에 남고, 단면 칸 자체는 체크 목록 첫 줄부터 적용 분야 칸 아래까지 */
+/* 공법 개요 (PC): 층 단면(그라데이션) 칸의 윗줄을 제목 바로 아래 글(체크 목록 · 공정 목록 첫 줄)에 맞춤.
+   단면 위 '마감 ↑' 글자는 제목 높이쯤에 남음. 사진 없이 단면만 있는 공법(.fit, 루프가드)은 아래도 적용 분야 칸 아래 끝까지 */
 function fitMethod() {
-  var m = document.querySelector('.method.fit');
+  var m = document.querySelector('.method');
   if (!m) return;
   var left = m.children[0], right = m.children[1], list = left.querySelector('.checks, .steps-list'), cap = right.querySelector('.strata-cap');
   if (!list || !cap) return;
@@ -265,7 +265,7 @@ function fitMethod() {
 function initMethodFit() {
   fitMethod();
   window.addEventListener('resize', fitMethod);
-  var m = document.querySelector('.method.fit');
+  var m = document.querySelector('.method');
   if (m && window.ResizeObserver) new ResizeObserver(fitMethod).observe(m.children[0]);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMethod);
 }
