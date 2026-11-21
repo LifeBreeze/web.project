@@ -161,7 +161,22 @@ function initArticle() {
 }
 
 /* ── 고객지원: 폼 · FAQ · 제안서 ── */
+/* 견적 문의 (PC): 오른쪽 입력 칸 맨 위를 왼쪽 굵은 제목 바로 아래 글(안내 문장) 첫 줄에 맞춤 */
+function fitInquiry() {
+  var form = document.getElementById('inqForm'), aside = document.querySelector('.form-aside'), lead = aside && aside.querySelector('.lead');
+  if (!form || !lead) return;
+  form.style.marginTop = '';
+  if (window.innerWidth <= 980) return;
+  /* 왼쪽 칸(.form-aside)은 스크롤하면 따라오는(sticky) 칸이라 페이지 위치 대신 '칸 맨 위에서 안내 글까지의 거리'를 씀 (두 칸은 같은 줄 맨 위에서 시작) */
+  form.style.marginTop = Math.max(0, lead.offsetTop) + 'px';
+}
+
 function initContact() {
+  fitInquiry();
+  window.addEventListener('resize', fitInquiry);
+  if (window.ResizeObserver) new ResizeObserver(fitInquiry).observe(document.querySelector('.form-aside'));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitInquiry);
+  if (window.MutationObserver) { var _t = 0; new MutationObserver(function () { cancelAnimationFrame(_t); _t = requestAnimationFrame(fitInquiry); }).observe(document.querySelector('.form-aside'), { subtree: true, childList: true, characterData: true }); }
   // 견적 문의 폼 (시안: 아무것도 보내지 않음)
   var sel = $('#f-tech');
   sel.innerHTML = '<option value="">공법을 고르세요 (모르면 비워 두세요)</option>' + TECH.map(function (t) { return '<option value="' + t.id + '">' + t.name + ' — ' + t.area + '</option>'; }).join('') + '<option value="etc">잘 모르겠어요 · 진단 요청</option>';
