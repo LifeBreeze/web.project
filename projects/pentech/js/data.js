@@ -379,10 +379,11 @@ var HISTORY = [
 ];
 
 /* 시공 제안서 (기존 '다운로드') */
+/* [종류, 이름, 공법, 내려받을 파일 주소(원래 사이트 pentech.kr 자료), 파일 정보] — 파일이 없는 것은 '제안서 요청' 창으로 */
 var DOCS = [
-  ['시방서', '[ROOF GUARD 시방서] 노출식 차열방수 복합공법', 'roof'],
+  ['시방서', '[ROOF GUARD 시방서] 노출식 차열방수 복합공법', 'roof', 'https://www.pentech.kr/upload/board/1790901747_26DWMS_0.pdf', 'PDF · 768KB'],
   ['제안서', '루프가드 홍보 제안서', 'roof'],
-  ['카탈로그', '펜테크 E-카탈로그 (제품 · 공법 · 시공 사례)', 'all']
+  ['카탈로그', '펜테크 E-카탈로그 (제품 · 공법 · 시공 사례)', 'all', 'https://www.pentech.kr/upload/board/1769269025_x5qB11_0.webp', 'WEBP · 21KB']
 ];
 
 /* 회사 위치 */

@@ -168,41 +168,60 @@ function initContact() {
   sel.innerHTML = '<option value="">공법을 고르세요 (모르면 비워 두세요)</option>' + TECH.map(function (t) { return '<option value="' + t.id + '">' + t.name + ' — ' + t.area + '</option>'; }).join('') + '<option value="etc">잘 모르겠어요 · 진단 요청</option>';
   var m = /[?&]tech=(\w+)/.exec(location.search); if (m) sel.value = m[1];
   if (/[?&]kind=/.test(decodeURIComponent(location.search)) && /kind=협약/.test(decodeURIComponent(location.search))) { var kr = document.querySelector('input[name="kind"][value="협약"]'); if (kr) kr.checked = true; }
-  var form = $('#inqForm');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var ok = true, first = null;
-    $$('[data-req]', form).forEach(function (f) {
+  /* 입력 검사: 빈 칸 · 이메일 형식 · 전화번호 자릿수 · 동의 체크. 틀린 칸에 'bad' 를 달고 첫 틀린 칸을 돌려줌 */
+  function validate(scope) {
+    var first = null;
+    $$('[data-req]', scope).forEach(function (f) {
       var inp = $('input, textarea, select', f), bad;
       if (inp.type === 'checkbox') bad = !inp.checked;
       else if (inp.type === 'email') bad = !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(inp.value.trim());
       else if (inp.type === 'tel') bad = inp.value.replace(/\D/g, '').length < 9;
       else bad = !inp.value.trim();
       f.classList.toggle('bad', bad);
-      if (bad) { ok = false; if (!first) first = inp; }
+      if (bad && !first) first = inp;
     });
-    var msg = $('#formMsg');
-    if (!ok) { msg.classList.remove('show'); first.focus(); return; }
+    return first;
+  }
+  function demoDone(msg) {
     msg.innerHTML = '<b>입력 확인 완료!</b> 이 화면은 수업 과제용 시안이라 실제로 전송되지 않습니다. 실제 상담은 <a href="tel:' + PHONE + '" style="text-decoration:underline">' + PHONE + '</a>로 연락해 주세요.';
     msg.classList.add('show'); msg.focus();
+  }
+  var form = $('#inqForm');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var first = validate(form), msg = $('#formMsg');
+    if (first) { msg.classList.remove('show'); first.focus(); return; }
+    demoDone(msg);
   });
   form.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('bad'); });
 
-  // 시공 제안서 (기존 '다운로드')
+  // 시공 제안서 (기존 '다운로드'): 원래 사이트에 올라 있는 자료는 내려받기 버튼, 파일이 없는 것은 '제안서 요청' 창
   $('#docList').innerHTML = DOCS.map(function (d) {
     var t = techById(d[2]);
-    return '<div class="doc"><span class="kind">' + d[0] + '</span><div><b>' + esc(d[1]) + '</b><br><span class="muted" style="font-size:14px">' + (t ? t.name + ' · ' + t.area : '전체 공법') + '</span></div>' +
-      '<a class="btn btn-line btn-sm" href="contact.html?tech=' + (t ? t.id : '') + '#inquiry" data-doc="' + esc(d[1]) + '">제안서 요청</a></div>';
+    var act = d[3]
+      ? '<a class="btn btn-blue btn-sm" href="' + esc(d[3]) + '" target="_blank" rel="noopener" download>다운로드</a>'
+      : '<button type="button" class="btn btn-line btn-sm" data-doc="' + esc(d[1]) + '">제안서 요청</button>';
+    return '<div class="doc"><span class="kind">' + d[0] + '</span><div><b>' + esc(d[1]) + '</b><br><span class="muted" style="font-size:14px">' + (t ? t.name + ' · ' + t.area : '전체 공법') + '</span>' +
+      (d[4] ? ' <span class="fileinfo">' + d[4] + '</span>' : '') + '</div>' + act + '</div>';
   }).join('');
+
+  var dlg = $('#docDlg'), dform = $('#docForm'), dmsg = $('#docMsg');
   $('#docList').addEventListener('click', function (e) {
-    var a = e.target.closest('[data-doc]'); if (!a) return;
-    e.preventDefault();
-    var t = /tech=(\w*)/.exec(a.getAttribute('href'));
-    if (t && t[1]) sel.value = t[1];
-    $('#f-msg').value = LANG === 'en' ? 'I would like to receive the [' + T(a.getAttribute('data-doc')) + '] material.\n' : '[' + a.getAttribute('data-doc') + '] 자료를 받고 싶습니다.\n';
-    document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(function () { $('#f-name').focus({ preventScroll: true }); }, 500);
+    var b = e.target.closest('[data-doc]'); if (!b) return;
+    $('#docName').textContent = b.getAttribute('data-doc');
+    dform.reset(); dmsg.classList.remove('show');
+    $$('.field', dform).forEach(function (f) { f.classList.remove('bad'); });
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    setTimeout(function () { $('#d-name').focus(); }, 30);
   });
+  dform.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var first = validate(dform);
+    if (first) { dmsg.classList.remove('show'); first.focus(); return; }
+    demoDone(dmsg);
+  });
+  dform.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('bad'); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });   // 바깥 · 취소를 누르면 닫힘
 }
 
 
