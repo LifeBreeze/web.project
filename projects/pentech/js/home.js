@@ -84,3 +84,26 @@ function initHero() {
 
   go(0); play();
 }
+
+
+/* 홈 회사소개 (PC): 사진을 오른쪽 '글'(굵은 제목 ~ 마지막 문단 줄)과 같은 위 · 아래 줄에 맞춤 — 작은 제목('회사소개')과 아래 버튼은 사진 밖 */
+(function () {
+  var box = document.querySelector('.about-intro');
+  if (!box) return;
+  var photo = box.querySelector('.about-photo'), text = box.querySelector(':scope > div:not(.about-photo)');
+  var h2 = text && text.querySelector('.h2'), body = text && text.querySelector('.body');
+  if (!photo || !h2 || !body) return;
+  function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }   // 나타나기 움직임(transform)에 영향받지 않는 위치
+  function fit() {
+    photo.style.marginTop = ''; photo.style.marginBottom = '';
+    if (window.innerWidth <= 980) return;
+    var t0 = pageTop(text);
+    photo.style.marginTop = Math.max(0, pageTop(h2) - t0) + 'px';
+    photo.style.marginBottom = Math.max(0, (t0 + text.offsetHeight) - (pageTop(body) + body.offsetHeight)) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(text);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  if (window.MutationObserver) { var raf = 0; new MutationObserver(function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(fit); }).observe(text, { subtree: true, childList: true, characterData: true }); }
+})();
