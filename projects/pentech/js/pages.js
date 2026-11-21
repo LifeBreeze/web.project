@@ -5,7 +5,8 @@ window.initPage = function () {
   if (page === 'about') initAbout();
   if (page === 'news' && $('#newsGrid')) initNews();
   if (page === 'news' && $('#artBox')) initArticle();
-  if (page === 'contact') initContact();
+  if (page === 'contact' && $('#inqForm')) initContact();
+  if (page === 'contact' && $('#faqList')) initFaq();
   if (page === 'partner') initPartners();
 };
 
@@ -161,23 +162,7 @@ function initArticle() {
 }
 
 /* ── 고객지원: 폼 · FAQ · 제안서 ── */
-/* 견적 문의 (PC): 오른쪽 입력 칸 맨 위를 왼쪽 굵은 제목 바로 아래 글(안내 문장) 첫 줄에 맞춤 */
-function fitInquiry() {
-  var form = document.getElementById('inqForm'), aside = document.querySelector('.form-aside'), lead = aside && aside.querySelector('.lead');
-  if (!form || !lead) return;
-  form.style.marginTop = ''; aside.style.minHeight = '';
-  if (window.innerWidth <= 980) return;
-  /* 왼쪽 칸(.form-aside)과 폼은 같은 줄 맨 위에서 시작하므로 '칸 맨 위에서 안내 글까지의 거리'를 씀 */
-  form.style.marginTop = Math.max(0, lead.offsetTop) + 'px';
-  aside.style.minHeight = (Math.max(0, lead.offsetTop) + form.offsetHeight) + 'px';   // 왼쪽 칸 아래 끝도 폼 아래 끝에 맞춤(상담 순서 칸이 남는 높이를 채움)
-}
-
 function initContact() {
-  fitInquiry();
-  window.addEventListener('resize', fitInquiry);
-  if (window.ResizeObserver) { var _ro = new ResizeObserver(fitInquiry); _ro.observe(document.querySelector('.form-aside')); _ro.observe(document.getElementById('inqForm')); }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitInquiry);
-  if (window.MutationObserver) { var _t = 0; new MutationObserver(function () { cancelAnimationFrame(_t); _t = requestAnimationFrame(fitInquiry); }).observe(document.querySelector('.form-aside'), { subtree: true, childList: true, characterData: true }); }
   // 견적 문의 폼 (시안: 아무것도 보내지 않음)
   var sel = $('#f-tech');
   sel.innerHTML = '<option value="">공법을 고르세요 (모르면 비워 두세요)</option>' + TECH.map(function (t) { return '<option value="' + t.id + '">' + t.name + ' — ' + t.area + '</option>'; }).join('') + '<option value="etc">잘 모르겠어요 · 진단 요청</option>';
@@ -203,6 +188,26 @@ function initContact() {
   });
   form.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('bad'); });
 
+  // 시공 제안서 (기존 '다운로드')
+  $('#docList').innerHTML = DOCS.map(function (d) {
+    var t = techById(d[2]);
+    return '<div class="doc"><span class="kind">' + d[0] + '</span><div><b>' + esc(d[1]) + '</b><br><span class="muted" style="font-size:14px">' + (t ? t.name + ' · ' + t.area : '전체 공법') + '</span></div>' +
+      '<a class="btn btn-line btn-sm" href="contact.html?tech=' + (t ? t.id : '') + '#inquiry" data-doc="' + esc(d[1]) + '">제안서 요청</a></div>';
+  }).join('');
+  $('#docList').addEventListener('click', function (e) {
+    var a = e.target.closest('[data-doc]'); if (!a) return;
+    e.preventDefault();
+    var t = /tech=(\w*)/.exec(a.getAttribute('href'));
+    if (t && t[1]) sel.value = t[1];
+    $('#f-msg').value = LANG === 'en' ? 'I would like to receive the [' + T(a.getAttribute('data-doc')) + '] material.\n' : '[' + a.getAttribute('data-doc') + '] 자료를 받고 싶습니다.\n';
+    document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(function () { $('#f-name').focus({ preventScroll: true }); }, 500);
+  });
+}
+
+
+/* ── 자주 묻는 질문(faq.html): 공법 필터 + 검색 + 10개씩 쪽 나누기 ── */
+function initFaq() {
   // FAQ: 공법 필터 + 검색
   var techName = { '': '공통', roof: '루프가드', wall: '월터가드', penter: '펜터가드', road: '로드가드', poly: '폴리우레아' };
   var filt = $('#faqFilter'), list = $('#faqList'), q = $('#faqSearch'), cur = 'all', fper = 10, fpage = 1, fpager = $('#faqPager');
@@ -219,7 +224,7 @@ function initContact() {
     items = items.slice((fpage - 1) * fper, fpage * fper);          // 10개씩 끊어서 보여 줌
     list.innerHTML = items.length ? items.map(function (f) {
       return '<details><summary><span class="q">Q</span><b><small>' + techName[f[0]] + (f[1] ? ' · ' + esc(f[1]) : '') + '</small>' + esc(f[2]) + '</b><span class="pm" aria-hidden="true"></span></summary><div class="a">' + esc(f[3]) + '</div></details>';
-    }).join('') : '<p class="faq-empty">찾는 질문이 없나요? <a class="link-arrow" href="#inquiry">직접 문의하기 →</a></p>';
+    }).join('') : '<p class="faq-empty">찾는 질문이 없나요? <a class="link-arrow" href="contact.html#inquiry">직접 문의하기 →</a></p>';
     var h = '';
     if (fpages > 1) {
       h = '<button aria-label="이전 쪽" ' + (fpage === 1 ? 'disabled' : '') + ' data-p="' + (fpage - 1) + '">‹</button>';
@@ -239,21 +244,6 @@ function initContact() {
   q.addEventListener('input', function () { fpage = 1; renderFaq(); });
   renderFaq();
 
-  // 시공 제안서 (기존 '다운로드')
-  $('#docList').innerHTML = DOCS.map(function (d) {
-    var t = techById(d[2]);
-    return '<div class="doc"><span class="kind">' + d[0] + '</span><div><b>' + esc(d[1]) + '</b><br><span class="muted" style="font-size:14px">' + (t ? t.name + ' · ' + t.area : '전체 공법') + '</span></div>' +
-      '<a class="btn btn-line btn-sm" href="contact.html?tech=' + (t ? t.id : '') + '#inquiry" data-doc="' + esc(d[1]) + '">제안서 요청</a></div>';
-  }).join('');
-  $('#docList').addEventListener('click', function (e) {
-    var a = e.target.closest('[data-doc]'); if (!a) return;
-    e.preventDefault();
-    var t = /tech=(\w*)/.exec(a.getAttribute('href'));
-    if (t && t[1]) sel.value = t[1];
-    $('#f-msg').value = LANG === 'en' ? 'I would like to receive the [' + T(a.getAttribute('data-doc')) + '] material.\n' : '[' + a.getAttribute('data-doc') + '] 자료를 받고 싶습니다.\n';
-    document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(function () { $('#f-name').focus({ preventScroll: true }); }, 500);
-  });
 }
 
 

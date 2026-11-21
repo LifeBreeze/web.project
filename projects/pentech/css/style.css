@@ -1652,12 +1652,6 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 @media (max-width: 980px) { .page-head .head-inquire { position: static; margin-top: 24px; } }
 
 
-/* 견적 문의 (PC): 왼쪽 칸 아래 끝을 폼 아래 끝에 맞추고, 상담 순서 칸들이 남는 높이를 똑같이 나눠 가짐 */
-@media (min-width: 981px) {
-  .form-aside { display: flex; flex-direction: column; }
-  .form-aside .steps-card { flex: 1; display: flex; flex-direction: column; }
-  .form-aside .steps-card li { flex: 1; align-content: center; }
-}
 
 /* 협력기업: 검색 칸은 지역 칩과 한 흐름에 놓아, 칩이 줄바꿈된 마지막 줄 오른쪽 끝에 (휴대폰은 칩이 옆으로 넘어가는 줄 + 아래 검색 칸 그대로) */
 .partner-tools .search { margin-left: auto; }
@@ -1672,4 +1666,29 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .about-intro { align-items: stretch; }
   .about-intro .about-photo { position: relative; }
   .about-intro .about-photo img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }   /* 사진 자체 크기가 줄 높이를 키우지 않고, 글 높이에 맞춰 채움 */
+}
+
+
+/* ── 견적 문의: 위에서 아래로 한 줄로 (제목 → 글 → 상담 순서 4단계 → 문의서 → 전화 → 시공 제안서) ── */
+.inq-flow { display: grid; gap: 0; }
+.inq-head .lead { max-width: 760px; }
+.inq-flow .steps-title { margin: 44px 0 16px; font-weight: 800; font-size: 20px; letter-spacing: -.03em; }
+.steps-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 56px; counter-reset: sf; }
+.steps-flow li { position: relative; display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start; padding: 22px 22px 24px; background: #fff; border: 1px solid var(--line); border-radius: 20px; }
+.steps-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -44px; top: 50%; width: 32px; transform: translateY(-50%); text-align: center; font-size: 22px; font-weight: 700; color: var(--accent); }
+.steps-flow .n { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--blue-soft); color: var(--accent); font-weight: 800; font-size: 15px; }
+.steps-flow b { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
+.steps-flow span:not(.n) { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.55; color: var(--ink-3); }
+.inq-flow .form { margin-top: 36px; }
+.inq-call { display: flex; align-items: center; gap: 22px; margin-top: 24px; padding: 28px 36px; background: var(--blue-soft); border: 1px solid #d3e0ff; border-radius: 24px; }
+.inq-call .call-text small { display: block; color: var(--ink-3); font-size: 15px; }
+.inq-call .call-text b { display: block; color: var(--accent); font-size: 36px; font-weight: 800; line-height: 1.15; letter-spacing: -.03em; }
+.inq-call .btn { margin-left: auto; }
+@media (max-width: 980px) {
+  .steps-flow { grid-template-columns: 1fr; gap: 44px 0; }
+  .steps-flow li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -40px; transform: translateX(-50%); }
+}
+@media (max-width: 640px) {
+  .inq-call { flex-wrap: wrap; padding: 22px 20px; }
+  .inq-call .btn { margin-left: 0; width: 100%; }
 }

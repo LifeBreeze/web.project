@@ -6,7 +6,7 @@
 <title>고객지원 — (주)펜테크 | 리디자인 시안</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="css/style.css?v=20261121-158">
+<link rel="stylesheet" href="css/style.css?v=20261121-159">
 </head>
 <body data-page="contact">
 <main>
@@ -18,30 +18,23 @@
   </section>
 
   <nav class="toc" aria-label="고객지원 목차"><div class="wrap"><ul>
-    <li><a href="#inquiry">견적 문의</a></li><li><a href="#docs">시공 제안서</a></li><li><a href="#faq">자주 묻는 질문</a></li>
+    <li><a href="#inquiry">견적 문의</a></li><li><a href="#docs">시공 제안서</a></li><li><a href="faq.html">자주 묻는 질문</a></li>
   </ul></div></nav>
 
   <section class="sec" id="inquiry">
-    <div class="wrap form-wrap">
-      <div class="form-aside rv">
+    <div class="wrap inq-flow">
+      <div class="inq-head rv">
         <span class="eyebrow"><b>01</b> 견적 문의</span>
         <h2 class="h2">상담이 필요하신가요?</h2>
         <p class="lead">건물 종류와 문제 부위를 알려 주시면 펜테크가 가장 알맞은 해결 방법을 제안해 드립니다. 어떤 공법인지 몰라도 괜찮습니다.</p>
-        <div class="call">
-          <div class="call-top">
-            <span class="call-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
-            <div><small>전화가 더 빠릅니다</small><b>1599-7041</b></div>
-          </div>
-          <a class="btn btn-blue" href="tel:1599-7041">바로 전화하기</a>
-        </div>
-        <p class="steps-title">상담은 이렇게 진행돼요</p>
-        <ol class="steps-card">
-          <li><div><b>문의 접수</b><span>건물 종류와 문제 부위를 남겨 주세요.</span></div></li>
-          <li><div><b>현장 진단</b><span>건물 상태를 살피고, 필요하면 드론 · AI로 균열을 진단합니다.</span></div></li>
-          <li><div><b>공법 · 견적 제안</b><span>지붕, 외벽, 바닥에 맞는 공법과 견적을 안내합니다.</span></div></li>
-          <li><div><b>시공 · 사후 관리</b><span>검증된 공법으로 시공하고 마무리까지 책임집니다.</span></div></li>
-        </ol>
       </div>
+      <p class="steps-title">상담은 이렇게 진행돼요</p>
+      <ol class="steps-flow rv">
+        <li><span class="n">1</span><div><b>문의 접수</b><span>건물 종류와 문제 부위를 남겨 주세요.</span></div></li>
+        <li><span class="n">2</span><div><b>현장 진단</b><span>건물 상태를 살피고, 필요하면 드론 · AI로 균열을 진단합니다.</span></div></li>
+        <li><span class="n">3</span><div><b>공법 · 견적 제안</b><span>지붕, 외벽, 바닥에 맞는 공법과 견적을 안내합니다.</span></div></li>
+        <li><span class="n">4</span><div><b>시공 · 사후 관리</b><span>검증된 공법으로 시공하고 마무리까지 책임집니다.</span></div></li>
+      </ol>
       <form class="form rv" id="inqForm" novalidate>
         <fieldset class="field full" data-req>
           <legend>문의 종류 <span class="req">*</span></legend>
@@ -87,6 +80,11 @@
         <p class="form-msg" id="formMsg" tabindex="-1" role="status"></p>
         <div class="field full"><button class="btn btn-blue" type="submit" style="width:100%">문의하기 <span class="arr">→</span></button></div>
       </form>
+      <div class="inq-call rv">
+        <span class="call-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
+        <div class="call-text"><small>전화가 더 빠릅니다</small><b>1599-7041</b></div>
+        <a class="btn btn-blue" href="tel:1599-7041">바로 전화하기</a>
+      </div>
     </div>
   </section>
 
@@ -102,29 +100,12 @@
     </div>
   </section>
 
-  <section class="sec" id="faq">
-    <div class="wrap">
-      <div class="sec-head rv"><div>
-        <span class="eyebrow"><b>02</b> 자주 묻는 질문</span>
-        <h2 class="h2">문의 전에 먼저 확인해 보세요</h2>
-      </div></div>
-      <div class="faq-tools">
-        <div class="filters" id="faqFilter" style="margin:0" aria-label="공법으로 거르기"></div>
-        <label class="search"><span class="sr">질문 검색</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input id="faqSearch" type="search" placeholder="예: 방수공사, 문제">
-        </label>
-      </div>
-      <div class="faq" id="faqList"></div>
-      <nav class="pager" id="faqPager" aria-label="쪽 번호"></nav>
-    </div>
-  </section>
 </main>
 
-<script src="js/data.js?v=20261121-158"></script>
-<script src="js/common.js?v=20261121-158"></script>
-<script src="js/pages.js?v=20261121-158"></script>
-<script src="js/i18n-dict.js?v=20261121-158"></script>
-<script src="js/i18n.js?v=20261121-158"></script>
+<script src="js/data.js?v=20261121-159"></script>
+<script src="js/common.js?v=20261121-159"></script>
+<script src="js/pages.js?v=20261121-159"></script>
+<script src="js/i18n-dict.js?v=20261121-159"></script>
+<script src="js/i18n.js?v=20261121-159"></script>
 </body>
 </html>

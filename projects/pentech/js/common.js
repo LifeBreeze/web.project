@@ -41,7 +41,7 @@ var NAV = [
   { key: 'about', label: '회사소개', href: 'about.html', sub: [['CEO 인사말', 'about.html#ceo'], ['회사소개', 'about.html#company'], ['연혁', 'about.html#history'], ['비전 · ESG', 'about.html#vision'], ['특허 · 인증', 'about.html#cert'], ['회사 위치', 'about.html#location']] },
   { key: 'partner', label: '협력기업', href: 'partners.html', sub: [['협약사 리스트', 'partners.html#list'], ['협약 문의', 'contact.html?kind=협약#inquiry']] },
   { key: 'news', label: '소식', href: 'news.html', sub: [['언론보도', 'news.html#press'], ['블로그 · 유튜브', 'news.html#channels']] },
-  { key: 'contact', label: '고객지원', href: 'contact.html', sub: [['견적/협약 문의', 'contact.html#inquiry'], ['시공 제안서', 'contact.html#docs'], ['자주 묻는 질문', 'contact.html#faq']] }
+  { key: 'contact', label: '고객지원', href: 'contact.html', sub: [['견적/협약 문의', 'contact.html#inquiry'], ['시공 제안서', 'contact.html#docs'], ['자주 묻는 질문', 'faq.html']] }
 ];
 
 function logoHTML() {
@@ -81,7 +81,7 @@ function buildChrome() {
   foot.innerHTML = '<div class="wrap">' +
     '<div>' + logoHTML() + '<p style="margin-top:16px;max-width:360px">건물의 상처를 발견하고, 치유하며, 오래도록 지켜냅니다. 지붕부터 외벽, 바닥, 지하주차장까지 — 건설보수 전문 기업 (주)펜테크.</p></div>' +
     '<div><h4>찾아오시는 곳</h4><ul>' + OFFICES.map(function (o) { return '<li><b style="color:#fff">' + o.name + '</b><br>' + o.addr + '</li>'; }).join('') + '</ul></div>' +
-    '<div><h4>고객 문의</h4><a class="big-tel" href="tel:' + PHONE + '">' + PHONE + '</a><ul><li><a href="contact.html#inquiry">견적 문의</a> · <a href="contact.html#faq">자주 묻는 질문</a></li>' +
+    '<div><h4>고객 문의</h4><a class="big-tel" href="tel:' + PHONE + '">' + PHONE + '</a><ul><li><a href="contact.html#inquiry">견적 문의</a> · <a href="faq.html">자주 묻는 질문</a></li>' +
     '<li><a href="' + BLOG + '" target="_blank" rel="noopener">네이버 블로그</a> · <a href="' + YOUTUBE + '" target="_blank" rel="noopener">유튜브 옥상남TV</a></li></ul></div>' +
     '<p class="disc"><b>비공식 리디자인 시안</b> — 웹 수업 과제로 (주)펜테크 사이트의 내용을 그대로 두고 구성과 디자인만 새로 짠 화면입니다. 글과 사진의 저작권은 (주)펜테크에 있으며, 이 페이지의 문의 폼은 실제로 아무것도 보내지 않습니다. 원본: <a href="https://www.pentech.kr/kor/main/" target="_blank" rel="noopener">pentech.kr</a></p>' +
     '</div>';
