@@ -125,7 +125,7 @@ function buildChrome() {
 function hd(u) {
   if (typeof IMG === 'undefined' || typeof HD_IMG === 'undefined' || !u || u.indexOf(IMG) !== 0) return u;
   var r = u.slice(IMG.length);
-  return HD_IMG[r] ? 'images/hd/' + r + '?v=2' : u;                  // ?v=2: 사진을 새로 만들었을 때 브라우저가 옛 사진을 쓰지 않게
+  return HD_IMG[r] ? 'images/hd/' + r + '?v=3' : u;                  // ?v=2: 사진을 새로 만들었을 때 브라우저가 옛 사진을 쓰지 않게
 }
 
 function ph(src, cap, group, extraClass, badge) {
