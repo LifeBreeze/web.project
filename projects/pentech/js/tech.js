@@ -81,10 +81,14 @@ window.initPage = function () {
     '<div id="procBox" class="rv"></div></div></section>';
 
   /* 적용 사례 */
+  /* '시공 영상으로 보기' 링크: 사진 줄의 마지막 줄에 빈 칸이 있으면 그 빈 칸에 넣고, 빈 칸이 없으면 제목줄 오른쪽에 둠 */
+  var cCols = casesCols(t.cases.items.length), cEmpty = t.cases.items.length % cCols !== 0;
+  var vLink = '<a class="link-arrow" href="cases.html#' + t.videoCat + '">시공 영상으로 보기 →</a>';
   h += '<section class="sec" id="cases"><div class="wrap"><div class="sec-head rv"><div>' + eb('적용 사례') +
     '<h2 class="h2">' + t.name + '로 다시 태어난 현장</h2><p class="lead">사진을 누르면 크게 볼 수 있습니다.</p></div>' +
-    '<a class="link-arrow" href="cases.html#' + t.videoCat + '">시공 영상으로 보기 →</a></div>' +
-    '<div class="cases rv" style="grid-template-columns:repeat(' + casesCols(t.cases.items.length) + ',1fr)">' + t.cases.items.map(function (c) { return ph(IMGB + t.cases.base + c[0] + '.webp', c[1], 'cases'); }).join('') + '</div></div></section>';
+    (cEmpty ? '' : vLink) + '</div>' +
+    '<div class="cases rv" style="grid-template-columns:repeat(' + cCols + ',minmax(0,1fr))">' + t.cases.items.map(function (c) { return ph(IMGB + t.cases.base + c[0] + '.webp', c[1], 'cases'); }).join('') +
+    (cEmpty ? '<div class="cases-more">' + vLink + '</div>' : '') + '</div></div></section>';
 
   /* 성능 · 시험성적: 표는 양옆으로 */
   h += '<section class="sec alt" id="perf"><div class="wrap"><div class="sec-head rv"><div>' + eb('성능') +
