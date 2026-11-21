@@ -221,7 +221,22 @@ function initProc(t) {
       '<ol class="pv-steps' + (items.length <= 5 ? ' few' : '') + '">' + items.map(function (s, si) {
         return '<li class="' + (s.done ? 'done' : '') + '"><button data-i="' + si + '"' + (si === i ? ' aria-current="step"' : '') + '><span class="tg">' + esc(s.tag) + '</span><span class="lb">' + esc(s.label) + '</span></button></li>';
       }).join('') + '</ol></div>';
+    fitProc();
   }
+  /* PC: 오른쪽 단계 표를 왼쪽 사진과 같은 위 · 아래 줄(같은 높이)에 맞춤 (사진 위 제목줄 · 아래 버튼줄은 비워 둠) */
+  function fitProc() {
+    var pv = box.querySelector('.procview'), steps = pv && pv.querySelector('.pv-steps'), photo = pv && pv.querySelector('.pv-photo');
+    if (!steps || !photo) return;
+    steps.style.marginTop = ''; steps.style.height = ''; steps.style.alignSelf = ''; steps.style.gridAutoRows = '';
+    if (window.innerWidth <= 980) return;
+    function top(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
+    steps.style.alignSelf = 'start';
+    steps.style.marginTop = Math.max(0, top(photo) - top(steps)) + 'px';
+    steps.style.height = photo.offsetHeight + 'px';
+    steps.style.gridAutoRows = '1fr';
+  }
+  window.addEventListener('resize', fitProc);
+  if (window.ResizeObserver) new ResizeObserver(fitProc).observe(box);
   box.addEventListener('click', function (e) {
     var items = procItems(t.process[g]), c;
     if ((c = e.target.closest('[data-g]'))) { g = +c.getAttribute('data-g'); i = 0; draw(); return; }
