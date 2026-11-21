@@ -1472,7 +1472,7 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 .sub a, .sub a small { white-space: nowrap; }
 
 /* 회사소개 대표 공법 카드: 사진 아래 파란 줄 삭제 */
-.solution div { border-top: 0; margin-top: 0; padding-top: 20px; }
+.solution div { border-top: 0; margin-top: 0; padding: 20px 22px 24px; }
 
 /* 시공사례 그룹 제목 아래 줄: 굵은 검정 → 얇고 연한 줄 */
 .vgroup-head { border-bottom: 1px solid var(--line); }
