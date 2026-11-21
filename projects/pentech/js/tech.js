@@ -82,9 +82,9 @@ window.initPage = function () {
 
   /* 적용 사례 */
   h += '<section class="sec" id="cases"><div class="wrap"><div class="sec-head rv"><div>' + eb('적용 사례') +
-    '<h2 class="h2">' + t.name + '로 다시 태어난 현장</h2><p class="lead">사진을 누르면 크게 볼 수 있습니다.</p></div></div>' +
-    '<div class="cases rv" style="grid-template-columns:repeat(' + casesCols(t.cases.items.length) + ',1fr)">' + t.cases.items.map(function (c) { return ph(IMGB + t.cases.base + c[0] + '.webp', c[1], 'cases'); }).join('') + '</div>' +
-    '<div class="more-link rv"><a class="link-arrow" href="cases.html#' + t.videoCat + '">시공 영상으로 보기 →</a></div></div></section>';
+    '<h2 class="h2">' + t.name + '로 다시 태어난 현장</h2><p class="lead">사진을 누르면 크게 볼 수 있습니다.</p></div>' +
+    '<a class="link-arrow" href="cases.html#' + t.videoCat + '">시공 영상으로 보기 →</a></div>' +
+    '<div class="cases rv" style="grid-template-columns:repeat(' + casesCols(t.cases.items.length) + ',1fr)">' + t.cases.items.map(function (c) { return ph(IMGB + t.cases.base + c[0] + '.webp', c[1], 'cases'); }).join('') + '</div></div></section>';
 
   /* 성능 · 시험성적: 표는 양옆으로 */
   h += '<section class="sec alt" id="perf"><div class="wrap"><div class="sec-head rv"><div>' + eb('성능') +
@@ -108,9 +108,9 @@ window.initPage = function () {
     h += '<div class="metrics rv" style="margin-top:' + (t.tests ? '16px' : '0') + '">' + t.metrics.map(function (x) { return '<div class="metric"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>';
   }
   /* 특허: 성능과 같은 구역 안에 (따로 두면 한 줄짜리 구역이 생겨 허전함) */
-  h += '<div class="sec-head rv" id="patent" style="margin:76px 0 30px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3></div>' +
-    '<div class="patents rv">' + t.patents.map(function (x) { return patentBtn(x, 'pat-' + t.id); }).join('') + '</div>' +
-    '<div class="more-link rv"><a class="link-arrow" href="about.html#cert">특허 · 인증 전체 →</a></div>';
+  h += '<div class="sec-head rv" id="patent" style="margin:76px 0 30px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3>' +
+    '<a class="link-arrow" href="about.html#cert">특허 · 인증 전체 →</a></div>' +
+    '<div class="patents rv">' + t.patents.map(function (x) { return patentBtn(x, 'pat-' + t.id); }).join('') + '</div>';
   h += '</div></section>';
 
   /* 다른 공법 */
