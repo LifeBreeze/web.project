@@ -251,9 +251,10 @@ function reveal() {
 function tocSpy() {
   var links = $$('.toc a');
   if (!links.length) return;
-  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  var secs = links.map(function (a) { var h = a.getAttribute('href'); return h.charAt(0) === '#' ? document.getElementById(h.slice(1)) : null; });   // 다른 페이지로 가는 링크는 건너뜀
+  var first = 0; for (var k = 0; k < secs.length; k++) { if (secs[k]) { first = k; break; } }
   function on() {
-    var y = window.scrollY + window.innerHeight * 0.3, cur = 0;
+    var y = window.scrollY + window.innerHeight * 0.3, cur = first;
     secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
     links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
     var act = links[cur]; if (act && act.parentNode.parentNode.scrollWidth > act.parentNode.parentNode.clientWidth) {
