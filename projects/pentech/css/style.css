@@ -484,7 +484,7 @@ fieldset.field legend { margin-bottom: 8px; }
 .form-msg.show { display: block; }
 
 .faq-tools { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-.search { position: relative; flex: 0 1 340px; }
+.search { position: relative; flex: 0 1 260px; }
 .search input { width: 100%; font: inherit; padding: 13px 16px 13px 62px; border: 1.5px solid var(--ink); border-radius: 99px; background: #fff; }
 .search input:focus { outline: none; border-color: var(--accent); }
 .search svg { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
