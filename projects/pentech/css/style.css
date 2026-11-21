@@ -485,9 +485,9 @@ fieldset.field legend { margin-bottom: 8px; }
 
 .faq-tools { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 28px; }
 .search { position: relative; flex: 0 1 340px; }
-.search input { width: 100%; font: inherit; padding: 13px 16px 13px 46px; border: 1.5px solid var(--ink); border-radius: 99px; background: #fff; }
+.search input { width: 100%; font: inherit; padding: 13px 16px 13px 62px; border: 1.5px solid var(--ink); border-radius: 99px; background: #fff; }
 .search input:focus { outline: none; border-color: var(--accent); }
-.search svg { position: absolute; left: 17px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+.search svg { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
 .faq { border-top: 1.5px solid var(--ink); }
 .faq details { border-bottom: 1px solid var(--line); background: #fff; }
 .faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 36px 1fr 24px; gap: 10px; padding: 22px 10px; align-items: start; }
@@ -896,8 +896,8 @@ html, body { overflow-x: clip; }
 
 
 /* ─────────── 견적 문의 왼쪽 · 연혁 · 파란우산 · 시공사례 위치 ─────────── */
-/* 왼쪽 칸: 긴 폼 옆에서 같이 따라 내려오고, 전화 카드 아래에 상담 순서로 빈 곳을 채움 */
-.form-aside { position: sticky; top: calc(var(--head-h) + 84px); }
+/* 왼쪽 칸: 스크롤을 따라 내려오지 않고 제자리에 둠 (전화 카드 아래에 상담 순서) */
+.form-aside { position: static; }
 .steps-title { margin: 30px 0 12px; font-weight: 800; font-size: 17px; letter-spacing: -.03em; }
 .steps-card { counter-reset: st; border: 1px solid var(--line); border-radius: 22px; background: #fff; overflow: hidden; }
 .steps-card li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; padding: 16px 22px; border-top: 1px solid var(--line); }
@@ -1645,3 +1645,8 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .tbl th:first-child, .tbl td:first-child, .tbl caption { padding-left: 20px; }
   .tbl th:last-child, .tbl td:last-child { padding-right: 20px; }
 }
+
+
+/* 협력기업: '협약 문의하기' 버튼은 위 파란 머리 오른쪽(안내 글 마지막 줄 높이)에 */
+.page-head .head-inquire { position: absolute; right: 36px; bottom: 0; }
+@media (max-width: 980px) { .page-head .head-inquire { position: static; margin-top: 24px; } }

@@ -167,7 +167,7 @@ function fitInquiry() {
   if (!form || !lead) return;
   form.style.marginTop = '';
   if (window.innerWidth <= 980) return;
-  /* 왼쪽 칸(.form-aside)은 스크롤하면 따라오는(sticky) 칸이라 페이지 위치 대신 '칸 맨 위에서 안내 글까지의 거리'를 씀 (두 칸은 같은 줄 맨 위에서 시작) */
+  /* 왼쪽 칸(.form-aside)과 폼은 같은 줄 맨 위에서 시작하므로 '칸 맨 위에서 안내 글까지의 거리'를 씀 */
   form.style.marginTop = Math.max(0, lead.offsetTop) + 'px';
 }
 
