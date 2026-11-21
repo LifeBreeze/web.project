@@ -44,10 +44,10 @@ window.initPage = function () {
         return mm ? '<li><span><b>' + mm[1] + '</b> · ' + esc(mm[2]) + '</span></li>' : '<li class="note"><span>' + esc(s) + '</span></li>';
       }).join('') + '</ol>'
     : '<ul class="checks" style="margin-top:18px">' + md.points.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>';
-  h += '<section class="sec alt" id="method"><div class="wrap"><div class="method' + (md.diagram ? ' fit' : '') + '"><div class="rv">' + eb('공법 개요') +
+  h += '<section class="sec alt" id="method"><div class="wrap"><div class="method fit"><div class="rv">' + eb('공법 개요') +
     '<h2 class="h2">' + esc(md.title) + '</h2>' + pts +
     '<p class="fields"><b>적용 분야</b>' + esc(md.fields) + '</p></div>' +
-    '<div class="rv">' + strataHTML(t) + (md.diagram ? '' : '<div style="margin-top:16px">' + ph(md.image[0], md.image[1], 'method') + '</div>') + '</div></div>';
+    '<div class="rv">' + strataHTML(t) + '</div></div>';
   if (t.compare) {
     var c = t.compare;
     h += '<div class="compare rv"><h3 class="h3" style="margin-bottom:30px">' + esc(c.title) + '</h3><div class="tbl tbl-scroll"><table>' + cols(c.head.length) +
