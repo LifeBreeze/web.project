@@ -106,13 +106,13 @@ window.initPage = function () {
     h += '<div class="metrics rv" style="margin-top:' + (t.tests ? '16px' : '0') + '">' + t.metrics.map(function (x) { return '<div class="metric"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>';
   }
   /* 특허: 성능과 같은 구역 안에 (따로 두면 한 줄짜리 구역이 생겨 허전함) */
-  h += '<div class="sec-head rv" id="patent" style="margin:44px 0 16px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3>' +
+  h += '<div class="sec-head rv" id="patent" style="margin:44px 0 30px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3>' +
     '<a class="link-arrow" href="about.html#cert">특허 · 인증 전체 →</a></div>' +
     '<div class="patents rv">' + t.patents.map(function (x) { return patentBtn(x, 'pat-' + t.id); }).join('') + '</div>';
   h += '</div></section>';
 
   /* 다른 공법 */
-  h += '<section class="sec tight"><div class="wrap"><div class="sec-head rv" style="margin-bottom:20px"><h2 class="h3">다른 곳도 문제인가요?</h2></div>' +
+  h += '<section class="sec tight"><div class="wrap"><div class="sec-head rv" style="margin-bottom:30px"><h2 class="h3">다른 곳도 문제인가요?</h2></div>' +
     '<div class="solutions four rv" aria-label="다른 공법">' +
     TECH.filter(function (x) { return x.id !== t.id; }).map(function (x) {
       return '<a class="solution" href="tech.html?id=' + x.id + '" style="--c:' + x.color + '"><img src="' + x.card + '" alt="" loading="lazy"><div><small>다른 공법 · ' + x.where + '</small><b>' + x.name + '</b></div></a>';
