@@ -129,6 +129,7 @@ window.initPage = function () {
   initProc(t);
   initWhyFit();
   initTableFit();
+  initMethodFit();
 };
 
 /* 왜 문제인가 (PC): 사진 묶음을 '5대 원인' 표와 위·아래 줄을 맞춤. 사진은 자르지 않고 폭만 조절 */
@@ -246,4 +247,25 @@ function initTableFit() {
   window.addEventListener('resize', fitTables);
   if (window.ResizeObserver) [].slice.call(document.querySelectorAll('.tbl')).forEach(function (t) { new ResizeObserver(fitTables).observe(t); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTables);
+}
+
+/* 공법 개요 (층 단면만 있는 공법, PC): 층 단면을 제목 아래 글(체크 목록 ~ 적용 분야 칸)과 같은 높이 · 같은 위치로 맞춤.
+   단면 위 '마감 ↑' 글자는 제목 높이쯤에 남고, 단면 칸 자체는 체크 목록 첫 줄부터 적용 분야 칸 아래까지 */
+function fitMethod() {
+  var m = document.querySelector('.method.fit');
+  if (!m) return;
+  var left = m.children[0], right = m.children[1], list = left.querySelector('.checks, .steps-list'), cap = right.querySelector('.strata-cap');
+  if (!list || !cap) return;
+  right.style.paddingTop = '';
+  if (window.innerWidth <= 980) return;
+  function pageTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
+  var capH = cap.offsetHeight + (parseFloat(getComputedStyle(cap).marginBottom) || 0);
+  right.style.paddingTop = Math.max(0, pageTop(list) - pageTop(left) - capH) + 'px';
+}
+function initMethodFit() {
+  fitMethod();
+  window.addEventListener('resize', fitMethod);
+  var m = document.querySelector('.method.fit');
+  if (m && window.ResizeObserver) new ResizeObserver(fitMethod).observe(m.children[0]);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMethod);
 }
