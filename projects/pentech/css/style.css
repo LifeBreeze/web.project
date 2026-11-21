@@ -1611,3 +1611,7 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   body[data-page="news"] .ngrid { grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
   body[data-page="news"] .ncard h3 { font-size: 17.5px; }
 }
+
+
+/* '왜 문제인가' 에 사진이 없는 공법(폴리우레아): 글만 한 칸으로 */
+.why.why-solo { grid-template-columns: minmax(0, 880px); }

@@ -25,13 +25,13 @@ window.initPage = function () {
 
   /* 왜 문제인가 */
   var p = t.problem;
-  h += '<section class="sec" id="why"><div class="wrap why"><div class="rv">' + eb('왜 문제인가') +
+  h += '<section class="sec" id="why"><div class="wrap why' + (p.photos.length ? '' : ' why-solo') + '"><div class="rv">' + eb('왜 문제인가') +
     '<h2 class="h2">' + esc(p.title) + '</h2><p class="lead">' + esc(p.text) + '</p>' +
     '<p class="causes-label" style="margin-top:28px;font-weight:800">' + esc(p.label) + '</p>' +
     '<ol class="causes" style="margin-top:10px">' + p.items.map(function (c, i) {
       return '<li><em>0' + (i + 1) + '</em><b>' + esc(c[0]) + '<small>' + esc(c[1]) + '</small></b><span>' + esc(c[2]) + '</span></li>';
     }).join('') + '</ol></div>' +
-    '<div class="why-photos rv' + (p.photos.length === 1 ? ' one' : (p.items.length >= 4 ? ' stack' : '')) + '">' + p.photos.map(function (x) { return ph(x[0], x[1], 'why'); }).join('') + '</div></div></section>';
+    (p.photos.length ? '<div class="why-photos rv' + (p.photos.length === 1 ? ' one' : (p.items.length >= 4 ? ' stack' : '')) + '">' + p.photos.map(function (x) { return ph(x[0], x[1], 'why'); }).join('') + '</div>' : '') + '</div></section>';
 
   /* 공법 개요 + 층 단면 */
   var md = t.method;

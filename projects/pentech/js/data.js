@@ -252,7 +252,7 @@ var TECH = [
         ['시간 문제', 'Time', '급속 보수·긴급 보수 현장에 맞지 않음'],
         ['환경 문제', 'Climate', '습도가 높거나 추운 환경에서 시공이 어려움']
       ],
-      photos: [[IMG + 'technology/list_05/step_03.webp', '시공 전 노후 옥상']]
+      photos: []
     },
     method: {
       title: '폴리우레아 공법 개요',
