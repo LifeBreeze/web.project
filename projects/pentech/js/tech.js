@@ -134,6 +134,7 @@ window.initPage = function () {
   initWhyFit();
   initTableFit();
   initMethodFit();
+  initAutoFit();
 };
 
 /* 왜 문제인가 (PC): 사진 묶음을 '5대 원인' 표와 위·아래 줄을 맞춤. 사진은 자르지 않고 폭만 조절 */
@@ -243,6 +244,7 @@ function initProc(t) {
     steps.style.height = photo.offsetHeight + 'px';
     steps.style.gridAutoRows = '1fr';
   }
+  window.__fitProc = fitProc;
   window.addEventListener('resize', fitProc);
   if (window.ResizeObserver) new ResizeObserver(fitProc).observe(box);
   box.addEventListener('click', function (e) {
@@ -261,6 +263,7 @@ function fitTables() {
     var cs = [].slice.call(tb.querySelectorAll('col')), n = cs.length, th = tb.querySelector('thead th');
     if (!n || !th) return;
     var st = getComputedStyle(th), d = parseFloat(st.paddingLeft) - parseFloat(st.paddingRight);   // 첫 열 안쪽 여백 - 기본 여백(18px)
+    if (window.innerWidth <= 760) { cs.forEach(function (c) { c.style.width = ''; }); return; }   // 휴대폰: 열 폭은 글 길이에 맡김 (균등하게 나누면 글자가 한 글자씩 꺾임)
     var W = tb.offsetWidth;
     cs.forEach(function (c, i) { c.style.width = (i === 0 ? W / n + d * (n - 1) / n : W / n - d / n) + 'px'; });
   });
@@ -291,4 +294,14 @@ function initMethodFit() {
   var m = document.querySelector('.method');
   if (m && window.ResizeObserver) new ResizeObserver(fitMethod).observe(m.children[0]);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMethod);
+}
+
+/* 영어 전환 등으로 글이 바뀌면(글 길이 · 줄 수가 달라짐) 위치 · 높이 맞춤을 한꺼번에 다시 계산 */
+function initAutoFit() {
+  var root = document.getElementById('tech'), raf = 0;
+  if (!root || !window.MutationObserver) return;
+  new MutationObserver(function () {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () { fitWhy(); fitMethod(); fitTables(); if (window.__fitProc) window.__fitProc(); });
+  }).observe(root, { subtree: true, childList: true, characterData: true });
 }

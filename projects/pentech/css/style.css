@@ -1637,3 +1637,11 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
 
 /* 특허 N건: 링크를 제목 바로 오른쪽에 */
 #patent { justify-content: flex-start; align-items: baseline; gap: 32px; }
+
+/* 휴대폰: 표는 열 폭 자동 · 칸 여백 작게 */
+@media (max-width: 760px) {
+  .tbl table { table-layout: auto; }
+  .tbl th, .tbl td { padding: 12px 10px; }
+  .tbl th:first-child, .tbl td:first-child, .tbl caption { padding-left: 20px; }
+  .tbl th:last-child, .tbl td:last-child { padding-right: 20px; }
+}
