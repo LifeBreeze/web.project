@@ -2010,3 +2010,16 @@ body[data-page="about"] .metric b { color: var(--ink); }
   html:not([lang="en"]) .co-esg-text .ln { display: block; white-space: nowrap; }
   .co-esg { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
 }
+
+/* 회사소개 에어레카: 파란 상자 없애고, 문단 사이 좁게, 사진 높이를 글 높이에 맞춤 */
+.co-band { background: none; border-radius: 0; }
+.co-band > .wrap { padding: 0; align-items: stretch; }
+.co-band .h3 { margin: 0 0 16px; }
+.co-band p { line-height: 1.75; }
+.co-band p + p { margin-top: 6px; }
+.co-band img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; border-radius: 22px; box-shadow: none; }
+@media (max-width: 980px) { .co-band img { height: auto; aspect-ratio: 3 / 2; } }
+
+/* 핵심 솔루션 끝맺음 두 문장: 같은 크기, 첫 문장은 조금 덜 굵게 */
+.co-close p, .co-close p:first-child { font-size: 19px; line-height: 1.7; letter-spacing: -.03em; }
+.co-close p:first-child { font-weight: 600; }
