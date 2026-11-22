@@ -1217,5 +1217,6 @@ window.EN_DICT = {
 "장기적인 신뢰와 지속가능한 성장을 추구합니다.": "pursues long-term trust and sustainable growth.",
 "또한 유튜브 채널 ‘옥상남TV’를 통해 방수 산업의 올바른 기준을 제시하며": "Through its YouTube channel ‘Oksangnam TV’, it also sets the right standards for the waterproofing industry",
 "사회적 신뢰를 꾸준히 쌓아가고 있습니다.": "and steadily builds social trust.",
-"에어레카(Aireka)": "Aireka"
+"에어레카(Aireka)": "Aireka",
+"건물 균열 진단의 새로운 기준, 에어레카(Aireka)": "Aireka, a new standard for building crack diagnosis"
 };
