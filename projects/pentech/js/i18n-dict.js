@@ -81,6 +81,7 @@ window.EN_DICT = {
 "네이버 지도에서 보기 ↗": "View on Naver Map ↗",
 "네이버 지도 ↗": "Naver Map ↗",
 "상담 전화": "Call us",
+"좌우로 밀거나 화살표를 눌러 보세요": "Drag sideways or use the arrows",
 "에어레카 · AI 외벽 균열 진단 드론": "AIREKA · AI crack-diagnosis drone",
 "특허증 · 노출식 차열방수 복합공법": "Patent certificate · exposed heat-shield waterproofing composite method",
 "루프가드 · 2013년 상표 등록": "Roof Guard · trademark registered 2013",
