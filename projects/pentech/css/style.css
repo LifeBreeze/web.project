@@ -2084,3 +2084,11 @@ body[data-page="about"] .metric b { color: var(--ink); }
   .page-head::before { background: linear-gradient(180deg, rgba(10,16,28,.62) 0%, rgba(10,16,28,.42) 100%); }
 }
 .foot .disc { color: #5d6573; }
+
+/* 헤더 전화 버튼: 진한 파랑 → 차분한 검정(내린 뒤) · 흰 바탕에 검정 글씨(배너 위) */
+.tel-pill { background: var(--ink); color: #fff; font-weight: 700; }
+.tel-pill:hover { background: #2b3445; }
+.head.is-top .tel-pill, body[data-page="home"] .head.is-top .tel-pill { background: #fff; color: var(--ink); }
+.head.is-top .tel-pill:hover, body[data-page="home"] .head.is-top .tel-pill:hover { background: #eef0f4; }
+body[data-page="home"] .head:not(.is-top) .tel-pill { background: #f1f3f6; color: var(--ink); }
+body[data-page="home"] .head:not(.is-top) .tel-pill:hover { background: #e4e8ef; }
