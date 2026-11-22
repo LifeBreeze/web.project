@@ -2073,3 +2073,14 @@ body[data-page="about"] .metric b { color: var(--ink); }
 .to-top { background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: 0 8px 22px -10px rgba(15, 27, 61, .35); }
 .to-top:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 .foot li b { color: var(--ink); }
+
+/* 하위 페이지 배너: 진한 남색 덮개 → 옅은 중성 그림자 (사진 색이 살아나게), 글씨는 은은한 그림자로 읽기 쉽게 */
+.page-head { background-color: #1c2433; }
+.page-head::before { background: linear-gradient(180deg, rgba(10,16,28,.45) 0, rgba(10,16,28,0) 170px),
+  linear-gradient(90deg, rgba(10,16,28,.62) 0%, rgba(10,16,28,.34) 45%, rgba(10,16,28,.06) 100%); }
+.page-head h1, .page-head .crumb, .page-head .lead { text-shadow: 0 2px 18px rgba(0, 0, 0, .28); }
+.page-head h1 small { color: #fff; opacity: .85; }
+@media (max-width: 760px) {
+  .page-head::before { background: linear-gradient(180deg, rgba(10,16,28,.62) 0%, rgba(10,16,28,.42) 100%); }
+}
+.foot .disc { color: #5d6573; }
