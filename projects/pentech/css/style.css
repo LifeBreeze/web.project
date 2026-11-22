@@ -2020,9 +2020,9 @@ body[data-page="about"] .metric b { color: var(--ink); }
 .co-band img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; border-radius: 22px; box-shadow: none; }
 @media (max-width: 980px) { .co-band img { height: auto; aspect-ratio: 3 / 2; } }
 
-/* 핵심 솔루션 끝맺음 두 문장: 같은 크기, 첫 문장은 조금 덜 굵게 */
+/* 핵심 솔루션 끝맺음 두 문장: 같은 크기 · 같은 굵기(보통) */
 .co-close p, .co-close p:first-child { font-size: 19px; line-height: 1.7; letter-spacing: -.03em; }
-.co-close p:first-child { font-weight: 600; }
+.co-close p:first-child { font-weight: 400; }
 
 /* 회사소개 에어레카: ESG 구역과 같은 형식 — 큰 제목 위, 아래 왼쪽 글(정해 둔 줄에서 끊음) · 오른쪽 사진(글 높이에 맞춤) */
 .co-air { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 32px clamp(32px, 6vw, 88px); align-items: stretch; }
