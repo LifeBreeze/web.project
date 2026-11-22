@@ -1918,6 +1918,7 @@ body[data-page="about"] #solutions-sec .sec-head { margin-bottom: 22px; }
 /* ─────────── 피드백 반영 (11/22): 버튼 얇게 · 특허 색 줄이기 · 위치 정리 ─────────── */
 /* 둥근 버튼 전부(사이트 전체): 얇은 테두리 (글씨 굵기는 원래대로) */
 .btn { border-width: 1px; }
+.chip, .co-jump .chip, .pv-steps button, .finder-tabs button { border-width: 1px; }
 .btn-line { border-color: #8c929c; }
 
 
