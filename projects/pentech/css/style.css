@@ -1813,3 +1813,13 @@ html[lang="en"] body[data-page="home"] .hero .hero-card.hero-2 .hero-words, html
   .co-row.rev .co-img { order: 0; }
   .co-band > .wrap { grid-template-columns: 1fr; }
 }
+
+
+/* 회사소개 여섯 페이지(한 구역씩 따로 있는 페이지): 구역 위아래 · 제목 아래 · 솔루션 행 사이 여백을 줄임 (공법 페이지와 같은 간격) */
+body[data-page="about"] .sec { padding: 72px 0; }
+body[data-page="about"] .sec.tight { padding: 52px 0; }
+body[data-page="about"] .sec-head { margin-bottom: 32px; }
+body[data-page="about"] .co-row { margin-top: clamp(36px, 4.4vw, 60px); }
+body[data-page="about"] .co-close { margin-top: clamp(44px, 5.4vw, 68px); padding-top: 32px; }
+body[data-page="about"] #solutions-sec .sec-head { margin-bottom: 22px; }
+@media (max-width: 760px) { body[data-page="about"] .sec { padding: 56px 0; } }
