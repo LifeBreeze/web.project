@@ -1993,3 +1993,15 @@ body[data-page="about"] .metric b { color: var(--ink); }
 .loc-link em { font-style: normal; color: var(--ink-3); font-size: 15px; }
 .loc-tel { margin-top: 4px; padding: 22px 0 0; border-top: 1px solid var(--line); align-items: baseline; }
 .loc-tel b { color: var(--ink); }
+
+/* 회사소개 ESG: 굵은 제목 아래 둥근 사진, 사진 옆(오른쪽)에 글을 사진 높이 가운데로 */
+.co-esg { grid-template-columns: 1fr 1fr; row-gap: 32px; align-items: center; }
+.co-esg > div:first-child { grid-column: 1; grid-row: 1; }
+.co-esg-photo { grid-column: 1; grid-row: 2; }
+.co-esg-photo img { display: block; width: 100%; aspect-ratio: 7 / 4; object-fit: cover; border-radius: 26px; }
+.co-esg-text { grid-column: 2; grid-row: 2; }
+.co-esg .h2 { margin-top: 0; }
+@media (max-width: 980px) {
+  .co-esg > div:first-child, .co-esg-photo, .co-esg-text { grid-column: 1; grid-row: auto; }
+  .co-esg { row-gap: 24px; }
+}

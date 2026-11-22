@@ -1209,5 +1209,6 @@ window.EN_DICT = {
 "카카오맵": "Kakao Map",
 "대중교통 · 자동차 길찾기, 거리뷰": "Transit & driving directions, Street View",
 "실시간 길안내, 로드뷰로 주변 확인": "Live navigation, Road View of the area",
-"내비게이션 · 메시지에 붙여넣기": "Paste into your navigation app or a message"
+"내비게이션 · 메시지에 붙여넣기": "Paste into your navigation app or a message",
+"숲 위에 ESG 글자와 나뭇잎이 놓인 사진": "The letters ESG and leaves over a forest"
 };
