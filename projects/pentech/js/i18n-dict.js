@@ -1210,5 +1210,8 @@ window.EN_DICT = {
 "대중교통 · 자동차 길찾기, 거리뷰": "Transit & driving directions, Street View",
 "실시간 길안내, 로드뷰로 주변 확인": "Live navigation, Road View of the area",
 "내비게이션 · 메시지에 붙여넣기": "Paste into your navigation app or a message",
-"숲 위에 ESG 글자와 나뭇잎이 놓인 사진": "The letters ESG and leaves over a forest"
+"숲 위에 ESG 글자와 나뭇잎이 놓인 사진": "The letters ESG and leaves over a forest",
+"펜테크는 환경(E)을 고려한 친환경 기술과 제품 개발을 지속해 왔습니다.": "Pentech has continued to develop eco-friendly technologies and products that consider the environment (E).",
+"‘사단법인 사랑의파란우산’을 설립하여 지역사회와 취약계층을 위한 나눔과 상생을 통해 기업의 사회적(S) 책임을 실천하고 있습니다.": "By establishing the ‘Blue Umbrella of Love’ foundation, we practice corporate social responsibility (S) through sharing and mutual growth for communities and vulnerable groups.",
+"공정하고 투명한 지배구조(G)를 기반으로 장기적인 신뢰와 지속가능한 성장을 추구합니다.": "We pursue long-term trust and sustainable growth based on fair and transparent governance (G)."
 };

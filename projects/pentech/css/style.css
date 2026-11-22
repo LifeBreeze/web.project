@@ -2005,3 +2005,4 @@ body[data-page="about"] .metric b { color: var(--ink); }
   .co-esg > div:first-child, .co-esg-photo, .co-esg-text { grid-column: 1; grid-row: auto; }
   .co-esg { row-gap: 24px; }
 }
+.co-esg-text p + p { margin-top: 12px; }
