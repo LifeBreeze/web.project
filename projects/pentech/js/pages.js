@@ -58,31 +58,24 @@ function initAbout() {
   }).join('');
   }
 
-  // 연혁: 가운데 파란 띠에 연도를 세로로 쌓고, 글이 좌우로 번갈아 나오는 긴 타임라인
+  // 연혁: 가는 세로 선 + 동그라미 마디, 시기 이름은 왼쪽, 연도별 내용은 오른쪽, 원형 사진은 오른쪽 끝
   if ($('#eraAll')) {
     var eraPic = [
-      '<figure><img class="tl-photo" src="images/aireka-drone.webp" alt="에어레카 진단 드론" loading="lazy"><figcaption>에어레카 · AI 외벽 균열 진단 드론</figcaption></figure>',
-      '<figure><img class="tl-patent" src="images/hist/patent.webp" alt="펜테크 특허증" loading="lazy"><figcaption>특허증 · 노출식 차열방수 복합공법</figcaption></figure>',
-      '<div class="tl-marks"><figure><img src="images/hist/roof-guard.svg" alt="루프가드 ROOF GUARD 상표" loading="lazy"><figcaption>루프가드 · 2013년 상표 등록</figcaption></figure>' +
-        '<figure><img src="images/hist/road-guard.svg" alt="로드가드 ROAD GUARD 상표" loading="lazy"><figcaption>로드가드 · 2018년 상표 등록</figcaption></figure></div>',
-      '<figure><img class="tl-logo" src="images/hist/pentech-logo.png" alt="(주)펜테크 Paint Technology 로고" loading="lazy"><figcaption>(주)펜테크 · 2007년 창립</figcaption></figure>'
+      '<figure class="tl-pic c-photo rv"><div class="tl-disc"><img src="images/aireka-drone.webp" alt="에어레카 진단 드론" loading="lazy"></div><figcaption><span>에어레카 · AI 외벽 균열 진단 드론</span></figcaption></figure>',
+      '<figure class="tl-pic c-patent rv"><div class="tl-disc"><img src="images/hist/patent.webp" alt="펜테크 특허증" loading="lazy"></div><figcaption><span>특허증 · 노출식 차열방수 복합공법</span></figcaption></figure>',
+      '<figure class="tl-pic c-marks rv"><div class="tl-disc"><img src="images/hist/roof-guard.svg" alt="루프가드 ROOF GUARD 상표" loading="lazy"><img src="images/hist/road-guard.svg" alt="로드가드 ROAD GUARD 상표" loading="lazy"></div><figcaption><span>루프가드 · 2013년 상표 등록</span><span>로드가드 · 2018년 상표 등록</span></figcaption></figure>',
+      '<figure class="tl-pic c-logo rv"><div class="tl-disc"><img src="images/hist/pentech-logo.png" alt="(주)펜테크 Paint Technology 로고" loading="lazy"></div><figcaption><span>(주)펜테크 · 2007년 창립</span></figcaption></figure>'
     ];
-    var k = 0;
     $('#eraAll').innerHTML = '<div class="wrap"><div class="tl">' + HISTORY.map(function (e, i) {
-      var picLeft = i % 2 === 0;
-      var pic = '<div class="tl-pic rv">' + eraPic[i] + '</div>';
-      var txt = '<div class="tl-txt rv"><small>PENTECH</small><h2>' + e.era + '</h2><h3>' + esc(e.title) + '</h3></div>';
-      var head = '<div class="tl-row tl-head ' + (picLeft ? 'tl-pl' : 'tl-pr') + '">' + (picLeft ? pic : txt) +
-        '<div class="tl-mid"><span class="tl-cap">' + e.era + '<br>' + e.years.replace(' ~ ', '–') + '</span></div>' + (picLeft ? txt : pic) + '</div>';
-      var rows = e.list.map(function (y) {
-        var left = (k++ % 2) === 0;
-        var box = '<div class="tl-box rv"><ul>' + y[1].map(function (m) {
+      var years = e.list.map(function (y) {
+        return '<div class="tl-yr rv"><b>' + y[0] + '</b><ul>' + y[1].map(function (m) {
           return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
         }).join('') + '</ul></div>';
-        var yr = '<div class="tl-mid"><b class="tl-y"><span>' + y[0].slice(0, 2) + '</span><span>' + y[0].slice(2) + '</span></b></div>';
-        return '<div class="tl-row ' + (left ? 'tl-l' : 'tl-r') + '" aria-label="' + y[0] + '년">' + (left ? box + yr + '<div></div>' : '<div></div>' + yr + box) + '</div>';
       }).join('');
-      return '<section class="tl-era" id="era-' + i + '" aria-label="' + esc(e.era) + '">' + head + rows + '</section>';
+      return '<section class="tl-era" id="era-' + i + '" aria-label="' + esc(e.era) + '">' +
+        '<div class="tl-ms' + (i === 0 ? ' big' : '') + ' rv"><div class="tl-ms-in"><small>PENTECH</small><h2>' + e.era + '</h2><p class="tl-years">' + e.years.replace(' ~ ', ' – ') + '</p><h3>' + esc(e.title) + '</h3></div></div>' +
+        '<div class="tl-nodecol"><i class="tl-node"></i></div>' +
+        '<div class="tl-body"><div class="tl-list">' + years + '</div>' + eraPic[i] + '</div></section>';
     }).join('') + '</div></div>';
   }
 
