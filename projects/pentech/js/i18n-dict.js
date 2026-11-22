@@ -1204,5 +1204,10 @@ window.EN_DICT = {
 "㈜펜테크는": "Pentech Co., Ltd.",
 "‘건물의 상처를 발견하고, 치유하며, 오래도록 지켜낸다’는 사명 아래 건설보수 분야의 새로운 기준을 만들어 온 기업입니다.": "has been setting new standards in building repair under the mission of ‘finding a building's wounds, healing them, and protecting them for the long run.’",
 "로프에 매달려 건물 외벽을 보수하는 작업자들": "Workers on ropes repairing a building's exterior wall",
-"지도 보기": "View map"
+"지도 보기": "View map",
+"네이버 지도": "Naver Map",
+"카카오맵": "Kakao Map",
+"대중교통 · 자동차 길찾기, 거리뷰": "Transit & driving directions, Street View",
+"실시간 길안내, 로드뷰로 주변 확인": "Live navigation, Road View of the area",
+"내비게이션 · 메시지에 붙여넣기": "Paste into your navigation app or a message"
 };

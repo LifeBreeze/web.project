@@ -108,7 +108,8 @@ function initAbout() {
   offBox.addEventListener('click', function (e) { var b = e.target.closest('.office'); if (b) showOffice(+b.getAttribute('data-i')); });
   $('#copyAddr').addEventListener('click', function () {
     var btn = this, a = btn.getAttribute('data-addr');
-    function done() { btn.textContent = '복사했어요'; setTimeout(function () { btn.textContent = '주소 복사'; }, 1600); }
+    var lab = btn.querySelector('b') || btn;
+    function done() { lab.textContent = '복사했어요'; setTimeout(function () { lab.textContent = '주소 복사'; }, 1600); }
     if (navigator.clipboard) navigator.clipboard.writeText(a).then(done, function () { prompt(T('주소를 복사하세요'), a); });
     else prompt(T('주소를 복사하세요'), a);
   });
