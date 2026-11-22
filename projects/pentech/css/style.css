@@ -2059,3 +2059,17 @@ body[data-page="about"] .metric b { color: var(--ink); }
   .esg-item.found .found-body { padding: 32px 24px; }
   .esg-item.found h3 { font-size: 24px; }
 }
+
+/* 푸터: 진한 남색 → 밝은 회색 바탕 + 위쪽 가는 줄 (사이트가 칙칙해 보이지 않게), 로고는 원래 색 */
+.foot { background: #f3f5f9; color: var(--ink-2); border-top: 1px solid var(--line); }
+.foot .logo img { filter: none; }
+.foot h4 { color: var(--ink); }
+.foot a:hover { color: var(--ink); }
+.foot .big-tel { color: var(--ink); }
+.foot .disc { border-top-color: #dfe3ea; color: var(--ink-3); }
+.foot .disc b { color: var(--accent); }
+
+/* 맨 위로 버튼: 파란 동그라미 → 흰 동그라미 · 얇은 테두리 · 검정 화살표, 은은한 그림자 */
+.to-top { background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: 0 8px 22px -10px rgba(15, 27, 61, .35); }
+.to-top:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.foot li b { color: var(--ink); }
