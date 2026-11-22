@@ -2099,3 +2099,8 @@ body[data-page="home"] .head:not(.is-top) .tel-pill:hover { background: #e4e8ef;
 .patent .seal img { width: 26px; height: 26px; display: block; }
 .patent .seal i { font-style: normal; font-size: 10.5px; font-weight: 700; line-height: 1; letter-spacing: -.02em; color: #003764; }
 body[data-page="tech"] .sec-head > div > .h2:first-child { margin-top: 0; }
+
+/* 헤더 전화 버튼 = 펜테크 로고 남색(#171c61) */
+.tel-pill { background: #171c61; }
+.tel-pill:hover { background: #262d85; }
+.head.is-top .tel-pill, body[data-page="home"] .head.is-top .tel-pill { color: #171c61; }
