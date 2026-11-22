@@ -58,19 +58,32 @@ function initAbout() {
   }).join('');
   }
 
-  // 연혁: 시기마다 사진 + 세로 타임라인 (원래 사이트처럼 한 번에 쭉)
+  // 연혁: 가운데 파란 띠에 연도를 세로로 쌓고, 글이 좌우로 번갈아 나오는 긴 타임라인
   if ($('#eraAll')) {
-    var eraImg = ['images/aireka-drone.webp', 'images/hd/s03_01.webp', 'images/hd/s03_03.webp', 'images/hd/s02_01.webp'];
-    $('#eraAll').innerHTML = HISTORY.map(function (e, i) {
-      return '<section class="era era-' + i + '" id="era-' + i + '" aria-label="' + esc(e.era) + '"><div class="wrap era-grid">' +
-        '<div class="era-side rv"><img class="era-photo" src="' + eraImg[i] + '" alt="" loading="lazy">' +
-        '<h2 class="era-name">PENTECH ' + e.era + '</h2><p class="era-years">' + e.years + '</p><h3>' + esc(e.title) + '</h3></div>' +
-        '<div class="era-list">' + e.list.map(function (y) {
-          return '<div class="era-year rv"><b>' + y[0] + '</b><ul>' + y[1].map(function (m) {
-            return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
-          }).join('') + '</ul></div>';
-        }).join('') + '</div></div></section>';
-    }).join('');
+    var eraPic = [
+      '<figure><img class="tl-photo" src="images/aireka-drone.webp" alt="에어레카 진단 드론" loading="lazy"><figcaption>에어레카 · AI 외벽 균열 진단 드론</figcaption></figure>',
+      '<figure><img class="tl-patent" src="images/hist/patent.webp" alt="펜테크 특허증" loading="lazy"><figcaption>특허증 · 노출식 차열방수 복합공법</figcaption></figure>',
+      '<div class="tl-marks"><figure><img src="images/hist/roof-guard.svg" alt="루프가드 ROOF GUARD 상표" loading="lazy"><figcaption>루프가드 · 2013년 상표 등록</figcaption></figure>' +
+        '<figure><img src="images/hist/road-guard.svg" alt="로드가드 ROAD GUARD 상표" loading="lazy"><figcaption>로드가드 · 2018년 상표 등록</figcaption></figure></div>',
+      '<figure><img class="tl-logo" src="images/hist/pentech-logo.png" alt="(주)펜테크 Paint Technology 로고" loading="lazy"><figcaption>(주)펜테크 · 2007년 창립</figcaption></figure>'
+    ];
+    var k = 0;
+    $('#eraAll').innerHTML = '<div class="wrap"><div class="tl">' + HISTORY.map(function (e, i) {
+      var picLeft = i % 2 === 0;
+      var pic = '<div class="tl-pic rv">' + eraPic[i] + '</div>';
+      var txt = '<div class="tl-txt rv"><small>PENTECH</small><h2>' + e.era + '</h2><h3>' + esc(e.title) + '</h3></div>';
+      var head = '<div class="tl-row tl-head ' + (picLeft ? 'tl-pl' : 'tl-pr') + '">' + (picLeft ? pic : txt) +
+        '<div class="tl-mid"><span class="tl-cap">' + e.era + '<br>' + e.years.replace(' ~ ', '–') + '</span></div>' + (picLeft ? txt : pic) + '</div>';
+      var rows = e.list.map(function (y) {
+        var left = (k++ % 2) === 0;
+        var box = '<div class="tl-box rv"><ul>' + y[1].map(function (m) {
+          return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
+        }).join('') + '</ul></div>';
+        var yr = '<div class="tl-mid"><b class="tl-y"><span>' + y[0].slice(0, 2) + '</span><span>' + y[0].slice(2) + '</span></b></div>';
+        return '<div class="tl-row ' + (left ? 'tl-l' : 'tl-r') + '" aria-label="' + y[0] + '년">' + (left ? box + yr + '<div></div>' : '<div></div>' + yr + box) + '</div>';
+      }).join('');
+      return '<section class="tl-era" id="era-' + i + '" aria-label="' + esc(e.era) + '">' + head + rows + '</section>';
+    }).join('') + '</div></div>';
   }
 
   // 특허: 공법 페이지에 적힌 특허를 모두 모음
