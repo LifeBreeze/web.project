@@ -2036,3 +2036,6 @@ body[data-page="about"] .metric b { color: var(--ink); }
   .co-air { grid-template-columns: 1fr; row-gap: 24px; }
   .co-air-photo img { height: auto; aspect-ratio: 3 / 2; }
 }
+
+/* 비전 카드 태그: 진한 파란 알약 → 사진 위에 얹힌 반투명 유리 알약 (흰 글씨 · 얇은 흰 테두리) */
+.vis-tag { background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .5); color: #fff; font-weight: 600; letter-spacing: .02em; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
