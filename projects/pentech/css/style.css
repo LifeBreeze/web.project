@@ -2005,3 +2005,8 @@ body[data-page="about"] .metric b { color: var(--ink); }
   .co-esg > div:first-child, .co-esg-photo, .co-esg-text { grid-column: 1; grid-row: auto; }
   .co-esg { row-gap: 24px; }
 }
+/* 회사소개 ESG 사진 옆 글: 정해 준 줄에서 끊어 표시(넓은 화면 · 한국어), 좁은 화면 · 영어는 이어서 흐름 */
+@media (min-width: 1200px) {
+  html:not([lang="en"]) .co-esg-text .ln { display: block; white-space: nowrap; }
+  .co-esg { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+}
