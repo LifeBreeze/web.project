@@ -58,87 +58,29 @@ function initAbout() {
   }).join('');
   }
 
-  // 연혁: 가운데 빗금 띠 + 위아래로 번갈아 매달린 연도 카드 (옆으로 밀어 보는 가로 타임라인, 작은 화면에서는 세로)
+  // 연혁: 세로 타임라인 (왼쪽에 시기 이름이 따라오고, 오른쪽에 연도별 내용 + 알맞은 사진)
   if ($('#eraAll')) {
-    var tlPic = {
-      '2007': '<img class="tlh-logo" src="images/hist/pentech-logo.png" alt="(주)펜테크 Paint Technology 로고" loading="lazy">',
-      '2012': '<img class="tlh-patent" src="images/hist/patent.webp" alt="노출식 차열방수복합공법 특허증" loading="lazy">',
-      '2013': '<img class="tlh-logo" src="images/hist/roof-guard.svg" alt="루프가드 ROOF GUARD 상표" loading="lazy">',
-      '2018': '<img class="tlh-logo" src="images/hist/road-guard.svg" alt="로드가드 ROAD GUARD 상표" loading="lazy">',
-      '2023': '<img class="tlh-ph" src="images/hd/s03_05.webp" alt="폴리우레아 시스템 시공 모습" loading="lazy">',
-      '2024': '<img class="tlh-ph" src="images/hd/s03_02.webp" alt="월터가드 시공 모습" loading="lazy">',
-      '2025': '<img class="tlh-ph" src="images/aireka-drone.webp" alt="에어레카 진단 드론" loading="lazy">'
+    var tvPic = {
+      '2007': '<img class="tv-logo" src="images/hist/pentech-logo.png" alt="(주)펜테크 Paint Technology 로고" loading="lazy">',
+      '2012': '<img class="tv-patent" src="images/hist/patent.webp" alt="노출식 차열방수복합공법 특허증" loading="lazy">',
+      '2013': '<img class="tv-logo" src="images/hist/roof-guard.svg" alt="루프가드 ROOF GUARD 상표" loading="lazy">',
+      '2018': '<img class="tv-logo" src="images/hist/road-guard.svg" alt="로드가드 ROAD GUARD 상표" loading="lazy">',
+      '2023': '<img class="tv-ph" src="images/hd/s03_05.webp" alt="폴리우레아 시스템 시공 모습" loading="lazy">',
+      '2024': '<img class="tv-ph" src="images/hd/s03_02.webp" alt="월터가드 시공 모습" loading="lazy">',
+      '2025': '<img class="tv-ph" src="images/aireka-drone.webp" alt="에어레카 진단 드론" loading="lazy">'
     };
-    var k = 0, html = '';
-    HISTORY.map(function (e, i) { return { e: e, i: i }; }).reverse().forEach(function (o) {
-      var e = o.e;
-      html += '<div class="tlh-era" id="era-' + o.i + '"><div class="tlh-badge"><small>PENTECH</small><h2>' + e.era + '</h2><p>' + e.years.replace(' ~ ', ' – ') + '</p><h3>' + esc(e.title) + '</h3></div></div>';
-      e.list.slice().reverse().forEach(function (y) {
-        var side = (k % 2 === 0) ? 'up' : 'down';
-        html += '<div class="tlh-item ' + side + '"><div class="tlh-card" data-k="' + k + '"><div class="tlh-in"><b class="tlh-yr">' + y[0] + '</b><ul>' +
-          y[1].slice().reverse().map(function (m) {
-            return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
-          }).join('') + '</ul>' + (tlPic[y[0]] || '') + '</div></div></div>';
-        k++;
-      });
-    });
-    $('#eraAll').innerHTML = '<div class="wrap tlh-ctrl"><p>좌우로 밀거나 화살표를 눌러 보세요</p><div><button type="button" class="tlh-prev" aria-label="←">←</button><button type="button" class="tlh-next" aria-label="→">→</button></div></div>' +
-      '<div class="tlh-scroll" tabindex="0" role="region" aria-label="연혁"><div class="tlh-track">' + html + '</div></div>';
-
-    var sc = $('.tlh-scroll'), tr = $('.tlh-track'), mq = window.matchMedia('(max-width: 860px)');
-    var layoutTL = function () {
-      var maxUp = 0, maxDown = 0;
-      var cardEls = [].slice.call(tr.querySelectorAll('.tlh-card')), itemEls = [].slice.call(tr.querySelectorAll('.tlh-item'));
-      cardEls.forEach(function (c) { c.classList.remove('wide'); c.style.height = ''; });
-      itemEls.forEach(function (it) { it.style.width = ''; });
-      if (!mq.matches) {
-        // 글이 아주 긴 해(2025 등)는 카드를 넓혀 세 칸으로 나눔
-        cardEls.forEach(function (c) {
-          var inn = c.firstChild, im = inn.querySelector('img');
-          if (inn.offsetHeight - (im ? im.offsetHeight + 16 : 0) > 420) c.classList.add('wide');
-        });
-        var ws = cardEls.map(function (c) { return c.classList.contains('wide') ? 720 : 252; });
-        var iw = ws.map(function (w) { return Math.max(135, Math.ceil(w / 2) + 8); });
-        for (var q = 0; q < iw.length - 1; q++) iw[q + 1] = Math.max(iw[q + 1], ws[q] + 18 - iw[q]);
-        itemEls.forEach(function (it, q2) { it.style.width = iw[q2] + 'px'; });
-      }
-      cardEls.forEach(function (c) {
-        if (mq.matches) return;
-        var nat = c.firstChild.offsetHeight, kk = +c.getAttribute('data-k');
-        var h = nat + (nat > 260 ? 64 : 64 + (kk % 3) * 70);
-        c.style.height = h + 'px';
-        if (c.parentNode.classList.contains('up')) maxUp = Math.max(maxUp, h); else maxDown = Math.max(maxDown, h);
-      });
-      tr.style.setProperty('--top', (maxUp + 24) + 'px');
-      tr.style.setProperty('--bot', (maxDown + 24) + 'px');
-    };
-    var pending = false, again = function () { if (pending) return; pending = true; requestAnimationFrame(function () { pending = false; layoutTL(); }); };
-    layoutTL();
-    if (window.ResizeObserver) { var ro = new ResizeObserver(again); [].forEach.call(tr.querySelectorAll('.tlh-in'), function (el) { ro.observe(el); }); }
-    window.addEventListener('resize', again);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(again);
-
-    var upd = function () {
-      var max = sc.scrollWidth - sc.clientWidth;
-      $('.tlh-prev').disabled = sc.scrollLeft < 8;
-      $('.tlh-next').disabled = sc.scrollLeft > max - 8;
-    };
-    sc.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); setTimeout(upd, 300);
-    $('.tlh-prev').addEventListener('click', function () { sc.scrollBy({ left: -Math.round(sc.clientWidth * .8), behavior: 'smooth' }); });
-    $('.tlh-next').addEventListener('click', function () { sc.scrollBy({ left: Math.round(sc.clientWidth * .8), behavior: 'smooth' }); });
-    var down = false, sx = 0, sl = 0;
-    sc.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse' || ev.button !== 0) return; down = true; sx = ev.clientX; sl = sc.scrollLeft; sc.classList.add('drag'); });
-    window.addEventListener('pointermove', function (ev) { if (down) sc.scrollLeft = sl - (ev.clientX - sx); });
-    window.addEventListener('pointerup', function () { down = false; sc.classList.remove('drag'); });
-    [].forEach.call(document.querySelectorAll('.his-jump a'), function (a) {
-      a.addEventListener('click', function (ev) {
-        var t = document.querySelector(a.getAttribute('href'));
-        if (!t || mq.matches) return;
-        ev.preventDefault();
-        window.scrollTo({ top: sc.getBoundingClientRect().top + window.pageYOffset - 150, behavior: 'smooth' });
-        sc.scrollTo({ left: Math.max(0, t.offsetLeft - 60), behavior: 'smooth' });
-      });
-    });
+    $('#eraAll').innerHTML = '<div class="wrap"><div class="tv">' + HISTORY.map(function (e, i) {
+      var years = e.list.map(function (y) {
+        var pic = tvPic[y[0]] || '';
+        return '<article class="tv-yr rv"><b>' + y[0] + '</b><div class="tv-row' + (pic ? ' has-pic' : '') + '"><ul>' + y[1].map(function (m) {
+          return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
+        }).join('') + '</ul>' + (pic ? '<div class="tv-pic">' + pic + '</div>' : '') + '</div></article>';
+      }).join('');
+      return '<section class="tv-era" id="era-' + i + '" aria-label="' + esc(e.era) + '">' +
+        '<div class="tv-ms"><small>PENTECH</small><h2>' + e.era + '</h2><p class="tv-years">' + e.years.replace(' ~ ', ' – ') + '</p><h3>' + esc(e.title) + '</h3></div>' +
+        '<div class="tv-nodecol"><i class="tv-node"></i></div>' +
+        '<div class="tv-list">' + years + '</div></section>';
+    }).join('') + '</div></div>';
   }
 
   // 특허: 공법 페이지에 적힌 특허를 모두 모음

@@ -1837,55 +1837,47 @@ body[data-page="about"] #solutions-sec .sec-head { margin-bottom: 22px; }
 @media (max-width: 860px) { .his-jump { grid-template-columns: repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .his-jump a:hover { transform: none; } }
 
-/* 연혁: 가운데 빗금 띠 + 위아래로 번갈아 매달린 연도 카드 (옆으로 밀어서 보는 타임라인) */
+/* 연혁: 깔끔한 세로 타임라인 (왼쪽 시기 이름 · 가운데 가는 선 · 오른쪽 연도별 내용과 사진) */
 #eraAll { padding-bottom: 56px; }
-.tlh-ctrl { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 6px; }
-.tlh-ctrl p { font-size: 14.5px; color: var(--ink-3); }
-.tlh-ctrl div { display: flex; gap: 8px; }
-.tlh-ctrl button { width: 46px; height: 46px; border: 0; border-radius: 50%; background: var(--ink); color: #fff; font-size: 20px; cursor: pointer; transition: background .15s, opacity .15s; }
-.tlh-ctrl button:hover:not(:disabled) { background: var(--accent); }
-.tlh-ctrl button:disabled { opacity: .25; cursor: default; }
-.tlh-scroll { overflow-x: auto; overflow-y: hidden; cursor: grab; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg-2); outline-offset: -3px; }
-.tlh-scroll.drag { cursor: grabbing; user-select: none; }
-.tlh-scroll.drag * { user-select: none; }
-.tlh-track { --barh: 14px; --top: 400px; --bot: 400px; position: relative; display: flex; width: max-content; min-width: 100%; height: calc(var(--top) + var(--barh) + var(--bot)); padding: 0 220px 0 max(36px, calc((100vw - 1320px) / 2 + 36px)); }
-.tlh-track::before { content: ""; position: absolute; left: 0; right: 0; top: var(--top); height: var(--barh); background: repeating-linear-gradient(135deg, var(--accent) 0 1.6px, transparent 1.6px 5px); }
-.tlh-item { position: relative; flex: none; width: 135px; height: 100%; }
-.tlh-card { position: absolute; left: 0; width: 252px; display: flex; flex-direction: column; border-left: 1.5px solid #b8bfcc; padding-left: 14px; }
-.tlh-item.up .tlh-card { bottom: calc(var(--bot) + var(--barh)); justify-content: flex-start; }
-.tlh-item.down .tlh-card { top: calc(var(--top) + var(--barh)); justify-content: flex-end; }
-.tlh-in { padding: 2px 0; }
-.tlh-yr { position: relative; display: inline-block; padding-bottom: 7px; margin-bottom: 12px; font-size: 30px; font-weight: 500; line-height: 1.2; letter-spacing: -.04em; }
-.tlh-yr::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2.5px; background: var(--accent); }
-.tlh-in ul { display: grid; gap: 8px; }
-.tlh-in li { display: flex; gap: 10px; font-size: 14.5px; line-height: 1.6; letter-spacing: -.015em; color: var(--ink-2); }
-.tlh-in li em { flex: none; width: 34px; font-style: normal; font-weight: 800; color: var(--accent); }
-.tlh-in li div { flex: 1; }
-.tlh-in li div span { display: block; }
-.tlh-in img { display: block; margin-top: 16px; border: 0; }
-.tlh-ph { width: 100%; max-width: 238px; aspect-ratio: 3 / 2; object-fit: cover; }
-.tlh-card.wide { width: 720px; }
-.tlh-card.wide ul { display: block; columns: 3; column-gap: 28px; }
-.tlh-card.wide li { break-inside: avoid; margin-bottom: 8px; }
-.tlh-logo { height: 54px; width: auto; max-width: 100%; }
-.tlh-patent { height: 210px; width: auto; }
-.tlh-era { position: relative; flex: none; width: 300px; height: 100%; scroll-margin-top: 120px; }
-.tlh-badge { position: absolute; left: 0; top: calc(var(--top) + var(--barh) / 2); transform: translateY(-50%); width: 276px; padding: 16px 22px 18px; border-radius: 18px; background: var(--accent); color: #fff; z-index: 2; }
-.tlh-badge small { display: block; font-size: 12.5px; font-weight: 800; letter-spacing: .08em; color: #cfdcff; }
-.tlh-badge h2 { font-size: 34px; font-weight: 800; line-height: 1.1; letter-spacing: -.05em; }
-.tlh-badge p { margin-top: 2px; font-size: 15px; font-weight: 700; }
-.tlh-badge h3 { margin-top: 6px; font-size: 14px; font-weight: 500; line-height: 1.5; letter-spacing: -.015em; color: #e6edff; word-break: keep-all; }
+.tv { --lc: clamp(210px, 24%, 280px); --nc: 56px; position: relative; padding-top: 8px; }
+.tv::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--lc) + var(--nc) / 2 - 1px); width: 2px; background: #e3e7ef; }
+.tv-era { display: grid; grid-template-columns: var(--lc) var(--nc) minmax(0, 1fr); align-items: start; padding: clamp(40px, 5vw, 72px) 0 clamp(24px, 3vw, 40px); scroll-margin-top: 110px; }
+.tv-ms { position: sticky; top: calc(var(--head-h) + 96px); text-align: right; padding-right: 8px; }
+.tv-ms small { display: block; font-size: 13px; font-weight: 800; letter-spacing: .1em; color: var(--ink-3); }
+.tv-ms h2 { margin-top: 2px; font-size: clamp(30px, 3vw, 42px); font-weight: 800; line-height: 1.1; letter-spacing: -.05em; color: var(--ink); }
+.tv-years { margin-top: 8px; font-size: 17px; font-weight: 700; color: var(--accent); }
+.tv-ms h3 { margin-top: 10px; font-size: 15px; font-weight: 500; line-height: 1.55; letter-spacing: -.02em; color: var(--ink-2); word-break: keep-all; }
+.tv-nodecol { position: relative; z-index: 1; }
+.tv-node { display: block; width: 24px; height: 24px; margin: 10px auto 0; border: 3px solid var(--ink); border-radius: 50%; background: #fff; }
+.tv-yr { position: relative; padding-bottom: clamp(30px, 3.4vw, 46px); }
+.tv-yr::before { content: ""; position: absolute; left: calc(var(--nc) / -2 - 5px); top: 17px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.tv-yr b { display: block; font-size: clamp(26px, 2.4vw, 32px); font-weight: 800; line-height: 1.3; letter-spacing: -.04em; }
+.tv-row { margin-top: 10px; }
+.tv-row.has-pic { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: clamp(24px, 4vw, 56px); align-items: start; }
+.tv-row ul { display: grid; gap: 10px; }
+.tv-row li { display: flex; gap: 14px; font-size: 16.5px; line-height: 1.65; letter-spacing: -.015em; color: var(--ink); }
+.tv-row li em { flex: none; width: 40px; font-style: normal; font-weight: 800; color: var(--accent); }
+.tv-row li div { flex: 1; }
+.tv-row li div span { display: block; }
+.tv-row li div span + span { margin-top: 3px; color: var(--ink-2); }
+.tv-pic img { display: block; border: 0; }
+.tv-ph { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 14px; }
+.tv-logo { height: 56px; width: auto; max-width: 100%; }
+.tv-patent { height: 230px; width: auto; border-radius: 3px; }
 
-@media (max-width: 860px) {
-  .tlh-ctrl { display: none; }
-  .tlh-scroll { overflow: visible; cursor: auto; padding: 8px 36px 0; }
-  .tlh-track { display: block; width: auto; min-width: 0; height: auto; padding: 0 0 0 34px; }
-  .tlh-track::before { top: 0; bottom: 0; left: 4px; right: auto; width: 12px; height: auto; }
-  .tlh-item, .tlh-era { width: auto; height: auto; }
-  .tlh-item::before { content: ""; position: absolute; left: -31px; top: 9px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--accent); background: #fff; }
-  .tlh-card { position: static !important; width: auto; height: auto !important; border-left: 0; padding: 0 0 30px; }
-  .tlh-badge { position: relative; top: auto; left: auto; transform: none; width: auto; margin: 6px 0 28px; }
-  .tlh-ph { max-width: 420px; }
+@media (max-width: 1000px) {
+  .tv-row.has-pic { grid-template-columns: 1fr; gap: 18px; }
+  .tv-pic { order: 2; }
+  .tv-ph { max-width: 360px; }
+}
+@media (max-width: 760px) {
+  .tv { --nc: 40px; }
+  .tv::before { left: calc(var(--nc) / 2 - 1px); }
+  .tv-era { grid-template-columns: var(--nc) minmax(0, 1fr); padding-top: 32px; }
+  .tv-nodecol { grid-column: 1; grid-row: 1 / span 2; }
+  .tv-ms { grid-column: 2; grid-row: 1; position: static; text-align: left; padding: 0 0 22px 6px; }
+  .tv-list { grid-column: 2; grid-row: 2; padding-left: 6px; }
+  .tv-yr::before { left: calc(var(--nc) / -2 - 11px); }
 }
 
 /* ───────── 비전: 사진 카드 네 장 ───────── */
