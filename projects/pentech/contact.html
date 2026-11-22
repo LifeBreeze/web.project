@@ -6,7 +6,7 @@
 <title>고객지원 — (주)펜테크 | 리디자인 시안</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="css/style.css?v=20261121-166">
+<link rel="stylesheet" href="css/style.css?v=20261121-167">
 </head>
 <body data-page="contact">
 <main>
@@ -101,12 +101,26 @@
       <div class="pdocs rv" id="docList"></div>
     </div>
   </section>
+
+  <!-- 시방서 미리보기 창 (PDF.js 로 쪽마다 그림) -->
+  <dialog class="pdf-dlg" id="pdfDlg" aria-labelledby="pdfTitle">
+    <div class="pdf-head">
+      <h3 id="pdfTitle">시방서 미리보기</h3>
+      <div class="pdf-actions">
+        <a class="btn btn-line btn-sm" id="pdfOpen" target="_blank" rel="noopener">새 창에서 열기</a>
+        <a class="btn btn-blue btn-sm" id="pdfDl" download>다운로드</a>
+        <button type="button" class="pdf-x" data-close aria-label="닫기">×</button>
+      </div>
+    </div>
+    <div class="pdf-body" id="pdfBody" tabindex="0"></div>
+    <p class="pdf-status" id="pdfStatus" role="status"></p>
+  </dialog>
 </main>
 
-<script src="js/data.js?v=20261121-166"></script>
-<script src="js/common.js?v=20261121-166"></script>
-<script src="js/pages.js?v=20261121-166"></script>
-<script src="js/i18n-dict.js?v=20261121-166"></script>
-<script src="js/i18n.js?v=20261121-166"></script>
+<script src="js/data.js?v=20261121-167"></script>
+<script src="js/common.js?v=20261121-167"></script>
+<script src="js/pages.js?v=20261121-167"></script>
+<script src="js/i18n-dict.js?v=20261121-167"></script>
+<script src="js/i18n.js?v=20261121-167"></script>
 </body>
 </html>

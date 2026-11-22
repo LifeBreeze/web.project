@@ -205,10 +205,57 @@ function initContact() {
   var ICON_DL = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 11 12 15.5 16.5 11"/><path d="M5 19h14"/></svg>';
   var dlist = $('#docList');
   dlist.innerHTML = DOCS.map(function (d) {
+    var fname = d[1].replace(/[\\/:*?"<>|]/g, '') + '.pdf';
     return '<article class="pdoc"><span class="pdoc-tag">' + d[0] + '</span><h3>' + esc(d[1]) + '</h3>' +
-      '<a class="pdoc-btn" href="' + esc(d[3]) + '" target="_blank" rel="noopener"><span>미리보기</span>' + ICON_DOC + '</a>' +
-      '<a class="pdoc-btn" href="' + esc(d[3]) + '" target="_blank" rel="noopener" download><span>다운로드</span>' + ICON_DL + '</a></article>';
+      '<button type="button" class="pdoc-btn" data-preview="' + esc(d[3]) + '" data-title="' + esc(d[1]) + '" data-orig="' + esc(d[4]) + '"><span>미리보기</span>' + ICON_DOC + '</button>' +
+      '<a class="pdoc-btn" href="' + esc(d[3]) + '" download="' + esc(fname) + '"><span>다운로드</span>' + ICON_DL + '</a></article>';
   }).join('');
+
+  /* 시방서 미리보기: 우리 사이트에 둔 PDF 를 PDF.js 로 쪽마다 그려 창 안에서 바로 보여 줌.
+     (브라우저에 PDF 보기 기능이 없어도 되고, PDF.js 를 못 받아 오면 원래 사이트 파일을 새 창으로 엶) */
+  var pdfDlg = $('#pdfDlg'), pdfBody = $('#pdfBody'), pdfStatus = $('#pdfStatus'), pdfToken = 0;
+  var PDFJS_BASE = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+  function loadPdfJs(ok, fail) {
+    if (window.pdfjsLib) return ok();
+    var sc = document.createElement('script');
+    sc.src = PDFJS_BASE + 'pdf.min.js';
+    sc.onload = function () { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_BASE + 'pdf.worker.min.js'; ok(); };
+    sc.onerror = fail;
+    document.head.appendChild(sc);
+  }
+  function renderPdf(url, token) {
+    pdfStatus.textContent = T('불러오는 중…');
+    window.pdfjsLib.getDocument(url).promise.then(function (pdf) {
+      var n = pdf.numPages, i = 1;
+      function next() {
+        if (token !== pdfToken || i > n) { if (token === pdfToken) pdfStatus.textContent = ''; return; }
+        pdf.getPage(i).then(function (page) {
+          if (token !== pdfToken) return;
+          var w = Math.max(280, pdfBody.clientWidth - 40), v1 = page.getViewport({ scale: 1 });
+          var scale = w / v1.width, dpr = Math.min(window.devicePixelRatio || 1, 2), vp = page.getViewport({ scale: scale * dpr });
+          var cv = document.createElement('canvas'); cv.width = Math.floor(vp.width); cv.height = Math.floor(vp.height);
+          cv.style.width = Math.floor(vp.width / dpr) + 'px'; cv.style.height = Math.floor(vp.height / dpr) + 'px';
+          cv.setAttribute('aria-label', i + ' / ' + n);
+          pdfBody.appendChild(cv);
+          pdfStatus.textContent = i + ' / ' + n;
+          return page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise.then(function () { i++; next(); });
+        });
+      }
+      next();
+    }).catch(function () { pdfStatus.textContent = T('미리보기를 불러오지 못했습니다. 새 창에서 열어 보세요.'); });
+  }
+  dlist.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-preview]'); if (!b) return;
+    var url = b.getAttribute('data-preview'), title = b.getAttribute('data-title'), orig = b.getAttribute('data-orig');
+    $('#pdfOpen').href = url; $('#pdfDl').href = url; $('#pdfDl').setAttribute('download', title.replace(/[\\/:*?"<>|]/g, '') + '.pdf');
+    $('#pdfTitle').textContent = title;
+    pdfBody.innerHTML = ''; pdfBody.scrollTop = 0; pdfStatus.textContent = T('불러오는 중…');
+    var token = ++pdfToken;
+    if (pdfDlg.showModal) pdfDlg.showModal(); else pdfDlg.setAttribute('open', '');
+    loadPdfJs(function () { renderPdf(url, token); }, function () { window.open(orig, '_blank', 'noopener'); pdfDlg.close(); });
+  });
+  pdfDlg.addEventListener('click', function (e) { if (e.target === pdfDlg || e.target.closest('[data-close]')) pdfDlg.close(); });
+  pdfDlg.addEventListener('close', function () { pdfToken++; pdfBody.innerHTML = ''; });
 }
 
 
