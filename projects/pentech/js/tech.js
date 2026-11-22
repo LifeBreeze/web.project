@@ -113,7 +113,7 @@ window.initPage = function () {
   }
   /* 특허: 성능과 같은 구역 안에 (따로 두면 한 줄짜리 구역이 생겨 허전함) */
   h += '<div class="sec-head rv" id="patent" style="margin:76px 0 30px"><h3 class="h3">' + t.name + ' 관련 특허 ' + t.patents.length + '건</h3>' +
-    '<a class="link-arrow" href="about.html#cert">특허 · 인증 전체 →</a></div>' +
+    '<a class="link-arrow" href="cert.html">특허 · 인증 전체 →</a></div>' +
     '<div class="patents rv">' + t.patents.map(function (x) { return patentBtn(x, 'pat-' + t.id); }).join('') + '</div>';
   h += '</div></section>';
 

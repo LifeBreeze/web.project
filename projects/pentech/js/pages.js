@@ -51,11 +51,14 @@ function initCases() {
 /* ── 회사소개 ── */
 function initAbout() {
   // 대표 솔루션 5칸
+  if ($('#solutions')) {
   $('#solutions').innerHTML = TECH.map(function (t) {
     return '<a class="solution" href="tech.html?id=' + t.id + '" style="--c:' + t.color + '"><img src="' + t.card + '" alt="" loading="lazy"><div><small>' + t.en + '</small><b>' + t.name + '</b><p>' + esc(t.area) + ' · ' + esc(t.where) + '</p></div></a>';
   }).join('');
+  }
 
   // 연혁: 시기 탭
+  if ($('#eraTabs')) {
   var tabs = $('#eraTabs'), body = $('#eraBody');
   tabs.innerHTML = HISTORY.map(function (e, i) {
     return '<button role="tab" aria-selected="' + (i === 0) + '" data-i="' + i + '"><b>' + e.era + '</b><span>' + e.years + '</span></button>';
@@ -72,13 +75,17 @@ function initAbout() {
   }
   tabs.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) showEra(+b.getAttribute('data-i')); });
   showEra(0);
+  }
 
   // 특허: 공법 페이지에 적힌 특허를 모두 모음
+  if ($('#patentAll')) {
   $('#patentAll').innerHTML = TECH.map(function (t) {
     return t.patents.map(function (x) { return patentBtn(x, 'pat-all', t.name); }).join('');
   }).join('');
+  }
 
   // 회사 위치: 지도 + 네이버 지도
+  if ($('#offices')) {
   var offBox = $('#offices'), map = $('#mapFrame');
   offBox.innerHTML = OFFICES.map(function (o, i) {
     return '<button class="office" aria-pressed="' + (i === 0) + '" data-i="' + i + '"><b>' + o.name + '</b><span>' + o.addr + '</span></button>';
@@ -100,6 +107,7 @@ function initAbout() {
     else prompt(T('주소를 복사하세요'), a);
   });
   showOffice(0);
+  }
 }
 
 /* ── 소식: 언론보도 3열 × 2행 ── */
