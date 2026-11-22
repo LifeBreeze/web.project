@@ -106,6 +106,17 @@
     if (root.nodeType === 3) { if (root.parentNode && !/^(SCRIPT|STYLE)$/.test(root.parentNode.nodeName)) applyText(root); return; }
     if (root.nodeType !== 1 && root.nodeType !== 9) return;
     if (root.nodeType === 1) applyAttrs(root);
+    // 줄 조각(span.ln)으로만 나눈 문단: 조각을 이어 붙인 문장 전체로 사전을 찾음
+    var ps = root.querySelectorAll ? root.querySelectorAll('p') : [];
+    for (var pi = 0; pi < ps.length; pi++) {
+      var pe = ps[pi], kids = pe.children;
+      if (!kids.length) continue;
+      var allLn = true;
+      for (var ki = 0; ki < kids.length; ki++) if (!kids[ki].classList.contains('ln')) { allLn = false; break; }
+      if (!allLn) continue;
+      var whole = EN[norm(pe.textContent)];
+      if (whole != null) pe.textContent = whole;
+    }
     var w = document.createTreeWalker(root, 1 | 4, {
       acceptNode: function (n) {
         if (n.nodeType === 1) return /^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.nodeName) ? 2 : 1;
