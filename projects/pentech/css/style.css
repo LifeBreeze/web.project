@@ -2108,3 +2108,13 @@ body[data-page="tech"] .sec-head > div > .h2:first-child { margin-top: 0; }
 /* 홈 첫 화면 '무료 견적 문의': 옆 '기술공법 보기'와 같은 모양 (투명 바탕 · 흰 테두리 · 흰 글씨, 올리면 흰 바탕) */
 .hero .btn-blue, body[data-page="home"] .hero .btn-blue { background: transparent; border-color: #fff; color: #fff; }
 .hero .btn-blue:hover, body[data-page="home"] .hero .btn-blue:hover { background: #fff; color: var(--ink); }
+
+/* 홈 첫 화면: 흰 헤더 아래에 둥근 모서리 카드로 (양옆 · 아래 12px 여백) */
+body[data-page="home"] .hero { padding: var(--head-h) 12px 0; }
+body[data-page="home"] .hero-viewport { border-radius: 24px; }
+body[data-page="home"] .hero .hero-card { height: calc(100svh - var(--head-h) - 12px); min-height: 600px; border-radius: 24px; }
+body[data-page="home"] .hero .hero-copy { padding-top: 0; }
+@media (max-width: 760px) {
+  body[data-page="home"] .hero { padding: var(--head-h) 8px 0; }
+  body[data-page="home"] .hero-viewport, body[data-page="home"] .hero .hero-card { border-radius: 18px; }
+}

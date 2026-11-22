@@ -113,7 +113,7 @@ function buildChrome() {
   // 페이지 맨 위에서는 헤더를 투명하게 해서 배너 사진과 이어 보이게, 조금만 내려도 흰 헤더로
   function topState() {
     var home = document.body.getAttribute('data-page') === 'home';     // 홈은 흰 헤더 아래에 둥근 사진이 놓이는 구성이라 항상 흰색
-    head.classList.toggle('is-top', window.scrollY < 10 && !document.body.classList.contains('menu-open'));
+    head.classList.toggle('is-top', window.scrollY < 10 && !home && !document.body.classList.contains('menu-open'));
     head.classList.toggle('scrolled', window.scrollY > 6);
   }
   window.addEventListener('scroll', topState, { passive: true });
