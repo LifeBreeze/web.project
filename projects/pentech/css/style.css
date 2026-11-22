@@ -2084,6 +2084,3 @@ body[data-page="about"] .metric b { color: var(--ink); }
   .page-head::before { background: linear-gradient(180deg, rgba(10,16,28,.62) 0%, rgba(10,16,28,.42) 100%); }
 }
 .foot .disc { color: #5d6573; }
-
-/* 비전 · ESG: E · S · G 카드의 파란 글자(큰 글자 · 핵심 실천)를 초록으로 */
-.esg-item:not(.found) .letter, .esg-item:not(.found) .esg-k { color: #1a7f45; }
