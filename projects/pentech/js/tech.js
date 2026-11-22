@@ -5,7 +5,7 @@ window.initPage = function () {
   document.title = t.name + ' (' + t.area + ') — (주)펜테크 | 리디자인 시안';
   var IMGB = IMG;
   var no = 0;
-  function eb(label) { no++; return '<span class="eyebrow"><b>' + (no < 10 ? '0' : '') + no + '</b> ' + label + '</span>'; }
+  function eb() { return ''; }   /* 제목 위 파란 작은 라벨(01 핵심 기술 등)은 쓰지 않음 */
 
   var h = '';
   /* 표: 모든 열 글자 시작 간격이 같도록 열 폭을 균등하게 (첫 열은 안쪽 여백만큼 더 넓게) — 폭은 fitTables() 가 정함 */
