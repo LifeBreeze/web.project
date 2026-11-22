@@ -14,9 +14,6 @@ window.initPage = function () {
   /* 머리: 글은 종이 칸, 사진은 옆 칸 */
   h += '<section class="page-head" style="--banner:url(\'' + t.banner + '\')"><div class="wrap"><div>' +
     '<nav class="crumb" aria-label="현재 위치"><a href="index.html">홈</a><span><a href="tech.html?id=roof">기술공법</a></span><span>' + t.name + '</span></nav>' +
-    '<div class="tech-switch" aria-label="다른 공법">' + TECH.map(function (x) {
-      return '<a href="tech.html?id=' + x.id + '" style="--c:' + x.color + '"' + (x.id === t.id ? ' aria-current="page"' : '') + '><i></i>' + x.name + '</a>';
-    }).join('') + '</div>' +
     '<h1 class="rv-h"><small>' + t.en.toUpperCase() + ' · ' + t.area + '</small>' + t.name + '</h1>' +
     '<p class="lead rv-h">' + esc(t.lead) + '</p>' +
     '<p class="define">' + t.define + '</p></div></div></section>';
