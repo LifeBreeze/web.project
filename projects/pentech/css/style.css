@@ -2039,3 +2039,23 @@ body[data-page="about"] .metric b { color: var(--ink); }
 
 /* 비전 카드 태그: 진한 파란 알약 → 사진 위에 얹힌 반투명 유리 알약 (흰 글씨 · 얇은 흰 테두리) */
 .vis-tag { background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .5); color: #fff; font-weight: 600; letter-spacing: .02em; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+
+/* 비전 · ESG: E · S · G · F 카드를 더 크게 (사진 높이 · 안쪽 여백 · 글씨) */
+.esg { gap: 24px; }
+.esg-item:not(.found) > div { padding: 34px 34px 38px; }
+.esg-item .letter { font-size: 56px; }
+.esg-item h3 { font-size: 24px; margin-top: 14px; line-height: 1.4; }
+.esg-item h3 small { font-size: 14px; margin-bottom: 4px; }
+.esg-k { font-size: 14.5px; margin-top: 18px; }
+.esg-item .checks { gap: 6px; }
+.esg-item .checks li { font-size: 16.5px; line-height: 1.6; }
+@media (min-width: 981px) { .esg-item:not(.found) img { aspect-ratio: 4 / 3; } }
+.esg-item.found { min-height: 470px; }
+.esg-item.found .found-body { max-width: 640px; padding: 56px 60px; }
+.esg-item.found h3 { font-size: 30px; line-height: 1.35; }
+.esg-item.found p { font-size: 17.5px; line-height: 1.75; }
+@media (max-width: 760px) {
+  .esg-item:not(.found) > div { padding: 26px 24px 30px; }
+  .esg-item.found .found-body { padding: 32px 24px; }
+  .esg-item.found h3 { font-size: 24px; }
+}
