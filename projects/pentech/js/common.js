@@ -203,7 +203,7 @@ function openVideo(id) {
 function patentBtn(x, group, techName) {
   var cap = '제 ' + x[0] + ' 호 · ' + x[1];
   return '<button type="button" class="patent" data-lightbox data-src="' + esc(x[2]) + '" data-cap="' + esc(cap) + '" data-group="' + esc(group) + '">' +
-    '<span class="seal">특허</span><span class="pt"><small>제 ' + x[0] + ' 호' + (techName ? ' · ' + esc(techName) : '') + '</small>' +
+    '<span class="seal"><img src="images/kipo-symbol.svg" alt="" width="26" height="26"><i>특허청</i></span><span class="pt"><small>제 ' + x[0] + ' 호' + (techName ? ' · ' + esc(techName) : '') + '</small>' +
     '<b>' + esc(x[1]) + '</b><em>특허증 보기 →</em></span></button>';
 }
 
