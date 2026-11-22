@@ -7,6 +7,7 @@ window.initPage = function () {
   if (page === 'news' && $('#artBox')) initArticle();
   if (page === 'contact' && $('#inqForm')) initContact();
   if (page === 'contact' && $('#faqList')) initFaq();
+  if (page === 'contact' && $('#docList')) initSpec();
   if (page === 'partner') initPartners();
 };
 
@@ -57,24 +58,19 @@ function initAbout() {
   }).join('');
   }
 
-  // 연혁: 시기 탭
-  if ($('#eraTabs')) {
-  var tabs = $('#eraTabs'), body = $('#eraBody');
-  tabs.innerHTML = HISTORY.map(function (e, i) {
-    return '<button role="tab" aria-selected="' + (i === 0) + '" data-i="' + i + '"><b>' + e.era + '</b><span>' + e.years + '</span></button>';
-  }).join('');
-  function showEra(i) {
-    var e = HISTORY[i];
-    $$('button', tabs).forEach(function (b, bi) { b.setAttribute('aria-selected', bi === i); });
-    body.innerHTML = '<div class="timeline-side"><span class="eyebrow">PENTECH ' + e.era.toUpperCase() + '</span><h3>' + esc(e.title) + '</h3><p>' + e.years + '</p></div>' +
-      '<div class="years">' + e.list.map(function (y) {
-        return '<div class="year"><b>' + y[0] + '</b><ul>' + y[1].map(function (m) {
-          return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
-        }).join('') + '</ul></div>';
-      }).join('') + '</div>';
-  }
-  tabs.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) showEra(+b.getAttribute('data-i')); });
-  showEra(0);
+  // 연혁: 시기마다 사진 + 세로 타임라인 (원래 사이트처럼 한 번에 쭉)
+  if ($('#eraAll')) {
+    var eraImg = ['images/aireka-drone.webp', 'images/hd/s03_01.webp', 'images/hd/s03_03.webp', 'images/hd/s02_01.webp'];
+    $('#eraAll').innerHTML = HISTORY.map(function (e, i) {
+      return '<section class="era era-' + i + '" id="era-' + i + '" aria-label="' + esc(e.era) + '"><div class="wrap era-grid">' +
+        '<div class="era-side rv"><img class="era-photo" src="' + eraImg[i] + '" alt="" loading="lazy">' +
+        '<h2 class="era-name">PENTECH ' + e.era + '</h2><p class="era-years">' + e.years + '</p><h3>' + esc(e.title) + '</h3></div>' +
+        '<div class="era-list">' + e.list.map(function (y) {
+          return '<div class="era-year rv"><b>' + y[0] + '</b><ul>' + y[1].map(function (m) {
+            return '<li><em>' + m[0] + '월</em><div>' + m.slice(1).map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div></li>';
+          }).join('') + '</ul></div>';
+        }).join('') + '</div></div></section>';
+    }).join('');
   }
 
   // 특허: 공법 페이지에 적힌 특허를 모두 모음
@@ -208,6 +204,11 @@ function initContact() {
     return /^\d+\.\s/.test(ln) ? '<h4>' + esc(ln) + '</h4>' : '<p>' + esc(ln) + '</p>';
   }).join('');
 
+}
+
+
+/* ── 시방서(spec.html): 카드 + 미리보기(PDF.js) · 다운로드 ── */
+function initSpec() {
   // 시방서 (기존 '다운로드'): 원래 사이트 Proposal 페이지처럼 카드 + 미리보기 · 다운로드
   var ICON_DOC = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>';
   var ICON_DL = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7.5 11 12 15.5 16.5 11"/><path d="M5 19h14"/></svg>';
