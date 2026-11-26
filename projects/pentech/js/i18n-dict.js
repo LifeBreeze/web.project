@@ -204,6 +204,8 @@ window.EN_DICT = {
 "10년 이상": "10+ years",
 "가지": "methods",
 "년 이상": "years+",
+"함께하는 협약사": "partner network",
+"개": "companies",
 "루프가드 방수층 내구성": "Roof Guard waterproof layer durability",
 "전문 상담 전화": "Expert consultation line",
 "건설보수를 전문으로 하는 기업,": "A company specializing in building repair,",
