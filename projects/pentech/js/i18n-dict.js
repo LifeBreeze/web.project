@@ -202,6 +202,8 @@ window.EN_DICT = {
 "5가지": "5 methods",
 "지붕 · 외벽 · 바닥 전문 공법": "Specialized methods for roofs, walls, and floors",
 "10년 이상": "10+ years",
+"가지": "methods",
+"년 이상": "years+",
 "루프가드 방수층 내구성": "Roof Guard waterproof layer durability",
 "전문 상담 전화": "Expert consultation line",
 "건설보수를 전문으로 하는 기업,": "A company specializing in building repair,",
