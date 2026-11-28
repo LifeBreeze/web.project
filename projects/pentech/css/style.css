@@ -13,11 +13,11 @@
   --ink-2: #4b5563;
   --ink-3: #6b7280;
   --line: #e5e8ef;
-  --accent: #1d54e6;      /* 펜테크 파랑: 흰 글씨 대비 6.0 */
-  --accent-d: #1642bd;
+  --accent: #171c61;      /* 펜테크 로고 남색 (원래 파랑 #1d54e6) */
+  --accent-d: #0e1247;
   --accent-l: #8fb4ff;    /* 어두운 바탕 위 */
-  --blue: #1d54e6;
-  --blue-soft: #e8efff;
+  --blue: #171c61;
+  --blue-soft: #eceef6;
   --amber: #ffb81c;
   --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --serif: var(--sans);
