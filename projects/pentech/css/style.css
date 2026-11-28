@@ -2150,3 +2150,8 @@ body[data-page="home"] .hero .hero-copy { bottom: 0; }
 .pv-badge, .steps-list li::before, .seg input:checked + span, .doc .kind { background: #171c61; }
 .seg input:checked + span { color: #fff; border-color: #171c61; }
 .pager button[aria-current="page"] { background: #171c61; border-color: #171c61; }
+/* 맨 위로 버튼: 마우스를 올렸을 때 검정 → 로고 남색 */
+.to-top:hover { background: #171c61; border-color: #171c61; color: #fff; }
+/* 같은 검정이 나오던 다른 버튼의 마우스 올림 상태도 남색 */
+.btn-line:hover, .btn-light:hover, .cta .btn-line:hover, .cta .btn-light:hover, .co-jump .chip:hover,
+.loc-links a:hover, .loc-links button:hover, .loc-links a:focus-visible, .loc-links button:focus-visible { background: #171c61; border-color: #171c61; color: #fff; }
