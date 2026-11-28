@@ -2146,3 +2146,6 @@ body[data-page="home"] .hero .hero-copy { bottom: 0; }
 .btn-ink { background: #171c61; }
 .btn-ink:hover { background: #0e1247; }
 .pv-steps button[aria-current="step"] { background: #171c61; }
+/* 사진 위 단계 표시(1차 · 2차…) · 순서 번호 · 현재 쪽 번호 · 선택된 항목 · 자료 종류 표시도 남색 */
+.pv-badge, .steps-list li::before, .seg input:checked + span, .doc .kind { background: #171c61; }
+.pager button[aria-current="page"] { background: #171c61; border-color: #171c61; }
