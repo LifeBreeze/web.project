@@ -229,7 +229,7 @@ function strataHTML(t, compact) {
   var n = t.layers.length;
   var items = t.layers.map(function (name, i) {
     var depth = i === 0 ? 0 : i / (n - 1);          // 0 = 바탕, 1 = 마감
-    var mix = Math.round(14 + depth * 74);
+    var mix = Math.round(14 + depth * 86);          // 맨 위(마감) = 100% → 로고 남색 그대로
     var cls = i === 0 ? 'base' : (mix > 58 ? 'dark' : '');
     return '<li class="' + cls + '" style="--m:' + mix + '%"><em>' + (i === 0 ? '—' : i) + '</em>' + esc(name) + '</li>';
   }).reverse().join('');

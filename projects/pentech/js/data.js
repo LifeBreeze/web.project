@@ -9,7 +9,7 @@ var PHONE = '1599-7041';
 var TECH = [
   {
     id: 'roof', banner: IMG + 'technology/list_01/s01_bg.webp', name: '루프가드', en: 'Roof Guard', area: '지붕방수', where: '옥상 · 지붕',
-    color: '#1d54e6',
+    color: '#171c61',
     lead: '노후 옥상의 5대 하자를 한 번에 해결하도록 설계된 복합 방수 시스템',
     define: '루프가드는 펜테크의 특허 공법인 <b>노출식 차열 복합시트 공법</b>으로 시공하는 지붕 방수 시스템입니다. 이 페이지에서는 이 공법을 줄여 \'루프가드\'라고 부릅니다.',
     hero: IMG + 'technology/list_01/04.webp',
@@ -88,7 +88,7 @@ var TECH = [
   },
   {
     id: 'wall', banner: IMG + 'technology/list_02/s01_bg.webp', name: '월터가드', en: 'Wallter Guard', area: '외벽보수방수', where: '외벽',
-    color: '#1d54e6',
+    color: '#171c61',
     lead: '외벽 하자는 미관 문제가 아닌, 구조 안전의 신호입니다.',
     define: '월터가드는 외벽의 균열을 보호막처럼 감싸는 <b>외벽 전용 보수·방수 도장 시스템</b>입니다. 지붕에서 검증된 루프가드의 복합시트 공법을 외벽에 맞게 넓혔습니다.',
     hero: 'images/hd/s03_02.webp?v=2',
@@ -148,7 +148,7 @@ var TECH = [
   },
   {
     id: 'penter', banner: IMG + 'technology/list_03/s01_bg.webp', name: '펜터가드', en: 'Penter Guard', area: '지하주차장 포장', where: '지하주차장',
-    color: '#1d54e6',
+    color: '#171c61',
     lead: '지하주차장은 건물 중 가장 가혹한 사용 환경입니다.',
     define: '펜터가드는 차량 하중과 마찰이 반복되는 <b>지하주차장 바닥을 위한 고강도 바닥 포장 시스템</b>입니다. 냄새가 거의 없고 빨리 말라 입주민 불편이 적습니다.',
     hero: 'images/hd/s03_03.webp?v=2',
@@ -191,7 +191,7 @@ var TECH = [
   },
   {
     id: 'road', banner: IMG + 'technology/list_04/s01_bg.webp', name: '로드가드', en: 'Road Guard', area: '미끄럼방지 포장', where: '도로 · 보행로',
-    color: '#1d54e6',
+    color: '#171c61',
     lead: '미끄럼 사고는 표면 마찰력 부족에서 시작됩니다.',
     define: '로드가드는 도로·교차로·어린이보호구역처럼 <b>밖에 드러난 바닥에 마찰력을 더하는 MMA 미끄럼방지 포장</b>입니다.',
     hero: IMG + 'technology/list_04/02.webp',
@@ -236,7 +236,7 @@ var TECH = [
   },
   {
     id: 'poly', banner: IMG + 'technology/list_05/s01_bg.webp', name: '폴리우레아', en: 'Polyurea', area: '친환경 방수재', where: '수조 · 특수 시설',
-    color: '#1d54e6',
+    color: '#171c61',
     lead: '분사 후 수십 초 안에 굳는 차세대 방수 기술',
     define: '폴리우레아는 <b>뿌리면 20~30초 만에 굳어 이음새 없는 막을 만드는 초속경화 방수재</b>입니다. 관공서의 급한 누수나 바로 써야 하는 현장에 알맞습니다.',
     hero: 'images/hd/s03_05.webp?v=2',
