@@ -2140,3 +2140,9 @@ body[data-page="home"] .hero .hero-copy { bottom: 0; }
   .about-stats b small { font-size: 16px; margin-left: 4px; }
 }
 #about.sec { flex-direction: column; align-items: stretch; justify-content: center; }
+
+/* 검정에 가까운 버튼 · 선택된 칩 · 공정 단계 표시도 로고 남색으로 */
+.chip[aria-pressed="true"], .chip[aria-selected="true"] { background: #171c61; border-color: #171c61; color: #fff; }
+.btn-ink { background: #171c61; }
+.btn-ink:hover { background: #0e1247; }
+.pv-steps button[aria-current="step"] { background: #171c61; }
